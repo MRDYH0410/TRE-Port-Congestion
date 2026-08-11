@@ -1,0 +1,2 @@
+selection_rule,pilot_paths,required_paths,executed_paths,target_halfwidth,computational_cap,required_paths_within_cap,precision_target_met,maximum_achieved_halfwidth
+maximum paired-precision requirement across all main policies,4,88,88,2255.6378250000002,196,True,True,2237.5424079428485

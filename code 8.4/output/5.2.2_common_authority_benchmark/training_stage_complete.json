@@ -1,0 +1,8 @@
+{
+  "config_sha256": "c3a1931a5275398484b3b713f77ed1e55506037dd00791a2e06d587123ba5b9b",
+  "historical_interface_sha256": "407b06106c86f7173d399d8a66283f48ac6746b146c869c14cf77bad3ba3a976",
+  "residual_library_sha256": "8d4da8f9bb82633fa9f7427069064759a12d6633d3aca0c84c347762e1e97321",
+  "generated_from_scratch": true,
+  "test_event_replayed": false,
+  "checkpoint_count": 15
+}

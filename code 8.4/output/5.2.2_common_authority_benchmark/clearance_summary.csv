@@ -1,0 +1,9 @@
+policy,physical_paths,clearance_probability,restricted_mean_clearance_time,restriction_weeks,mean_observed_clearance_time_among_cleared,mean_final_outstanding_mass,mean_final_outstanding_mass_censored,number_censored_paths,number_all_seed_censored_paths,number_censored_seed_trajectories,mean_terminal_loss,censored_clearance_time_recorded_as_104
+Behaviour cloning,88,1.0,79.0,104,79.0,5.741544315846253e-07,0.0,0,0,0,0.0,False
+Constrained SAC,88,1.0,78.0,104,78.0,7.265408920790532e-07,0.0,0,0,0,0.0,False
+Model-guided constrained SAC,88,1.0,79.0,104,79.0,5.745659003871287e-07,0.0,0,0,0,0.0,False
+PPO,88,1.0,78.99621212121211,104,78.99621212121211,5.597288560856785e-07,0.0,0,0,0,0.0,False
+Passive,88,1.0,78.0,104,78.0,7.265577439788286e-07,0.0,0,0,0,0.0,False
+Projected stochastic MPC,88,1.0,79.0,104,79.0,5.633746080085513e-07,0.0,0,0,0,0.0,False
+Reactive,88,1.0,79.0,104,79.0,5.612559916964988e-07,0.0,0,0,0,0.0,False
+Vanilla SAC,88,1.0,78.0,104,78.0,7.265332669708772e-07,0.0,0,0,0,0.0,False

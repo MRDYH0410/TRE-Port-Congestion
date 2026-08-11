@@ -1,0 +1,37 @@
+policy,training_seed,probe,maximum_raw_action_difference,information_hash_equal,observation_hash_equal,tolerance,passed
+Passive,,future_payload_after_t,0.0,True,True,1e-06,True
+Passive,,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+Reactive,,future_payload_after_t,0.0,True,True,1e-06,True
+Reactive,,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+Projected stochastic MPC,,future_payload_after_t,0.0,True,True,1e-06,True
+Projected stochastic MPC,,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+Behaviour cloning,1409200687.0,future_payload_after_t,0.0,True,True,1e-06,True
+Behaviour cloning,1409200687.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+Behaviour cloning,3018804584.0,future_payload_after_t,0.0,True,True,1e-06,True
+Behaviour cloning,3018804584.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+Behaviour cloning,959653586.0,future_payload_after_t,0.0,True,True,1e-06,True
+Behaviour cloning,959653586.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+PPO,1694234878.0,future_payload_after_t,0.0,True,True,1e-06,True
+PPO,1694234878.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+PPO,1635820214.0,future_payload_after_t,0.0,True,True,1e-06,True
+PPO,1635820214.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+PPO,456241246.0,future_payload_after_t,0.0,True,True,1e-06,True
+PPO,456241246.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+Vanilla SAC,3760190062.0,future_payload_after_t,0.0,True,True,1e-06,True
+Vanilla SAC,3760190062.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+Vanilla SAC,3890281123.0,future_payload_after_t,0.0,True,True,1e-06,True
+Vanilla SAC,3890281123.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+Vanilla SAC,4226533458.0,future_payload_after_t,0.0,True,True,1e-06,True
+Vanilla SAC,4226533458.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+Constrained SAC,301721597.0,future_payload_after_t,0.0,True,True,1e-06,True
+Constrained SAC,301721597.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+Constrained SAC,554911178.0,future_payload_after_t,0.0,True,True,1e-06,True
+Constrained SAC,554911178.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+Constrained SAC,1600960620.0,future_payload_after_t,0.0,True,True,1e-06,True
+Constrained SAC,1600960620.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+Model-guided constrained SAC,301721597.0,future_payload_after_t,0.0,True,True,1e-06,True
+Model-guided constrained SAC,301721597.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+Model-guided constrained SAC,554911178.0,future_payload_after_t,0.0,True,True,1e-06,True
+Model-guided constrained SAC,554911178.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True
+Model-guided constrained SAC,1600960620.0,future_payload_after_t,0.0,True,True,1e-06,True
+Model-guided constrained SAC,1600960620.0,same_week_unrealised_outcome,0.0,True,True,1e-06,True

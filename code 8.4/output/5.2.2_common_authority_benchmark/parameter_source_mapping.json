@@ -1,0 +1,8 @@
+{
+  "5.2.1 historical information event path": "407b06106c86f7173d399d8a66283f48ac6746b146c869c14cf77bad3ba3a976",
+  "5.2.1 pre-event residual library": "8d4da8f9bb82633fa9f7427069064759a12d6633d3aca0c84c347762e1e97321",
+  "5.2.2 frozen config": "c3a1931a5275398484b3b713f77ed1e55506037dd00791a2e06d587123ba5b9b",
+  "waiting forecast error calibration": "ab4ed75bba7ebe811fd26dfd9f44630764dd183ada0abd596f66a7788f001a49",
+  "waiting forecast error residuals": "9f4c67e20163d7a84c8ee46baef4506b9dfa5201dc6fc7fb855cd34a1b36b939",
+  "chapter_3_4_common_model": "src/tre84 imported by model.py; hashes are in run_manifest code files and package source register"
+}

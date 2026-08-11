@@ -1,0 +1,16 @@
+scientific_family,config_path,code_location,basis,frozen_source,traceable
+late attrition consequence,behavior.late_exit_cost_per_vintage,model.CommonDisclosureBehaviorFactory,Chapter 3 unidentified consequence convention,config_5_2_2.json or its named hash-locked calibration input,True
+disclosure credibility,information.gamma_I,model.CommonDisclosureBehaviorFactory,formal credibility-domain reference case,config_5_2_2.json or its named hash-locked calibration input,True
+waiting forecast error scale,information.waiting_error_scale_weeks_by_route,model.CommonDisclosureBehaviorFactory,held-out validation RMSE calibration,config_5_2_2.json or its named hash-locked calibration input,True
+public waiting signal,information.public_signal_formula,model._public_route_wait,predetermined reference loading before SUE,config_5_2_2.json or its named hash-locked calibration input,True
+capacity conversion and decay,capacity_technology,model.build_model,unit-preserving designed capacity technology,config_5_2_2.json or its named hash-locked calibration input,True
+physical feedback,physical_feedback,model.build_model,declared 5.1 feedback family,config_5_2_2.json or its named hash-locked calibration input,True
+corridor history,physical_feedback.corridor_history_window_weeks,model.build_model,lagged shared-corridor accounting,config_5_2_2.json or its named hash-locked calibration input,True
+waiting hazard and costs,behavior,model.build_model and CommonDisclosureBehaviorFactory,declared behavioral family,config_5_2_2.json or its named hash-locked calibration input,True
+training and validation event geometry,paths.designed_serviceability,paths._designed_serviceability,designed support independent of test event,config_5_2_2.json or its named hash-locked calibration input,True
+training and validation risk anchors,paths.designed_information,paths._synthetic_information,endpoint-midpoint training and interleaved validation support,config_5_2_2.json or its named hash-locked calibration input,True
+synthetic path calendar,paths.synthetic_calendar,paths.build_training_validation_paths,sentinel disjoint calendars,config_5_2_2.json or its named hash-locked calibration input,True
+MPC scenario construction,mpc,preparation.prepare_period and policies._candidate_profiles,registered slow-central-fast support with a beginning-of-week information firewall,config_5_2_2.json or its named hash-locked calibration input,True
+reactive mapping,reactive_policy,policies._reactive_normalised,current-state-only formula,config_5_2_2.json or its named hash-locked calibration input,True
+learning design,training,training.py,pre-test checkpoint and stopping protocol,config_5_2_2.json or its named hash-locked calibration input,True
+state vector and actor initialisation,state_and_actor,features.py,complete-state encoding and deterministic seeded initialisation,config_5_2_2.json or its named hash-locked calibration input,True

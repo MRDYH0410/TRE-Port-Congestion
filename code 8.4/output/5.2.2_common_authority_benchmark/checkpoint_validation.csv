@@ -1,0 +1,16 @@
+policy,seed_index,training_seed,selected_episode,validation_operational_loss,selection_data_split,test_event_seen_before_selection
+Behaviour cloning,0,1409200687,12.0,33795.69314106781,validation,False
+PPO,0,1694234878,6.0,68199.34334452075,validation,False
+Vanilla SAC,0,3760190062,3.0,125257.02155709195,validation,False
+Constrained SAC,0,301721597,3.0,125239.90725432287,validation,False
+Model-guided constrained SAC,0,301721597,,33764.991804577614,validation,False
+Behaviour cloning,1,3018804584,12.0,35482.248315338475,validation,False
+PPO,1,1635820214,6.0,50324.11812534503,validation,False
+Vanilla SAC,1,3890281123,3.0,125284.68876049249,validation,False
+Constrained SAC,1,554911178,3.0,125269.01124666094,validation,False
+Model-guided constrained SAC,1,554911178,,35705.75556182004,validation,False
+Behaviour cloning,2,959653586,12.0,34055.17106370699,validation,False
+PPO,2,456241246,9.0,59694.63415434356,validation,False
+Vanilla SAC,2,4226533458,3.0,125257.78512363866,validation,False
+Constrained SAC,2,1600960620,3.0,125286.28274443839,validation,False
+Model-guided constrained SAC,2,1600960620,,34014.855594456705,validation,False
