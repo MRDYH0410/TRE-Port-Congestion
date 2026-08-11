@@ -1,0 +1,11 @@
+{
+  "command": "python experiments/5.2-1/run_5_2_1.py",
+  "elapsed_seconds_before_manifest": 37.3868177998811,
+  "experiment_id": "5.2.1_data_event_information_validity",
+  "old_chapter5_results_read": false,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "policy_outputs_read": false,
+  "publication_mode": "staging_then_atomic_directory_replace",
+  "python_version": "3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 15:03:56) [MSC v.1929 64 bit (AMD64)]",
+  "random_seeds": "none; deterministic HMM initialisations are enumerated in the parameter manifest"
+}

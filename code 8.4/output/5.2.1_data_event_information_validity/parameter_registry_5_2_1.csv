@@ -1,0 +1,70 @@
+layer,parameter,parameter_path,value,value_type,source,rationale_or_status,frozen_before_run
+data,data_root,data.data_root,experiments/data,str,config_5_2_1.json,frozen before result generation,True
+data,project_freeze_date,data.project_freeze_date,2026-08-03,str,config_5_2_1.json,frozen before result generation,True
+data,week_calendar,data.week_calendar,Monday-based,str,config_5_2_1.json,frozen before result generation,True
+data,event_start_week,data.event_start_week,2026-02-23,str,config_5_2_1.json,frozen before result generation,True
+data,event_end_week,data.event_end_week,2026-07-13,str,config_5_2_1.json,frozen before result generation,True
+data,expected_event_weeks,data.expected_event_weeks,21,int,config_5_2_1.json,frozen before result generation,True
+data,counterfactual_selection_cutoff,data.counterfactual_selection_cutoff,2026-02-16,str,config_5_2_1.json,frozen before result generation,True
+data,model_unit_tonnes,data.model_unit_tonnes,1000.0,float,config_5_2_1.json,frozen before result generation,True
+data,activity_field,data.activity_field,capacity_container,str,config_5_2_1.json,frozen before result generation,True
+data,activity_semantics,data.activity_semantics,"AIS-derived carrying-capacity proxy in metric tonnes; not handled cargo, TEU, observed diversion, or cargo ownership",str,config_5_2_1.json,frozen before result generation,True
+counterfactual,candidate_models,counterfactual.candidate_models,"[""harmonic_ridge"", ""damped_local_trend"", ""seasonal_naive""]",list,config_5_2_1.json,frozen before result generation,True
+counterfactual,forecast_horizons_weeks,counterfactual.forecast_horizons_weeks,"[1, 2, 4, 8, 12, 21]",list,config_5_2_1.json,frozen before result generation,True
+counterfactual,maximum_forecast_horizon_weeks,counterfactual.maximum_forecast_horizon_weeks,21,int,config_5_2_1.json,frozen before result generation,True
+counterfactual,minimum_training_weeks,counterfactual.minimum_training_weeks,156,int,config_5_2_1.json,frozen before result generation,True
+counterfactual,minimum_training_basis,counterfactual.minimum_training_basis,three complete annual cycles identify and validate annual weekly seasonality before any 2026 event observation,str,config_5_2_1.json,frozen before result generation,True
+counterfactual,forecast_nonnegativity_projection,counterfactual.forecast_nonnegativity_projection,"max(prediction,0) because an AIS carrying-capacity activity proxy cannot be negative",str,config_5_2_1.json,frozen before result generation,True
+counterfactual,annual_period_weeks,counterfactual.annual_period_weeks,52.1775,float,config_5_2_1.json,frozen before result generation,True
+counterfactual,seasonal_naive_lag_weeks,counterfactual.seasonal_naive_lag_weeks,52,int,config_5_2_1.json,frozen before result generation,True
+counterfactual,harmonic_order_candidates,counterfactual.harmonic_order_candidates,"[1, 2, 3, 4, 5, 6]",list,config_5_2_1.json,frozen before result generation,True
+counterfactual,harmonic_maximum_order_basis,counterfactual.harmonic_maximum_order_basis,annual harmonics no shorter than approximately eight weeks; order selected by within-window GCV,str,config_5_2_1.json,frozen before result generation,True
+counterfactual,ridge_penalty_candidates,counterfactual.ridge_penalty_candidates,"[1e-06, 1e-05, 0.0001, 0.001, 0.01, 0.1, 1.0, 10.0, 100.0, 1000.0, 10000.0, 100000.0, 1000000.0]",list,config_5_2_1.json,frozen before result generation,True
+counterfactual,ridge_selection,counterfactual.ridge_selection,generalised_cross_validation_within_each_training_prefix,str,config_5_2_1.json,frozen before result generation,True
+counterfactual,harmonic_design,counterfactual.harmonic_design,unpenalised intercept plus normalised linear trend and annual sine/cosine pairs,str,config_5_2_1.json,frozen before result generation,True
+counterfactual,harmonic_penalty_rule,counterfactual.harmonic_penalty_rule,intercept unpenalised; trend and harmonic coefficients share the selected ridge penalty,str,config_5_2_1.json,frozen before result generation,True
+counterfactual,alpha,counterfactual.damped_parameter_bounds.alpha,"[0.001, 0.999]",list,config_5_2_1.json,frozen before result generation,True
+counterfactual,beta,counterfactual.damped_parameter_bounds.beta,"[0.001, 0.999]",list,config_5_2_1.json,frozen before result generation,True
+counterfactual,phi,counterfactual.damped_parameter_bounds.phi,"[0.01, 0.999]",list,config_5_2_1.json,frozen before result generation,True
+counterfactual,damped_deterministic_initialisations,counterfactual.damped_deterministic_initialisations,"[[0.2, 0.05, 0.8], [0.2, 0.2, 0.95], [0.5, 0.05, 0.9], [0.5, 0.2, 0.98], [0.8, 0.05, 0.85], [0.8, 0.2, 0.99]]",list,config_5_2_1.json,frozen before result generation,True
+counterfactual,damped_optimizer_max_iterations,counterfactual.damped_optimizer_max_iterations,500,int,config_5_2_1.json,frozen before result generation,True
+counterfactual,damped_numerical_scaling,counterfactual.damped_numerical_scaling,training-prefix mean and population standard deviation; forecasts returned to original units,str,config_5_2_1.json,frozen before result generation,True
+counterfactual,damped_initial_state,counterfactual.damped_initial_state,first scaled observation as level and median of the first up-to-52 weekly differences as trend,str,config_5_2_1.json,frozen before result generation,True
+counterfactual,primary_selection_horizon_weeks,counterfactual.primary_selection_horizon_weeks,21,int,config_5_2_1.json,frozen before result generation,True
+counterfactual,primary_selection_metric,counterfactual.primary_selection_metric,cumulative_path_WAPE,str,config_5_2_1.json,frozen before result generation,True
+counterfactual,relative_wape_tie_tolerance,counterfactual.relative_wape_tie_tolerance,0.01,float,config_5_2_1.json,frozen before result generation,True
+counterfactual,first_tie_break,counterfactual.first_tie_break,absolute_bias_at_21_weeks,str,config_5_2_1.json,frozen before result generation,True
+counterfactual,second_tie_break,counterfactual.second_tie_break,sum_absolute_ACF_lags_1_to_12_from_unique_one_step_residuals,str,config_5_2_1.json,frozen before result generation,True
+counterfactual,acf_max_lag,counterfactual.acf_max_lag,12,int,config_5_2_1.json,frozen before result generation,True
+counterfactual,residual_definition,counterfactual.residual_definition,observed_minus_predicted,str,config_5_2_1.json,frozen before result generation,True
+hmm,number_of_states,hmm.number_of_states,2,int,config_5_2_1.json,frozen before result generation,True
+hmm,training_end,hmm.training_end,2024-12-31,str,config_5_2_1.json,frozen before result generation,True
+hmm,heldout_start_month,hmm.heldout_start_month,2025-01-01,str,config_5_2_1.json,frozen before result generation,True
+hmm,heldout_end_month,hmm.heldout_end_month,2026-06-01,str,config_5_2_1.json,frozen before result generation,True
+hmm,volatility_window_months,hmm.volatility_window_months,24,int,config_5_2_1.json,frozen before result generation,True
+hmm,jump_sigma,hmm.jump_sigma,2.0,float,config_5_2_1.json,frozen before result generation,True
+hmm,emission_features,hmm.emission_features,"[""gpr_threat"", ""gpr_act"", ""gpr_threat_diff"", ""gpr_act_diff"", ""gpr_threat_diff_volatility_24m"", ""gpr_act_diff_volatility_24m"", ""gpr_threat_jump"", ""gpr_act_jump""]",list,config_5_2_1.json,frozen before result generation,True
+hmm,feature_scaling_rule,hmm.feature_scaling_rule,training_window_mean_and_population_standard_deviation_frozen_after_2024_12,str,config_5_2_1.json,frozen before result generation,True
+hmm,em_convergence_tolerance,hmm.em_convergence_tolerance,1e-05,float,config_5_2_1.json,frozen before result generation,True
+hmm,maximum_em_iterations,hmm.maximum_em_iterations,500,int,config_5_2_1.json,frozen before result generation,True
+hmm,variance_floor,hmm.variance_floor,1e-06,float,config_5_2_1.json,frozen before result generation,True
+hmm,deterministic_initialisations,hmm.deterministic_initialisations,8,int,config_5_2_1.json,frozen before result generation,True
+hmm,initialisation_construction,hmm.initialisation_construction,"median partitions from risk-level, first-principal-component, change-intensity, and time scores crossed with transition persistence 0.85 and 0.95",str,config_5_2_1.json,frozen before result generation,True
+hmm,state_labelling_rule,hmm.state_labelling_rule,state with larger sum of standardised threat-level and act-level emission means is high risk,str,config_5_2_1.json,frozen before result generation,True
+hmm,heldout_forecast_horizons_months,hmm.heldout_forecast_horizons_months,"[1, 2, 3]",list,config_5_2_1.json,frozen before result generation,True
+hmm,heldout_benchmarks,hmm.heldout_benchmarks,"[""unconditional_stationary_regime_probabilities"", ""filtered_state_persistence""]",list,config_5_2_1.json,frozen before result generation,True
+hmm,release_lag_rule,hmm.release_lag_rule,observation becomes available at the end of the following calendar month,str,config_5_2_1.json,frozen before result generation,True
+hmm,release_lag_months,hmm.release_lag_months,1,int,config_5_2_1.json,frozen before result generation,True
+hmm,decision_cutoff,hmm.decision_cutoff,start_of_Monday_decision_week,str,config_5_2_1.json,frozen before result generation,True
+hmm,readiness_lead_weeks,hmm.readiness_lead_weeks,8,int,config_5_2_1.json,frozen before result generation,True
+hmm,readiness_lead_status,hmm.readiness_lead_status,designed timing anchor for interface validation only; not an economic calibration,str,config_5_2_1.json,frozen before result generation,True
+figures,dpi,figures.dpi,300,int,config_5_2_1.json,frozen before result generation,True
+figures,format,figures.format,png,str,config_5_2_1.json,frozen before result generation,True
+figures,style,figures.style,shared_research_light,str,config_5_2_1.json,frozen before result generation,True
+figures,acf_confidence_level,figures.acf_confidence_level,0.95,float,config_5_2_1.json,frozen before result generation,True
+acceptance,numeric_tolerance,acceptance.numeric_tolerance,1e-09,float,config_5_2_1.json,frozen before result generation,True
+acceptance,model_unit_tolerance,acceptance.model_unit_tolerance,1e-10,float,config_5_2_1.json,frozen before result generation,True
+acceptance,selection_rule_locked_before_run,acceptance.selection_rule_locked_before_run,True,bool,config_5_2_1.json,frozen before result generation,True
+acceptance,forbidden_hmm_feature_tokens,acceptance.forbidden_hmm_feature_tokens,"[""closure"", ""blocked"", ""serviceability"", ""diversion""]",list,config_5_2_1.json,frozen before result generation,True
+acceptance,required_parameter_names,acceptance.required_parameter_names,"[""number_of_states"", ""training_end"", ""emission_features"", ""feature_scaling_rule"", ""em_convergence_tolerance"", ""maximum_em_iterations"", ""deterministic_initialisations"", ""initialisation_construction"", ""state_labelling_rule"", ""release_lag_rule"", ""heldout_forecast_horizons_months"", ""readiness_lead_weeks""]",list,config_5_2_1.json,frozen before result generation,True
+data_derived_anchor,network_exposure_reference,data_derived_anchor.network_exposure_reference,0.0263009903471548,float,experiments/data/processed/anchors/network_exposure_reference.csv,5.1 activity-scale alignment; rounds to 0.0263 and is not observed diversion,True

@@ -1,0 +1,417 @@
+{
+  "blocking_failures": [],
+  "checks": [
+    {
+      "blocking": true,
+      "detail": "Unused GPR wide-table nulls are reported separately and are not treated as HMM input missingness.",
+      "expected": 0,
+      "id": "used_input_fields_complete",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Every raw source must match its frozen SHA256 and intended grain.",
+      "expected": {
+        "pass": 5
+      },
+      "id": "frozen_input_hashes_and_grain",
+      "observed": {
+        "pass": 5
+      },
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Event input must span exactly 2026-02-23 to 2026-07-13 at complete Monday weeks.",
+      "expected": 21,
+      "id": "event_window_21_complete_monday_weeks",
+      "observed": 21,
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "All model/hyperparameter validation targets end before the event starts.",
+      "expected": "2026-02-16",
+      "id": "counterfactual_event_leakage_absent",
+      "observed": "2026-02-16",
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "No arbitrary 13-week thinning is allowed.",
+      "expected": 216,
+      "id": "all_feasible_weekly_origins_used",
+      "observed": 216,
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "The rule is read from the frozen configuration rather than changed after results.",
+      "expected": "cumulative_path_WAPE at 21 weeks with declared tie breaks",
+      "id": "counterfactual_selection_rule_prefrozen",
+      "observed": "cumulative_path_WAPE",
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Overlapping multi-step errors never enter the residual library or ACF.",
+      "expected": "unique one-step residuals ending no later than 2026-02-16",
+      "id": "residual_library_event_free_unique_one_step",
+      "observed": {
+        "duplicates": 0,
+        "latest": "2026-02-16",
+        "rows": 216
+      },
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Training ends at the 2024 calendar boundary; 2025-01 to 2026-06 is chronological held-out.",
+      "expected": {
+        "held_out": 18,
+        "training": 456
+      },
+      "id": "hmm_training_and_heldout_split",
+      "observed": {
+        "held_out": 18,
+        "training": 456
+      },
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "The selected deterministic initialisation must satisfy the frozen numerical criterion.",
+      "expected": "absolute log-likelihood change <= 1e-05",
+      "id": "hmm_em_converged",
+      "observed": {
+        "iterations": 8,
+        "last_change": 1.0862977433134802e-06
+      },
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "The HMM is a geopolitical-risk state model, not a closure classifier.",
+      "expected": "threat/act levels, differences, volatilities, and declared jumps only",
+      "id": "hmm_has_no_closure_or_event_label",
+      "observed": [
+        "gpr_threat",
+        "gpr_act",
+        "gpr_threat_diff",
+        "gpr_act_diff",
+        "gpr_threat_diff_volatility_24m",
+        "gpr_act_diff_volatility_24m",
+        "gpr_threat_jump",
+        "gpr_act_jump"
+      ],
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Completeness is measured only over actual HMM inputs.",
+      "expected": 0,
+      "id": "hmm_feature_missingness",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Negative held-out comparisons cannot trigger sample or parameter changes.",
+      "expected": {
+        "false": 162
+      },
+      "id": "heldout_parameters_never_refit",
+      "observed": {
+        "false": 162
+      },
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "This is a blocking released-information contract.",
+      "expected": 0,
+      "id": "release_date_not_after_decision",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "P is powered by actual monthly transitions from source month to maturity date.",
+      "expected": "calendar-month difference with zero weekly applications",
+      "id": "monthly_transition_matrix_not_applied_weekly",
+      "observed": {
+        "maximum_monthly_transitions": 4,
+        "weekly_applications": 0
+      },
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Serviceability is min(1, observed/counterfactual), never hand-set.",
+      "expected": "[0, 1]",
+      "id": "serviceability_closed_unit_interval",
+      "observed": [
+        0.0,
+        0.7396289684964209
+      ],
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Blocked activity is the positive no-disruption shortfall.",
+      "expected": ">= 0",
+      "id": "blocked_flow_nonnegative",
+      "observed": 849609.9232757334,
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "q_blocked=(1-serviceability)*counterfactual=max(counterfactual-observed,0).",
+      "expected": "<= 1e-09",
+      "id": "blocked_flow_identity",
+      "observed": 0.0,
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Units remain metric tonnes of AIS proxy; they are not TEU or observed diversion.",
+      "expected": "<= 1e-10 with U_Q=1000.0",
+      "id": "model_unit_conversion",
+      "observed": 0.0,
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Observed blocked share never replaces the released HMM belief.",
+      "expected": "released_hmm_filter plus formula_derived_5.2.1 only",
+      "id": "no_artificial_risk_ramp",
+      "observed": {
+        "event_sources": [
+          "formula_derived_5.2.1"
+        ],
+        "risk_sources": [
+          "released_hmm_filter"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Committed and decision-eligible splits belong to later experiments.",
+      "expected": false,
+      "id": "committed_share_absent",
+      "observed": false,
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Numerical and timing parameters cannot exist only in code.",
+      "expected": [],
+      "id": "required_parameters_registered",
+      "observed": [],
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "No figure is manually edited or detached from its result tables.",
+      "expected": "three code-generated figures at 300 dpi with declared source tables",
+      "id": "figures_reproducible_300dpi_and_mapped",
+      "observed": {
+        "figure_5_2_1a_counterfactual_predictive_validity.png": {
+          "dpi": [
+            300,
+            300
+          ],
+          "exists": true,
+          "source_tables": [
+            "figure_5_2_1a_data.csv",
+            "counterfactual_rolling_origin_summary.csv",
+            "counterfactual_one_step_residual_acf.csv",
+            "counterfactual_model_selection.csv"
+          ]
+        },
+        "figure_5_2_1b_released_hmm_validity.png": {
+          "dpi": [
+            300,
+            300
+          ],
+          "exists": true,
+          "source_tables": [
+            "figure_5_2_1b_data.csv",
+            "heldout_density_summary.csv",
+            "released_hmm_filter.csv"
+          ]
+        },
+        "figure_5_2_1c_event_input_release_clock.png": {
+          "dpi": [
+            300,
+            300
+          ],
+          "exists": true,
+          "source_tables": [
+            "figure_5_2_1c_data.csv",
+            "historical_information_event_path.csv",
+            "release_clock.csv"
+          ]
+        }
+      },
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "A separate output-layer implementation recomputes metrics, timing, identities, and the unique interface.",
+      "expected": {
+        "passed": 10,
+        "total": 10
+      },
+      "id": "independent_recalculation_matches_formal_csv",
+      "observed": {
+        "passed": 10,
+        "total": 10
+      },
+      "passed": true
+    },
+    {
+      "blocking": false,
+      "detail": "Nonblocking byte-level diagnostic: regenerated optimizer diagnostics and rendered PNG bytes may expose platform-level numerical/rendering drift even when the frozen downstream interface is unchanged.",
+      "expected": {
+        "byte_identical": 19,
+        "compared": 19
+      },
+      "id": "pre_rerun_artifact_byte_identity_diagnostic",
+      "observed": {
+        "byte_identical": 11,
+        "compared": 19
+      },
+      "passed": false
+    },
+    {
+      "blocking": true,
+      "detail": "Frozen audits, the selected-model residual library, HMM/release outputs, parameter registry, and unique historical interface must remain byte-identical.",
+      "expected": {
+        "byte_identical": 9,
+        "compared": 9
+      },
+      "id": "critical_frozen_inputs_and_downstream_outputs_reproduced",
+      "observed": {
+        "byte_identical": 9,
+        "compared": 9
+      },
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Every requested CSV and all three code-generated figures must exist.",
+      "expected": [
+        "baseline_reproduction_audit.csv",
+        "counterfactual_model_selection.csv",
+        "counterfactual_model_specifications.csv",
+        "counterfactual_one_step_residual_acf.csv",
+        "counterfactual_residual_library.csv",
+        "counterfactual_rolling_origin_predictions.csv",
+        "counterfactual_rolling_origin_summary.csv",
+        "data_audit.csv",
+        "experiment_input_register.csv",
+        "figure_5_2_1a_counterfactual_predictive_validity.pdf",
+        "figure_5_2_1a_counterfactual_predictive_validity.png",
+        "figure_5_2_1a_data.csv",
+        "figure_5_2_1b_data.csv",
+        "figure_5_2_1b_released_hmm_validity.pdf",
+        "figure_5_2_1b_released_hmm_validity.png",
+        "figure_5_2_1c_data.csv",
+        "figure_5_2_1c_event_input_release_clock.pdf",
+        "figure_5_2_1c_event_input_release_clock.png",
+        "heldout_density_scores.csv",
+        "heldout_density_summary.csv",
+        "historical_event_replay.csv",
+        "historical_information_event_path.csv",
+        "hmm_parameter_manifest.csv",
+        "independent_recalculation_checks.csv",
+        "parameter_registry_5_2_1.csv",
+        "release_clock.csv",
+        "released_hmm_filter.csv"
+      ],
+      "id": "all_required_pre_manifest_outputs_created",
+      "observed": [
+        "baseline_reproduction_audit.csv",
+        "counterfactual_model_selection.csv",
+        "counterfactual_model_specifications.csv",
+        "counterfactual_one_step_residual_acf.csv",
+        "counterfactual_residual_library.csv",
+        "counterfactual_rolling_origin_predictions.csv",
+        "counterfactual_rolling_origin_summary.csv",
+        "data_audit.csv",
+        "experiment_input_register.csv",
+        "figure_5_2_1a_counterfactual_predictive_validity.pdf",
+        "figure_5_2_1a_counterfactual_predictive_validity.png",
+        "figure_5_2_1a_data.csv",
+        "figure_5_2_1b_data.csv",
+        "figure_5_2_1b_released_hmm_validity.pdf",
+        "figure_5_2_1b_released_hmm_validity.png",
+        "figure_5_2_1c_data.csv",
+        "figure_5_2_1c_event_input_release_clock.pdf",
+        "figure_5_2_1c_event_input_release_clock.png",
+        "heldout_density_scores.csv",
+        "heldout_density_summary.csv",
+        "historical_event_replay.csv",
+        "historical_information_event_path.csv",
+        "hmm_parameter_manifest.csv",
+        "independent_recalculation_checks.csv",
+        "parameter_registry_5_2_1.csv",
+        "release_clock.csv",
+        "released_hmm_filter.csv"
+      ],
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "The formal input allowlist contains only the frozen 5.2.1 configuration and experiments/data files.",
+      "expected": [],
+      "id": "input_scope_excludes_policy_and_old_chapter5_results",
+      "observed": [],
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Later experiments must use the frozen loader rather than reconstruct a risk path.",
+      "expected": "hash-verified 21-week released-information path",
+      "id": "downstream_interface_hash_and_contract",
+      "observed": "valid",
+      "passed": true
+    },
+    {
+      "blocking": true,
+      "detail": "Each PNG and vector PDF is mapped to its source and figure-data CSV files.",
+      "expected": [
+        "figure_5_2_1a_counterfactual_predictive_validity.pdf",
+        "figure_5_2_1a_counterfactual_predictive_validity.png",
+        "figure_5_2_1b_released_hmm_validity.pdf",
+        "figure_5_2_1b_released_hmm_validity.png",
+        "figure_5_2_1c_event_input_release_clock.pdf",
+        "figure_5_2_1c_event_input_release_clock.png"
+      ],
+      "id": "run_manifest_created_with_figure_sources",
+      "observed": [
+        "figure_5_2_1a_counterfactual_predictive_validity.pdf",
+        "figure_5_2_1a_counterfactual_predictive_validity.png",
+        "figure_5_2_1b_released_hmm_validity.pdf",
+        "figure_5_2_1b_released_hmm_validity.png",
+        "figure_5_2_1c_event_input_release_clock.pdf",
+        "figure_5_2_1c_event_input_release_clock.png"
+      ],
+      "passed": true
+    }
+  ],
+  "experiment_id": "5.2.1_data_event_information_validity",
+  "nonblocking_evidence_rules": {
+    "current_manuscript_target_serviceability": 0.164,
+    "formula_derived_event_serviceability": 0.1626343882333013,
+    "hmm_benchmark_superiority_is_not_required": true,
+    "residual_dependence_is_reported_not_suppressed": true,
+    "selected_counterfactual_need_not_win_every_short_horizon": true
+  },
+  "policy_training_or_comparison_performed": false,
+  "schema_version": 1,
+  "status": "complete"
+}

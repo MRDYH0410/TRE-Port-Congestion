@@ -1,0 +1,85 @@
+category,parameter,state,feature,value,evidence_or_status
+design,number_of_states,,,2,frozen_experiment_design
+design,training_end,,,2024-12-31,frozen_experiment_design
+design,heldout_start_month,,,2025-01-01,frozen_experiment_design
+design,heldout_end_month,,,2026-06-01,frozen_experiment_design
+design,emission_features,,,"[""gpr_threat"", ""gpr_act"", ""gpr_threat_diff"", ""gpr_act_diff"", ""gpr_threat_diff_volatility_24m"", ""gpr_act_diff_volatility_24m"", ""gpr_threat_jump"", ""gpr_act_jump""]",frozen_experiment_design
+design,feature_scaling_rule,,,training_window_mean_and_population_standard_deviation_frozen_after_2024_12,frozen_experiment_design
+design,em_convergence_tolerance,,,1e-05,frozen_experiment_design
+design,maximum_em_iterations,,,500,frozen_experiment_design
+design,variance_floor,,,1e-06,frozen_experiment_design
+design,deterministic_initialisations,,,8,frozen_experiment_design
+design,initialisation_construction,,,"median partitions from risk-level, first-principal-component, change-intensity, and time scores crossed with transition persistence 0.85 and 0.95",frozen_experiment_design
+design,state_labelling_rule,,,state with larger sum of standardised threat-level and act-level emission means is high risk,frozen_experiment_design
+design,release_lag_rule,,,observation becomes available at the end of the following calendar month,frozen_experiment_design
+design,release_lag_months,,,1,frozen_experiment_design
+design,heldout_forecast_horizons_months,,,"[1, 2, 3]",frozen_experiment_design
+design,readiness_lead_weeks,,,8,frozen_experiment_design
+fit,training_rows,,,456,computed
+fit,heldout_rows,,,18,computed
+fit,selected_initialisation,,,4,change_intensity_p0.85
+fit,em_iterations,,,8,computed
+fit,em_converged,,,True,computed
+fit,final_training_log_likelihood,,,1533.3965473943558,computed
+initialisation_audit,initialisation_0,,,"{""converged"": true, ""initialisation"": 0, ""iterations"": 12, ""name"": ""risk_level_p0.85"", ""training_log_likelihood"": 1482.0352991511122}",computed_all_deterministic_starts
+initialisation_audit,initialisation_1,,,"{""converged"": true, ""initialisation"": 1, ""iterations"": 12, ""name"": ""risk_level_p0.95"", ""training_log_likelihood"": 1482.0352990887316}",computed_all_deterministic_starts
+initialisation_audit,initialisation_2,,,"{""converged"": true, ""initialisation"": 2, ""iterations"": 11, ""name"": ""first_principal_component_p0.85"", ""training_log_likelihood"": 1482.035299161272}",computed_all_deterministic_starts
+initialisation_audit,initialisation_3,,,"{""converged"": true, ""initialisation"": 3, ""iterations"": 11, ""name"": ""first_principal_component_p0.95"", ""training_log_likelihood"": 1482.0352991220993}",computed_all_deterministic_starts
+initialisation_audit,initialisation_4,,,"{""converged"": true, ""initialisation"": 4, ""iterations"": 8, ""name"": ""change_intensity_p0.85"", ""training_log_likelihood"": 1533.3965473943558}",computed_all_deterministic_starts
+initialisation_audit,initialisation_5,,,"{""converged"": true, ""initialisation"": 5, ""iterations"": 8, ""name"": ""change_intensity_p0.95"", ""training_log_likelihood"": 1533.3965472536356}",computed_all_deterministic_starts
+initialisation_audit,initialisation_6,,,"{""converged"": true, ""initialisation"": 6, ""iterations"": 18, ""name"": ""time_order_p0.85"", ""training_log_likelihood"": -1054.9494797471841}",computed_all_deterministic_starts
+initialisation_audit,initialisation_7,,,"{""converged"": true, ""initialisation"": 7, ""iterations"": 18, ""name"": ""time_order_p0.95"", ""training_log_likelihood"": -1054.9494797578836}",computed_all_deterministic_starts
+initial_probability,initial,normal_risk,,1.0,frozen_experiment_design
+transition_matrix,"P[0,0]",normal_risk_to_normal_risk,,0.9103344690884552,estimated_training_only
+transition_matrix,"P[0,1]",normal_risk_to_high_risk,,0.08966553091154487,estimated_training_only
+emission_mean,mean,normal_risk,gpr_threat,-0.1440165346393566,standardised_training_scale
+emission_variance,variance,normal_risk,gpr_threat,0.4090669234532932,standardised_training_scale
+emission_mean,mean,normal_risk,gpr_act,-0.14012462550022428,standardised_training_scale
+emission_variance,variance,normal_risk,gpr_act,0.2329467727871505,standardised_training_scale
+emission_mean,mean,normal_risk,gpr_threat_diff,-0.03992512696662057,standardised_training_scale
+emission_variance,variance,normal_risk,gpr_threat_diff,0.3275395052071938,standardised_training_scale
+emission_mean,mean,normal_risk,gpr_act_diff,-0.030613266994438604,standardised_training_scale
+emission_variance,variance,normal_risk,gpr_act_diff,0.11653670783078554,standardised_training_scale
+emission_mean,mean,normal_risk,gpr_threat_diff_volatility_24m,-0.03753740948120811,standardised_training_scale
+emission_variance,variance,normal_risk,gpr_threat_diff_volatility_24m,0.9539180792421732,standardised_training_scale
+emission_mean,mean,normal_risk,gpr_act_diff_volatility_24m,-0.05676807828098606,standardised_training_scale
+emission_variance,variance,normal_risk,gpr_act_diff_volatility_24m,0.790437583733396,standardised_training_scale
+emission_mean,mean,normal_risk,gpr_threat_jump,-0.2508726030021282,standardised_training_scale
+emission_variance,variance,normal_risk,gpr_threat_jump,1e-06,standardised_training_scale
+emission_mean,mean,normal_risk,gpr_act_jump,-0.2357022603955149,standardised_training_scale
+emission_variance,variance,normal_risk,gpr_act_jump,1e-06,standardised_training_scale
+initial_probability,initial,high_risk,,4.893426956814762e-75,frozen_experiment_design
+transition_matrix,"P[1,0]",high_risk_to_normal_risk,,0.6803176991315283,estimated_training_only
+transition_matrix,"P[1,1]",high_risk_to_high_risk,,0.31968230086847177,estimated_training_only
+emission_mean,mean,high_risk,gpr_threat,1.0954121552200848,standardised_training_scale
+emission_variance,variance,high_risk,gpr_threat,4.137043610447453,standardised_training_scale
+emission_mean,mean,high_risk,gpr_act,1.0658096891651023,standardised_training_scale
+emission_variance,variance,high_risk,gpr_act,5.5490296362078535,standardised_training_scale
+emission_mean,mean,high_risk,gpr_threat_diff,0.30367672356136327,standardised_training_scale
+emission_variance,variance,high_risk,gpr_threat_diff,6.010495198334236,standardised_training_scale
+emission_mean,mean,high_risk,gpr_act_diff,0.23284926873627002,standardised_training_scale
+emission_variance,variance,high_risk,gpr_act_diff,7.658412108844238,standardised_training_scale
+emission_mean,mean,high_risk,gpr_threat_diff_volatility_24m,0.28551537310739594,standardised_training_scale
+emission_variance,variance,high_risk,gpr_threat_diff_volatility_24m,1.258269718686823,standardised_training_scale
+emission_mean,mean,high_risk,gpr_act_diff_volatility_24m,0.43178683012473557,standardised_training_scale
+emission_variance,variance,high_risk,gpr_act_diff_volatility_24m,2.3830127471917137,standardised_training_scale
+emission_mean,mean,high_risk,gpr_threat_jump,1.9081760259570546,standardised_training_scale
+emission_variance,variance,high_risk,gpr_threat_jump,4.486310654721174,standardised_training_scale
+emission_mean,mean,high_risk,gpr_act_jump,1.7927880412943822,standardised_training_scale
+emission_variance,variance,high_risk,gpr_act_jump,4.969502332625115,standardised_training_scale
+standardizer,training_mean,,gpr_threat,103.94561665518242,training_only_frozen
+standardizer,training_scale,,gpr_threat,44.71105933183213,population_standard_deviation_training_only
+standardizer,training_mean,,gpr_act,99.33906087122466,training_only_frozen
+standardizer,training_scale,,gpr_act,75.31841969765901,population_standard_deviation_training_only
+standardizer,training_mean,,gpr_threat_diff,0.07631291841205803,training_only_frozen
+standardizer,training_scale,,gpr_threat_diff,33.7219170488449,population_standard_deviation_training_only
+standardizer,training_mean,,gpr_act_diff,0.19015621720698841,training_only_frozen
+standardizer,training_scale,,gpr_act_diff,54.22096796696539,population_standard_deviation_training_only
+standardizer,training_mean,,gpr_threat_diff_volatility_24m,30.119774216040458,training_only_frozen
+standardizer,training_scale,,gpr_threat_diff_volatility_24m,16.488214257105916,population_standard_deviation_training_only
+standardizer,training_mean,,gpr_act_diff_volatility_24m,38.386733304781885,training_only_frozen
+standardizer,training_scale,,gpr_act_diff_volatility_24m,39.64371710798549,population_standard_deviation_training_only
+standardizer,training_mean,,gpr_threat_jump,0.05921052631578947,training_only_frozen
+standardizer,training_scale,,gpr_threat_jump,0.23601830414015823,population_standard_deviation_training_only
+standardizer,training_mean,,gpr_act_jump,0.05263157894736842,training_only_frozen
+standardizer,training_scale,,gpr_act_jump,0.22329687826943695,population_standard_deviation_training_only
