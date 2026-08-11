@@ -1,0 +1,40 @@
+{
+  "experiment_id": "5.3.1_core_repair_compatibility",
+  "command": "python experiments/5.3-1/run_core_repair_compatibility.py",
+  "python": "3.12.13 (main, Mar  3 2026, 15:01:35) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "pre_repair_source_hashes": {
+    "src/tre84/behavior.py": "5D2773C09800B33CF1678115CC7BD4A5E4B599FC5CF67CED7B08874B1CC1FECD",
+    "src/tre84/factory.py": "8775E98EB4F51FC12721A6793F14C378A42BA5812C32B1B733EB3E0B82E48D4E",
+    "src/tre84/transition.py": "188A0CA17D293DD615838B3E4C1584F0234E83CF27215D57BF38381ECE58D4A0",
+    "src/tre84/acceptance.py": "88D45DEAB9E13931B46648F3EC826B98186EBD40CF844345B883CE594CFA55F6",
+    "src/tre84/control.py": "71A8DBD6B47C41D62F68DA2E73D3C6B0FB8D1059282807A9E7C03DC6D73E7D07"
+  },
+  "post_repair_source_hashes": {
+    "src/tre84/behavior.py": "1183E1DE28C96C287C7FB34C098D70C7D2166DF645CF99154E0B17DE37595605",
+    "src/tre84/factory.py": "389EA59FEB7E274603D5F9B2E80E8494D6FF91EB929E5DAF144D2C86A097A420",
+    "src/tre84/transition.py": "C397C0C87630D95DD518275321B03CA7F6E859E40A99509B400DFE489BE610FA",
+    "src/tre84/acceptance.py": "59B76575F04099F076CFE332BDD9F6EC94A8D4B148115A61718A071C7827014F",
+    "src/tre84/control.py": "4A0032E15439E0F0E8F227ABBE40E98F35D5C15C990B0CF5040773970A01C308"
+  },
+  "frozen_5_3_1_acceptance_sha256": "1F0F5B875B04CC96A792F3ACCAD672FEBDF32F3FCD686AA01957395DC6D9F2B1",
+  "frozen_5_3_1_run_manifest_sha256": "1D48D0571B8365DB84D9C93C250051ACFAB83AFA7B3250C4C1EF0FF1581242A4",
+  "new_5_2_5_acceptance_sha256": "2F827B2D037A25D4392FDE03DB4F0EDE89D687FCA0B3D52CF161E8599C40D188",
+  "outputs": [
+    {
+      "path": "output/5.3.1_core_repair_compatibility/frozen_artifact_hash_audit.csv",
+      "bytes": 8725,
+      "sha256": "3C87B066956A06D8DC0B588466CA6212C2731C0CAA5BE8E29B12D17F5E877283"
+    },
+    {
+      "path": "output/5.3.1_core_repair_compatibility/core_repair_compatibility_checks.csv",
+      "bytes": 2441,
+      "sha256": "60891AE5DBF1B31CCEACC4F36F562FB73C4D548A854B06E1FA68C4B96335B029"
+    },
+    {
+      "path": "output/5.3.1_core_repair_compatibility/acceptance_5_3_1_core_repair_compatibility.json",
+      "bytes": 771,
+      "sha256": "78E3F02061FD36D4F4FDA1E0B776D380A579C5D9C1FC44048DCC02CF1E08438E"
+    }
+  ]
+}

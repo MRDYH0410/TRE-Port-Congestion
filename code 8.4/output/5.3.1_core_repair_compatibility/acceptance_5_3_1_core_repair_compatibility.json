@@ -1,0 +1,15 @@
+{
+  "experiment_id": "5.3.1_core_repair_compatibility",
+  "status": "PASS",
+  "canonical_5_3_1_outputs_modified": false,
+  "full_retraining_or_full_path_replay_performed": false,
+  "frozen_artifacts_checked": 39,
+  "frozen_artifacts_passed": 39,
+  "compatibility_checks": 13,
+  "compatibility_checks_passed": 13,
+  "parameter_report_update_required": false,
+  "result_analysis_update_required": false,
+  "acceptance_addendum_required": true,
+  "decision_basis": "No data, model parameter, path, checkpoint, action, state, loss, clearance statistic, confidence interval, or figure-data artifact changed. The four repairs strengthen selection/interface/audit logging contracts only for this design.",
+  "generated_at_utc": "2026-08-10T18:42:13.670034+00:00"
+}

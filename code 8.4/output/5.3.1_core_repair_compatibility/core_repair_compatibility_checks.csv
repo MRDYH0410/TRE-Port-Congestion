@@ -1,0 +1,14 @@
+check_id,contract,maximum_difference,tolerance,status,evidence
+C0_NEW_5_2_5_GATE,new methodology gate is accepted,0.0,0.0,PASS,new 5.2.5 acceptance and M27--M31 registry rows
+C1_MASTER_SUPPORT_CHI_0,RC-MSA master-distance repair is inactive when every route remains in every current choice set,0.0,0.0,PASS,5.3.1 production build_realization at endpoint/reference chi
+C2_DISCLOSURE_REFERENCE_CHI_0,5.3.1 custom disclosure baseline is already independent of the disclosure coordinate,0.0,1e-12,PASS,paired production behavior-factory calls differing only in disclosure
+C3_VINTAGE_CERTIFICATE_CHI_0,new per-vintage certificates audit the unchanged production waiting transition,0.0,1e-06,PASS,production TaggedTransition audit at endpoint/reference chi
+C4_CONTROL_LOGGING_CHI_0,module-certificate logging leaves the MPC objective and mechanical argmin unchanged,0.0,1e-12,PASS,production nested MPC at endpoint/reference chi
+C1_MASTER_SUPPORT_CHI_0.5,RC-MSA master-distance repair is inactive when every route remains in every current choice set,0.0,0.0,PASS,5.3.1 production build_realization at endpoint/reference chi
+C2_DISCLOSURE_REFERENCE_CHI_0.5,5.3.1 custom disclosure baseline is already independent of the disclosure coordinate,0.0,1e-12,PASS,paired production behavior-factory calls differing only in disclosure
+C3_VINTAGE_CERTIFICATE_CHI_0.5,new per-vintage certificates audit the unchanged production waiting transition,0.0,1e-06,PASS,production TaggedTransition audit at endpoint/reference chi
+C4_CONTROL_LOGGING_CHI_0.5,module-certificate logging leaves the MPC objective and mechanical argmin unchanged,0.0,1e-12,PASS,production nested MPC at endpoint/reference chi
+C1_MASTER_SUPPORT_CHI_1,RC-MSA master-distance repair is inactive when every route remains in every current choice set,0.0,0.0,PASS,5.3.1 production build_realization at endpoint/reference chi
+C2_DISCLOSURE_REFERENCE_CHI_1,5.3.1 custom disclosure baseline is already independent of the disclosure coordinate,0.0,1e-12,PASS,paired production behavior-factory calls differing only in disclosure
+C3_VINTAGE_CERTIFICATE_CHI_1,new per-vintage certificates audit the unchanged production waiting transition,0.0,1e-06,PASS,production TaggedTransition audit at endpoint/reference chi
+C4_CONTROL_LOGGING_CHI_1,module-certificate logging leaves the MPC objective and mechanical argmin unchanged,0.0,1e-12,PASS,production nested MPC at endpoint/reference chi
