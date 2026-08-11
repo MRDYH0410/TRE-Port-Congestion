@@ -1,0 +1,13 @@
+{
+  "config_sha256": "ad9edcb7d096c1ade8c8220847ac5889b6586045b47e87769f1bc8d5ce1f2778",
+  "upstream_locks": {
+    "historical_information_event_path_5_2_1": "407b06106c86f7173d399d8a66283f48ac6746b146c869c14cf77bad3ba3a976",
+    "acceptance_5_2_2": "4a0b2479a27400c868ba9ffee00c691761ddc460c59f1d8532e89630c8829c80",
+    "run_manifest_5_2_2": "ce4f0bf874cfb902e0a2d11d499dd177b0496029d67a74d623c4d152417bd30b",
+    "checkpoint_manifest_5_2_2": "9033589ef4cf9ed49b7cfe3cb1815f1fd0bdfcb453eaa9e8d2f3c969ac66baf8",
+    "acceptance_5_2_3": "f0ba77228d399b8bf7759a4f33c55c64e6f8ed835b16d2b62bb807ffcf6abc0e",
+    "run_manifest_5_2_3": "ffe2db2a65d4c1bc9fc8a9ac8e48a3a14da0c2473c3712f77d1271663b36a212",
+    "path_medoid_selection_5_2_3": "1442a006c6416b3cfc4077f47740911b2c9523dd3d2abd36e8d84c1df5a6da56"
+  },
+  "old_5_2_4_artifacts_used": false
+}

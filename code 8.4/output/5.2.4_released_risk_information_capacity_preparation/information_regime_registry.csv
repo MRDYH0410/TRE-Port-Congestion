@@ -1,0 +1,5 @@
+information_regime,label,definition,baseline_high_risk_probability,oracle,evidence_class
+I0,No newly released risk information,stationary training-sample comparator at current and lead coordinates,0.11645127765513666,False,implementable comparator
+IF,Current filtered risk only,latest released current belief repeated at the lead coordinate,,False,estimated current-state comparator
+IL,Released lead-aligned forecast,alpha_nu(t) P^h on the native monthly clock,,False,estimated implementable information
+ORACLE,Perfect information oracle,realized current and readiness-maturity disruption states,,True,unattainable theoretical upper bound

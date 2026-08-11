@@ -1,0 +1,677 @@
+{
+  "experiment_id": "5.2.4_released_risk_information_capacity_preparation",
+  "status": "complete",
+  "command": "python experiments/5.2-4/run_5_2_4.py",
+  "python": "3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 15:03:56) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "elapsed_seconds": 16285.737480100011,
+  "config": {
+    "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\experiments\\5.2-4\\config_5_2_4.json",
+    "size_bytes": 6474,
+    "sha256": "ad9edcb7d096c1ade8c8220847ac5889b6586045b47e87769f1bc8d5ce1f2778"
+  },
+  "inputs": [
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\experiments\\5.2-2\\config_5_2_2.json",
+      "size_bytes": 13249,
+      "sha256": "c3a1931a5275398484b3b713f77ed1e55506037dd00791a2e06d587123ba5b9b"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.1_data_event_information_validity\\acceptance_5_2_1.json",
+      "size_bytes": 13788,
+      "sha256": "eb0585b60b1ea4ed831b00ef76d0c115246e6faa229841123c54dd1e96a45809"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.1_data_event_information_validity\\run_manifest.json",
+      "size_bytes": 12123,
+      "sha256": "c1dd1e08a34a1a0be72973c1c9ebf1899e2849ee7f1805c3033d62e3d0b271a5"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.1_data_event_information_validity\\hmm_parameter_manifest.csv",
+      "size_bytes": 8942,
+      "sha256": "c80557646765b5f3c5cdd4c0c9e2342153b96d1ae6507a3c5da0ad63074e2628"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.1_data_event_information_validity\\released_hmm_filter.csv",
+      "size_bytes": 83631,
+      "sha256": "d69fcafd6c0673c1be945aa97291cf16e6611c16db3f60bf2fc4845a88b405d4"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.1_data_event_information_validity\\release_clock.csv",
+      "size_bytes": 132543,
+      "sha256": "44e2f3007b25723112768461d50a92311fb9c55a91499d693333baa5cecc6ab4"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.1_data_event_information_validity\\historical_information_event_path.csv",
+      "size_bytes": 14786,
+      "sha256": "407b06106c86f7173d399d8a66283f48ac6746b146c869c14cf77bad3ba3a976"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.1_data_event_information_validity\\counterfactual_residual_library.csv",
+      "size_bytes": 21354,
+      "sha256": "8d4da8f9bb82633fa9f7427069064759a12d6633d3aca0c84c347762e1e97321"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.2_common_authority_benchmark\\acceptance_5_2_2.json",
+      "size_bytes": 3251,
+      "sha256": "4a0b2479a27400c868ba9ffee00c691761ddc460c59f1d8532e89630c8829c80"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.2_common_authority_benchmark\\run_manifest.json",
+      "size_bytes": 13213,
+      "sha256": "ce4f0bf874cfb902e0a2d11d499dd177b0496029d67a74d623c4d152417bd30b"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.2_common_authority_benchmark\\checkpoint_manifest.csv",
+      "size_bytes": 5167,
+      "sha256": "9033589ef4cf9ed49b7cfe3cb1815f1fd0bdfcb453eaa9e8d2f3c969ac66baf8"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.2_common_authority_benchmark\\benchmark_replications.csv",
+      "size_bytes": 1263655,
+      "sha256": "5e5d018121d37accc71ec63de0864c13bb2c1db342640da0e395a66f9f7c4a4a"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.2_common_authority_benchmark\\test_path_manifest.csv",
+      "size_bytes": 20873,
+      "sha256": "c72dda4f1f2a67d7147743f779cd059a18929314ff07502125947f58692d546d"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.2_common_authority_benchmark\\selected_path_count.csv",
+      "size_bytes": 288,
+      "sha256": "3fddb4ab26345840fa5ceee5ca00d9aac432daa1ce6f0658780d88339f0c78a2"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.3_action_and_congestion_mechanisms\\acceptance_5_2_3.json",
+      "size_bytes": 1424,
+      "sha256": "f0ba77228d399b8bf7759a4f33c55c64e6f8ed835b16d2b62bb807ffcf6abc0e"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.3_action_and_congestion_mechanisms\\run_manifest.json",
+      "size_bytes": 23996,
+      "sha256": "ffe2db2a65d4c1bc9fc8a9ac8e48a3a14da0c2473c3712f77d1271663b36a212"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.3_action_and_congestion_mechanisms\\path_medoid_selection.csv",
+      "size_bytes": 25248,
+      "sha256": "1442a006c6416b3cfc4077f47740911b2c9523dd3d2abd36e8d84c1df5a6da56"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\information_regime_registry.csv",
+      "size_bytes": 639,
+      "sha256": "f4d9f80f82fa13885876aaf588093209a5e8b6781ac7021e62a75cb1642b8fc7"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\warning_case_registry.csv",
+      "size_bytes": 732,
+      "sha256": "a2dd686cde3d50930badb7f52c4f094c7da55865addfa2e26ad63c884fa71269"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\capacity_rights_registry.csv",
+      "size_bytes": 402,
+      "sha256": "83c1dedfa9bec0107c296d1ff2d573fdbb5e16c9c8a05e2c7437d0d89d612eb9"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\controller_manifest.csv",
+      "size_bytes": 14354,
+      "sha256": "f32acdcc2d70a49e3fe9ba11f57132e161edab322d82e27af3f013b149b5eefa"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\training_path_manifest.csv",
+      "size_bytes": 6545,
+      "sha256": "74c637974232d4e00c535daac2d8573f79c85a3f3f3b8c292cf7d803c99c5ff2"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\validation_path_manifest.csv",
+      "size_bytes": 4534,
+      "sha256": "74ade87ec69abed5376bfb1845896e767db23cd423388b9c5a30ebde16486b60"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\training_curves.csv",
+      "size_bytes": 96501,
+      "sha256": "94d09bfa6e0a4b3dd7743ce54d6e41f1c38cd9043a9d040086122d473e29021d"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\validation_curves.csv",
+      "size_bytes": 9802,
+      "sha256": "b8f6b5096331b78c5594262ce984f0a373674bb0addb9f63f12dba1c4319b4cc"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\teacher_action_manifest.csv",
+      "size_bytes": 53160,
+      "sha256": "999ca65b7bd1b07c96de8cff2d242ebce7ed09c18277e4bf2c3fc655b1bdb853"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\training_validation_summary.csv",
+      "size_bytes": 1995,
+      "sha256": "0bbe7163bb41f8f7e9423a45e23348dec8c192595aba1bc0effb441570457c05"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\path_pairing_audit.csv",
+      "size_bytes": 77154,
+      "sha256": "8d2a031d51cd55852488d743cfa2873ecd629ba3d934f6bc3d44468533bac778"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\primary_information_value_path_results.csv",
+      "size_bytes": 866290,
+      "sha256": "e6a8c3ac40bd409fa93aed4c34a54e78097c7d4d27787943215ce8957f915c58"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\fixed_policy_information_diagnostic.csv",
+      "size_bytes": 657965,
+      "sha256": "ea223caf2910efd2b6a8b3cf99b374c1469aea16289374aac2e9ca3d65e0dd85"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\capacity_rights_path_results.csv",
+      "size_bytes": 859912,
+      "sha256": "feab66493251e37f35178baee3638bc3f8f44c2ae7834a584a9eeed3f34020f9"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\controller_replications.csv",
+      "size_bytes": 13175340,
+      "sha256": "978648cea32b55e00743a9fccd4ba3d1e67f9e9b199c9e593d7f4017ac47504b"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\loss_decomposition.csv",
+      "size_bytes": 9748,
+      "sha256": "b06ba04634365aa951528e69c695713e03c1d2254bf2c5552a5949e7cfa91d34"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\clearance_and_censoring.csv",
+      "size_bytes": 4378,
+      "sha256": "d31160dc8894d1e6a3fe03c638ff74851d6eb6632dcd8829ed1731bc5dca774e"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\paired_effects.csv",
+      "size_bytes": 12890,
+      "sha256": "eeb725ed582d7b6339d99246a7f189f6b18a795f5fcfaf3b6a4eae2b3f09bffb"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\false_warning_costs.csv",
+      "size_bytes": 45695,
+      "sha256": "cf75e86f0243c0a611b128367a1fe1cb24751c8b6276737c49ca496eb6bd672b"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\pilot_precision.csv",
+      "size_bytes": 5366,
+      "sha256": "c9797556bdcbb8abb64e898a4f79f37b7a09ef0fd2f8cd157a1ab667e835ad56"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\selected_path_count.csv",
+      "size_bytes": 278,
+      "sha256": "f19aee612a3ab00f664a8fcf5960612fde75e2c8af9130a612725ccc3435e835"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\trajectory_contract_checks.csv",
+      "size_bytes": 4487405,
+      "sha256": "179a3dc4ee59c5f705d8ebdcfe0ffbf9f6cc034c12e529aee58bb55635813e0d"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\historical_anchor_reproduction.csv",
+      "size_bytes": 216976,
+      "sha256": "7598fedddaead43419736c9c7b4ddddae9cc3a54182fe46294583594f94c5280"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\physical_path_medoid_audit.csv",
+      "size_bytes": 31900,
+      "sha256": "2a7f236afd84b87581499a8844574059716fbd5c3422a4117d9520bf21a44619"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\physical_path_panel.csv",
+      "size_bytes": 56255,
+      "sha256": "6493c19d7b0ceb9305458f19e21e92371951a94da5fef7fc47aa8eb992f060c1"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\parameter_registry_5_2_4.csv",
+      "size_bytes": 15585,
+      "sha256": "bbd6f616ead16c6774041f7d95c9fe985022271c1380e2040e24550956f56a37"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\evidence_classification.csv",
+      "size_bytes": 769,
+      "sha256": "4a18b3e5e45e6d3777a50fc868dfba4b8ffcac697b2ba0ddabb143633ba00679"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\figure_5_2_4a_data.csv",
+      "size_bytes": 6780,
+      "sha256": "b2a162fa59c8a2ba893b10283d947f9d90e006444c46c483e71134daa064d2ee"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\figure_5_2_4b_data.csv",
+      "size_bytes": 6697,
+      "sha256": "cb4d6c80bc8d35ba09e3dcff67247b6662add152f2019a120c89bcaf607b6b36"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\figure_5_2_4c_data.csv",
+      "size_bytes": 9167,
+      "sha256": "4ca03783f30f2cf62d3a0663f090c4dfd3853af0e265a13898d61744354bb319"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\capacity_action_trace.csv",
+      "size_bytes": 6180833919,
+      "sha256": "35ac213ce4606941f96b546ae649ac131a9e6aae5674515694ab6d552a1fc957"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\readiness_stock_flow.csv",
+      "size_bytes": 5624831170,
+      "sha256": "ce22cd4df888d2304f00d211005169055488d6ef2dc42cea6b67dca6304ff3ec"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\direct_capacity_pipeline.csv",
+      "size_bytes": 5624831170,
+      "sha256": "ce22cd4df888d2304f00d211005169055488d6ef2dc42cea6b67dca6304ff3ec"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\period_loss_trace.csv",
+      "size_bytes": 199367559,
+      "sha256": "b6b33fc27aa99b40500dd02664eab1db31f964be6fca7417abdc56c01d5c9d1a"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\release_information_panel.csv",
+      "size_bytes": 95637786,
+      "sha256": "5a9a5cca07194fb58129b8049ee1823c2a04a59a49150e29c1bc05267a3ac4f4"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\acceptance_5_2_4.json",
+      "size_bytes": 2402,
+      "sha256": "8fa1e997fca3c3d32238f1e63c7580f5ce9176f0e173b235a6526e32566ec87a"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\current_run_provenance.json",
+      "size_bytes": 857,
+      "sha256": "fd066c264031f47401506b1874ae481d3d99588825d3a68ef16873f7961fb765"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\figures\\figure_5_2_4a_released_information_value.png",
+      "size_bytes": 338870,
+      "sha256": "3632d055f78f9182d51f06efaa5d3a138332c7dbf634a1f411d1beca3219312e"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\experiments\\5.2-4\\figures\\figure_5_2_4a_released_information_value.png",
+      "size_bytes": 338870,
+      "sha256": "3632d055f78f9182d51f06efaa5d3a138332c7dbf634a1f411d1beca3219312e"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\figures\\figure_5_2_4a_released_information_value.pdf",
+      "size_bytes": 31935,
+      "sha256": "7aae2db265783b80f079a1cffa04c10321e2ed4a29c20c7684e193d2a4bc77c0"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\experiments\\5.2-4\\figures\\figure_5_2_4a_released_information_value.pdf",
+      "size_bytes": 31935,
+      "sha256": "7aae2db265783b80f079a1cffa04c10321e2ed4a29c20c7684e193d2a4bc77c0"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\figures\\figure_5_2_4b_release_capacity_timing.png",
+      "size_bytes": 538093,
+      "sha256": "23293064a95a5dcb6cc880413e57a219ed7fa488504b85dfdd90144581cb2d4d"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\experiments\\5.2-4\\figures\\figure_5_2_4b_release_capacity_timing.png",
+      "size_bytes": 538093,
+      "sha256": "23293064a95a5dcb6cc880413e57a219ed7fa488504b85dfdd90144581cb2d4d"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\figures\\figure_5_2_4b_release_capacity_timing.pdf",
+      "size_bytes": 32699,
+      "sha256": "c8215eac65a9b98c3a87cc76027bd32e1a0e3eb0459ee30a74172d6d0f340a0b"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\experiments\\5.2-4\\figures\\figure_5_2_4b_release_capacity_timing.pdf",
+      "size_bytes": 32699,
+      "sha256": "c8215eac65a9b98c3a87cc76027bd32e1a0e3eb0459ee30a74172d6d0f340a0b"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\figures\\figure_5_2_4c_capacity_portfolio.png",
+      "size_bytes": 376782,
+      "sha256": "80da1f55f1758a7747149f39e80b484cfbbb71fd1fb0318bd2b95d70f462f16c"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\experiments\\5.2-4\\figures\\figure_5_2_4c_capacity_portfolio.png",
+      "size_bytes": 376782,
+      "sha256": "80da1f55f1758a7747149f39e80b484cfbbb71fd1fb0318bd2b95d70f462f16c"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\figures\\figure_5_2_4c_capacity_portfolio.pdf",
+      "size_bytes": 39190,
+      "sha256": "86a07d12e3972028623f99f4969acabdc7f7a1be59d4139f96cca850d423feeb"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\experiments\\5.2-4\\figures\\figure_5_2_4c_capacity_portfolio.pdf",
+      "size_bytes": 39190,
+      "sha256": "86a07d12e3972028623f99f4969acabdc7f7a1be59d4139f96cca850d423feeb"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\report - 8.4\\5.2.4\\5_1_PARAMETER_AND_METRIC_ADDITIONS.md",
+      "size_bytes": 5594,
+      "sha256": "f0a69600367682fc78b43a91c6d099bef6a2c600e372313871df7b3ac4fbb184"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\report - 8.4\\5.2.4\\FIGURE_AND_RESULTS_ANALYSIS.md",
+      "size_bytes": 6041,
+      "sha256": "dd3479c4404d19e965163cf650d3c2dfbab21c5c8514db26728965a378126b86"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\I0_RD\\behaviour_cloning_seed_0.npz",
+      "size_bytes": 237111,
+      "sha256": "2beb96eab6675ef81629c8bd31152c0326498df8c6040fff50ef6c5b7d1f9a8e"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\I0_RD\\behaviour_cloning_seed_1.npz",
+      "size_bytes": 237149,
+      "sha256": "a15d51ccf08c109c3c5ed63de1914aa9e792d0ed9b4a1a8bd5ff200000820216"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\I0_RD\\behaviour_cloning_seed_2.npz",
+      "size_bytes": 237146,
+      "sha256": "1bee2451811780228687f6ab33fa18d7a5dc522edc88eda32804ad92defc2bb0"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\I0_RD\\constrained_sac_seed_0.npz",
+      "size_bytes": 237451,
+      "sha256": "91e20515c49cf296cac505604e0291b0f6f40cd8d4cbc825c5e89177b4fdd049"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\I0_RD\\constrained_sac_seed_1.npz",
+      "size_bytes": 237455,
+      "sha256": "7f32dd1b4cdb910cab25f4ea1e9d54744d44e76aca8c6eb59ae6ebc7bf391795"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\I0_RD\\constrained_sac_seed_2.npz",
+      "size_bytes": 237463,
+      "sha256": "29a1e80710983b6b07f568a83da2156da05be10ce39732edf8a22a86d8f844b1"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\I0_RD\\controller_bundle_seed_0.json",
+      "size_bytes": 510,
+      "sha256": "d277df78c18a3e287078c1e4e10432eb4deb2e4dabfc5806197b707320b4277c"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\I0_RD\\controller_bundle_seed_1.json",
+      "size_bytes": 508,
+      "sha256": "9e19109041c21c831cc2805f39766f671750e75b1acc26e342f7475b535c3d8a"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\I0_RD\\controller_bundle_seed_2.json",
+      "size_bytes": 511,
+      "sha256": "e1fd3d475bfbc4b3fe063b5991944a70b8043f4d93d50dbb8206fa1593306584"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IF_RD\\behaviour_cloning_seed_0.npz",
+      "size_bytes": 237147,
+      "sha256": "983902b2282716a268639cdde5c123781f82dede973eeac12534ef7b929b91a1"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IF_RD\\behaviour_cloning_seed_1.npz",
+      "size_bytes": 237132,
+      "sha256": "7c1f6f6faa97715f56e333704794dfbddd20c5a154b859ebe6919637da9b0e83"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IF_RD\\behaviour_cloning_seed_2.npz",
+      "size_bytes": 237145,
+      "sha256": "ad53118ec9a99bd4c2bb934904616d9bd4a47fd8dec7ef761978462ef40f63c9"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IF_RD\\constrained_sac_seed_0.npz",
+      "size_bytes": 237462,
+      "sha256": "23c1369c7b2a805834476c9fcd5b06941cbdbf79155c1e096d216d3863bba299"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IF_RD\\constrained_sac_seed_1.npz",
+      "size_bytes": 237468,
+      "sha256": "6862ae8a20500e3059be6702da16312d7d43a2ba690c919554775da5a12db722"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IF_RD\\constrained_sac_seed_2.npz",
+      "size_bytes": 237440,
+      "sha256": "0913e139a82d319a2b745d96238ceec2f75aceb78451a7ef50b75d1c8a6ad3ed"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IF_RD\\controller_bundle_seed_0.json",
+      "size_bytes": 510,
+      "sha256": "b7c12083de80a64a13ceb43edd75e7aad01a50a2a879a86fc875a34b73361aa8"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IF_RD\\controller_bundle_seed_1.json",
+      "size_bytes": 508,
+      "sha256": "1c1bfb2cab13f6e0ca0ef4e1eef9a7bd39379d36a826f6ed6067d628ef3f070b"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IF_RD\\controller_bundle_seed_2.json",
+      "size_bytes": 511,
+      "sha256": "6d264ad04ff4dfde96ef12e0e40302d466453c862380715f4b126b90e97fd206"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_D\\behaviour_cloning_seed_0.npz",
+      "size_bytes": 237158,
+      "sha256": "d569cd9b74a05b7df1f7648335b618c6e2097a55c2947fc3a60959270d5eac80"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_D\\behaviour_cloning_seed_1.npz",
+      "size_bytes": 237129,
+      "sha256": "0471ec0767ab7622f2328a009cbbf87a423bc308242f155c01d0d3ac11151209"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_D\\behaviour_cloning_seed_2.npz",
+      "size_bytes": 237132,
+      "sha256": "276571cbb843759426f4b5e4a1cde9d87b7a7c3b81597f730ac0e5a081426589"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_D\\constrained_sac_seed_0.npz",
+      "size_bytes": 237171,
+      "sha256": "a4a38f6b09e07db9361ea4ab64d668bcd541702a0559d9cbb354b15e2026a88c"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_D\\constrained_sac_seed_1.npz",
+      "size_bytes": 237214,
+      "sha256": "779feb06781a54d1a1c30089f2e84134e42c08b6003ddaae98554a97dab828de"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_D\\constrained_sac_seed_2.npz",
+      "size_bytes": 237211,
+      "sha256": "6641d0a6d4f91367e7231832ddb5f7e571bd617aad0207f8ced8bee4e794abf3"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_D\\controller_bundle_seed_0.json",
+      "size_bytes": 508,
+      "sha256": "616a3731904ff4ef2773ae1af6b3a7b31739195d1ab7382ae7fdb64222403605"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_D\\controller_bundle_seed_1.json",
+      "size_bytes": 506,
+      "sha256": "6fac8431ca3fa16e564b1281e7050de658862b26afc558ceff27f6c02af85dce"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_D\\controller_bundle_seed_2.json",
+      "size_bytes": 509,
+      "sha256": "2109c1db537aa3be964d5b887bf64e68523500ad4ca6bcc215a7ef503f2e81e4"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_NONE\\behaviour_cloning_seed_0.npz",
+      "size_bytes": 237147,
+      "sha256": "6a8943a49c7fed2c9ca23dab334128872377d60bc20ab66e5842c3f8dd18a80c"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_NONE\\behaviour_cloning_seed_1.npz",
+      "size_bytes": 237156,
+      "sha256": "fe561389860a5c01f6ce734799cdf90f2eedc9c6e55fe676be048b10bbbea89a"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_NONE\\behaviour_cloning_seed_2.npz",
+      "size_bytes": 237131,
+      "sha256": "07c3bcf2025c77e8ed14177a7a7cb3d87b86adec353261715f2dd2d11816f822"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_NONE\\constrained_sac_seed_0.npz",
+      "size_bytes": 237040,
+      "sha256": "5ac9cc5657ea306c32545f37b1f7ce27920e929d15086c81c34f7dbdc94ea438"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_NONE\\constrained_sac_seed_1.npz",
+      "size_bytes": 237045,
+      "sha256": "facc9822bee6ad8a19eaa1944d209bce5a3e724e47bd2411f05cdab2cd2b8699"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_NONE\\constrained_sac_seed_2.npz",
+      "size_bytes": 237067,
+      "sha256": "0715e22298b40444f86db52c204c93eba3fe73df6f6a6f323d9e48182e67c6d4"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_NONE\\controller_bundle_seed_0.json",
+      "size_bytes": 514,
+      "sha256": "0b95211860b532efef19c49ba1acb4c2ccb306b6c805e2fd55dc7cfdfadc3ba7"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_NONE\\controller_bundle_seed_1.json",
+      "size_bytes": 512,
+      "sha256": "c7b59e0ed4bd497fb03d8326795b4e2a00e0ad00535344c1d7e89f2fa024eb13"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_NONE\\controller_bundle_seed_2.json",
+      "size_bytes": 515,
+      "sha256": "74f5c6bc2549b5dd23a6a0cfaf87dbea0a5dee88840d30d8eee1825a8e31c60b"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_R\\behaviour_cloning_seed_0.npz",
+      "size_bytes": 237139,
+      "sha256": "050a68bde5f5fbdd124a66e1f69aeda20667764a4f3c4f365c7865927687dd66"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_R\\behaviour_cloning_seed_1.npz",
+      "size_bytes": 237150,
+      "sha256": "827bb787600c97d51469813e3cd77a5ffa7a3820d3d928132f0d7d09d3ead1e4"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_R\\behaviour_cloning_seed_2.npz",
+      "size_bytes": 237128,
+      "sha256": "19cd1d8afd1ab78f22bd11f710baabd4d407a951b1ee3288aa2ed146ab3a884e"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_R\\constrained_sac_seed_0.npz",
+      "size_bytes": 237344,
+      "sha256": "d69485b76cfb9c7b836fb9dfe7edf95c9d7cbb992a200033305d69167b6a2767"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_R\\constrained_sac_seed_1.npz",
+      "size_bytes": 237357,
+      "sha256": "2c859eb089b195157cfab9e8bf399126edf592ee287cfa5a5bee0fdbf1d03975"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_R\\constrained_sac_seed_2.npz",
+      "size_bytes": 237327,
+      "sha256": "738e40f9979c89bc080671ffb435f1b38742d7f7b6a6a6c99b989006baf05209"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_R\\controller_bundle_seed_0.json",
+      "size_bytes": 508,
+      "sha256": "ab7c49f3b02a0ad1dc5db7422ec028798c8332ddb6b42244cebf31eb0b818488"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_R\\controller_bundle_seed_1.json",
+      "size_bytes": 506,
+      "sha256": "19d08981ab9b1f9a1be0a4143190060f6dd7634fc616d0e522a8172444f6878e"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_R\\controller_bundle_seed_2.json",
+      "size_bytes": 509,
+      "sha256": "f9289e86c8784c85494c37f4f412170fe56ef654c7ff07f621a87f000a9ad3e0"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_RD\\behaviour_cloning_seed_0.npz",
+      "size_bytes": 237172,
+      "sha256": "a70e51c789ed5fad39a38cd6d13d9922cb78a646f71c549d0a564ca15b64c482"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_RD\\behaviour_cloning_seed_1.npz",
+      "size_bytes": 237129,
+      "sha256": "5239309e9cd3e2d2e8b9b13320e6d7756a61969c02968901af012dec185eef08"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_RD\\behaviour_cloning_seed_2.npz",
+      "size_bytes": 237134,
+      "sha256": "a65a269c9441c3eb3191f7034004a7cddc51ac43359e812c4828169c2c268b1a"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_RD\\constrained_sac_seed_0.npz",
+      "size_bytes": 237460,
+      "sha256": "a573ba3225b1fb325a31be1c73333c9a7d12e050460879113f06551f4d1ca4bc"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_RD\\constrained_sac_seed_1.npz",
+      "size_bytes": 237461,
+      "sha256": "468020983bce00b9d741d6f5aec5803cc786003cc1118969b1012930de7a6067"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_RD\\constrained_sac_seed_2.npz",
+      "size_bytes": 237491,
+      "sha256": "c26767b8b75c0981dc5231fa548e952fa14e83b72e731f604157aaf81e5c9e6c"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_RD\\controller_bundle_seed_0.json",
+      "size_bytes": 545,
+      "sha256": "2712b050843b27528071862e8f6d7b5484c5791aaaf284bf91e5059738f01b57"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_RD\\controller_bundle_seed_1.json",
+      "size_bytes": 545,
+      "sha256": "6768f6d4b95b74d5a61435ddc955d5002c35329a714634151ab12cee8d22b723"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\IL_RD\\controller_bundle_seed_2.json",
+      "size_bytes": 546,
+      "sha256": "c226cc2252c887a0df45dcb5738286bedfeca9cf5b3f25a6343259482cc24dc0"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\ORACLE_RD\\behaviour_cloning_seed_0.npz",
+      "size_bytes": 237165,
+      "sha256": "4965816a28a4cb4f6a8ec97e0a1fa2746dc6f7add83f991b6eeeebbeae25c472"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\ORACLE_RD\\behaviour_cloning_seed_1.npz",
+      "size_bytes": 237153,
+      "sha256": "ac8380ac74e3258535e542f399e28a95d4579be06ec0ccb625f7b5e92ca58028"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\ORACLE_RD\\behaviour_cloning_seed_2.npz",
+      "size_bytes": 237134,
+      "sha256": "c51cd74de5842ea64868475ace5ae80dc9bd6696ed137a8751615887226e10a5"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\ORACLE_RD\\constrained_sac_seed_0.npz",
+      "size_bytes": 237487,
+      "sha256": "e2591a82ad0ffa8d4991457db832630a01b63d39898c9909766ebe81d679b5b1"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\ORACLE_RD\\constrained_sac_seed_1.npz",
+      "size_bytes": 237453,
+      "sha256": "d46413ddfb2c0a4060c623d4195bcd0415faeffed998fcafd8579b07211d60f4"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\ORACLE_RD\\constrained_sac_seed_2.npz",
+      "size_bytes": 237474,
+      "sha256": "b43e99d9a470309bdcd83113d74ca17bdbf6c347f7e458ac07b64968968fbc22"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\ORACLE_RD\\controller_bundle_seed_0.json",
+      "size_bytes": 518,
+      "sha256": "133b63a689e5d4ac4d0a5b6719e542061093cd770bd554f8460a59b2a6244b13"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\ORACLE_RD\\controller_bundle_seed_1.json",
+      "size_bytes": 516,
+      "sha256": "d7a86500b6e9a1199156bc450b40f355141d644479341eed291847f2bd7befbd"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\code 8.4\\output\\5.2.4_released_risk_information_capacity_preparation\\checkpoints\\ORACLE_RD\\controller_bundle_seed_2.json",
+      "size_bytes": 519,
+      "sha256": "6c721a07cb79ea53bfb8482cf132cc474ec69011b5fe775b21dedc42a8842fba"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\report - 8.4\\5.2.4\\INDEPENDENT_VALIDATION_AND_ACCEPTANCE.md",
+      "size_bytes": 4922,
+      "sha256": "8e761d788f1c1ed05e14ddeb7a7517d3e463b5adc5f14f662289a6b3f5d64688"
+    }
+  ]
+}

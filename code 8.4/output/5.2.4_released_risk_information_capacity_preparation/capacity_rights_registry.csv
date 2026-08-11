@@ -1,0 +1,5 @@
+capacity_rights,readiness_allowed,direct_procurement_allowed,release_pacing_retained,disclosure_retained,restriction_location
+RD,True,True,True,True,after raw action and before common projector
+R,True,False,True,True,after raw action and before common projector
+D,False,True,True,True,after raw action and before common projector
+NONE,False,False,True,True,after raw action and before common projector

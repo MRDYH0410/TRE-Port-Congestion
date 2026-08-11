@@ -1,0 +1,5 @@
+warning_scenario,label,target_information_vintage,historical_release_date,scenario_release_date,decision_availability_week,event_onset,readiness_lead_weeks,g_R_weeks,physical_event,evidence_class
+GH,Historical release,2025-12-01,2026-01-31,2026-01-31,2026-02-02,2026-02-23,8,-5,historical event,historical information replay
+GT,Minimally sufficient true release,2025-12-01,2026-01-31,2025-12-29,2025-12-29,2026-02-23,8,0,historical event,designed information timing stress
+GL,Insufficient lead,2025-12-01,2026-01-31,2026-01-05,2026-01-05,2026-02-23,8,-1,historical event,designed information timing stress
+GFW,False warning,2025-12-01,2026-01-31,2025-12-29,2025-12-29,2026-02-23,8,0,no disruption,designed information timing stress
