@@ -1,0 +1,2 @@
+selection_rule,minimum_common_paths,maximum_required_paths,executed_paths,computational_cap,target_halfwidth,maximum_achieved_halfwidth,all_precision_targets_met
+"maximum required count over endpoint, policy, and Passive/Reactive reference contrasts; the selected count is used for every chi",88,88,88,196,2255.6378250000002,1690.2412523625244,True

@@ -1,0 +1,125 @@
+{
+  "experiment_id": "5.3.1_commitment_sensitivity",
+  "experiment_title": "Commitment Sensitivity",
+  "evidence_class": "designed structural sensitivity",
+  "base_model_config": "experiments/5.2-2/config_5_2_2.json",
+  "output_directory": "output/5.3.1_commitment_sensitivity",
+  "report_directory": "../report - 8.4/5.3.1",
+  "commitment_grid": [
+    0.0,
+    0.125,
+    0.25,
+    0.375,
+    0.5,
+    0.625,
+    0.75,
+    0.875,
+    1.0
+  ],
+  "commitment_grid_basis": "The endpoints and quartiles form the preregistered five-point structural grid; four eighth-grid midpoints are preregistered resolution enhancement, never selected after observing policy switches.",
+  "commitment_application": "chi applies only to each period's newly generated blocked cohort through q_committed=chi*q_blocked and q_decision=(1-chi)*q_blocked; existing waiting, maritime pipeline, and tagged queues are never relabelled",
+  "main_policies": [
+    "Passive",
+    "Reactive",
+    "Projected stochastic MPC",
+    "Behaviour cloning",
+    "Model-guided constrained SAC"
+  ],
+  "learning_policies": [
+    "Behaviour cloning",
+    "Model-guided constrained SAC"
+  ],
+  "training_rule": "BC teacher demonstrations and BC/constrained-SAC checkpoints are regenerated independently at every chi; the three deterministic seed indices are common across chi and validation precedes test evaluation",
+  "path_design": {
+    "minimum_common_physical_paths": 88,
+    "maximum_physical_paths": 196,
+    "precision_endpoints": [
+      0.0,
+      1.0
+    ],
+    "confidence_level": 0.95,
+    "target_halfwidth": 2255.6378250000002,
+    "target_basis": "Inherited 5.2.2 preregistered target: 5 percent of the 45112.7565 reference failure loss",
+    "required_count_formula": "ceil((t_(0.975,N-1)*paired_sd/target_halfwidth)^2), bounded below by 88 and above only for execution by 196",
+    "common_count_rule": "maximum required count over endpoint, policy, and Passive/Reactive reference contrasts; the selected count is used for every chi"
+  },
+  "inference": {
+    "unit": "physical_path",
+    "learning_seed_rule": "average the three learning seeds within physical path before any inference",
+    "multiplicity": "Holm-adjusted p-values and Bonferroni simultaneous t intervals over each preregistered contrast family",
+    "regret_definition": "path-paired policy loss minus the minimum loss among the five main policies on the same physical path and chi",
+    "confidence_set_rule": "simultaneous differences from the sample leader; retain policies whose lower bound is not above zero"
+  },
+  "execution": {
+    "parallel_workers": 12,
+    "parallel_workers_basis": "independent policy-path replications use process isolation while reserving four of sixteen logical processors and memory headroom for orchestration",
+    "resume_cache": true,
+    "cache_contract": "cache is reusable only when the full config, upstream lock bundle, and selected production-source bundle hashes match",
+    "figure_dpi": 300,
+    "figure_formats": [
+      "png"
+    ]
+  },
+  "upstream_locks": [
+    {
+      "path": "output/5.2.1_data_event_information_validity/historical_information_event_path.csv",
+      "sha256": "407b06106c86f7173d399d8a66283f48ac6746b146c869c14cf77bad3ba3a976"
+    },
+    {
+      "path": "output/5.2.1_data_event_information_validity/acceptance_5_2_1.json",
+      "sha256": "eb0585b60b1ea4ed831b00ef76d0c115246e6faa229841123c54dd1e96a45809"
+    },
+    {
+      "path": "output/5.2.1_data_event_information_validity/run_manifest.json",
+      "sha256": "c1dd1e08a34a1a0be72973c1c9ebf1899e2849ee7f1805c3033d62e3d0b271a5"
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/acceptance_5_2_2.json",
+      "sha256": "4a0b2479a27400c868ba9ffee00c691761ddc460c59f1d8532e89630c8829c80"
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/run_manifest.json",
+      "sha256": "ce4f0bf874cfb902e0a2d11d499dd177b0496029d67a74d623c4d152417bd30b"
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoint_manifest.csv",
+      "sha256": "9033589ef4cf9ed49b7cfe3cb1815f1fd0bdfcb453eaa9e8d2f3c969ac66baf8"
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/test_path_manifest.csv",
+      "sha256": "c72dda4f1f2a67d7147743f779cd059a18929314ff07502125947f58692d546d"
+    },
+    {
+      "path": "experiments/5.2-2/config_5_2_2.json",
+      "sha256": "c3a1931a5275398484b3b713f77ed1e55506037dd00791a2e06d587123ba5b9b"
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/acceptance_5_2_3.json",
+      "sha256": "f0ba77228d399b8bf7759a4f33c55c64e6f8ed835b16d2b62bb807ffcf6abc0e"
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/run_manifest.json",
+      "sha256": "ffe2db2a65d4c1bc9fc8a9ac8e48a3a14da0c2473c3712f77d1271663b36a212"
+    },
+    {
+      "path": "output/5.2.4_released_risk_information_capacity_preparation/acceptance_5_2_4.json",
+      "sha256": "8fa1e997fca3c3d32238f1e63c7580f5ce9176f0e173b235a6526e32566ec87a"
+    },
+    {
+      "path": "output/5.2.4_released_risk_information_capacity_preparation/run_manifest.json",
+      "sha256": "b844e6027fc8216a9fd716b10a0164a41feca24932006904d753aea7afe2cf4c"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/acceptance_5_2_5.json",
+      "sha256": "61f457cf6846e91d4d912dda1bcb72712123361edafc8d83beb2dfda3f982039"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/run_manifest.json",
+      "sha256": "dcde268c6f4090197e7aa6e5cef5385c3dec40ac637d9ea37a8e6641712f9721"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/method_contract_registry.csv",
+      "sha256": "33161a8dc89701de6ab677fa70e16aca691af5389c2d3ed4ca3dca1d417be512"
+    }
+  ]
+}

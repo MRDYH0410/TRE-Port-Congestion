@@ -1,0 +1,46 @@
+chi,policy,physical_paths,mean_path_paired_regret,simultaneous_lower,simultaneous_upper,regret_reference
+0.0,Passive,88,223726.63235206436,221871.9248659901,225581.33983813864,minimum loss among five main policies on the same path and chi
+0.0,Reactive,88,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi
+0.0,Projected stochastic MPC,88,21685.399874467537,19764.472478802403,23606.32727013267,minimum loss among five main policies on the same path and chi
+0.0,Behaviour cloning,88,76186.68851058253,74140.06079391936,78233.31622724571,minimum loss among five main policies on the same path and chi
+0.0,Model-guided constrained SAC,88,76597.623463813,74555.74127089328,78639.50565673271,minimum loss among five main policies on the same path and chi
+0.125,Passive,88,220176.72483758896,217650.56206954597,222702.88760563196,minimum loss among five main policies on the same path and chi
+0.125,Reactive,88,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi
+0.125,Projected stochastic MPC,88,21466.135363923895,20332.938848501348,22599.331879346442,minimum loss among five main policies on the same path and chi
+0.125,Behaviour cloning,88,66694.57253023003,65700.99888213843,67688.14617832162,minimum loss among five main policies on the same path and chi
+0.125,Model-guided constrained SAC,88,67093.24182280691,66098.7103400366,68087.77330557723,minimum loss among five main policies on the same path and chi
+0.25,Passive,88,209022.24617877873,206518.53948994004,211525.95286761742,minimum loss among five main policies on the same path and chi
+0.25,Reactive,88,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi
+0.25,Projected stochastic MPC,88,15161.85533874615,14361.837328007,15961.8733494853,minimum loss among five main policies on the same path and chi
+0.25,Behaviour cloning,88,45794.336541409306,45246.92711333219,46341.74596948642,minimum loss among five main policies on the same path and chi
+0.25,Model-guided constrained SAC,88,46223.73565946809,45684.54609691856,46762.92522201762,minimum loss among five main policies on the same path and chi
+0.375,Passive,88,198335.66727256254,195706.53764058722,200964.79690453786,minimum loss among five main policies on the same path and chi
+0.375,Reactive,88,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi
+0.375,Projected stochastic MPC,88,11387.110020101267,10912.50619418091,11861.713846021623,minimum loss among five main policies on the same path and chi
+0.375,Behaviour cloning,88,28067.246571964104,27774.39738070383,28360.095763224377,minimum loss among five main policies on the same path and chi
+0.375,Model-guided constrained SAC,88,28509.942789626486,28209.46917842823,28810.416400824743,minimum loss among five main policies on the same path and chi
+0.5,Passive,88,186460.52009310204,183495.83690470576,189425.2032814983,minimum loss among five main policies on the same path and chi
+0.5,Reactive,88,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi
+0.5,Projected stochastic MPC,88,9181.901363829696,8871.009174878815,9492.793552780578,minimum loss among five main policies on the same path and chi
+0.5,Behaviour cloning,88,15867.54118471702,15677.407426566248,16057.674942867792,minimum loss among five main policies on the same path and chi
+0.5,Model-guided constrained SAC,88,16329.403473351447,16131.199695000387,16527.607251702506,minimum loss among five main policies on the same path and chi
+0.625,Passive,88,170324.56203137894,167406.54814376534,173242.57591899254,minimum loss among five main policies on the same path and chi
+0.625,Reactive,88,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi
+0.625,Projected stochastic MPC,88,6989.758374056813,6729.931629365496,7249.585118748131,minimum loss among five main policies on the same path and chi
+0.625,Behaviour cloning,88,8545.609701618565,8362.084926126661,8729.134477110469,minimum loss among five main policies on the same path and chi
+0.625,Model-guided constrained SAC,88,8966.869433014492,8779.980524631985,9153.758341396999,minimum loss among five main policies on the same path and chi
+0.75,Passive,88,134475.00616311698,132505.18220907915,136444.8301171548,minimum loss among five main policies on the same path and chi
+0.75,Reactive,88,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi
+0.75,Projected stochastic MPC,88,4319.470744920483,4126.123990731382,4512.817499109585,minimum loss among five main policies on the same path and chi
+0.75,Behaviour cloning,88,4183.357279843577,4024.8203104677996,4341.894249219355,minimum loss among five main policies on the same path and chi
+0.75,Model-guided constrained SAC,88,4476.730409737226,4328.719627817646,4624.741191656806,minimum loss among five main policies on the same path and chi
+0.875,Passive,88,71780.86481648084,70756.30445614773,72805.42517681395,minimum loss among five main policies on the same path and chi
+0.875,Reactive,88,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi
+0.875,Projected stochastic MPC,88,2508.8200171947924,2339.14212036071,2678.4979140288747,minimum loss among five main policies on the same path and chi
+0.875,Behaviour cloning,88,1743.1451564112226,1610.0998292041552,1876.19048361829,minimum loss among five main policies on the same path and chi
+0.875,Model-guided constrained SAC,88,1935.3487950511771,1811.4850470591327,2059.2125430432216,minimum loss among five main policies on the same path and chi
+1.0,Passive,88,6138.891327099219,5936.208412265504,6341.574241932934,minimum loss among five main policies on the same path and chi
+1.0,Reactive,88,0.3555131178457238,-0.5807403582970041,1.2917665939884517,minimum loss among five main policies on the same path and chi
+1.0,Projected stochastic MPC,88,1728.514086678154,1546.923341444319,1910.1048319119889,minimum loss among five main policies on the same path and chi
+1.0,Behaviour cloning,88,4594.109039601969,4438.78149759493,4749.436581609008,minimum loss among five main policies on the same path and chi
+1.0,Model-guided constrained SAC,88,5793.070077555452,5615.725510262443,5970.414644848462,minimum loss among five main policies on the same path and chi

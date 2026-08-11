@@ -1,0 +1,9 @@
+contract_id,formula_or_contract,implementation_file,implementation_function,output_evidence,acceptance_test
+F531-01,qC=chi*qB; qD=(1-chi)*qB,src/tre84/transition.py,construct_demand_split,weekly_commitment_trajectories.csv,maximum split residual <= mass tolerance
+F531-02,chi only affects the current new blocked cohort,experiments/5.2-2/preparation.py,build_realization,trajectory_contract_checks.csv,existing_state_relabelled_by_chi is false
+F531-03,tagged maritime-to-landbridge conservation,src/tre84/transition.py,TaggedTransition.step,trajectory_contract_checks.csv,production and provenance audits pass
+F531-04,QC=QC0+sum(qC); OC=QC-DC,experiments/5.3-1/commitment_worker.py,summarise_mechanism_artifact,path_level_results.csv,committed conservation residual <= tolerance
+F531-05,seed mean within path,experiments/5.3-1/statistics_5_3_1.py,aggregate_learning_seeds,path_level_seed_aggregated.csv,three seeds for BC/MG and one row before inference
+F531-06,paired policy-reference effect,experiments/5.3-1/statistics_5_3_1.py,paired_effects,paired_effects.csv,matched physical path IDs and simultaneous intervals
+F531-07,endpoint required path count,experiments/5.3-1/statistics_5_3_1.py,endpoint_precision,endpoint_precision_requirements.csv,common N is max endpoint requirement capped only for execution
+F531-08,right-censored clearance,src/tre84/clearance.py,ClearanceRunner.run,clearance_and_censoring.csv,censored clearance is never recorded as observed

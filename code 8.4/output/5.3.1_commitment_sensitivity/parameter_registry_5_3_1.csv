@@ -1,0 +1,17 @@
+parameter,value,unit,source_or_evidence_class,basis_and_role
+commitment_grid,0.0|0.125|0.25|0.375|0.5|0.625|0.75|0.875|1.0,share,designed structural grid,"The endpoints and quartiles form the preregistered five-point structural grid; four eighth-grid midpoints are preregistered resolution enhancement, never selected after observing policy switches."
+commitment_application,"chi applies only to each period's newly generated blocked cohort through q_committed=chi*q_blocked and q_decision=(1-chi)*q_blocked; existing waiting, maritime pipeline, and tagged queues are never relabelled",formula,Chapter 3 production split,Only each new blocked cohort is split; state stocks are not relabelled.
+main_policy_set,Passive|Reactive|Projected stochastic MPC|Behaviour cloning|Model-guided constrained SAC,policy names,accepted 5.2 policy architecture,"Passive, transparent reactive, formal MPC, BC, and proposed MG controller."
+learning_seeds,3,seeds per learning policy,accepted 5.2.2 training contract,Seeds are averaged within physical paths before inference.
+minimum_common_physical_paths,88,paths,accepted 5.2 evidence design,"Minimum common grid size, not an automatic precision certificate."
+maximum_physical_paths,196,paths,accepted 5.2.2 residual support,At most 196 unique contiguous event-free residual blocks.
+precision_endpoints,0.0|1.0,chi,preregistered structural endpoints,The largest endpoint requirement selects one common grid count.
+target_halfwidth,2255.6378250000002,loss index units,accepted 5.2.2 statistical target,Inherited 5.2.2 preregistered target: 5 percent of the 45112.7565 reference failure loss
+confidence_level,0.95,probability,accepted 5.2.2 inference rule,Paired path intervals.
+multiplicity,Holm-adjusted p-values and Bonferroni simultaneous t intervals over each preregistered contrast family,rule,preregistered experiment rule,Applied by metric and reference family.
+clearance_cap,104,weeks,accepted 5.2.2 clearance contract,Uncleared trajectories are right censored and retain outstanding mass.
+clearance_tolerance,1e-06,model units,accepted 5.2.2 clearance contract,Used only to classify the frozen trajectory.
+mass_tolerance,1e-06,model units,accepted 5.2.5 numerical contract,"Split, provenance, and transition identities."
+loss_tolerance,1e-06,loss index units,accepted 5.2.5 numerical contract,Complete objective reconciliation.
+parallel_workers,12,processes,engineering setting,independent policy-path replications use process isolation while reserving four of sixteen logical processors and memory headroom for orchestration
+figure_dpi,300,dpi,reproducible figure contract,PNG only as explicitly requested for Experiment 5.3.1.

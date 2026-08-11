@@ -1,0 +1,226 @@
+chi,policy,metric,mean_value,metric_label
+0.0,Behaviour cloning,mean_waiting_exposure,15200.823076763425,Waiting exposure
+0.0,Model-guided constrained SAC,mean_waiting_exposure,15245.764159968247,Waiting exposure
+0.0,Passive,mean_waiting_exposure,20031.915675777484,Waiting exposure
+0.0,Projected stochastic MPC,mean_waiting_exposure,11395.70792811273,Waiting exposure
+0.0,Reactive,mean_waiting_exposure,9075.31304465197,Waiting exposure
+0.125,Behaviour cloning,mean_waiting_exposure,13810.083934063972,Waiting exposure
+0.125,Model-guided constrained SAC,mean_waiting_exposure,13858.900667821807,Waiting exposure
+0.125,Passive,mean_waiting_exposure,19345.604790018442,Waiting exposure
+0.125,Projected stochastic MPC,mean_waiting_exposure,10593.060631077393,Waiting exposure
+0.125,Reactive,mean_waiting_exposure,9456.887671059983,Waiting exposure
+0.25,Behaviour cloning,mean_waiting_exposure,11871.192798193999,Waiting exposure
+0.25,Model-guided constrained SAC,mean_waiting_exposure,11922.671853445458,Waiting exposure
+0.25,Passive,mean_waiting_exposure,18372.56824094937,Waiting exposure
+0.25,Projected stochastic MPC,mean_waiting_exposure,9563.189365325527,Waiting exposure
+0.25,Reactive,mean_waiting_exposure,8823.109091430591,Waiting exposure
+0.375,Behaviour cloning,mean_waiting_exposure,9810.621285917985,Waiting exposure
+0.375,Model-guided constrained SAC,mean_waiting_exposure,9864.926449206503,Waiting exposure
+0.375,Passive,mean_waiting_exposure,17179.472975064404,Waiting exposure
+0.375,Projected stochastic MPC,mean_waiting_exposure,8413.138820967515,Waiting exposure
+0.375,Reactive,mean_waiting_exposure,7927.476931690983,Waiting exposure
+0.5,Behaviour cloning,mean_waiting_exposure,7867.594403146269,Waiting exposure
+0.5,Model-guided constrained SAC,mean_waiting_exposure,7924.8157514515015,Waiting exposure
+0.5,Passive,mean_waiting_exposure,15753.598484605494,Waiting exposure
+0.5,Projected stochastic MPC,mean_waiting_exposure,7161.059380700965,Waiting exposure
+0.5,Reactive,mean_waiting_exposure,6849.1900150694655,Waiting exposure
+0.625,Behaviour cloning,mean_waiting_exposure,6041.203035680394,Waiting exposure
+0.625,Model-guided constrained SAC,mean_waiting_exposure,6094.503315709563,Waiting exposure
+0.625,Passive,mean_waiting_exposure,13919.690951509132,Waiting exposure
+0.625,Projected stochastic MPC,mean_waiting_exposure,5724.225856195736,Waiting exposure
+0.625,Reactive,mean_waiting_exposure,5588.253816848474,Waiting exposure
+0.75,Behaviour cloning,mean_waiting_exposure,4195.545516537244,Waiting exposure
+0.75,Model-guided constrained SAC,mean_waiting_exposure,4235.540481361418,Waiting exposure
+0.75,Passive,mean_waiting_exposure,10727.192894027736,Waiting exposure
+0.75,Projected stochastic MPC,mean_waiting_exposure,4038.0316670713846,Waiting exposure
+0.75,Reactive,mean_waiting_exposure,4106.071491661955,Waiting exposure
+0.875,Behaviour cloning,mean_waiting_exposure,2193.2923680035483,Waiting exposure
+0.875,Model-guided constrained SAC,mean_waiting_exposure,2211.6792330888484,Waiting exposure
+0.875,Passive,mean_waiting_exposure,5693.474055093003,Waiting exposure
+0.875,Projected stochastic MPC,mean_waiting_exposure,2116.1625173658167,Waiting exposure
+0.875,Reactive,mean_waiting_exposure,2333.4921600237167,Waiting exposure
+1.0,Behaviour cloning,mean_waiting_exposure,0.0,Waiting exposure
+1.0,Model-guided constrained SAC,mean_waiting_exposure,0.0,Waiting exposure
+1.0,Passive,mean_waiting_exposure,0.0,Waiting exposure
+1.0,Projected stochastic MPC,mean_waiting_exposure,0.0,Waiting exposure
+1.0,Reactive,mean_waiting_exposure,0.0,Waiting exposure
+0.0,Behaviour cloning,mean_direct_sue_exit,0.0006954977750007304,SUE exit
+0.0,Model-guided constrained SAC,mean_direct_sue_exit,0.0007135647387379034,SUE exit
+0.0,Passive,mean_direct_sue_exit,0.0002525888203247466,SUE exit
+0.0,Projected stochastic MPC,mean_direct_sue_exit,0.0011984162823308068,SUE exit
+0.0,Reactive,mean_direct_sue_exit,0.00043496077995293977,SUE exit
+0.125,Behaviour cloning,mean_direct_sue_exit,0.0006590729026526098,SUE exit
+0.125,Model-guided constrained SAC,mean_direct_sue_exit,0.0006806113803369787,SUE exit
+0.125,Passive,mean_direct_sue_exit,0.00020396466928321704,SUE exit
+0.125,Projected stochastic MPC,mean_direct_sue_exit,0.001060691036355158,SUE exit
+0.125,Reactive,mean_direct_sue_exit,0.0005466332463468943,SUE exit
+0.25,Behaviour cloning,mean_direct_sue_exit,0.0006153056288310818,SUE exit
+0.25,Model-guided constrained SAC,mean_direct_sue_exit,0.000636427295683005,SUE exit
+0.25,Passive,mean_direct_sue_exit,0.00014983506174961732,SUE exit
+0.25,Projected stochastic MPC,mean_direct_sue_exit,0.0008928804147063432,SUE exit
+0.25,Reactive,mean_direct_sue_exit,0.0004806750512651591,SUE exit
+0.375,Behaviour cloning,mean_direct_sue_exit,0.0005582782410229102,SUE exit
+0.375,Model-guided constrained SAC,mean_direct_sue_exit,0.0005779266771212072,SUE exit
+0.375,Passive,mean_direct_sue_exit,0.00010266159027282114,SUE exit
+0.375,Projected stochastic MPC,mean_direct_sue_exit,0.0007454344056058728,SUE exit
+0.375,Reactive,mean_direct_sue_exit,0.00040741357220433185,SUE exit
+0.5,Behaviour cloning,mean_direct_sue_exit,0.0004769808748679371,SUE exit
+0.5,Model-guided constrained SAC,mean_direct_sue_exit,0.0004947253890465073,SUE exit
+0.5,Passive,mean_direct_sue_exit,6.533591559174184e-05,SUE exit
+0.5,Projected stochastic MPC,mean_direct_sue_exit,0.0005944221953608921,SUE exit
+0.5,Reactive,mean_direct_sue_exit,0.0003365876734003534,SUE exit
+0.625,Behaviour cloning,mean_direct_sue_exit,0.0003684335710322841,SUE exit
+0.625,Model-guided constrained SAC,mean_direct_sue_exit,0.0003819048928543678,SUE exit
+0.625,Passive,mean_direct_sue_exit,3.604431990396635e-05,SUE exit
+0.625,Projected stochastic MPC,mean_direct_sue_exit,0.00043031255173898525,SUE exit
+0.625,Reactive,mean_direct_sue_exit,0.00026441131354792497,SUE exit
+0.75,Behaviour cloning,mean_direct_sue_exit,0.0002403581142105095,SUE exit
+0.75,Model-guided constrained SAC,mean_direct_sue_exit,0.00024832101025840797,SUE exit
+0.75,Passive,mean_direct_sue_exit,1.2243202330738572e-05,SUE exit
+0.75,Projected stochastic MPC,mean_direct_sue_exit,0.00026225950041837843,SUE exit
+0.75,Reactive,mean_direct_sue_exit,0.0001830334435041193,SUE exit
+0.875,Behaviour cloning,mean_direct_sue_exit,0.00011114768715643256,SUE exit
+0.875,Model-guided constrained SAC,mean_direct_sue_exit,0.00011416165276917577,SUE exit
+0.875,Passive,mean_direct_sue_exit,1.975697243270513e-06,SUE exit
+0.875,Projected stochastic MPC,mean_direct_sue_exit,0.00011333256190317136,SUE exit
+0.875,Reactive,mean_direct_sue_exit,9.140982335022068e-05,SUE exit
+1.0,Behaviour cloning,mean_direct_sue_exit,0.0,SUE exit
+1.0,Model-guided constrained SAC,mean_direct_sue_exit,0.0,SUE exit
+1.0,Passive,mean_direct_sue_exit,0.0,SUE exit
+1.0,Projected stochastic MPC,mean_direct_sue_exit,0.0,SUE exit
+1.0,Reactive,mean_direct_sue_exit,0.0,SUE exit
+0.0,Behaviour cloning,mean_duration_attrition,367.50262447142364,Attrition exit
+0.0,Model-guided constrained SAC,mean_duration_attrition,368.3395091449768,Attrition exit
+0.0,Passive,mean_duration_attrition,686.4400799864022,Attrition exit
+0.0,Projected stochastic MPC,mean_duration_attrition,269.75646242533855,Attrition exit
+0.0,Reactive,mean_duration_attrition,191.11084148587798,Attrition exit
+0.125,Behaviour cloning,mean_duration_attrition,334.68413435248505,Attrition exit
+0.125,Model-guided constrained SAC,mean_duration_attrition,335.4053160215815,Attrition exit
+0.125,Passive,mean_duration_attrition,662.9220446787687,Attrition exit
+0.125,Projected stochastic MPC,mean_duration_attrition,253.22882645151458,Attrition exit
+0.125,Reactive,mean_duration_attrition,212.5984758919615,Attrition exit
+0.25,Behaviour cloning,mean_duration_attrition,284.78271259637245,Attrition exit
+0.25,Model-guided constrained SAC,mean_duration_attrition,285.5610022785348,Attrition exit
+0.25,Passive,mean_duration_attrition,629.5786890886886,Attrition exit
+0.25,Projected stochastic MPC,mean_duration_attrition,230.00442074183383,Attrition exit
+0.25,Reactive,mean_duration_attrition,202.60777202123228,Attrition exit
+0.375,Behaviour cloning,mean_duration_attrition,232.76995657653754,Attrition exit
+0.375,Model-guided constrained SAC,mean_duration_attrition,233.61759738963795,Attrition exit
+0.375,Passive,mean_duration_attrition,588.6945108659778,Attrition exit
+0.375,Projected stochastic MPC,mean_duration_attrition,203.626140952621,Attrition exit
+0.375,Reactive,mean_duration_attrition,184.2683499420589,Attrition exit
+0.5,Behaviour cloning,mean_duration_attrition,185.90723709225745,Attrition exit
+0.5,Model-guided constrained SAC,mean_duration_attrition,186.85460394408622,Attrition exit
+0.5,Passive,mean_duration_attrition,539.8336122937535,Attrition exit
+0.5,Projected stochastic MPC,mean_duration_attrition,174.78082079653709,Attrition exit
+0.5,Reactive,mean_duration_attrition,160.60223495253615,Attrition exit
+0.625,Behaviour cloning,mean_duration_attrition,143.26819112926967,Attrition exit
+0.625,Model-guided constrained SAC,mean_duration_attrition,144.14015494905223,Attrition exit
+0.625,Passive,mean_duration_attrition,476.9905145679268,Attrition exit
+0.625,Projected stochastic MPC,mean_duration_attrition,140.77507099975665,Attrition exit
+0.625,Reactive,mean_duration_attrition,132.1897372679968,Attrition exit
+0.75,Behaviour cloning,mean_duration_attrition,100.04458148969583,Attrition exit
+0.75,Model-guided constrained SAC,mean_duration_attrition,100.54723548397997,Attrition exit
+0.75,Passive,mean_duration_attrition,367.59215984513213,Attrition exit
+0.75,Projected stochastic MPC,mean_duration_attrition,99.59599666363914,Attrition exit
+0.75,Reactive,mean_duration_attrition,98.01661077886442,Attrition exit
+0.875,Behaviour cloning,mean_duration_attrition,52.3075144029776,Attrition exit
+0.875,Model-guided constrained SAC,mean_duration_attrition,52.43000669717066,Attrition exit
+0.875,Passive,mean_duration_attrition,195.10010189472052,Attrition exit
+0.875,Projected stochastic MPC,mean_duration_attrition,52.03586081851983,Attrition exit
+0.875,Reactive,mean_duration_attrition,56.28108206707457,Attrition exit
+1.0,Behaviour cloning,mean_duration_attrition,0.0,Attrition exit
+1.0,Model-guided constrained SAC,mean_duration_attrition,0.0,Attrition exit
+1.0,Passive,mean_duration_attrition,0.0,Attrition exit
+1.0,Projected stochastic MPC,mean_duration_attrition,0.0,Attrition exit
+1.0,Reactive,mean_duration_attrition,0.0,Attrition exit
+0.0,Behaviour cloning,mean_committed_delivery,0.0,Committed delivery
+0.0,Model-guided constrained SAC,mean_committed_delivery,0.0,Committed delivery
+0.0,Passive,mean_committed_delivery,0.0,Committed delivery
+0.0,Projected stochastic MPC,mean_committed_delivery,0.0,Committed delivery
+0.0,Reactive,mean_committed_delivery,0.0,Committed delivery
+0.125,Behaviour cloning,mean_committed_delivery,212.57346200269765,Committed delivery
+0.125,Model-guided constrained SAC,mean_committed_delivery,212.57346200269765,Committed delivery
+0.125,Passive,mean_committed_delivery,212.57346200269765,Committed delivery
+0.125,Projected stochastic MPC,mean_committed_delivery,212.57346200269765,Committed delivery
+0.125,Reactive,mean_committed_delivery,212.57346200269765,Committed delivery
+0.25,Behaviour cloning,mean_committed_delivery,425.1469240053953,Committed delivery
+0.25,Model-guided constrained SAC,mean_committed_delivery,425.1469240053953,Committed delivery
+0.25,Passive,mean_committed_delivery,425.1469240053953,Committed delivery
+0.25,Projected stochastic MPC,mean_committed_delivery,425.1469240053953,Committed delivery
+0.25,Reactive,mean_committed_delivery,425.1469240053953,Committed delivery
+0.375,Behaviour cloning,mean_committed_delivery,637.720386008093,Committed delivery
+0.375,Model-guided constrained SAC,mean_committed_delivery,637.7203860080929,Committed delivery
+0.375,Passive,mean_committed_delivery,637.720386008093,Committed delivery
+0.375,Projected stochastic MPC,mean_committed_delivery,637.720386008093,Committed delivery
+0.375,Reactive,mean_committed_delivery,637.720386008093,Committed delivery
+0.5,Behaviour cloning,mean_committed_delivery,850.2938480107906,Committed delivery
+0.5,Model-guided constrained SAC,mean_committed_delivery,850.2938480107906,Committed delivery
+0.5,Passive,mean_committed_delivery,850.2938480107906,Committed delivery
+0.5,Projected stochastic MPC,mean_committed_delivery,850.2938480107906,Committed delivery
+0.5,Reactive,mean_committed_delivery,850.2938480107906,Committed delivery
+0.625,Behaviour cloning,mean_committed_delivery,1062.8673100134883,Committed delivery
+0.625,Model-guided constrained SAC,mean_committed_delivery,1062.8673100134883,Committed delivery
+0.625,Passive,mean_committed_delivery,1062.8673100134883,Committed delivery
+0.625,Projected stochastic MPC,mean_committed_delivery,1062.8673100134883,Committed delivery
+0.625,Reactive,mean_committed_delivery,1062.8673100134883,Committed delivery
+0.75,Behaviour cloning,mean_committed_delivery,1275.440772016186,Committed delivery
+0.75,Model-guided constrained SAC,mean_committed_delivery,1275.440772016186,Committed delivery
+0.75,Passive,mean_committed_delivery,1275.440772016186,Committed delivery
+0.75,Projected stochastic MPC,mean_committed_delivery,1275.440772016186,Committed delivery
+0.75,Reactive,mean_committed_delivery,1275.440772016186,Committed delivery
+0.875,Behaviour cloning,mean_committed_delivery,1488.0142340188836,Committed delivery
+0.875,Model-guided constrained SAC,mean_committed_delivery,1488.0142340188836,Committed delivery
+0.875,Passive,mean_committed_delivery,1488.013546032955,Committed delivery
+0.875,Projected stochastic MPC,mean_committed_delivery,1487.9982541719983,Committed delivery
+0.875,Reactive,mean_committed_delivery,1488.0142340188836,Committed delivery
+1.0,Behaviour cloning,mean_committed_delivery,1697.1848607435938,Committed delivery
+1.0,Model-guided constrained SAC,mean_committed_delivery,1695.9535790483287,Committed delivery
+1.0,Passive,mean_committed_delivery,1695.4517370889678,Committed delivery
+1.0,Projected stochastic MPC,mean_committed_delivery,1699.9473688720143,Committed delivery
+1.0,Reactive,mean_committed_delivery,1699.5922530781886,Committed delivery
+0.0,Behaviour cloning,mean_adaptive_delivery,1333.0843754444688,Adaptive delivery
+0.0,Model-guided constrained SAC,mean_adaptive_delivery,1332.2474727054896,Adaptive delivery
+0.0,Passive,mean_adaptive_delivery,1014.1473627536438,Adaptive delivery
+0.0,Projected stochastic MPC,mean_adaptive_delivery,1430.8300345754596,Adaptive delivery
+0.0,Reactive,mean_adaptive_delivery,1491.6104818701745,Adaptive delivery
+0.125,Behaviour cloning,mean_adaptive_delivery,1153.3294398510282,Adaptive delivery
+0.125,Model-guided constrained SAC,mean_adaptive_delivery,1152.608236642621,Adaptive delivery
+0.125,Passive,mean_adaptive_delivery,825.0919846626366,Adaptive delivery
+0.125,Projected stochastic MPC,mean_adaptive_delivery,1234.7843461355974,Adaptive delivery
+0.125,Reactive,mean_adaptive_delivery,1275.4152107138443,Adaptive delivery
+0.25,Behaviour cloning,mean_adaptive_delivery,990.6574432953753,Adaptive delivery
+0.25,Model-guided constrained SAC,mean_adaptive_delivery,989.8791324909379,Adaptive delivery
+0.25,Passive,mean_adaptive_delivery,645.8619323626067,Adaptive delivery
+0.25,Projected stochastic MPC,mean_adaptive_delivery,1045.435457578574,Adaptive delivery
+0.25,Reactive,mean_adaptive_delivery,1072.8325185188462,Adaptive delivery
+0.375,Behaviour cloning,mean_adaptive_delivery,830.0967944441537,Adaptive delivery
+0.375,Model-guided constrained SAC,mean_adaptive_delivery,829.249133982183,Adaptive delivery
+0.375,Passive,mean_adaptive_delivery,474.1726957503879,Adaptive delivery
+0.375,Projected stochastic MPC,mean_adaptive_delivery,859.2404229296794,Adaptive delivery
+0.375,Reactive,mean_adaptive_delivery,878.5985519692854,Adaptive delivery
+0.5,Behaviour cloning,mean_adaptive_delivery,664.3861333631377,Adaptive delivery
+0.5,Model-guided constrained SAC,mean_adaptive_delivery,663.4387487664218,Adaptive delivery
+0.5,Passive,mean_adaptive_delivery,310.4601696545638,Adaptive delivery
+0.5,Projected stochastic MPC,mean_adaptive_delivery,675.5124322286837,Adaptive delivery
+0.5,Reactive,mean_adaptive_delivery,689.6912759093251,Adaptive delivery
+0.625,Behaviour cloning,mean_adaptive_delivery,494.4518257645481,Adaptive delivery
+0.625,Model-guided constrained SAC,mean_adaptive_delivery,493.5798484729516,Adaptive delivery
+0.625,Passive,mean_adaptive_delivery,160.72983469334616,Adaptive delivery
+0.625,Projected stochastic MPC,mean_adaptive_delivery,496.9448839817597,Adaptive delivery
+0.625,Reactive,mean_adaptive_delivery,505.5303836198716,Adaptive delivery
+0.75,Behaviour cloning,mean_adaptive_delivery,325.1021017244233,Adaptive delivery
+0.75,Model-guided constrained SAC,mean_adaptive_delivery,324.5994397638528,Adaptive delivery
+0.75,Passive,mean_adaptive_delivery,57.5547515933247,Adaptive delivery
+0.75,Projected stochastic MPC,mean_adaptive_delivery,325.5506648330103,Adaptive delivery
+0.75,Reactive,mean_adaptive_delivery,327.1301295548683,Adaptive delivery
+0.875,Behaviour cloning,mean_adaptive_delivery,160.26583645194935,Adaptive delivery
+0.875,Model-guided constrained SAC,mean_adaptive_delivery,160.14334114379636,Adaptive delivery
+0.875,Passive,mean_adaptive_delivery,17.47335340676605,Adaptive delivery
+0.875,Projected stochastic MPC,mean_adaptive_delivery,160.53727903063563,Adaptive delivery
+0.875,Reactive,mean_adaptive_delivery,156.292288521548,Adaptive delivery
+1.0,Behaviour cloning,mean_adaptive_delivery,0.0,Adaptive delivery
+1.0,Model-guided constrained SAC,mean_adaptive_delivery,0.0,Adaptive delivery
+1.0,Passive,mean_adaptive_delivery,0.0,Adaptive delivery
+1.0,Projected stochastic MPC,mean_adaptive_delivery,0.0,Adaptive delivery
+1.0,Reactive,mean_adaptive_delivery,0.0,Adaptive delivery

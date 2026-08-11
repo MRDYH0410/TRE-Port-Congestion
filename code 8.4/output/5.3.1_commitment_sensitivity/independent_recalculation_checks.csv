@@ -1,0 +1,8 @@
+check,observed,tolerance,passed
+independent_loss_reconciliation,3.4924596548080444e-10,1e-06,True
+independent_committed_conservation,1.6673329383820599e-12,1e-06,True
+independent_new_cohort_split,2.131628207280301e-14,1e-06,True
+independent_paired_effect,0.0,1e-06,True
+figure_a_png_dpi,299.9994,299.0,True
+figure_b_png_dpi,299.9994,299.0,True
+figure_c_png_dpi,299.9994,299.0,True

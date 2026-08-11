@@ -1,0 +1,136 @@
+panel,chi,policy,mean,lower,upper,physical_paths,mean_path_paired_regret,simultaneous_lower,simultaneous_upper,regret_reference,sample_leader,mean_total_operational_loss,mean_difference_from_leader,in_simultaneous_confidence_set,all_pair_family_size,resolved_better_than_all_competitors
+total_loss,0.0,Behaviour cloning,208770.29494427628,206995.61587861995,210544.9740099326,88.0,,,,,,,,,,
+total_loss,0.0,Model-guided constrained SAC,209181.2298975067,207398.80617142917,210963.65362358425,88.0,,,,,,,,,,
+total_loss,0.0,Passive,356310.2387857581,354105.5353680765,358514.94220343966,88.0,,,,,,,,,,
+total_loss,0.0,Projected stochastic MPC,154269.00630816125,152400.97942439062,156137.03319193187,88.0,,,,,,,,,,
+total_loss,0.0,Reactive,132583.6064336937,130410.13150894301,134757.08135844438,88.0,,,,,,,,,,
+total_loss,0.125,Behaviour cloning,191134.1158817186,189471.1181503973,192797.11361303992,88.0,,,,,,,,,,
+total_loss,0.125,Model-guided constrained SAC,191532.7851742955,189868.5958482761,193196.97450031491,88.0,,,,,,,,,,
+total_loss,0.125,Passive,344616.2681890775,342353.9189329012,346878.6174452538,88.0,,,,,,,,,,
+total_loss,0.125,Projected stochastic MPC,145905.67871541248,144134.42486705666,147676.9325637683,88.0,,,,,,,,,,
+total_loss,0.125,Reactive,124439.5433514886,122925.25362268803,125953.83308028916,88.0,,,,,,,,,,
+total_loss,0.25,Behaviour cloning,165228.44394547146,163732.1662275985,166724.72166334442,88.0,,,,,,,,,,
+total_loss,0.25,Model-guided constrained SAC,165657.84306353022,164157.02331009964,167158.6628169608,88.0,,,,,,,,,,
+total_loss,0.25,Passive,328456.3535828409,326146.9623254221,330765.74484025966,88.0,,,,,,,,,,
+total_loss,0.25,Projected stochastic MPC,134595.9627428083,132946.82654784343,136245.09893777317,88.0,,,,,,,,,,
+total_loss,0.25,Reactive,119434.10740406215,118088.00912764363,120780.20568048066,88.0,,,,,,,,,,
+total_loss,0.375,Behaviour cloning,138884.15768534594,137522.5896270692,140245.7257436227,88.0,,,,,,,,,,
+total_loss,0.375,Model-guided constrained SAC,139326.85390300833,137957.53032946886,140696.1774765478,88.0,,,,,,,,,,
+total_loss,0.375,Passive,309152.5783859444,306686.49742542556,311618.6593464633,88.0,,,,,,,,,,
+total_loss,0.375,Projected stochastic MPC,122204.0211334831,120759.33380174708,123648.70846521911,88.0,,,,,,,,,,
+total_loss,0.375,Reactive,110816.91111338184,109588.96336483567,112044.858861928,88.0,,,,,,,,,,
+total_loss,0.5,Behaviour cloning,115923.55084546474,114683.1593306178,117163.94236031167,88.0,,,,,,,,,,
+total_loss,0.5,Model-guided constrained SAC,116385.41313409916,115138.3115349973,117632.51473320102,88.0,,,,,,,,,,
+total_loss,0.5,Passive,286516.5297538498,283767.0918002237,289265.9677074759,88.0,,,,,,,,,,
+total_loss,0.5,Projected stochastic MPC,109237.9110245774,107943.80347638231,110532.0185727725,88.0,,,,,,,,,,
+total_loss,0.5,Reactive,100056.0096607477,98924.90399972205,101187.11532177335,88.0,,,,,,,,,,
+total_loss,0.625,Behaviour cloning,95984.94697321564,94876.32266706729,97093.571279364,88.0,,,,,,,,,,
+total_loss,0.625,Model-guided constrained SAC,96406.20670461157,95294.7372771886,97517.67613203454,88.0,,,,,,,,,,
+total_loss,0.625,Passive,257763.899302976,255000.46377605078,260527.33482990123,88.0,,,,,,,,,,
+total_loss,0.625,Projected stochastic MPC,94429.09564565391,93289.32181897199,95568.86947233583,88.0,,,,,,,,,,
+total_loss,0.625,Reactive,87439.33727159709,86434.2175025559,88444.45704063828,88.0,,,,,,,,,,
+total_loss,0.75,Behaviour cloning,76732.87459614867,75798.10319387134,77667.645998426,88.0,,,,,,,,,,
+total_loss,0.75,Model-guided constrained SAC,77026.24772604233,76095.32520849732,77957.17024358734,88.0,,,,,,,,,,
+total_loss,0.75,Passive,207024.5234794221,204938.66962798615,209110.37733085803,88.0,,,,,,,,,,
+total_loss,0.75,Projected stochastic MPC,76868.9880612256,75918.3391875847,77819.63693486649,88.0,,,,,,,,,,
+total_loss,0.75,Reactive,72549.5173163051,71698.69306999183,73400.34156261836,88.0,,,,,,,,,,
+total_loss,0.875,Behaviour cloning,56287.01351808982,55516.96599113638,57057.061045043265,88.0,,,,,,,,,,
+total_loss,0.875,Model-guided constrained SAC,56479.21715672977,55712.03176609006,57246.40254736948,88.0,,,,,,,,,,
+total_loss,0.875,Passive,126324.73317815945,124946.28346330601,127703.1828930129,88.0,,,,,,,,,,
+total_loss,0.875,Projected stochastic MPC,57052.68837887339,56256.58609677447,57848.790660972314,88.0,,,,,,,,,,
+total_loss,0.875,Reactive,54543.8683616786,53855.17547536501,55232.56124799219,88.0,,,,,,,,,,
+total_loss,1.0,Behaviour cloning,34368.27515116729,33641.97519314915,35094.57510918543,88.0,,,,,,,,,,
+total_loss,1.0,Model-guided constrained SAC,35567.23618912077,34822.92081172954,36311.551566512,88.0,,,,,,,,,,
+total_loss,1.0,Passive,35913.05743866454,35149.43577365838,36676.6791036707,88.0,,,,,,,,,,
+total_loss,1.0,Projected stochastic MPC,31502.68019824347,30935.908822822446,32069.451573664493,88.0,,,,,,,,,,
+total_loss,1.0,Reactive,29774.52162468316,29158.521553393522,30390.521695972795,88.0,,,,,,,,,,
+policy_regret,0.0,Passive,,,,88.0,223726.63235206436,221871.9248659901,225581.33983813864,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.0,Reactive,,,,88.0,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.0,Projected stochastic MPC,,,,88.0,21685.399874467537,19764.472478802403,23606.32727013267,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.0,Behaviour cloning,,,,88.0,76186.68851058253,74140.06079391936,78233.31622724571,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.0,Model-guided constrained SAC,,,,88.0,76597.623463813,74555.74127089328,78639.50565673271,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.125,Passive,,,,88.0,220176.72483758896,217650.56206954597,222702.88760563196,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.125,Reactive,,,,88.0,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.125,Projected stochastic MPC,,,,88.0,21466.135363923895,20332.938848501348,22599.331879346442,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.125,Behaviour cloning,,,,88.0,66694.57253023003,65700.99888213843,67688.14617832162,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.125,Model-guided constrained SAC,,,,88.0,67093.24182280691,66098.7103400366,68087.77330557723,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.25,Passive,,,,88.0,209022.24617877873,206518.53948994004,211525.95286761742,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.25,Reactive,,,,88.0,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.25,Projected stochastic MPC,,,,88.0,15161.85533874615,14361.837328007,15961.8733494853,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.25,Behaviour cloning,,,,88.0,45794.336541409306,45246.92711333219,46341.74596948642,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.25,Model-guided constrained SAC,,,,88.0,46223.73565946809,45684.54609691856,46762.92522201762,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.375,Passive,,,,88.0,198335.66727256254,195706.53764058722,200964.79690453786,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.375,Reactive,,,,88.0,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.375,Projected stochastic MPC,,,,88.0,11387.110020101267,10912.50619418091,11861.713846021623,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.375,Behaviour cloning,,,,88.0,28067.246571964104,27774.39738070383,28360.095763224377,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.375,Model-guided constrained SAC,,,,88.0,28509.942789626486,28209.46917842823,28810.416400824743,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.5,Passive,,,,88.0,186460.52009310204,183495.83690470576,189425.2032814983,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.5,Reactive,,,,88.0,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.5,Projected stochastic MPC,,,,88.0,9181.901363829696,8871.009174878815,9492.793552780578,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.5,Behaviour cloning,,,,88.0,15867.54118471702,15677.407426566248,16057.674942867792,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.5,Model-guided constrained SAC,,,,88.0,16329.403473351447,16131.199695000387,16527.607251702506,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.625,Passive,,,,88.0,170324.56203137894,167406.54814376534,173242.57591899254,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.625,Reactive,,,,88.0,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.625,Projected stochastic MPC,,,,88.0,6989.758374056813,6729.931629365496,7249.585118748131,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.625,Behaviour cloning,,,,88.0,8545.609701618565,8362.084926126661,8729.134477110469,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.625,Model-guided constrained SAC,,,,88.0,8966.869433014492,8779.980524631985,9153.758341396999,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.75,Passive,,,,88.0,134475.00616311698,132505.18220907915,136444.8301171548,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.75,Reactive,,,,88.0,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.75,Projected stochastic MPC,,,,88.0,4319.470744920483,4126.123990731382,4512.817499109585,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.75,Behaviour cloning,,,,88.0,4183.357279843577,4024.8203104677996,4341.894249219355,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.75,Model-guided constrained SAC,,,,88.0,4476.730409737226,4328.719627817646,4624.741191656806,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.875,Passive,,,,88.0,71780.86481648084,70756.30445614773,72805.42517681395,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.875,Reactive,,,,88.0,0.0,0.0,0.0,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.875,Projected stochastic MPC,,,,88.0,2508.8200171947924,2339.14212036071,2678.4979140288747,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.875,Behaviour cloning,,,,88.0,1743.1451564112226,1610.0998292041552,1876.19048361829,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,0.875,Model-guided constrained SAC,,,,88.0,1935.3487950511771,1811.4850470591327,2059.2125430432216,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,1.0,Passive,,,,88.0,6138.891327099219,5936.208412265504,6341.574241932934,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,1.0,Reactive,,,,88.0,0.3555131178457238,-0.5807403582970041,1.2917665939884517,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,1.0,Projected stochastic MPC,,,,88.0,1728.514086678154,1546.923341444319,1910.1048319119889,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,1.0,Behaviour cloning,,,,88.0,4594.109039601969,4438.78149759493,4749.436581609008,minimum loss among five main policies on the same path and chi,,,,,,
+policy_regret,1.0,Model-guided constrained SAC,,,,88.0,5793.070077555452,5615.725510262443,5970.414644848462,minimum loss among five main policies on the same path and chi,,,,,,
+confidence_set,0.0,Passive,,,,,,221698.07030714434,225755.19439698439,,Reactive,356310.2387857582,223726.63235206436,False,10.0,False
+confidence_set,0.0,Reactive,,,,,,0.0,0.0,,Reactive,132583.60643369373,0.0,True,10.0,True
+confidence_set,0.0,Projected stochastic MPC,,,,,,19584.41066988883,23786.389079046243,,Reactive,154269.00630816125,21685.399874467537,False,10.0,False
+confidence_set,0.0,Behaviour cloning,,,,,,73948.2162246417,78425.16079652337,,Reactive,208770.2949442763,76186.68851058253,False,10.0,False
+confidence_set,0.0,Model-guided constrained SAC,,,,,,74364.34153237363,78830.90539525237,,Reactive,209181.22989750665,76597.623463813,False,10.0,False
+confidence_set,0.125,Passive,,,,,,217413.76736369167,222939.68231148625,,Reactive,344616.26818907744,220176.72483758896,False,10.0,False
+confidence_set,0.125,Reactive,,,,,,0.0,0.0,,Reactive,124439.54335148857,0.0,True,10.0,True
+confidence_set,0.125,Projected stochastic MPC,,,,,,20226.716502523046,22705.554225324744,,Reactive,145905.67871541248,21466.135363923895,False,10.0,False
+confidence_set,0.125,Behaviour cloning,,,,,,65607.86435307296,67781.2807073871,,Reactive,191134.11588171852,66694.57253023003,False,10.0,False
+confidence_set,0.125,Model-guided constrained SAC,,,,,,66005.48602650283,68180.997619111,,Reactive,191532.78517429548,67093.24182280691,False,10.0,False
+confidence_set,0.25,Passive,,,,,,206283.84974768397,211760.6426098735,,Reactive,328456.3535828409,209022.24617877873,False,10.0,False
+confidence_set,0.25,Reactive,,,,,,0.0,0.0,,Reactive,119434.1074040621,0.0,True,10.0,True
+confidence_set,0.25,Projected stochastic MPC,,,,,,14286.846107358992,16036.86457013331,,Reactive,134595.96274280825,15161.85533874615,False,10.0,False
+confidence_set,0.25,Behaviour cloning,,,,,,45195.61464204444,46393.05844077417,,Reactive,165228.44394547146,45794.336541409306,False,10.0,False
+confidence_set,0.25,Model-guided constrained SAC,,,,,,45634.00413047096,46813.46718846522,,Reactive,165657.8430635302,46223.73565946809,False,10.0,False
+confidence_set,0.375,Passive,,,,,,195460.09113851222,201211.24340661286,,Reactive,309152.57838594454,198335.66727256254,False,10.0,False
+confidence_set,0.375,Reactive,,,,,,0.0,0.0,,Reactive,110816.91111338185,0.0,True,10.0,True
+confidence_set,0.375,Projected stochastic MPC,,,,,,10868.018295468355,11906.201744734179,,Reactive,122204.02113348297,11387.110020101267,False,10.0,False
+confidence_set,0.375,Behaviour cloning,,,,,,27746.94660081689,28387.54654311132,,Reactive,138884.157685346,28067.246571964104,False,10.0,False
+confidence_set,0.375,Model-guided constrained SAC,,,,,,28181.303708934043,28838.58187031893,,Reactive,139326.85390300828,28509.942789626486,False,10.0,False
+confidence_set,0.5,Passive,,,,,,183217.93664727648,189703.1035389276,,Reactive,286516.5297538497,186460.52009310204,False,10.0,False
+confidence_set,0.5,Reactive,,,,,,0.0,0.0,,Reactive,100056.00966074769,0.0,True,10.0,True
+confidence_set,0.5,Projected stochastic MPC,,,,,,8841.867100042502,9521.935627616891,,Reactive,109237.9110245774,9181.901363829696,False,10.0,False
+confidence_set,0.5,Behaviour cloning,,,,,,15659.584874550266,16075.497494883773,,Reactive,115923.5508454647,15867.54118471702,False,10.0,False
+confidence_set,0.5,Model-guided constrained SAC,,,,,,16112.620684183043,16546.186262519852,,Reactive,116385.41313409916,16329.403473351447,False,10.0,False
+confidence_set,0.625,Passive,,,,,,167133.02252263864,173516.10154011924,,Reactive,257763.89930297594,170324.56203137894,False,10.0,False
+confidence_set,0.625,Reactive,,,,,,0.0,0.0,,Reactive,87439.3372715971,0.0,True,10.0,True
+confidence_set,0.625,Projected stochastic MPC,,,,,,6705.576271761236,7273.940476352391,,Reactive,94429.09564565391,6989.758374056813,False,10.0,False
+confidence_set,0.625,Behaviour cloning,,,,,,8344.881879759525,8746.337523477605,,Reactive,95984.94697321566,8545.609701618565,False,10.0,False
+confidence_set,0.625,Model-guided constrained SAC,,,,,,8762.46213482445,9171.276731204534,,Reactive,96406.20670461156,8966.869433014492,False,10.0,False
+confidence_set,0.75,Passive,,,,,,132320.53698760658,136629.47533862738,,Reactive,207024.5234794221,134475.00616311698,False,10.0,False
+confidence_set,0.75,Reactive,,,,,,0.0,0.0,,Reactive,72549.5173163051,0.0,True,10.0,True
+confidence_set,0.75,Projected stochastic MPC,,,,,,4108.000262377348,4530.941227463619,,Reactive,76868.98806122557,4319.470744920483,False,10.0,False
+confidence_set,0.75,Behaviour cloning,,,,,,4009.959543970379,4356.755015716775,,Reactive,76732.87459614871,4183.357279843577,False,10.0,False
+confidence_set,0.75,Model-guided constrained SAC,,,,,,4314.8455536640395,4638.615265810413,,Reactive,77026.24772604233,4476.730409737226,False,10.0,False
+confidence_set,0.875,Passive,,,,,,70660.26532825615,72901.46430470553,,Reactive,126324.73317815945,71780.86481648084,False,10.0,False
+confidence_set,0.875,Reactive,,,,,,0.0,0.0,,Reactive,54543.868361678586,0.0,True,10.0,True
+confidence_set,0.875,Projected stochastic MPC,,,,,,2323.2370376878607,2694.402996701724,,Reactive,57052.68837887339,2508.8200171947924,False,10.0,False
+confidence_set,0.875,Behaviour cloning,,,,,,1597.6285706139222,1888.661742208523,,Reactive,56287.01351808981,1743.1451564112226,False,10.0,False
+confidence_set,0.875,Model-guided constrained SAC,,,,,,1799.8744413836696,2070.823148718685,,Reactive,56479.217156729756,1935.3487950511771,False,10.0,False
+confidence_set,1.0,Passive,,,,,,5916.863184320018,6360.208443642723,,Reactive,35913.057438664546,6138.535813981371,False,10.0,False
+confidence_set,1.0,Reactive,,,,,,0.0,0.0,,Reactive,29774.521624683166,0.0,True,10.0,True
+confidence_set,1.0,Projected stochastic MPC,,,,,,1529.2485991776177,1927.0685479429987,,Reactive,31502.68019824346,1728.1585735603082,False,10.0,False
+confidence_set,1.0,Behaviour cloning,,,,,,4423.869740704602,4763.637312263643,,Reactive,34368.2751511673,4593.753526484123,False,10.0,False
+confidence_set,1.0,Model-guided constrained SAC,,,,,,5598.749065557502,5986.68006331771,,Reactive,35567.23618912077,5792.714564437606,False,10.0,False

@@ -1,0 +1,82 @@
+chi,policy,seed_index,training_seed,selected_episode,validation_operational_loss,selection_split,test_paths_seen_before_selection
+0.0,Behaviour cloning,0,4237354934,12,69497.73960960767,validation,False
+0.0,Constrained SAC,0,1044336490,3,182357.2599290937,validation,False
+0.0,Model-guided constrained SAC,0,1044336490,3,69228.14546897373,validation,False
+0.0,Behaviour cloning,1,60714114,12,72862.26814887315,validation,False
+0.0,Constrained SAC,1,2857687458,3,182331.9274086454,validation,False
+0.0,Model-guided constrained SAC,1,2857687458,3,72752.15687458853,validation,False
+0.0,Behaviour cloning,2,1484239003,12,64976.22206572379,validation,False
+0.0,Constrained SAC,2,3413089447,3,182276.44518501995,validation,False
+0.0,Model-guided constrained SAC,2,3413089447,3,64744.05022977362,validation,False
+0.125,Behaviour cloning,0,4237354934,12,61809.30788273567,validation,False
+0.125,Constrained SAC,0,1044336490,3,171729.25242215028,validation,False
+0.125,Model-guided constrained SAC,0,1044336490,3,61658.46497241288,validation,False
+0.125,Behaviour cloning,1,60714114,12,65195.92603677889,validation,False
+0.125,Constrained SAC,1,2857687458,3,171703.14652773913,validation,False
+0.125,Model-guided constrained SAC,1,2857687458,3,65082.51257390805,validation,False
+0.125,Behaviour cloning,2,1484239003,12,58286.27506493616,validation,False
+0.125,Constrained SAC,2,3413089447,3,171650.7200760513,validation,False
+0.125,Model-guided constrained SAC,2,3413089447,3,58100.948464418034,validation,False
+0.25,Behaviour cloning,0,4237354934,12,52134.36270946439,validation,False
+0.25,Constrained SAC,0,1044336490,3,158320.39134790612,validation,False
+0.25,Model-guided constrained SAC,0,1044336490,3,51990.36550744047,validation,False
+0.25,Behaviour cloning,1,60714114,12,55137.43237722153,validation,False
+0.25,Constrained SAC,1,2857687458,3,158298.33321213766,validation,False
+0.25,Model-guided constrained SAC,1,2857687458,3,55123.48690916994,validation,False
+0.25,Behaviour cloning,2,1484239003,12,49545.00344511527,validation,False
+0.25,Constrained SAC,2,3413089447,3,158244.78479135694,validation,False
+0.25,Model-guided constrained SAC,2,3413089447,3,49383.25236690567,validation,False
+0.375,Behaviour cloning,0,4237354934,12,42036.76448858719,validation,False
+0.375,Constrained SAC,0,1044336490,3,142921.68122302723,validation,False
+0.375,Model-guided constrained SAC,0,1044336490,3,42024.58259998838,validation,False
+0.375,Behaviour cloning,1,60714114,12,44720.07638698282,validation,False
+0.375,Constrained SAC,1,2857687458,3,142905.84366060718,validation,False
+0.375,Model-guided constrained SAC,1,2857687458,3,44887.60980513065,validation,False
+0.375,Behaviour cloning,2,1484239003,12,40398.25001417604,validation,False
+0.375,Constrained SAC,2,3413089447,3,142853.0815034772,validation,False
+0.375,Model-guided constrained SAC,2,3413089447,3,40299.971621567885,validation,False
+0.5,Behaviour cloning,0,4237354934,12,32904.35296184362,validation,False
+0.5,Constrained SAC,0,1044336490,3,125293.5252287155,validation,False
+0.5,Model-guided constrained SAC,0,1044336490,3,32842.97540714464,validation,False
+0.5,Behaviour cloning,1,60714114,12,34848.34818466945,validation,False
+0.5,Constrained SAC,1,2857687458,3,125282.42762179412,validation,False
+0.5,Model-guided constrained SAC,1,2857687458,3,34922.61538696757,validation,False
+0.5,Behaviour cloning,2,1484239003,12,32098.24180465548,validation,False
+0.5,Constrained SAC,2,3413089447,3,125232.36645165712,validation,False
+0.5,Model-guided constrained SAC,2,3413089447,3,31970.418895933068,validation,False
+0.625,Behaviour cloning,0,4237354934,12,25491.59589427412,validation,False
+0.625,Constrained SAC,0,1044336490,3,105810.61873645918,validation,False
+0.625,Model-guided constrained SAC,0,1044336490,3,25576.65414643466,validation,False
+0.625,Behaviour cloning,1,60714114,12,26513.114160318037,validation,False
+0.625,Constrained SAC,1,2857687458,3,105802.76393363602,validation,False
+0.625,Model-guided constrained SAC,1,2857687458,3,26681.534086371077,validation,False
+0.625,Behaviour cloning,2,1484239003,12,25139.528003123494,validation,False
+0.625,Constrained SAC,2,3413089447,3,105764.25803564252,validation,False
+0.625,Model-guided constrained SAC,2,3413089447,3,25166.703649707462,validation,False
+0.75,Behaviour cloning,0,4237354934,12,19522.15387350718,validation,False
+0.75,Constrained SAC,0,1044336490,3,80702.3163012459,validation,False
+0.75,Model-guided constrained SAC,0,1044336490,3,19506.31266101456,validation,False
+0.75,Behaviour cloning,1,60714114,12,19818.25404554039,validation,False
+0.75,Constrained SAC,1,2857687458,3,80697.51324383782,validation,False
+0.75,Model-guided constrained SAC,1,2857687458,3,19861.177439459178,validation,False
+0.75,Behaviour cloning,2,1484239003,12,19376.633360673677,validation,False
+0.75,Constrained SAC,2,3413089447,3,80669.09048640211,validation,False
+0.75,Model-guided constrained SAC,2,3413089447,3,19365.35498722895,validation,False
+0.875,Behaviour cloning,0,4237354934,12,14235.649976425637,validation,False
+0.875,Constrained SAC,0,1044336490,3,46321.2460862391,validation,False
+0.875,Model-guided constrained SAC,0,1044336490,3,14111.967504902685,validation,False
+0.875,Behaviour cloning,1,60714114,12,14270.408948606622,validation,False
+0.875,Constrained SAC,1,2857687458,3,46320.10570117063,validation,False
+0.875,Model-guided constrained SAC,1,2857687458,3,14175.51078351564,validation,False
+0.875,Behaviour cloning,2,1484239003,12,14158.208179181818,validation,False
+0.875,Constrained SAC,2,3413089447,3,46307.705950691474,validation,False
+0.875,Model-guided constrained SAC,2,3413089447,3,14037.908606397004,validation,False
+1.0,Behaviour cloning,0,4237354934,3,8870.555776259824,validation,False
+1.0,Constrained SAC,0,1044336490,9,8366.381264494103,validation,False
+1.0,Model-guided constrained SAC,0,1044336490,9,8446.202357627215,validation,False
+1.0,Behaviour cloning,1,60714114,3,8861.917208499488,validation,False
+1.0,Constrained SAC,1,2857687458,3,8373.829753349395,validation,False
+1.0,Model-guided constrained SAC,1,2857687458,3,8413.558807114774,validation,False
+1.0,Behaviour cloning,2,1484239003,3,8886.820720676478,validation,False
+1.0,Constrained SAC,2,3413089447,9,8367.34375284989,validation,False
+1.0,Model-guided constrained SAC,2,3413089447,9,8367.34375284989,validation,False
