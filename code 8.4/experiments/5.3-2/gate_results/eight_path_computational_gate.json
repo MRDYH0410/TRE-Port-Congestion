@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "physical_paths": 8,
+  "expected_physical_paths": 8,
+  "policy_seed_cell_rows": 736,
+  "trajectory_contract_rows": 736,
+  "failed_contract_rows": 0,
+  "missing_contract_columns": [],
+  "branch_factorisation_is_numerically_neutral": true,
+  "maximum_sue_residual": 9.99954489366977e-07,
+  "maximum_transition_residual": 2.273736754432321e-13,
+  "maximum_projection_violation": 0.0,
+  "maximum_loss_reconciliation_error": 3.4924596548080444e-10,
+  "numerical_failure_rate": 0.0,
+  "evidence_use": "computational gate only; not formal statistical evidence",
+  "gate": "eight_path_computational_gate",
+  "elapsed_seconds": 1795.5956252999604,
+  "run_signature": "84bcec88d4411a0739db1151e8cc1007a027222eb8592dac997ab061648d4729"
+}

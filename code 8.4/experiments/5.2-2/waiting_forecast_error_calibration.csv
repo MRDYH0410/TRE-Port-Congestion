@@ -1,0 +1,4 @@
+route,validation_errors,mean_error_weeks,mae_weeks,mean_squared_error_weeks2,sigma_W_rmse_weeks,estimator,information_cutoff,policy,uses_historical_test_event
+Fujairah,40,0.744251214114861,0.8106010839608968,1.665526985096307,1.2905529764780317,sqrt(mean(one-step forecast error squared)),validation paths only; frozen before teacher generation and policy training,Passive zero coordination action,False
+Khor_Fakkan,40,0.06011467806279247,0.17259621029906208,0.09734966008947794,0.3120090705243646,sqrt(mean(one-step forecast error squared)),validation paths only; frozen before teacher generation and policy training,Passive zero coordination action,False
+Sohar,40,0.015087877913459224,0.02261447441766744,0.00228868638071151,0.04784021718921759,sqrt(mean(one-step forecast error squared)),validation paths only; frozen before teacher generation and policy training,Passive zero coordination action,False

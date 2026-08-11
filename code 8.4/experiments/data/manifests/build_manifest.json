@@ -1,0 +1,64 @@
+{
+  "all_data_quality_checks_passed": true,
+  "construction": {
+    "event_end_week": "2026-07-13",
+    "event_start_week": "2026-02-23",
+    "gpr_jump_indicator": "deferred until the first information experiment declares jump_sigma",
+    "gpr_volatility_window_months": 24,
+    "weekly_calendar": "Monday-based",
+    "zero_activity_policy": "retain"
+  },
+  "outputs": [
+    {
+      "columns": 19,
+      "path": "processed/portwatch/hormuz_chokepoint_weekly.csv",
+      "rows": 395,
+      "sha256": "db68842bf845ee45b06d197bc8908245943f5aefd8646abcd6e3129cf47fa6f0"
+    },
+    {
+      "columns": 28,
+      "path": "processed/portwatch/gateway_ports_weekly.csv",
+      "rows": 1580,
+      "sha256": "77c2b497e4d23fa4cca3048e456ee385f5d23dacb87999e13eb99c5ac30ee492"
+    },
+    {
+      "columns": 4,
+      "path": "processed/gpr/gpr_monthly.csv",
+      "rows": 498,
+      "sha256": "fa1202241127419bc6edded0b4ba9be8f16b336cb75dc8313352fc57cf97beeb"
+    },
+    {
+      "columns": 8,
+      "path": "processed/gpr/gpr_continuous_features.csv",
+      "rows": 474,
+      "sha256": "aa0471897b8f6801c7994a55ea4df24d53af9f4693d15651770d1a4c415fdfdf"
+    },
+    {
+      "columns": 5,
+      "path": "processed/anchors/gateway_reference_scales.csv",
+      "rows": 3,
+      "sha256": "13c1447af12e96e90a2ddc4491c3cf96b24e76becc430ba72aea4d4348c9ff9d"
+    },
+    {
+      "columns": 6,
+      "path": "processed/anchors/network_exposure_reference.csv",
+      "rows": 1,
+      "sha256": "379508c4d006b0f45161f783b6562b468f713d1052dc187cf942956ea1f15559"
+    },
+    {
+      "columns": 8,
+      "path": "processed/anchors/committed_itinerary_reference.csv",
+      "rows": 3,
+      "sha256": "3e000c32597a9d1221f3550797df96953ea7b6d8871b12d0b40014dc0b558614"
+    },
+    {
+      "columns": 11,
+      "path": "processed/anchors/reclosure_event_marker.csv",
+      "rows": 1,
+      "sha256": "afc6d6afdb59889d2f61df1f678c96c88c0a42636cb8f6fae66fa60e10fc677c"
+    }
+  ],
+  "schema_version": 1,
+  "source_manifest": "manifests/datasets.json",
+  "status": "complete"
+}

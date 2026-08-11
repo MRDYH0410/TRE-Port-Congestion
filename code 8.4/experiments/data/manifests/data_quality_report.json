@@ -1,0 +1,389 @@
+{
+  "check_count": 48,
+  "checks": [
+    {
+      "detail": "",
+      "expected": true,
+      "name": "raw.portwatch_hormuz_daily.exists",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": "41700119e5bd61d3a1db92586755b25131d309dd46df10da151bec31a718667c",
+      "name": "raw.portwatch_hormuz_daily.sha256",
+      "observed": "41700119e5bd61d3a1db92586755b25131d309dd46df10da151bec31a718667c",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": true,
+      "name": "raw.portwatch_gateway_ports_daily.exists",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": "0cef5af93b67913f5a9b4b4d5f72e8871e4e72bfdaef2c22ee23818994213eb8",
+      "name": "raw.portwatch_gateway_ports_daily.sha256",
+      "observed": "0cef5af93b67913f5a9b4b4d5f72e8871e4e72bfdaef2c22ee23818994213eb8",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": true,
+      "name": "raw.official_gpr_workbook.exists",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": "e73a0a307fc3ef04bc44772162978e88c4bb8dedac419343a5cd125337586339",
+      "name": "raw.official_gpr_workbook.sha256",
+      "observed": "e73a0a307fc3ef04bc44772162978e88c4bb8dedac419343a5cd125337586339",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": true,
+      "name": "raw.gateway_official_capacity.exists",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": "a01c1a4aa4e7047de4eea04db22697af248b37dcbd658be4cbf5351ec524e4ad",
+      "name": "raw.gateway_official_capacity.sha256",
+      "observed": "a01c1a4aa4e7047de4eea04db22697af248b37dcbd658be4cbf5351ec524e4ad",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": true,
+      "name": "raw.reclosure_event_advisories.exists",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": "e10479627c47cd36fed732fc9662c47ebb985ba1e34f240232e2c186f8cea6b1",
+      "name": "raw.reclosure_event_advisories.sha256",
+      "observed": "e10479627c47cd36fed732fc9662c47ebb985ba1e34f240232e2c186f8cea6b1",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": [],
+      "name": "chokepoint_daily.required_columns",
+      "observed": [],
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 2761,
+      "name": "chokepoint_daily.rows",
+      "observed": 2761,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 21,
+      "name": "chokepoint_daily.columns",
+      "observed": 21,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 0,
+      "name": "chokepoint_daily.missing_cells",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 0,
+      "name": "chokepoint_daily.invalid_dates",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 0,
+      "name": "chokepoint_daily.duplicate_grain_rows",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": "2019-01-01",
+      "name": "chokepoint_daily.date_start",
+      "observed": "2019-01-01",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": "2026-07-23",
+      "name": "chokepoint_daily.date_end",
+      "observed": "2026-07-23",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": [],
+      "name": "gateway_daily.required_columns",
+      "observed": [],
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 11048,
+      "name": "gateway_daily.rows",
+      "observed": 11048,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 30,
+      "name": "gateway_daily.columns",
+      "observed": 30,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 0,
+      "name": "gateway_daily.missing_cells",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 0,
+      "name": "gateway_daily.invalid_dates",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 0,
+      "name": "gateway_daily.duplicate_grain_rows",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": "2019-01-01",
+      "name": "gateway_daily.date_start",
+      "observed": "2019-01-01",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": "2026-07-24",
+      "name": "gateway_daily.date_end",
+      "observed": "2026-07-24",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 395,
+      "name": "chokepoint_weekly.rows",
+      "observed": 395,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 393,
+      "name": "chokepoint_weekly.complete_rows",
+      "observed": 393,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": {
+        "Fujairah": 395,
+        "Jebel Ali": 395,
+        "Khor Fakkan": 395,
+        "Port of Sohar": 395
+      },
+      "name": "gateway_weekly.rows_per_port",
+      "observed": {
+        "Fujairah": 395,
+        "Jebel Ali": 395,
+        "Khor Fakkan": 395,
+        "Port of Sohar": 395
+      },
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": {
+        "Fujairah": 393,
+        "Jebel Ali": 393,
+        "Khor Fakkan": 393,
+        "Port of Sohar": 393
+      },
+      "name": "gateway_weekly.complete_rows_per_port",
+      "observed": {
+        "Fujairah": 393,
+        "Jebel Ali": 393,
+        "Khor Fakkan": 393,
+        "Port of Sohar": 393
+      },
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 1580,
+      "name": "gateway_weekly.total_rows",
+      "observed": 1580,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 393,
+      "name": "common_complete_window.weeks",
+      "observed": 393,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": "2019-01-07",
+      "name": "common_complete_window.start",
+      "observed": "2019-01-07",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": "2026-07-13",
+      "name": "common_complete_window.end",
+      "observed": "2026-07-13",
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 21,
+      "name": "event_replay.complete_weeks",
+      "observed": 21,
+      "passed": true
+    },
+    {
+      "detail": "Zeros are retained; no positive floor is applied.",
+      "expected": {
+        "Fujairah": 321,
+        "Jebel Ali": 2,
+        "Khor Fakkan": 146,
+        "Sohar": 0
+      },
+      "name": "gateway_weekly.zero_container_activity_weeks",
+      "observed": {
+        "Fujairah": 321,
+        "Jebel Ali": 2,
+        "Khor Fakkan": 146,
+        "Sohar": 0
+      },
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 498,
+      "name": "gpr_monthly.rows",
+      "observed": 498,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 0,
+      "name": "gpr_monthly.complete_cells",
+      "observed": 0,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": true,
+      "name": "gpr_monthly.consecutive_months",
+      "observed": true,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 474,
+      "name": "gpr_continuous_features.usable_rows",
+      "observed": 474,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": {
+        "Fujairah": 1.5,
+        "Khor Fakkan": 30.796,
+        "Sohar": 70.001
+      },
+      "name": "gateway_reference_scales.rounded_3dp",
+      "observed": {
+        "Fujairah": 1.5,
+        "Khor Fakkan": 30.796,
+        "Sohar": 70.001
+      },
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 0.0263,
+      "name": "network_exposure_reference.rounded_4dp",
+      "observed": 0.0263,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": {
+        "Fujairah": 0.1071,
+        "Khor Fakkan": 0.5952,
+        "Sohar": 0.2976
+      },
+      "name": "committed_itinerary_shares.rounded_4dp",
+      "observed": {
+        "Fujairah": 0.1071,
+        "Khor Fakkan": 0.5952,
+        "Sohar": 0.2976
+      },
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 1,
+      "name": "event_advisories.rows",
+      "observed": 1,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 23,
+      "name": "event_marker.reopening_duration_days",
+      "observed": 23,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 3.29,
+      "name": "event_marker.duration_weeks",
+      "observed": 3.29,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": 1.0,
+      "name": "event_marker.serviceability_plus_severity",
+      "observed": 1.0,
+      "passed": true
+    },
+    {
+      "detail": "",
+      "expected": "right_censored_at_frozen_vintage",
+      "name": "event_marker.duration_status",
+      "observed": "right_censored_at_frozen_vintage",
+      "passed": true
+    }
+  ],
+  "failed_count": 0,
+  "passed": true
+}

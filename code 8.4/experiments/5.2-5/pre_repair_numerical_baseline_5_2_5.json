@@ -1,0 +1,30 @@
+{
+  "basis": "Accepted 5.2.5 outputs generated before the four Chapter 4 audit-contract reinforcements; runtime columns are deliberately excluded.",
+  "tolerance": 1e-12,
+  "rcmsa": [
+    ["production_problem_0", "Conventional MSA", 11.172791195460999, 1.684507900186581e-05, 500, false, 1e-06, 1.4328477315602349e-05],
+    ["production_problem_0", "RC-MSA", 11.172791195460999, 4.6761298759738843e-07, 7, true, 1e-06, 1.4328477315602349e-05],
+    ["production_problem_1", "Conventional MSA", 43.00231265727636, 8.23638233540619e-06, 500, false, 1e-06, 6.307315862637838e-06],
+    ["production_problem_1", "RC-MSA", 43.00231265727636, 7.118642327884888e-07, 7, true, 1e-06, 6.307315862637838e-06],
+    ["production_problem_2", "Conventional MSA", 42.706073116848266, 5.266039015059833e-06, 500, false, 1e-06, 4.08141133491981e-06],
+    ["production_problem_2", "RC-MSA", 42.706073116848266, 7.82793778183664e-07, 10, true, 1e-06, 4.08141133491981e-06]
+  ],
+  "mpc": [
+    ["zero", 41.57724265397221, "zero"],
+    ["readiness_full", 92.72549265397221, "zero"],
+    ["direct_full", 298.81849265397244, "zero"],
+    ["exercise_full", 41.57724265397221, "zero"],
+    ["release_full", 41.57724265397221, "zero"],
+    ["disclosure_full", 44.577242653972206, "zero"],
+    ["balanced_mid", 273.2443676539723, "zero"]
+  ],
+  "precision": {
+    "required_paths": 88,
+    "executed_paths": 88,
+    "target_halfwidth": 2255.637825,
+    "maximum_achieved_halfwidth": 2237.5424079428612,
+    "contrasts": 7,
+    "precision_targets_met": 7,
+    "precision_target_met": true
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "datasets": [
+    {
+      "evidence_class": "observed_ais_activity_proxy",
+      "expected_columns": 21,
+      "expected_rows": 2761,
+      "frozen_retrieval_date": "2026-08-03",
+      "grain": "one retained chokepoint and calendar day",
+      "id": "portwatch_hormuz_daily",
+      "path": "raw/portwatch/hormuz_chokepoint_daily.csv",
+      "sha256": "41700119e5bd61d3a1db92586755b25131d309dd46df10da151bec31a718667c",
+      "source": "IMF PortWatch",
+      "use_boundary": "AIS-derived carrying-capacity proxy; not handled TEU or a no-disruption path"
+    },
+    {
+      "evidence_class": "observed_ais_activity_proxy",
+      "expected_columns": 30,
+      "expected_rows": 11048,
+      "frozen_retrieval_date": "2026-08-03",
+      "grain": "one retained port and calendar day",
+      "id": "portwatch_gateway_ports_daily",
+      "path": "raw/portwatch/gateway_ports_daily.csv",
+      "sha256": "0cef5af93b67913f5a9b4b4d5f72e8871e4e72bFDAEF2C22EE23818994213EB8",
+      "source": "IMF PortWatch",
+      "use_boundary": "activity scaling and zero audit only; not stage service, route flow, or landbridge capacity"
+    },
+    {
+      "evidence_class": "official_monthly_index",
+      "frozen_end_month": "2026-06",
+      "id": "official_gpr_workbook",
+      "path": "raw/gpr/data_gpr_export.xls",
+      "sha256": "e73a0a307fc3ef04bc44772162978e88c4bb8dedac419343a5cd125337586339",
+      "source": "Caldara-Iacoviello Geopolitical Risk Index",
+      "use_boundary": "latent risk information; no closure label or exact closure probability"
+    },
+    {
+      "evidence_class": "official_allocation_anchor",
+      "id": "gateway_official_capacity",
+      "path": "raw/anchors/gateway_official_capacity.csv",
+      "sha256": "a01c1a4aa4e7047de4eea04db22697af248b37dcbd658be4cbf5351ec524e4ad",
+      "source": "official terminal sources recorded per row",
+      "use_boundary": "relative committed-itinerary allocation only; not weekly usable service"
+    },
+    {
+      "evidence_class": "observed_public_event_advisories",
+      "id": "reclosure_event_advisories",
+      "path": "raw/anchors/reclosure_event_advisories.csv",
+      "sha256": "e10479627c47cd36fed732fc9662c47ebb985ba1e34f240232e2c186f8cea6b1",
+      "source": "public advisories recorded per row",
+      "use_boundary": "reported reopening and renewed-closure dates only; no observed counterfactual severity or final renewed-closure duration"
+    }
+  ],
+  "derived_reference_targets": {
+    "reclosure_event_marker": {
+      "evidence_status": "current_manuscript_estimate_to_be_regenerated_in_5.2.1",
+      "reclosure_duration_status": "right_censored_at_frozen_vintage",
+      "reclosure_severity": 0.836,
+      "serviceability": 0.164,
+      "serviceability_week": "2026-07-13"
+    }
+  },
+  "schema_version": 1
+}

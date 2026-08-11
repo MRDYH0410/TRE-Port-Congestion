@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "experiment_id": "5.2.1_data_event_information_validity",
+  "scope": {
+    "policy_training_or_comparison": false,
+    "closure_classifier": false,
+    "committed_share": false,
+    "gateway_expansion": false,
+    "reclosure_boundary": false
+  },
+  "data": {
+    "data_root": "experiments/data",
+    "project_freeze_date": "2026-08-03",
+    "week_calendar": "Monday-based",
+    "event_start_week": "2026-02-23",
+    "event_end_week": "2026-07-13",
+    "expected_event_weeks": 21,
+    "counterfactual_selection_cutoff": "2026-02-16",
+    "model_unit_tonnes": 1000.0,
+    "activity_field": "capacity_container",
+    "activity_semantics": "AIS-derived carrying-capacity proxy in metric tonnes; not handled cargo, TEU, observed diversion, or cargo ownership"
+  },
+  "counterfactual": {
+    "candidate_models": [
+      "harmonic_ridge",
+      "damped_local_trend",
+      "seasonal_naive"
+    ],
+    "forecast_horizons_weeks": [1, 2, 4, 8, 12, 21],
+    "maximum_forecast_horizon_weeks": 21,
+    "minimum_training_weeks": 156,
+    "minimum_training_basis": "three complete annual cycles identify and validate annual weekly seasonality before any 2026 event observation",
+    "forecast_nonnegativity_projection": "max(prediction,0) because an AIS carrying-capacity activity proxy cannot be negative",
+    "annual_period_weeks": 52.1775,
+    "seasonal_naive_lag_weeks": 52,
+    "harmonic_order_candidates": [1, 2, 3, 4, 5, 6],
+    "harmonic_maximum_order_basis": "annual harmonics no shorter than approximately eight weeks; order selected by within-window GCV",
+    "ridge_penalty_candidates": [
+      0.000001,
+      0.00001,
+      0.0001,
+      0.001,
+      0.01,
+      0.1,
+      1.0,
+      10.0,
+      100.0,
+      1000.0,
+      10000.0,
+      100000.0,
+      1000000.0
+    ],
+    "ridge_selection": "generalised_cross_validation_within_each_training_prefix",
+    "harmonic_design": "unpenalised intercept plus normalised linear trend and annual sine/cosine pairs",
+    "harmonic_penalty_rule": "intercept unpenalised; trend and harmonic coefficients share the selected ridge penalty",
+    "damped_parameter_bounds": {
+      "alpha": [0.001, 0.999],
+      "beta": [0.001, 0.999],
+      "phi": [0.01, 0.999]
+    },
+    "damped_deterministic_initialisations": [
+      [0.2, 0.05, 0.8],
+      [0.2, 0.2, 0.95],
+      [0.5, 0.05, 0.9],
+      [0.5, 0.2, 0.98],
+      [0.8, 0.05, 0.85],
+      [0.8, 0.2, 0.99]
+    ],
+    "damped_optimizer_max_iterations": 500,
+    "damped_numerical_scaling": "training-prefix mean and population standard deviation; forecasts returned to original units",
+    "damped_initial_state": "first scaled observation as level and median of the first up-to-52 weekly differences as trend",
+    "primary_selection_horizon_weeks": 21,
+    "primary_selection_metric": "cumulative_path_WAPE",
+    "relative_wape_tie_tolerance": 0.01,
+    "first_tie_break": "absolute_bias_at_21_weeks",
+    "second_tie_break": "sum_absolute_ACF_lags_1_to_12_from_unique_one_step_residuals",
+    "acf_max_lag": 12,
+    "residual_definition": "observed_minus_predicted"
+  },
+  "hmm": {
+    "number_of_states": 2,
+    "training_end": "2024-12-31",
+    "heldout_start_month": "2025-01-01",
+    "heldout_end_month": "2026-06-01",
+    "volatility_window_months": 24,
+    "jump_sigma": 2.0,
+    "emission_features": [
+      "gpr_threat",
+      "gpr_act",
+      "gpr_threat_diff",
+      "gpr_act_diff",
+      "gpr_threat_diff_volatility_24m",
+      "gpr_act_diff_volatility_24m",
+      "gpr_threat_jump",
+      "gpr_act_jump"
+    ],
+    "feature_scaling_rule": "training_window_mean_and_population_standard_deviation_frozen_after_2024_12",
+    "em_convergence_tolerance": 0.00001,
+    "maximum_em_iterations": 500,
+    "variance_floor": 0.000001,
+    "deterministic_initialisations": 8,
+    "initialisation_construction": "median partitions from risk-level, first-principal-component, change-intensity, and time scores crossed with transition persistence 0.85 and 0.95",
+    "state_labelling_rule": "state with larger sum of standardised threat-level and act-level emission means is high risk",
+    "heldout_forecast_horizons_months": [1, 2, 3],
+    "heldout_benchmarks": [
+      "unconditional_stationary_regime_probabilities",
+      "filtered_state_persistence"
+    ],
+    "release_lag_rule": "observation becomes available at the end of the following calendar month",
+    "release_lag_months": 1,
+    "decision_cutoff": "start_of_Monday_decision_week",
+    "readiness_lead_weeks": 8,
+    "readiness_lead_status": "designed timing anchor for interface validation only; not an economic calibration"
+  },
+  "figures": {
+    "dpi": 300,
+    "format": "png",
+    "style": "shared_research_light",
+    "acf_confidence_level": 0.95
+  },
+  "acceptance": {
+    "numeric_tolerance": 1e-9,
+    "model_unit_tolerance": 1e-10,
+    "selection_rule_locked_before_run": true,
+    "forbidden_hmm_feature_tokens": [
+      "closure",
+      "blocked",
+      "serviceability",
+      "diversion"
+    ],
+    "required_parameter_names": [
+      "number_of_states",
+      "training_end",
+      "emission_features",
+      "feature_scaling_rule",
+      "em_convergence_tolerance",
+      "maximum_em_iterations",
+      "deterministic_initialisations",
+      "initialisation_construction",
+      "state_labelling_rule",
+      "release_lag_rule",
+      "heldout_forecast_horizons_months",
+      "readiness_lead_weeks"
+    ]
+  }
+}

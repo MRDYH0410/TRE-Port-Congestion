@@ -1,0 +1,279 @@
+{
+  "experiment_id": "5.2.2_common_authority_benchmark",
+  "schema_version": "5.2.2-v1",
+  "input_5_2_1": "output/5.2.1_data_event_information_validity",
+  "expected_5_2_1_interface_sha256": "407b06106c86f7173d399d8a66283f48ac6746b146c869c14cf77bad3ba3a976",
+  "output_directory": "output/5.2.2_common_authority_benchmark",
+  "figure_directory": "experiments/5.2-2/figures",
+  "event_weeks": 21,
+  "model_unit_tonnes": 1000.0,
+  "committed_fraction_reference": 0.5,
+  "committed_fraction_basis": "design midpoint of the complete structural domain [0,1]; not an historical estimate",
+  "cargo_class": "ais_activity_proxy",
+  "routes": [
+    {
+      "route_id": "Khor_Fakkan",
+      "gateway": "Khor Fakkan",
+      "corridor": "landbridge_shared",
+      "maritime_lag_weeks": 2
+    },
+    {
+      "route_id": "Fujairah",
+      "gateway": "Fujairah",
+      "corridor": "landbridge_shared",
+      "maritime_lag_weeks": 3
+    },
+    {
+      "route_id": "Sohar",
+      "gateway": "Sohar",
+      "corridor": "landbridge_shared",
+      "maritime_lag_weeks": 4
+    }
+  ],
+  "route_resource_cost": {
+    "common_baseline": "Khor_Fakkan",
+    "unit_definition": "one resource-index unit per excess maritime lag week per model cargo unit",
+    "ocean_formula": "route maritime lag weeks minus minimum route maritime lag weeks",
+    "handling_formula": "zero differential because every declared route uses the same berth-yard-gate chain",
+    "trucking_formula": "zero differential because every declared route uses one shared landbridge corridor stage",
+    "border_formula": "zero differential: no frozen evidence supports a route-specific border increment",
+    "evidence_status": "designed physical resource proxy; mandatory sensitivity analysis in 5.3.4"
+  },
+  "action": {
+    "controlled_resource": "corridor:landbridge_shared",
+    "readiness_lead_weeks": 8,
+    "direct_lead_weeks": 0,
+    "upper_bound_formula": "one reference baseline service-capacity week at the controlled shared corridor",
+    "projection_scaling_formula": "reciprocal of each formal block upper bound",
+    "projection_tolerance": 1e-08,
+    "projection_max_iterations": 300,
+    "readiness_order_cost_per_unit": 0.125,
+    "direct_order_cost_per_unit": 1.0,
+    "direct_order_cost_formula": "one queue-unit-week per model unit; readiness order and exercise are one eighth for the eight-week lead",
+    "readiness_exercise_cost_per_unit": 0.125,
+    "release_cost_per_unit": 0.0,
+    "publication_cost_per_unit": 1.0,
+    "period_budget_fraction": 0.5,
+    "cumulative_budget_fraction": 0.5
+  },
+  "behavior": {
+    "waiting_vintages": 105,
+    "hazard_formula": "(v/(V-1))^2 for v=0,...,V-1",
+    "hazard_power": 2.0,
+    "logit_theta": 1.0,
+    "value_of_time": 1.0,
+    "waiting_base": 1.0,
+    "waiting_age_cost_per_week": 1.0,
+    "waiting_inventory_coefficient": 1.0,
+    "waiting_reclosure_coefficient": 1.0,
+    "waiting_continuation_value": 0.0,
+    "exit_failure_cost_per_unit": 21.0,
+    "exit_failure_cost_formula": "one 21-week decision-horizon equivalent of the common resource index",
+    "late_exit_cost_per_vintage": 0.0,
+    "late_exit_cost_basis": "Chapter 3 unidentified-late-consequence convention: c^{E,late}_{kj}=0",
+    "route_market_cost_default": 0.0,
+    "route_market_cost_basis": "no frozen route-specific market premium is identified in the public-data application",
+    "rcmsa_tolerance": 1e-06,
+    "rcmsa_max_iterations": 500,
+    "rcmsa_deduplication_tolerance": 1e-07
+  },
+  "information": {
+    "gamma_I": 1.0,
+    "gamma_I_basis": "upper endpoint of the formal credibility domain; frozen before training and reported as a designed reference case",
+    "waiting_error_scale_estimator": "route-wise RMSE of one-step reference-wait forecast errors on the two held-out validation paths under Passive actions",
+    "waiting_error_scale_calibration_file": "experiments/5.2-2/waiting_forecast_error_calibration.csv",
+    "waiting_error_scale_weeks_by_route": {
+      "Khor_Fakkan": 0.3120090705243646,
+      "Fujairah": 1.2905529764780317,
+      "Sohar": 0.04784021718921759
+    },
+    "public_signal_formula": "maritime lag plus current route-stage workloads divided by action-adjusted effective capacities plus predetermined reference-share loading of released/adaptive decision mass and committed mass at berth",
+    "reference_forecast_formula": "maritime lag plus current route-stage workloads divided by frozen base capacities before the current action",
+    "reference_loading_rule": "official committed-itinerary reference shares allocate both committed mass and the adaptive decision pool for signal construction; the realised SUE is never used",
+    "credibility_clipping": "clip the predetermined raw signal to reference forecast plus or minus gamma_I times the frozen route RMSE"
+  },
+  "capacity_technology": {
+    "readiness_maturity_yield": 1.0,
+    "readiness_consumption": 1.0,
+    "readiness_capacity_yield": 1.0,
+    "readiness_decay": 0.0,
+    "direct_maturity_yield": 1.0,
+    "direct_decay": 1.0,
+    "basis": "unit-preserving one-period capacity technology; readiness stock persists until exercise and direct capacity is a one-period emergency service increment"
+  },
+  "physical_feedback": {
+    "formula": "psi(r)=1/(1+strength*max(r-threshold_ratio,0))",
+    "strength": 1.0,
+    "threshold_ratio": 1.0,
+    "corridor_history_window_weeks": 2,
+    "fallback_shared_corridor_weight": 1.0,
+    "basis": "designed reference feedback family declared in 5.1; the two-week window is the shortest nondegenerate lagged-share history"
+  },
+  "loss": {
+    "queue_cost_per_model_unit_week": 1.0,
+    "waiting_cost_formula": "vintage index plus one resource-index unit per model-unit week",
+    "waiting_cost_per_vintage_week": 1.0,
+    "overflow_cost_per_model_unit_week": 1.0,
+    "threshold_formula": "one base service-capacity week",
+    "threshold_service_weeks": 1.0,
+    "terminal_unit_cost_formula": "same as the declared exit failure cost"
+  },
+  "mpc": {
+    "control_horizon_weeks": 8,
+    "horizon_basis": "inherits the frozen 5.2.1 eight-week released lead forecast, equals readiness lead, and is no shorter than maximum reference maritime lag",
+    "normalised_levels": [0.0, 0.5, 1.0],
+    "scenario_count": 3,
+    "scenario_ids": ["slow", "central", "fast"],
+    "scenario_recovery_speed_multipliers": [0.0, 1.0, 2.0],
+    "scenario_weight_central_mass": 0.5,
+    "scenario_weight_tail_mass": 0.5,
+    "scenario_construction_basis": "three-point slow-central-fast support uses the two recovery endpoints and midpoint; released lead risk tilts readiness weights and observed serviceability tilts operational weights",
+    "candidate_profiles": [
+      "zero",
+      "readiness_full",
+      "direct_full",
+      "exercise_full",
+      "release_full",
+      "disclosure_full",
+      "balanced_mid"
+    ],
+    "terminal_value": "formal terminal mass correction at the end of H_C"
+  },
+  "reactive_policy": {
+    "pressure_threshold_ratio": 1.0,
+    "response_formula": "max(pressure-threshold,0)/(1+max(pressure-threshold,0))",
+    "release_formula": "waiting/reference_capacity divided by one plus waiting/reference_capacity",
+    "readiness_formula": "released lead-risk probability times one minus current pressure response",
+    "direct_formula": "current pressure response",
+    "disclosure_formula": "maximum of released current-risk belief and route overload response",
+    "basis": "dimensionless monotone current-state mapping with no future serviceability or event access"
+  },
+  "paths": {
+    "training_count": 3,
+    "validation_count": 2,
+    "pilot_count": 4,
+    "minimum_final_count": 6,
+    "maximum_final_count": 196,
+    "maximum_final_count_basis": "all 196 distinct contiguous 21-week blocks available from the 216-row frozen event-free residual library",
+    "confidence_level": 0.95,
+    "target_halfwidth_fraction_of_reference_failure": 0.05,
+    "training_seed_namespace": "5.2.2-training",
+    "validation_seed_namespace": "5.2.2-validation",
+    "test_seed_namespace": "5.2.2-test",
+    "residual_sampling": "deterministic without-replacement selection of contiguous 21-week blocks from the 216 unique event-free residuals; the original indexed candidate is retained when unique and duplicate candidates use a deterministic fallback; independent weekly resampling is forbidden because 5.2.1 detects dependence at lags 1 and 9",
+    "synthetic_calendar": {
+      "training_start_monday": "2000-01-03",
+      "validation_start_monday": "2001-01-01",
+      "path_spacing_weeks": 30,
+      "basis": "sentinel Monday calendars separate designed training and validation paths from the 2026 historical test event"
+    },
+    "designed_information": {
+      "training_current_risk_anchors": [0.0, 0.5, 1.0],
+      "validation_current_risk_anchors": [0.25, 0.75],
+      "lead_forecast_current_weight": 0.5,
+      "lead_forecast_intercept": 0.25,
+      "basis": "training uses both probability endpoints and midpoint; validation uses the interleaved quartiles"
+    },
+    "designed_serviceability": {
+      "training_onset_weeks": [1, 3, 5],
+      "validation_onset_weeks": [2, 5],
+      "training_severity_floors": [0.0, 0.5, 0.0],
+      "validation_severity_floors": [0.25, 0.75],
+      "training_duration_weeks": [10, 15, 10],
+      "validation_duration_weeks": [14, 10],
+      "training_reclosure_path_indices": [2],
+      "validation_reclosure_path_indices": [],
+      "reclosure_tail_weeks": 3,
+      "recovery_rule": "linear recovery from severity floor to one over all remaining weeks",
+      "basis": "designed support spans endpoint, midpoint and interleaved validation severities without using the historical test outcome"
+    }
+  },
+  "training": {
+    "seeds": 3,
+    "seed_construction": "first 32 bits of SHA256(experiment_id|policy|seed_index)",
+    "minimum_episodes": 9,
+    "validation_interval_episodes": 3,
+    "validation_improvement_tolerance_fraction": 0.001,
+    "constraint_violation_tolerance": 0.001,
+    "patience_evaluations": 2,
+    "maximum_episodes": 12,
+    "discount_factor": 0.98,
+    "learning_rate": 0.02,
+    "ppo_clip_ratio": 0.2,
+    "sac_entropy_temperature": 0.05,
+    "sac_entropy_temperature_role": "positive initial value; updated during every SAC episode rather than held fixed",
+    "sac_entropy_temperature_learning_rate": 0.02,
+    "sac_entropy_temperature_learning_rate_basis": "same frozen optimizer step as the actor, avoiding an additional test-tuned learning-rate scale",
+    "sac_target_entropy_rule": "negative_action_dimension",
+    "sac_preprojection_policy": "reparameterised diagonal Gaussian in latent space followed by the logistic action map",
+    "sac_projection_gradient": "piecewise active-set subgradient of the unchanged formal convex projector away from active-set ties",
+    "sac_constraint_dual_step": 0.1,
+    "sac_critic_projection_dimension": 32,
+    "sac_critic_interaction_head": 4,
+    "bc_ridge": 0.001
+  },
+  "computation": {
+    "parallel_evaluation_workers": 14,
+    "basis": "independent path-policy replications use process isolation; two of 16 logical processors remain for orchestration and the operating system; production model, policies and random seeds are unchanged"
+  },
+  "state_and_actor": {
+    "serviceability_history_lookback_weeks": 4,
+    "corridor_history_lookback_weeks": 2,
+    "route_wait_feature": "pre-action reference forecast from model._current_route_wait",
+    "initial_weight_standard_deviation": 0.02,
+    "initial_intercept_weight": -2.0,
+    "initial_log_action_standard_deviation": -1.5,
+    "basis": "complete-state linear actor with deterministic hash seeds; initialisation is frozen before validation and test replay"
+  },
+  "clearance": {
+    "maximum_weeks": 104,
+    "empty_tolerance": 1e-06,
+    "recovery_rule": "zero demand, all master routes physically available, zero coordination action"
+  },
+  "numerics": {
+    "mass_tolerance": 1e-06,
+    "loss_identity_tolerance": 1e-06,
+    "sac_gradient_check_step": 6.055454452393343e-06,
+    "sac_gradient_check_step_basis": "cube root of IEEE-754 double machine epsilon for a central finite difference",
+    "sac_gradient_check_relative_tolerance": 0.0001,
+    "sac_gradient_check_tolerance_basis": "conservative multiple of the central-difference truncation and floating-point scale; numerical acceptance only",
+    "hash_algorithm": "SHA256",
+    "figure_dpi": 300
+  },
+  "scientific_parameter_contract": {
+    "required_sections": [
+      "behavior",
+      "information",
+      "capacity_technology",
+      "physical_feedback",
+      "action",
+      "loss",
+      "mpc",
+      "paths",
+      "training",
+      "computation",
+      "state_and_actor",
+      "clearance",
+      "numerics"
+    ],
+    "rule": "every result-affecting experiment design value is read from this frozen config or from a hash-locked input named by this config"
+  },
+  "main_policies": [
+    "Passive",
+    "Reactive",
+    "Projected stochastic MPC",
+    "Behaviour cloning",
+    "PPO",
+    "Vanilla SAC",
+    "Constrained SAC",
+    "Model-guided constrained SAC"
+  ],
+  "learning_policies": [
+    "Behaviour cloning",
+    "PPO",
+    "Vanilla SAC",
+    "Constrained SAC",
+    "Model-guided constrained SAC"
+  ],
+  "forbidden_main_policy": "Equal allocation"
+}

@@ -1,0 +1,19 @@
+{
+  "allowed_evidence_categories": [
+    "data_transformation",
+    "model_identity",
+    "neutral_normalisation",
+    "structural_domain_design",
+    "numerical_precision_design"
+  ],
+  "columns": [
+    "experiment",
+    "parameter",
+    "value",
+    "evidence_category",
+    "basis"
+  ],
+  "rule": "Every run-specific parameter must record both its value and why it belongs to its evidence category.",
+  "schema_version": 1
+}
+
