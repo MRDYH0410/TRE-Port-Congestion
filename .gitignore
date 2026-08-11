@@ -1,0 +1,110 @@
+# ============================================================
+# IDE
+# ============================================================
+
+.idea/
+
+
+# ============================================================
+# Python cache / build artifacts
+# ============================================================
+
+__pycache__/
+*.pyc
+*.pyo
+
+.pytest_cache/
+.mypy_cache/
+
+
+# ============================================================
+# Python virtual environments
+# ============================================================
+
+.venv/
+venv/
+env/
+**/.venv/
+
+
+# ============================================================
+# OS files
+# ============================================================
+
+.DS_Store
+Thumbs.db
+
+
+# ============================================================
+# Logs / temporary files
+# ============================================================
+
+*.log
+*.tmp
+
+
+# ============================================================
+# LaTeX auxiliary files
+# Keep .tex, .bib, .cls, .sty, PDF, and figures
+# ============================================================
+
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+*.toc
+
+
+# ============================================================
+# Experiment caches
+# These are regenerable intermediate results
+# ============================================================
+
+code 8.4/experiments/**/cache/
+code 8.4/experiments/**/cache_layered/
+
+# Diagnostic / debugging caches
+code 8.4/experiments/**/diagnostic_cache/
+code 8.4/experiments/**/diagnostic_cache*/
+
+# More general cache directories if created later
+code 8.4/experiments/**/.cache/
+
+
+# ============================================================
+# Temporary PDF / rendering / QA inspection files
+# Keep final figures, but ignore rendered page screenshots
+# ============================================================
+
+overleaf - 8.4/tmp/
+code 8.4/tmp/
+
+
+# ============================================================
+# Extremely large experiment outputs
+# Too large for normal Git / GitHub LFS in current form
+# ============================================================
+
+code 8.4/output/5.2.4_released_risk_information_capacity_preparation/capacity_action_trace.csv
+code 8.4/output/5.2.4_released_risk_information_capacity_preparation/readiness_stock_flow.csv
+code 8.4/output/5.2.4_released_risk_information_capacity_preparation/direct_capacity_pipeline.csv
+
+
+# ============================================================
+# Old / duplicated / invalidated experiment outputs
+# ============================================================
+
+code 8.4/output/5.3.1_commitment_sensitivity.previous_20260811_041809/
+code 8.4/output/5.2.5_computational_methodological_acceptance.invalidated_old_20260810/
+
+
+# ============================================================
+# Compressed archives
+# ============================================================
+
+*.zip
+*.rar
+*.7z
