@@ -1,0 +1,11 @@
+formula_or_chain,code_function,saved_evidence
+action -> projection,apply_restriction; ActionProjector.project,"original, restricted and implemented actions"
+rho -> oldest first,tre84.behavior.oldest_first,released waiting by vintage
+route-wait-exit SUE,tre84.behavior.RCMSASolver.solve,"source simplex, selected start, step trace, residual"
+waiting transition,tre84.transition.TaggedTransition.step,"renewal, attrition and next vintage identity"
+maritime provenance,PipelineLot plus diagnostic shadow ledger,"committed/adaptive dispatch, due and holding"
+four-stage transition,TaggedTransition.step plus proportional shadow,route-stage before/service/after/next
+capacity feedback,CapacityDynamics.transition,"base, direct, readiness, effective capacity and pressure"
+operational loss,OperationalLoss.compute,"stage queue, waiting, two exits, overload, route, action"
+terminal correction,TerminalMassCorrection.compute,right-censored final outstanding mass
+paired mechanism difference,restricted_action_effects,"physical-path paired means, simultaneous intervals and Holm p"

@@ -1,0 +1,71 @@
+policy,reference_policy,outcome,physical_paths,mean_paired_difference,standard_error,paired_95_lower,paired_95_upper,inference_unit,learning_seeds_averaged_within_path_first
+Behaviour cloning,Passive,total_operational_objective,88,-171048.05161357016,1106.1763247359092,-173246.696837513,-168849.40638962731,physical_path,True
+Behaviour cloning,Passive,waiting_model_unit_weeks,88,-7909.455472517648,53.8270281217576,-8016.4425193857805,-7802.468425649515,physical_path,True
+Behaviour cloning,Passive,direct_sue_exit,88,0.0004196000843848752,1.1212701168148935e-05,0.0003973136266840789,0.00044188654208567144,physical_path,True
+Behaviour cloning,Passive,duration_attrition,88,-355.03798589077746,2.2625153674674614,-359.5349801723783,-350.5409916091766,physical_path,True
+Behaviour cloning,Passive,overload,88,0.15641453649990406,0.3722918494847101,-0.5835558267040175,0.8963848997038255,physical_path,True
+Behaviour cloning,Passive,loss_route_resource,88,513.9428201737915,4.846224959883469,504.31042330908343,523.5752170384995,physical_path,True
+Behaviour cloning,Passive,loss_action,88,1172.6582172803976,0.34635419587320754,1171.9698008123169,1173.3466337484783,physical_path,True
+Behaviour cloning,Passive,ending_outstanding_mass,88,-1.5240331239420343e-07,4.067524659047481e-09,-1.6048795809209396e-07,-1.443186666963129e-07,physical_path,True
+Behaviour cloning,Passive,restricted_clearance_time_contribution,88,1.0,0.0,1.0,1.0,physical_path,True
+Behaviour cloning,Passive,seed_clearance_probability,88,0.0,0.0,0.0,0.0,physical_path,True
+Constrained SAC,Passive,total_operational_objective,88,-31.016033654080356,1.5880504833006868,-34.172455946270325,-27.859611361890387,physical_path,True
+Constrained SAC,Passive,waiting_model_unit_weeks,88,-0.5795749706710054,0.07858983611697216,-0.7357807797858271,-0.42336916155618365,physical_path,True
+Constrained SAC,Passive,direct_sue_exit,88,1.2082499855555522e-09,1.3601632885934478e-09,-1.4952218311662093e-09,3.911721802277314e-09,physical_path,True
+Constrained SAC,Passive,duration_attrition,88,-0.08193490102920849,0.0031433190483807745,-0.0881825880014468,-0.07568721405697018,physical_path,True
+Constrained SAC,Passive,overload,88,0.27433901044164793,0.00524213691354916,0.2639196956990539,0.284758325184242,physical_path,True
+Constrained SAC,Passive,loss_route_resource,88,0.044253830744422504,0.003491404449445315,0.037314286346328066,0.05119337514251694,physical_path,True
+Constrained SAC,Passive,loss_action,88,3.3869162563362663,0.028071974536249437,3.3311201672674593,3.442712345405073,physical_path,True
+Constrained SAC,Passive,ending_outstanding_mass,88,-1.685189977541103e-11,4.106349875344877e-12,-2.5013714794748752e-11,-8.690084756073305e-12,physical_path,True
+Constrained SAC,Passive,restricted_clearance_time_contribution,88,0.0,0.0,0.0,0.0,physical_path,True
+Constrained SAC,Passive,seed_clearance_probability,88,0.0,0.0,0.0,0.0,physical_path,True
+Model-guided constrained SAC,Passive,total_operational_objective,88,-170537.59454069927,1104.6077757060368,-172733.12210360027,-168342.06697779827,physical_path,True
+Model-guided constrained SAC,Passive,waiting_model_unit_weeks,88,-7848.18389743921,53.633656828697035,-7954.786597923835,-7741.581196954586,physical_path,True
+Model-guided constrained SAC,Passive,direct_sue_exit,88,0.00043945262500785705,1.1643079011920155e-05,0.00041631074474056867,0.00046259450527514544,physical_path,True
+Model-guided constrained SAC,Passive,duration_attrition,88,-354.00739672499674,2.257049365300808,-358.493526735424,-349.5212667145695,physical_path,True
+Model-guided constrained SAC,Passive,overload,88,0.26248263868135074,0.5496287532859188,-0.8299640231492174,1.354929300511919,physical_path,True
+Model-guided constrained SAC,Passive,loss_route_resource,88,525.5320925631712,4.846694603605279,515.8987622307124,535.1654228956301,physical_path,True
+Model-guided constrained SAC,Passive,loss_action,88,940.629711746249,2.419793565687479,935.8201100153526,945.4393134771453,physical_path,True
+Model-guided constrained SAC,Passive,ending_outstanding_mass,88,-1.519918435917e-07,4.0667139122236564e-09,-1.600748778424892e-07,-1.4390880934091077e-07,physical_path,True
+Model-guided constrained SAC,Passive,restricted_clearance_time_contribution,88,1.0,0.0,1.0,1.0,physical_path,True
+Model-guided constrained SAC,Passive,seed_clearance_probability,88,0.0,0.0,0.0,0.0,physical_path,True
+PPO,Passive,total_operational_objective,88,-111648.55179530884,846.4364010584621,-113330.93579589108,-109966.1677947266,physical_path,True
+PPO,Passive,waiting_model_unit_weeks,88,-4403.037266240377,37.713825907098155,-4477.997578943734,-4328.07695353702,physical_path,True
+PPO,Passive,direct_sue_exit,88,0.0002049129128488309,5.800858638915161e-06,0.0001933830781777956,0.00021644274751986617,physical_path,True
+PPO,Passive,duration_attrition,88,-242.17280251431094,1.7835295730003866,-245.71776066406554,-238.62784436455635,physical_path,True
+PPO,Passive,overload,88,-16.050145981791058,0.32508294877767796,-16.696283542984965,-15.40400842059715,physical_path,True
+PPO,Passive,loss_route_resource,88,321.04878960445467,3.8219424779056976,313.45226508361225,328.6453141252971,physical_path,True
+PPO,Passive,loss_action,88,1041.9227758962304,0.9093153087992897,1040.1154132578852,1043.7301385345756,physical_path,True
+PPO,Passive,ending_outstanding_mass,88,-1.668288878931501e-07,4.893137246304028e-09,-1.7655452800685593e-07,-1.571032477794443e-07,physical_path,True
+PPO,Passive,restricted_clearance_time_contribution,88,0.9962121212121212,0.003787878787878734,0.9886833019636778,1.0037409404605646,physical_path,True
+PPO,Passive,seed_clearance_probability,88,0.0,0.0,0.0,0.0,physical_path,True
+Projected stochastic MPC,Passive,total_operational_objective,88,-177278.61872927236,1034.198208264231,-179334.19965282292,-175223.0378057218,physical_path,True
+Projected stochastic MPC,Passive,waiting_model_unit_weeks,88,-8592.53910390453,49.407703288445184,-8690.742264134939,-8494.335943674121,physical_path,True
+Projected stochastic MPC,Passive,direct_sue_exit,88,0.0005290862797691502,1.2880747585910884e-05,0.0005034843991943354,0.0005546881603439651,physical_path,True
+Projected stochastic MPC,Passive,duration_attrition,88,-365.05279149721633,2.136653733597202,-369.29962215300236,-360.8059608414303,physical_path,True
+Projected stochastic MPC,Passive,overload,88,172.25701260327125,1.1245908380463308,170.02176654017117,174.49225866637133,physical_path,True
+Projected stochastic MPC,Passive,loss_route_resource,88,590.3094854884449,4.450325359277169,581.4639819485798,599.1549890283101,physical_path,True
+Projected stochastic MPC,Passive,loss_action,88,0.0,0.0,0.0,0.0,physical_path,True
+Projected stochastic MPC,Passive,ending_outstanding_mass,88,-1.6318313597027738e-07,4.073190251078394e-09,-1.7127904264580865e-07,-1.550872292947461e-07,physical_path,True
+Projected stochastic MPC,Passive,restricted_clearance_time_contribution,88,1.0,0.0,1.0,1.0,physical_path,True
+Projected stochastic MPC,Passive,seed_clearance_probability,88,0.0,0.0,0.0,0.0,physical_path,True
+Reactive,Passive,total_operational_objective,88,-186460.52009310204,1125.746168733998,-188698.0625010449,-184222.9776851592,physical_path,True
+Reactive,Passive,waiting_model_unit_weeks,88,-8904.408469536029,54.58244262408833,-9012.896984525027,-8795.919954547031,physical_path,True
+Reactive,Passive,direct_sue_exit,88,0.0002712517578086115,5.370015048991808e-06,0.00026057827142497746,0.00028192524419224556,physical_path,True
+Reactive,Passive,duration_attrition,88,-379.23137734121724,2.2658593073764113,-383.73501806547426,-374.7277366169602,physical_path,True
+Reactive,Passive,overload,88,-177.13399284640101,1.062901078838995,-179.24662383321134,-175.02136185959068,physical_path,True
+Reactive,Passive,loss_route_resource,88,497.6091120451451,3.9301627069512124,489.79748810081634,505.4207359894738,physical_path,True
+Reactive,Passive,loss_action,88,599.860543202984,4.578019402881132,590.761233924542,608.959852481426,physical_path,True
+Reactive,Passive,ending_outstanding_mass,88,-1.6530175228232999e-07,4.017737797891372e-09,-1.7328744120267232e-07,-1.5731606336198765e-07,physical_path,True
+Reactive,Passive,restricted_clearance_time_contribution,88,1.0,0.0,1.0,1.0,physical_path,True
+Reactive,Passive,seed_clearance_probability,88,0.0,0.0,0.0,0.0,physical_path,True
+Vanilla SAC,Passive,total_operational_objective,88,-52.41517153986404,1.4803843036606132,-55.357595641754344,-49.47274743797374,physical_path,True
+Vanilla SAC,Passive,waiting_model_unit_weeks,88,-1.535233991051779,0.0704425878043384,-1.675246261948247,-1.3952217201553108,physical_path,True
+Vanilla SAC,Passive,direct_sue_exit,88,-1.7679941914750897e-08,1.121827836472129e-09,-1.990969621304005e-08,-1.5450187616461744e-08,physical_path,True
+Vanilla SAC,Passive,duration_attrition,88,-0.12489309340066318,0.0030098909821795012,-0.13087557764352342,-0.11891060915780294,physical_path,True
+Vanilla SAC,Passive,overload,88,0.2345418713518267,0.00529249713708461,0.2240224602118709,0.2450612824917825,physical_path,True
+Vanilla SAC,Passive,loss_route_resource,88,0.005434713227319063,0.002924258562642754,-0.00037756730929742587,0.01124699376393555,physical_path,True
+Vanilla SAC,Passive,loss_action,88,3.492925272639418,0.028796642158600633,3.4356888282030265,3.55016171707581,physical_path,True
+Vanilla SAC,Passive,ending_outstanding_mass,88,-2.447700795137109e-11,3.851696566409397e-12,-3.2132671944934594e-11,-1.6821343957807585e-11,physical_path,True
+Vanilla SAC,Passive,restricted_clearance_time_contribution,88,0.0,0.0,0.0,0.0,physical_path,True
+Vanilla SAC,Passive,seed_clearance_probability,88,0.0,0.0,0.0,0.0,physical_path,True

@@ -1,0 +1,575 @@
+{
+  "experiment_id": "5.2.3_action_and_congestion_mechanisms",
+  "status": "complete",
+  "started_at_utc": "2026-08-09T08:48:17.418070+00:00",
+  "completed_at_utc": "2026-08-09T09:44:31.258693+00:00",
+  "elapsed_seconds": 3373.1263454,
+  "command": "python experiments/5.2-3/run_5_2_3.py",
+  "python": "3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 15:03:56) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "config": {
+    "path": "experiments/5.2-3/config_5_2_3.json",
+    "sha256": "73b1853e53046b32d6e35352550c57760fa797f3195ab0f934799f8a35394bd5"
+  },
+  "inputs": [
+    {
+      "path": "output/5.2.2_common_authority_benchmark/acceptance_5_2_2.json",
+      "sha256": "4a0b2479a27400c868ba9ffee00c691761ddc460c59f1d8532e89630c8829c80",
+      "size_bytes": 3251
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/run_manifest.json",
+      "sha256": "ce4f0bf874cfb902e0a2d11d499dd177b0496029d67a74d623c4d152417bd30b",
+      "size_bytes": 13213
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoint_manifest.csv",
+      "sha256": "9033589ef4cf9ed49b7cfe3cb1815f1fd0bdfcb453eaa9e8d2f3c969ac66baf8",
+      "size_bytes": 5167
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/ACCEPTANCE_REPORT.md",
+      "sha256": "f0bc486a61f41badac1565119c3429205b5f32cc03da7b05b53da8ddfe650e20",
+      "size_bytes": 3165
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/benchmark_period_paths.csv",
+      "sha256": "3576407b9c715c1b97b78a305ef632ea295a9dd902e64f529e1f2ff8d8053ae8",
+      "size_bytes": 99122534
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/benchmark_replications.csv",
+      "sha256": "5e5d018121d37accc71ec63de0864c13bb2c1db342640da0e395a66f9f7c4a4a",
+      "size_bytes": 1263655
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoint_hashes.csv",
+      "sha256": "0a005181192b08f6f1421fe33b60af1f91970914548b8f43e3e7a7e39730966d",
+      "size_bytes": 2052
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoint_validation.csv",
+      "sha256": "e484786e507c961aa398fd46299b2d611121728c4aeb7b6042325e48b7331bcd",
+      "size_bytes": 1145
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/behaviour_cloning_seed_0.npz",
+      "sha256": "a70e51c789ed5fad39a38cd6d13d9922cb78a646f71c549d0a564ca15b64c482",
+      "size_bytes": 237172
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/behaviour_cloning_seed_1.npz",
+      "sha256": "5239309e9cd3e2d2e8b9b13320e6d7756a61969c02968901af012dec185eef08",
+      "size_bytes": 237129
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/behaviour_cloning_seed_2.npz",
+      "sha256": "a65a269c9441c3eb3191f7034004a7cddc51ac43359e812c4828169c2c268b1a",
+      "size_bytes": 237134
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/constrained_sac_seed_0.npz",
+      "sha256": "a573ba3225b1fb325a31be1c73333c9a7d12e050460879113f06551f4d1ca4bc",
+      "size_bytes": 237460
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/constrained_sac_seed_1.npz",
+      "sha256": "468020983bce00b9d741d6f5aec5803cc786003cc1118969b1012930de7a6067",
+      "size_bytes": 237461
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/constrained_sac_seed_2.npz",
+      "sha256": "c26767b8b75c0981dc5231fa548e952fa14e83b72e731f604157aaf81e5c9e6c",
+      "size_bytes": 237491
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/model_guided_constrained_sac_seed_0.json",
+      "sha256": "0d5343495ffef2373bf0355823bd20eaec647113f72a6a78788782d4a86af137",
+      "size_bytes": 341
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/model_guided_constrained_sac_seed_1.json",
+      "sha256": "bcebaa8cafd5de6e0e5553705cb2710dc03622f8bbb3ae049fe8520116af60b2",
+      "size_bytes": 340
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/model_guided_constrained_sac_seed_2.json",
+      "sha256": "a10693547202461ea11343a118c23a4166d4e67aaa4bc92ff4182f4b295d9ad5",
+      "size_bytes": 342
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/ppo_seed_0.npz",
+      "sha256": "209ec275e9617bc483d6f99be16ef741f9007c4166a56206c3e00ddfe657ce4a",
+      "size_bytes": 237065
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/ppo_seed_1.npz",
+      "sha256": "efae9cf8a4df88ffa3d6e390dd77273204d5e45107a5773d32f49c029ff58124",
+      "size_bytes": 237051
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/ppo_seed_2.npz",
+      "sha256": "3421cd87de0363538baeb95ac67759e8d22636ed873837e39a83d913c5715391",
+      "size_bytes": 237038
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/vanilla_sac_seed_0.npz",
+      "sha256": "e439b4883469e5aac2076c022b1f26c84ed5222ce7829a75696302fb3c66128e",
+      "size_bytes": 237427
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/vanilla_sac_seed_1.npz",
+      "sha256": "76caec354a9682daf28d6c13ac7ddd7a2e5fa802047afa1d8978e13443bf718b",
+      "size_bytes": 237477
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/checkpoints/vanilla_sac_seed_2.npz",
+      "sha256": "e737646ebd6a28199490153b3bb285b50a5bcb677965c24c8ae2d45b10a0672b",
+      "size_bytes": 237497
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/clearance_summary.csv",
+      "sha256": "869336b7b830ea0b22863b797a4daee5426defc124119da22ef31b862ef0fc18",
+      "size_bytes": 998
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/decision_time_summary.csv",
+      "sha256": "1d1fc8a3601532d3dbd63a3830c4f83656e5404eb3987e0c657231467920a69b",
+      "size_bytes": 750
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/figures/figure_5_2_2a_policy_performance.png",
+      "sha256": "8a80401457bfc7f1dfe448c683b3510269bd14f410ad73fef427db7fa593d836",
+      "size_bytes": 430767
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/figures/figure_5_2_2b_loss_decomposition.png",
+      "sha256": "953f7cdd75f684fc98c98b33f1db9620af59c94f82007bf6cf84b225b2b7ebb6",
+      "size_bytes": 478662
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/figures/figure_5_2_2c_clearance_censoring.png",
+      "sha256": "a2315a435183d7399bc31e69e48bf83da5731e5fc702f8f454775200dffa1e86",
+      "size_bytes": 271218
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/loss_component_summary.csv",
+      "sha256": "ca74f77c5b93936275d527c06d1c6306c73087ba5f58db7bbb4a2819508cbd54",
+      "size_bytes": 1946
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/paired_policy_effects.csv",
+      "sha256": "523b8c06a689a4bcb0506ac5f31d288f17c70b6348a68a5324946a976788e5d1",
+      "size_bytes": 1757
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/parameter_registry_5_2_2.csv",
+      "sha256": "9d2d407f07c91a571a697d75c0f62fb9277fd35510a88d59227b0df6d613c3b7",
+      "size_bytes": 45661
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/parameter_source_mapping.json",
+      "sha256": "3c96dbe21846f0dd56e8b165ef48b4594699f941a8d29abff3f1cdde7ce379de",
+      "size_bytes": 668
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/path_level_seed_aggregated.csv",
+      "sha256": "4c9d4a45c6758552588342bc8e3daa22aa657c1c90b012753c00316f8e055ddc",
+      "size_bytes": 568091
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/pilot_precision.csv",
+      "sha256": "e64b9574a5c1a2d8adec82b1c4723c86b4c5901fef15d14b6cb6fec62a168ff1",
+      "size_bytes": 1228
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/policy_activation_summary.csv",
+      "sha256": "78418a93de109711f7d572aeef077819714d742b082689fa3346d493604ce178",
+      "size_bytes": 9255
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/policy_authority_register.csv",
+      "sha256": "4d30db47a83501cda6f151f5944a4fd29bfd98cd2184f1056832796550627ace",
+      "size_bytes": 3405
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/policy_confidence_set.csv",
+      "sha256": "03aa7eb2b7733e6b34ae37b29d598bebd8f2f54552f4ebdd4aa43534d4c963e0",
+      "size_bytes": 1415
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/policy_nonanticipativity_checks.csv",
+      "sha256": "fbb72fa220f8b6c978a94be61327d05323c20dcb1b9dcf6a65b9f0841afd576e",
+      "size_bytes": 2898
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/proposal_selection_log.csv",
+      "sha256": "a53443a0bc7c5c7f377c56e30af26866df000615b39fbc0b1b655d58c4685670",
+      "size_bytes": 2259336
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/proposal_selection_validation.csv",
+      "sha256": "3ddcb46602ae1448121576870f778adf5bdd7e20977608b85fe35fd657edbd88",
+      "size_bytes": 53339
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/requested_and_implemented_actions.csv",
+      "sha256": "9fcd846d9faf51ff920207ab3fd01f29de93b3b2cee8de917f6c2d1cd60c88e3",
+      "size_bytes": 76963328
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/route_resource_cost_register.csv",
+      "sha256": "d7f46b8c5164e3bf18ed52f7fc6bc0be09afeeeed88d2308d77978e96aaf85c5",
+      "size_bytes": 1334
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/sac_actor_gradient_check.csv",
+      "sha256": "c9441f699e42982fa29f69e6fe2bf0ab220041521699609cb8aca0fcbe908aec",
+      "size_bytes": 5310
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/scientific_parameter_traceability.csv",
+      "sha256": "68ad6fd30a3d4b545732c74688aeb176f78188e9dba8256b15fd760b455298d0",
+      "size_bytes": 2921
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/selected_path_count.csv",
+      "sha256": "3fddb4ab26345840fa5ceee5ca00d9aac432daa1ce6f0658780d88339f0c78a2",
+      "size_bytes": 288
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/solver_diagnostics.csv",
+      "sha256": "1e62692a478bb2c82b5c43711833fbb1caae7127a17f2bcf3851952fcfe8cb76",
+      "size_bytes": 16147011
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/teacher_actions.csv",
+      "sha256": "15dd9592e87d31c069ce614376799a782bffdd4942f68c0a235089467f4db8d1",
+      "size_bytes": 21136
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/test_path_manifest.csv",
+      "sha256": "c72dda4f1f2a67d7147743f779cd059a18929314ff07502125947f58692d546d",
+      "size_bytes": 20873
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/training_curves.csv",
+      "sha256": "886c6fb63a9eced24cbdd5ef72e217fb8c2420c5ba4d88e96ecc076703146926",
+      "size_bytes": 30674
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/training_path_manifest.csv",
+      "sha256": "dc62f0a07e0c764d7041c1d8991b5346e23b6165196b05cfb3e1643d5ad225ea",
+      "size_bytes": 950
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/training_stage_complete.json",
+      "sha256": "ae1482ac942c6a829f97b4a82ee1b5d0c0c8e20d8848e767a9f2f0a285e583af",
+      "size_bytes": 388
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/trajectory_contract_checks.csv",
+      "sha256": "30d4ff676fb00ab0b7bcfa2671499f96190dbbcc468800e90923ef789f1c35d9",
+      "size_bytes": 253985
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/validation_curves.csv",
+      "sha256": "ec258e37fed167c4068832468b02b978f6e37f3e523d8276e6e8f4b168e6a92e",
+      "size_bytes": 2884
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/validation_path_manifest.csv",
+      "sha256": "ef944a14f6376055c81eafbd4e7e706bc1c4c4cb8732c1f5bf2b3dfeebb8973e",
+      "size_bytes": 710
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/waiting_forecast_error_calibration.csv",
+      "sha256": "e669f56ebcabf0343564de56b7ee4f026ce14fc4023a8966b9107f3cfd7d0b9f",
+      "size_bytes": 897
+    },
+    {
+      "path": "output/5.2.2_common_authority_benchmark/waiting_forecast_error_residuals.csv",
+      "sha256": "5a12d65668449bd5bf8b74ccd9b1d1835344d391f815da0980db2a05aa5c5443",
+      "size_bytes": 16839
+    },
+    {
+      "path": "experiments/5.2-2/calibrate_waiting_error_scale.py",
+      "sha256": "53ad032cce1a880cc4a10f5e5722ccafe0d3db00289f62eb3f408b349b19ece0",
+      "size_bytes": 4468
+    },
+    {
+      "path": "experiments/5.2-2/evaluation_worker.py",
+      "sha256": "ab1acc1416bb94410a29380d5d3c4fa0a6cd49e8d07baf8470b67821d2998e0b",
+      "size_bytes": 2488
+    },
+    {
+      "path": "experiments/5.2-2/experiment_validation.py",
+      "sha256": "06532247ce246a8a3379f35922e52283cf4ab60148227401d3f8251ae18a4210",
+      "size_bytes": 3938
+    },
+    {
+      "path": "experiments/5.2-2/features.py",
+      "sha256": "196e9155702fa08731287675f1459e9a84a88973a26832d6569b615bd83433b3",
+      "size_bytes": 10237
+    },
+    {
+      "path": "experiments/5.2-2/finalize_staging_5_2_2.py",
+      "sha256": "bffd2360acd3a66f7fc6c7a7b6b75c00353fe5066a8203ebc78c6ee2485ceeb0",
+      "size_bytes": 7338
+    },
+    {
+      "path": "experiments/5.2-2/model.py",
+      "sha256": "3233d3e096a83216a58b83479b6313044e2ca7262719f58ed45f62a3a7da4103",
+      "size_bytes": 26355
+    },
+    {
+      "path": "experiments/5.2-2/paths.py",
+      "sha256": "36fe3ff48f2f52c5ba873f503e550efe72797e75b5905710cbc1e2d9ebc4ff9d",
+      "size_bytes": 16343
+    },
+    {
+      "path": "experiments/5.2-2/policies.py",
+      "sha256": "548248b4ccbe7aed52439048ee7fd22020a43f75e08e0a1df45a77301d38370e",
+      "size_bytes": 9688
+    },
+    {
+      "path": "experiments/5.2-2/preparation.py",
+      "sha256": "1a68c951549820481e9ea5631ddccab85451f63ff8cd3e16f4f20d0e83d8f8b1",
+      "size_bytes": 13013
+    },
+    {
+      "path": "experiments/5.2-2/rebuild_5_2_2_reports.py",
+      "sha256": "49263bf67f71a6a73ef2d69ef2d69dfd56afe4a6af0389b80b27b0a596db6f3e",
+      "size_bytes": 7537
+    },
+    {
+      "path": "experiments/5.2-2/reporting.py",
+      "sha256": "e7594a1eb4d200f863b863afd31105deca7e5c34491f450228b2f3fd316b2b18",
+      "size_bytes": 33981
+    },
+    {
+      "path": "experiments/5.2-2/run_5_2_2.py",
+      "sha256": "a6a41a4ed86c059a94ed287c41c02c7b151db89a1ad945949d419b2a008ec4fb",
+      "size_bytes": 29696
+    },
+    {
+      "path": "experiments/5.2-2/simulator.py",
+      "sha256": "0224592ae8ee0e1e6a2459be6cfcff2e3319693df18d426a55307628ea7b4d54",
+      "size_bytes": 17754
+    },
+    {
+      "path": "experiments/5.2-2/statistics.py",
+      "sha256": "7c8b9fea1e07dfbe30913206835e9bafa408d86c50a3fbf0ea3410e44144780c",
+      "size_bytes": 16346
+    },
+    {
+      "path": "experiments/5.2-2/training.py",
+      "sha256": "82f2d249cef8e24abda3773f444deb3457d859f2070debf76b2d745866bcc608",
+      "size_bytes": 38744
+    },
+    {
+      "path": "experiments/5.2-2/config_5_2_2.json",
+      "sha256": "c3a1931a5275398484b3b713f77ed1e55506037dd00791a2e06d587123ba5b9b",
+      "size_bytes": 13249
+    },
+    {
+      "path": "output/5.2.1_data_event_information_validity/historical_information_event_path.csv",
+      "sha256": "407b06106c86f7173d399d8a66283f48ac6746b146c869c14cf77bad3ba3a976",
+      "size_bytes": 14786
+    },
+    {
+      "path": "output/5.2.1_data_event_information_validity/counterfactual_residual_library.csv",
+      "sha256": "8d4da8f9bb82633fa9f7427069064759a12d6633d3aca0c84c347762e1e97321",
+      "size_bytes": 21354
+    },
+    {
+      "path": "output/5.2.1_data_event_information_validity/run_manifest.json",
+      "sha256": "c1dd1e08a34a1a0be72973c1c9ebf1899e2849ee7f1805c3033d62e3d0b271a5",
+      "size_bytes": 12123
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "experiments/5.2-3/figures/figure_5_2_3a_action_congestion_trajectories.png",
+      "size_bytes": 805754,
+      "sha256": "66c20e28f7952ffd1aac5175b76235a5fceae4cd50995b352ef84da82bc386b4"
+    },
+    {
+      "path": "experiments/5.2-3/figures/figure_5_2_3b_tagged_route_stage_heatmap.png",
+      "size_bytes": 543040,
+      "sha256": "a2a5c1703211134a26aecd18575ebd0038122186fb5ba81a5eb13b94903d8a07"
+    },
+    {
+      "path": "experiments/5.2-3/figures/figure_5_2_3c_restricted_action_forest.png",
+      "size_bytes": 290346,
+      "sha256": "ac66e0d0a2fab435ccf2ce955a8998176d2310df5622e372f6234d8ce96eef24"
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/acceptance_5_2_3.json",
+      "size_bytes": 1424,
+      "sha256": "f0ba77228d399b8bf7759a4f33c55c64e6f8ed835b16d2b62bb807ffcf6abc0e"
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/behavior_source_vintage.csv",
+      "size_bytes": 9071199,
+      "sha256": "4d2dc79d0b7c28c11620a3745aaf16191b1ded8d42e528d804313815fa270c07",
+      "rows": 17699
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/capacity_feedback_trajectory.csv",
+      "size_bytes": 2586427,
+      "sha256": "f4d1543029cdabe348f95a660fe57d2ffe374142afe1e37834dfb8a34423ae4b",
+      "rows": 8990
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/chart_map_5_2_3.csv",
+      "size_bytes": 918,
+      "sha256": "1b920f5c2ffc1879cc5da46bd1293349ebc2d6209e319a71d061768bb13944be",
+      "rows": 3
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/figures/figure_5_2_3a_action_congestion_trajectories.png",
+      "size_bytes": 805754,
+      "sha256": "66c20e28f7952ffd1aac5175b76235a5fceae4cd50995b352ef84da82bc386b4"
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/figures/figure_5_2_3b_tagged_route_stage_heatmap.png",
+      "size_bytes": 543040,
+      "sha256": "a2a5c1703211134a26aecd18575ebd0038122186fb5ba81a5eb13b94903d8a07"
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/figures/figure_5_2_3c_restricted_action_forest.png",
+      "size_bytes": 290346,
+      "sha256": "ac66e0d0a2fab435ccf2ce955a8998176d2310df5622e372f6234d8ce96eef24"
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/formula_to_code_5_2_3.csv",
+      "size_bytes": 1074,
+      "sha256": "1ebf5132daf3b64f019f73722ced5aab6cf7d3967f0e1e2bc0ff39bf7556ac68",
+      "rows": 10
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/full_action_replay_replications.csv",
+      "size_bytes": 356523,
+      "sha256": "5e6f1757674c783d30bd3cbdd31c7b40ca9dbf0bab48d5013d7d237b684e5033",
+      "rows": 440
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/full_action_reproduction.csv",
+      "size_bytes": 761534,
+      "sha256": "0394d2a15c2c3137dec066fa0694503d44d461f3f17037d8cb8a5262b7e67986",
+      "rows": 6160
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/full_action_reproduction_summary.csv",
+      "size_bytes": 34224,
+      "sha256": "17ed51c767a17ec5337eddff04fbd8044ada40463abcb1532bce2e95d5ea7ac0",
+      "rows": 440
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/full_policy_mechanism_summary.csv",
+      "size_bytes": 6510,
+      "sha256": "d34146f3d768d278629f82e82d640aa909f30c128779efe2a96502534bf9202b",
+      "rows": 8
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/full_policy_paired_mechanism_differences.csv",
+      "size_bytes": 9673,
+      "sha256": "dfac40df9cc7a95c2ad24dbf78644878664f099205ea54a8d6dcecbf1e46d039",
+      "rows": 70
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/loss_mechanism_trajectory.csv",
+      "size_bytes": 379799,
+      "sha256": "c52e8caa641ed9ff337d7bae031c1c884421e3e333de73b69a730493579d3af9",
+      "rows": 908
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/mechanism_action_trajectory.csv",
+      "size_bytes": 24472788,
+      "sha256": "485ea58a63aa584869e69294be86207d51a53146c704a142f4a6cf06dd7f4680",
+      "rows": 30566
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/mechanism_contract_checks.csv",
+      "size_bytes": 146391,
+      "sha256": "5f3d9a775c426d3ef2f1af087e1725224eb7e9521ac0af99d312c6239fdb6080",
+      "rows": 792
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/mechanism_policy_set.csv",
+      "size_bytes": 984,
+      "sha256": "80bf541e7dac88a989c4bad0dfcfa2df5245f81113a79695f1b01533c0af7244",
+      "rows": 8
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/mechanism_proposal_log.csv",
+      "size_bytes": 26158,
+      "sha256": "9f321944e9fa01caae26883259a49ad49f51c71ac2f20b3de3343c62ed6b51de",
+      "rows": 126
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/parameter_registry_5_2_3.csv",
+      "size_bytes": 3564,
+      "sha256": "1e86805c1ecf2f529a7bd21a8c002ac9ef1e0fb8527b361fd2676d3fa88c5f10",
+      "rows": 31
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/path_medoid_selection.csv",
+      "size_bytes": 25248,
+      "sha256": "1442a006c6416b3cfc4077f47740911b2c9523dd3d2abd36e8d84c1df5a6da56",
+      "rows": 88
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/physical_tagged_trajectory.csv",
+      "size_bytes": 8320028,
+      "sha256": "04bd6b9f76405cf68ec7d7c09c0992500d44eb49a40dba81be7395e4c837c891",
+      "rows": 26970
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/proposed_policy_activation_audit.csv",
+      "size_bytes": 1399,
+      "sha256": "c7b0ce7e850e7648348b2e68bc1e3b2abdc4bcd7652194b0707f441df2c38169",
+      "rows": 13
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/restricted_action_paired_effects.csv",
+      "size_bytes": 13248,
+      "sha256": "648aecc6c2c65d984a8c2dc731c4b6e8d7bc07a263e575d73f2b4d8d7c22f22f",
+      "rows": 40
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/restricted_action_path_differences.csv",
+      "size_bytes": 349875,
+      "sha256": "8cd86f96e62a6f40bbb5c042c6786b633d112976b4ebbaa898a42fefce7bdd71",
+      "rows": 3520
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/restricted_action_replications.csv",
+      "size_bytes": 353908,
+      "sha256": "a89b96e5d7dc0c46475a267346ab25405d12aa05e3423f29bb03a70903c2bce4",
+      "rows": 440
+    },
+    {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/weekly_policy_mechanisms.csv",
+      "size_bytes": 243258,
+      "sha256": "637206927264fb9c4dba84297853579c1a8c3ed3a8eaa54ebdca5f2e1d0b7e7e",
+      "rows": 299
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\report - 8.4\\5.2.3\\5_1_PARAMETER_AND_METRIC_ADDITIONS.md",
+      "size_bytes": 1903,
+      "sha256": "8ec34b85f0bfda4913d4649d333955b5b110d337bde0eef3e2aefd67d6405895"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\report - 8.4\\5.2.3\\ACCEPTANCE_REPORT.md",
+      "size_bytes": 1736,
+      "sha256": "3ba20e04c7d8200296975207115a07c300ec6e87ec7d4fbc619e03378265c06f"
+    },
+    {
+      "path": "C:\\MRDYH\\paper\\TRE - Port Congestion\\8.4 - revise\\report - 8.4\\5.2.3\\FIGURE_AND_RESULTS_ANALYSIS.md",
+      "size_bytes": 3967,
+      "sha256": "7d2e6a7e4f6a7f595c088078a9eaec8453118be8c947c7f3bf1e92669f48b722"
+    }
+  ]
+}

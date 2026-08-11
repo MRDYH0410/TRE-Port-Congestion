@@ -1,0 +1,29 @@
+{
+  "experiment_id": "5.2.3_action_and_congestion_mechanisms",
+  "status": "complete",
+  "blocking_checks": {
+    "accepted_5_2_2_input": true,
+    "passive_leader_and_proposed_retained": true,
+    "medoid_uses_no_policy_outcome": true,
+    "all_88_paths_used_for_each_restriction": true,
+    "required_full_action_policies_replayed": true,
+    "full_action_reproduces_5_2_2_within_1e_6": true,
+    "all_period_production_acceptance_passed": true,
+    "all_restrictions_change_only_declared_action_blocks": true,
+    "no_readiness_initial_stock_is_zero": true,
+    "tagged_transition_and_capacity_pipeline_close": true,
+    "source_simplex_conserved": true,
+    "waiting_vintage_identity_conserved": true,
+    "provenance_shadow_reconstructs_formal_state": true,
+    "period_losses_reconstruct": true,
+    "no_readiness_retains_direct_procurement": true,
+    "no_pacing_uses_rho_one": true,
+    "no_disclosure_preserves_nonaction_information": true,
+    "all_figures_generated": true
+  },
+  "blocking_failures": [],
+  "warnings": [
+    "Fixed Reactive restriction no_release_pacing_authority reduced mean loss by 4967.209071; retain as a negative coordination diagnostic, not causal value."
+  ],
+  "evidence_boundary": "Mechanism and fixed-policy restricted-action evidence under the 5.2.2 reference network. No restricted comparison is a causal marginal value or a reoptimised policy value."
+}

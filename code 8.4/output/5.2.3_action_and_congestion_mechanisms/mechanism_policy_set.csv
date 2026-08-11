@@ -1,0 +1,9 @@
+policy,mean_total_operational_loss_5_2_2,is_passive_reference,is_benchmark_leader,is_proposed_model_guided_policy,in_5_2_2_sample_best_confidence_set,retained_in_complete_mechanism_csv,formal_figure_policy,evidence_label
+Reactive,100056.0096607477,False,True,False,True,True,True,benchmark leader; not a universal optimum
+Projected stochastic MPC,109237.9110245774,False,False,False,False,False,False,complete benchmark policy
+Behaviour cloning,115468.4781402796,False,False,False,False,False,False,complete benchmark policy
+Model-guided constrained SAC,115978.93521315049,False,False,True,False,True,True,proposed model-guided policy
+PPO,174867.9779585409,False,False,False,False,False,False,complete benchmark policy
+Vanilla SAC,286464.1145823099,False,False,False,False,False,False,complete benchmark policy
+Constrained SAC,286485.5137201957,False,False,False,False,False,False,complete benchmark policy
+Passive,286516.5297538498,True,False,False,False,True,True,passive reference

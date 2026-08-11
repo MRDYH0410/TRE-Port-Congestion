@@ -1,0 +1,14 @@
+module,metric,value,denominator,activation_rule
+BC-SAC selector,BC_proposal_selected_count,4514.0,5544,selected by the formal common nested objective
+BC-SAC selector,SAC_proposal_selected_count,1030.0,5544,selected by the formal common nested objective
+BC-SAC selector,fallback_count,0.0,5544,fallback used after invalid proposals
+readiness order,activation_count,5544.0,5544,implemented block total > 10 x projection tolerance (1e-07)
+readiness order,range_across_test_decisions,48.231885187560486,5544,maximum minus minimum implemented block total
+direct order,activation_count,5544.0,5544,implemented block total > 10 x projection tolerance (1e-07)
+direct order,range_across_test_decisions,49.57282236638083,5544,maximum minus minimum implemented block total
+readiness exercise,activation_count,3432.0,5544,implemented block total > 10 x projection tolerance (1e-07)
+readiness exercise,range_across_test_decisions,44.379855175215404,5544,maximum minus minimum implemented block total
+release,activation_count,5544.0,5544,implemented block total > 10 x projection tolerance (1e-07)
+release,range_across_test_decisions,0.6206822993274962,5544,maximum minus minimum implemented block total
+disclosure,activation_count,5544.0,5544,implemented block total > 10 x projection tolerance (1e-07)
+disclosure,range_across_test_decisions,0.3609430069884307,5544,maximum minus minimum implemented block total

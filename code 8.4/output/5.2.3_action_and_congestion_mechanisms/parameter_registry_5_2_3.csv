@@ -1,0 +1,32 @@
+parameter,value,source,basis
+experiment_id,5.2.3_action_and_congestion_mechanisms,5.2.3 config,unique experiment namespace
+input_5_2_2,output/5.2.2_common_authority_benchmark,5.2.3 config,accepted frozen benchmark outputs
+benchmark_leader,Reactive,5.2.2 path-level mean loss,automatic selection; not universal optimality
+restricted_action_base_policy,Reactive,5.2.3 preregistered rule,same frozen transparent policy across restrictions
+no_release_pacing_baseline,1.0,"endpoint of formal rho in [0,1]",all available waiting enters oldest-first release
+no_readiness_initial_stock,0.0,Chapter 3 initial state,no historic readiness stock and no new readiness orders
+direct_procurement_retained_without_readiness,True,Chapter 3/5.1 common authority,no-readiness is not no-capacity
+representative_path,test_017_ebd333a3cdba,external physical-path medoid,outcomes excluded from path selection
+medoid_variables,total_blocked_mass|peak_weekly_blocked_mass|mean_serviceability|minimum_serviceability|recovery_rate,5.2.3 config,"blocked mass, serviceability and recovery geometry"
+confidence_level,0.95,5.2.3 config,paired physical-path intervals
+multiplicity_adjustment,Holm within outcome across the four restrictions,5.2.3 config,four restrictions within each outcome
+full_action_reproduction_tolerance,1e-06,5.2.2 loss identity tolerance,blocking no-difference replay check
+source_simplex_tolerance,1e-06,5.2.2 mass tolerance,route-wait-exit conservation
+waiting_identity_tolerance,1e-06,5.2.2 mass tolerance,vintage release-renewal-attrition balance
+provenance_shadow_tolerance,1e-06,5.2.2 mass tolerance,diagnostic decomposition must reconstruct formal route-stage state
+readiness_lead_weeks,8,5.1/5.2.2,unchanged capacity pipeline
+clearance_cap_weeks,104,5.1/5.2.2,right-censoring cap
+clearance_empty_tolerance,1e-06,5.1/5.2.2,unchanged empty-state rule
+rcmsa_tolerance,1e-06,5.1/5.2.2,same behavior solver certificate
+action_projection_tolerance,1e-08,5.1/5.2.2,same common projector
+learning_seed_aggregation,average training seeds within physical path before path-level comparison,5.1 comparison protocol,physical path remains inference unit
+physical_path_count,88,accepted 5.2.2 selected_path_count,all-path mechanism inference
+math_library_threads_per_worker,4,5.2.3 execution control,prevents nested BLAS oversubscription; no scientific parameter change
+detailed_trace_scope,physical-path medoid only; all-path inference and full-action reproduction remain path-level,5.2.3 execution protocol,high-dimensional evidence without reducing the inference sample
+input_sha256__acceptance_5_2_2,4a0b2479a27400c868ba9ffee00c691761ddc460c59f1d8532e89630c8829c80,runtime hash audit,frozen input identity
+input_sha256__run_manifest_5_2_2,ce4f0bf874cfb902e0a2d11d499dd177b0496029d67a74d623c4d152417bd30b,runtime hash audit,frozen input identity
+input_sha256__checkpoint_manifest_5_2_2,9033589ef4cf9ed49b7cfe3cb1815f1fd0bdfcb453eaa9e8d2f3c969ac66baf8,runtime hash audit,frozen input identity
+input_sha256__path_level_seed_aggregated,4c9d4a45c6758552588342bc8e3daa22aa657c1c90b012753c00316f8e055ddc,runtime hash audit,frozen input identity
+input_sha256__benchmark_period_paths,3576407b9c715c1b97b78a305ef632ea295a9dd902e64f529e1f2ff8d8053ae8,runtime hash audit,frozen input identity
+input_sha256__requested_and_implemented_actions,9fcd846d9faf51ff920207ab3fd01f29de93b3b2cee8de917f6c2d1cd60c88e3,runtime hash audit,frozen input identity
+input_sha256__test_path_manifest,c72dda4f1f2a67d7147743f779cd059a18929314ff07502125947f58692d546d,runtime hash audit,frozen input identity
