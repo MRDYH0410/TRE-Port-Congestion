@@ -1,0 +1,25 @@
+Severe chokepoint impairment creates a coordination problem before it becomes a
+port-capacity problem. Some cargo is already committed to an emergency gateway,
+while the remaining cargo can reroute, wait outside the port system, or exit the
+operating window. We formulate this process as a route-and-waiting stochastic
+user equilibrium coupled with route-tagged berth, yard, gate, and landbridge
+queues. The formulation identifies an optimistic absorption boundary for
+committed cargo and preserves waiting and exit in the physical conservation
+system. A two-state hidden Markov model supplies released multi-horizon risk
+beliefs to a lead-time-constrained readiness decision, without treating the
+latent state as a closure forecast. For sequential control, stochastic model
+predictive control provides both an online benchmark and fresh teacher data. A
+phase-aware constrained soft actor-critic policy is then initialized by behavior
+cloning, refined in the exact environment, and deployed through a structural
+selector over the cloned and refined proposals. The framework is tested on a
+21-week replay of the 2026 Strait of Hormuz impairment constructed from one
+frozen IMF PortWatch vintage and an out-of-sample no-disruption counterfactual.
+Stochastic model predictive control produces the lowest mean operational loss,
+5474.36 compared with 6046.12 under passive equilibrium. Behavior cloning is
+within 1.70 percent of that loss at 3.56 milliseconds per decision, whereas the
+refined policy records 5643.31 and transfers more cargo into external waiting.
+The released HMM forecast does not trigger readiness on the historical path,
+and designed high-signal and false-warning tests show that activation alone does
+not establish economic value. The results therefore locate the value of
+coordination in explicit cargo recourse, information timing, and congestion
+transfer rather than in algorithm novelty.
