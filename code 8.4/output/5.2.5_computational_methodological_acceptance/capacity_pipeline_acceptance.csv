@@ -1,0 +1,11 @@
+resource,period,readiness_lead_weeks,direct_lead_weeks,readiness_order_requested,readiness_order_implemented,readiness_pipeline,readiness_stock_before,readiness_stock_after,readiness_exercise_implemented,readiness_capacity_current,direct_order_requested,direct_order_implemented,direct_pipeline,direct_capacity_current,readiness_available_before_maturity,readiness_maturity_valid,readiness_exercise_valid,direct_delivery_timing_valid,capacity_pipeline_maximum_residual,action_cost,period_budget_cap,budget_slack,projection_feasibility_residual,status
+berth:Fujairah,0,8,0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,1.0,False,True,True,True,0.0,1.125,257.24125000000004,256.11625000000004,0.0,PASS
+berth:Fujairah,1,8,0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,True,True,0.0,0.0,257.24125000000004,257.24125000000004,0.0,PASS
+berth:Fujairah,2,8,0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,True,True,0.0,0.0,257.24125000000004,257.24125000000004,0.0,PASS
+berth:Fujairah,3,8,0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,True,True,0.0,0.0,257.24125000000004,257.24125000000004,0.0,PASS
+berth:Fujairah,4,8,0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,True,True,0.0,0.0,257.24125000000004,257.24125000000004,0.0,PASS
+berth:Fujairah,5,8,0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,True,True,0.0,0.0,257.24125000000004,257.24125000000004,0.0,PASS
+berth:Fujairah,6,8,0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,True,True,0.0,0.0,257.24125000000004,257.24125000000004,0.0,PASS
+berth:Fujairah,7,8,0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,True,True,0.0,0.0,257.24125000000004,257.24125000000004,0.0,PASS
+berth:Fujairah,8,8,0,0.0,0.0,0.0,1.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,False,True,True,True,0.0,0.125,257.24125000000004,257.11625000000004,0.0,PASS
+berth:Fujairah,9,8,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,True,True,0.0,0.0,257.24125000000004,257.24125000000004,0.0,PASS

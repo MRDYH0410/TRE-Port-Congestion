@@ -1,0 +1,4 @@
+scenario_count,selected_first_action_profile,in_sample_objective,out_of_sample_objective,paired_standard_error,confidence_half_width,action_switch_indicator,precision_target,precision_target_met
+1,zero,41.57724265397221,41.57724265397221,0.0,0.0,False,5.2.2 path-paired precision applies to physical paths; three structural MPC scenarios are diagnostic only,NOT_TESTED
+2,zero,41.57724265397221,41.57724265397221,0.0,0.0,False,5.2.2 path-paired precision applies to physical paths; three structural MPC scenarios are diagnostic only,NOT_TESTED
+3,zero,41.577242653972206,41.57724265397221,0.0,0.0,False,5.2.2 path-paired precision applies to physical paths; three structural MPC scenarios are diagnostic only,NOT_TESTED

@@ -1,0 +1,354 @@
+{
+  "experiment_id": "5.2.5_computational_methodological_acceptance",
+  "schema_version": "5.2.5-v3-chapter4-contract-reinforcement",
+  "command": "python experiments/5.2-5/run_5_2_5.py",
+  "config_path": "experiments/5.2-5/config_5_2_5.json",
+  "config_sha256": "aeee5c676c9ba073625a3f51d9913313504a0f2bc242224acd8de9f8945ba96c",
+  "code_commit": "NOT_AVAILABLE",
+  "production_source_hashes": {
+    "src/tre84/acceptance.py": "59b76575f04099f076cfe332bdd9f6ec94a8d4b148115a61718a071c7827014f",
+    "src/tre84/actions.py": "22e423a7c278708502a31db762b058e303f47efbfe3dd97e10bb97fc778b86ed",
+    "src/tre84/behavior.py": "1183e1de28c96c287c7fb34c098d70c7d2166df645cf99154e0b17de37595605",
+    "src/tre84/capacity.py": "956c3bff578690bd9f5e0ea6a38e1e9014ea408c4ddd41e31c3eeb107e7cc556",
+    "src/tre84/control.py": "4a0032e15439e0f0e8f227abbe40e98f35d5c15c990b0cf5040773970a01c308",
+    "src/tre84/engine.py": "fb135ed8ea86a502a1a8478958821dcd78afc2375c3a01cc587e8ae391c7c7e1",
+    "src/tre84/factory.py": "389ea59feb7e274603d5f9b2e80e8494d6ff91eb929e5daf144d2c86a097a420",
+    "src/tre84/loss.py": "d388d67d197897578b58fa3f79041cff7673618bc7bb44ae86316274b369b562",
+    "src/tre84/transition.py": "c397c0c87630d95dd518275321b03ca7f6e859e40a99509b400dfe489be610fa",
+    "experiments/5.2-2/features.py": "196e9155702fa08731287675f1459e9a84a88973a26832d6569b615bd83433b3",
+    "experiments/5.2-2/model.py": "3233d3e096a83216a58b83479b6313044e2ca7262719f58ed45f62a3a7da4103",
+    "experiments/5.2-2/paths.py": "36fe3ff48f2f52c5ba873f503e550efe72797e75b5905710cbc1e2d9ebc4ff9d",
+    "experiments/5.2-2/policies.py": "548248b4ccbe7aed52439048ee7fd22020a43f75e08e0a1df45a77301d38370e",
+    "experiments/5.2-2/simulator.py": "0224592ae8ee0e1e6a2459be6cfcff2e3319693df18d426a55307628ea7b4d54",
+    "experiments/5.2-2/training.py": "82f2d249cef8e24abda3773f444deb3457d859f2070debf76b2d745866bcc608",
+    "experiments/5.2-5/acceptance_core.py": "28adb7ddf8e5f75c39fb6c3119ac1440bd1fe933282e3766cb3a626cd990958f",
+    "experiments/5.2-5/extended_audits.py": "71d0007f903dad03471f3a40bc1deac58deec6be7dc82e5b03508d27bd014e41",
+    "experiments/5.2-5/sac_contracts.py": "0de8a0e614e87d729575d7b52b68c870a8dc1d50cdca7b1135e953b39e61d0b3",
+    "experiments/5.2-5/reporting_5_2_5.py": "c9a5fd5c17ae775a0620840f6a1b644176140f08b602487fec4df5b2def72e01",
+    "experiments/5.2-5/run_5_2_5.py": "095020a31948854433ced5d4fe029e83b3196ba1bdf3b3fa66e5d20b9ec5d448",
+    "experiments/5.2-5/config_5_2_5.json": "aeee5c676c9ba073625a3f51d9913313504a0f2bc242224acd8de9f8945ba96c",
+    "experiments/5.2-5/pre_repair_numerical_baseline_5_2_5.json": "c60e26d391a5a66a418da618af0f5827314721992d874708e0f3f5c7389bb943"
+  },
+  "production_source_bundle_sha256": "c572af788be29fe15d5ad62fa8b73a440481deb46659360ad84591dfee8db242",
+  "python": "3.12.13 (main, Mar  3 2026, 15:01:35) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu_count": 16,
+  "elapsed_seconds": 13.324912071228027,
+  "upstream_manifests": {
+    "5.2.1": {
+      "path": "output/5.2.1_data_event_information_validity/run_manifest.json",
+      "sha256": "c1dd1e08a34a1a0be72973c1c9ebf1899e2849ee7f1805c3033d62e3d0b271a5"
+    },
+    "5.2.2": {
+      "path": "output/5.2.2_common_authority_benchmark/run_manifest.json",
+      "sha256": "ce4f0bf874cfb902e0a2d11d499dd177b0496029d67a74d623c4d152417bd30b"
+    },
+    "5.2.3": {
+      "path": "output/5.2.3_action_and_congestion_mechanisms/run_manifest.json",
+      "sha256": "ffe2db2a65d4c1bc9fc8a9ac8e48a3a14da0c2473c3712f77d1271663b36a212"
+    },
+    "5.2.4": {
+      "path": "output/5.2.4_released_risk_information_capacity_preparation/run_manifest.json",
+      "sha256": "b844e6027fc8216a9fd716b10a0164a41feca24932006904d753aea7afe2cf4c"
+    }
+  },
+  "outputs": [
+    {
+      "path": "../report - 8.4/5.2.5/5_1_PARAMETER_ADDITIONS.md",
+      "bytes": 6893,
+      "sha256": "8896fe96cc0c3a4d44214a7e113319218cd9f5f12793221d822fa6a898c3092a"
+    },
+    {
+      "path": "../report - 8.4/5.2.5/METHODOLOGICAL_ACCEPTANCE_REPORT.md",
+      "bytes": 4015,
+      "sha256": "36f5e0c1afd8c73d39f3ccd062c6ede45c239b2ae761529d70bc10664b0f252a"
+    },
+    {
+      "path": "experiments/5.2-5/figures/figure_5_2_5a_numerical_convergence.pdf",
+      "bytes": 33314,
+      "sha256": "9715bad8baf2c7ff38cae49bb59e4bc953a168c8aa4ad9d9a1e7732cf79ea143"
+    },
+    {
+      "path": "experiments/5.2-5/figures/figure_5_2_5a_numerical_convergence.png",
+      "bytes": 263436,
+      "sha256": "cf9021dc3fc8c60221f23885ad6c888fce05661a776bf0a97f5aaa131e8944a9"
+    },
+    {
+      "path": "experiments/5.2-5/figures/figure_5_2_5b_learning_selector.pdf",
+      "bytes": 124299,
+      "sha256": "a12688fd402ebede7935c18bfc94e3af6308ee8c25201514f63e556d379a012b"
+    },
+    {
+      "path": "experiments/5.2-5/figures/figure_5_2_5b_learning_selector.png",
+      "bytes": 752754,
+      "sha256": "d397b2a336285a4496c2ae98645e937cdc34571dd21613724606e832b4c60f65"
+    },
+    {
+      "path": "experiments/5.2-5/figures/figure_5_2_5c_contract_runtime.pdf",
+      "bytes": 40250,
+      "sha256": "e1d3ccca5d111b1bbbdcf02c47b624e0258a00ab4297be49f206c244c86eb8db"
+    },
+    {
+      "path": "experiments/5.2-5/figures/figure_5_2_5c_contract_runtime.png",
+      "bytes": 553781,
+      "sha256": "a9f7590639fef41778421a583e215cfe6db67f43feac993e83347af3c5bc430c"
+    },
+    {
+      "path": "experiments/5.2-5/FORMULA_TO_CODE.md",
+      "bytes": 4995,
+      "sha256": "29d75ec5df1fe91ab583245037f8576d7cefedbc1133c389b27897bdedd7312c"
+    },
+    {
+      "path": "experiments/5.2-5/README.md",
+      "bytes": 1161,
+      "sha256": "8ea11ab380a302ed238573ac4110315de44a413774c1dfac872bcf75ce9c188f"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/acceptance_5_2_5.json",
+      "bytes": 1160,
+      "sha256": "2f827b2d037a25d4392fde03db4f0ede89d687fca0b3d52cf161e8599c40d188"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/acceptance_case_registry.csv",
+      "bytes": 6530,
+      "sha256": "7f1698bf06f27a2c75c4e65e27f9b12e2d7163feb50350b701c58703b5f66bc5"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/acceptance_summary.json",
+      "bytes": 1160,
+      "sha256": "2f827b2d037a25d4392fde03db4f0ede89d687fca0b3d52cf161e8599c40d188"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/bc_training_trace.csv",
+      "bytes": 5261,
+      "sha256": "f9c4a2eff60d21b448a3599bbe586fe324645cdcd6b0e70d56da8c33ff1d9c5e"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/bc_validation_summary.csv",
+      "bytes": 1378,
+      "sha256": "8809c5a9d2453a8839ade20704515f43fdf03731e6f828a653b4e831ffd0b057"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/capacity_pipeline_acceptance.csv",
+      "bytes": 1976,
+      "sha256": "f12c87af915a9a7a7f0c9c42a7a69e2dd1c84432c7925d0b405351e74f90c5cf"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/chapter4_contract_reinforcement.csv",
+      "bytes": 1040,
+      "sha256": "b6bef25184e482f6c82290e1b54a47a168bdba396cca90ac2a2b6c3e3ce42a4a"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/claim_scope.json",
+      "bytes": 391,
+      "sha256": "8c72ca59d3a461c5cc746d30da8a4ae71c0473bb52cba77963a686898c5ec197"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/clearance_terminal_acceptance.csv",
+      "bytes": 209205,
+      "sha256": "79923774d83e2bb20321896c7999b89b2d801e6253b35cc29583e2476421bacc"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/computational_profile_table.csv",
+      "bytes": 3342,
+      "sha256": "860a2783c83dd009e559cca85a3f130d3130f0e87a86d8fca408ca6d8e1645b3"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/core_repair_numerical_equivalence.csv",
+      "bytes": 405,
+      "sha256": "21cd00dc87bf6447b6177afdc0964fbcefbe7200fbccfa530ed13264beab5df8"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/cross_module_trace.csv",
+      "bytes": 1999,
+      "sha256": "db669ced098a70496e337f24d4d346a73d93243d08f01d1e44f92985eff7c014"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/experimental_precision_recalculation.csv",
+      "bytes": 1101,
+      "sha256": "907a105ad0c86ff80d0701ebac11e3daa09cbe9067514200aba11b4202bfe0e0"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/experimental_precision_summary.csv",
+      "bytes": 186,
+      "sha256": "3823909ed7eb870868b7c1ba4319ca04734188e89d5f95515d7a5b9b7e37edf6"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/figure_5_2_5a_data.csv",
+      "bytes": 192681,
+      "sha256": "1cc0c96878999681e2de1d083dffcdb9c2cb6b07b827c402ee9db884443d515e"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/figure_5_2_5b_data.csv",
+      "bytes": 3991311,
+      "sha256": "5526c9d962173850ad8cf832f18e7e4daa5494594ffc266f8abc214e576638ac"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/figure_5_2_5c_data.csv",
+      "bytes": 392121,
+      "sha256": "cd2729ad72d9c510c84ef46379fe077ac74a0ebde99060f1c8b39fe443511429"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/loss_reconciliation.csv",
+      "bytes": 399177,
+      "sha256": "a0cce05d4d915baf59c7f8c378a0d3d52fbeb9d52fbb3e01c24f3709325c1f2c"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/method_contract_registry.csv",
+      "bytes": 20201,
+      "sha256": "5d06cf914ab4a8ff64eb1f52e53340cf154ab499ea8cb7294a3706cc7fb43319"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/methodological_contract_table.csv",
+      "bytes": 7202,
+      "sha256": "47ffadc3ea512213403c11ef9b1b1f192f1a6ecce1919da819ca404f917bd5dd"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/mpc_candidate_rollouts.csv",
+      "bytes": 3836,
+      "sha256": "df892672ba3ff2460a08cb5e4c92d23ca328cfc55385e21c2c1161e1f86778a5"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/mpc_exact_case_check.csv",
+      "bytes": 286,
+      "sha256": "9ada3a8a277b063edaeb99c7938814a742ffd795929be07e4ee85f14e9b15e34"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/mpc_objective_recalculation.csv",
+      "bytes": 862,
+      "sha256": "b5d1cdd23062bc64efe4c9a07ea653b475db406510bcea5968f520c1202de012"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/mpc_scenario_precision.csv",
+      "bytes": 722,
+      "sha256": "f94367d97f1e8623ef2459bd10dfbeeeb18743e06eec613a3f2a23bd5a0baf7d"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/parameter_registry_5_2_5.csv",
+      "bytes": 5549,
+      "sha256": "03916eaf17bd7af3d7614a15d668d00985c675763a5a8e4e7f4f62f31b790f44"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/policy_nonanticipativity.csv",
+      "bytes": 5457,
+      "sha256": "cdd9323dd9f4cf20ecfd8d0fe71f893801004e47cf09cdf24509f8de94e49828"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/projection_feasibility.csv",
+      "bytes": 25273327,
+      "sha256": "2b9eeab101557c307d8f35725488a88e9841a992e27233b4fbbf66efb4f48c69"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/projection_kkt_trace.csv",
+      "bytes": 6509190,
+      "sha256": "22d311af291ee80332958fb9c47a139b495d62f87472f05eb47e6abc337ea036"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/rcmsa_comparison_summary.csv",
+      "bytes": 913,
+      "sha256": "4eefc2d23ca4d8d49a6d786b190fa638f867a4402ce90c81d101762af725ef0a"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/rcmsa_iteration_trace.csv",
+      "bytes": 140260,
+      "sha256": "84a35922b4e05ed44c7e21a6443b0500f2aa3fb3d4cbe2275d7f5df839774ea2"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/rcmsa_start_certification.csv",
+      "bytes": 2304,
+      "sha256": "9dfec5cab9e19284529267a1707bec7b135b6d0e8de789082ce2cad40c14d5fe"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/release_nonanticipativity.csv",
+      "bytes": 9828087,
+      "sha256": "bd1d88ec4151fccc87a090203b604849445c1a5e4fccdec4dbcc48c64cf87754"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/reproducibility_audit.csv",
+      "bytes": 293991,
+      "sha256": "6f7770039ce25b587dc13cbe7d4afedcc3d9b4c3f12427a3134ef1bec008effd"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/runtime_profile.csv",
+      "bytes": 3342,
+      "sha256": "860a2783c83dd009e559cca85a3f130d3130f0e87a86d8fca408ca6d8e1645b3"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/sac_actor_gradient_recalculation.csv",
+      "bytes": 10697,
+      "sha256": "4c14df60f265386fc3683543979910db2540ddb0424064792ee04840484a91e1"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/sac_checkpoint_replay.csv",
+      "bytes": 3093,
+      "sha256": "a6c5e99dd5fe280ddeafefad382ddb85a952f897b55c7cbfcd4ac6a9e754c132"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/sac_contract_status.csv",
+      "bytes": 718,
+      "sha256": "a57452e8ce103d6b2641155376be0cb464049cb0a996ddf1c700e7b5b09b0709"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/sac_episode_replay_summary.csv",
+      "bytes": 3033,
+      "sha256": "f3be5c0817b65f9df0027a4831146e832c1cff6ef35d05cc52613cb9446de659"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/sac_projection_jacobian.csv",
+      "bytes": 36077,
+      "sha256": "6c5795fa55d463024e0ed0f189123a74f4921a02bf0f31f1483d773e8f236b4a"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/sac_training_trace.csv",
+      "bytes": 23155,
+      "sha256": "2f7e58376594fec41ec1516608862d57097dff7bd15cca02475beb6624b8c20c"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/sac_update_recalculation.csv",
+      "bytes": 27086,
+      "sha256": "368ad8ed10f364e32534fd548e774e9c3b3e903ad0c029d03b67f97cd6384bf0"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/sac_validation_summary.csv",
+      "bytes": 2522,
+      "sha256": "27d5c8bcefd5731eef6a859bb5929bdfec888d95f2d4bcdb36148e6015873646"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/selector_decision_trace.csv",
+      "bytes": 3119704,
+      "sha256": "7002a0aac0cd839446cabd736d2787b616c0a714a94a7f517e080bce4b898e9a"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/selector_regret.csv",
+      "bytes": 17472,
+      "sha256": "0124c35cabedaeb0ed03a07b1d296411b984ac8db2ed41d4ee2c5694b366616f"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/tagged_mass_balance.csv",
+      "bytes": 5185720,
+      "sha256": "f76094ae5ac813c2bcea34a2e6655353df6edbb3052acf6245c0209607dbebb2"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/travel_lag_acceptance.csv",
+      "bytes": 708,
+      "sha256": "7c6b6623b10140a85a2ef135dcc6630a734bba05b580661b8c376b796fff76cf"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/unavailable_route_acceptance.csv",
+      "bytes": 286,
+      "sha256": "e35be9fef97227938f2d9841e641009280efeaec791ff4eaa7e26337c794bb73"
+    },
+    {
+      "path": "output/5.2.5_computational_methodological_acceptance/upstream_lock_audit.csv",
+      "bytes": 3239,
+      "sha256": "8afbcd2ca304cca7125abaa6f557b38fd170b9c44ea6170cf61c8c7a88144be2"
+    }
+  ],
+  "acceptance": {
+    "ENGINEERING_ACCEPTANCE": "PASS",
+    "NUMERICAL_ACCEPTANCE": "PASS",
+    "METHODOLOGY_CONTRACT_ACCEPTANCE": "PASS",
+    "EXPERIMENTAL_EVIDENCE_ACCEPTANCE": "PASS",
+    "OVERALL_ACCEPTANCE": "PASS"
+  }
+}

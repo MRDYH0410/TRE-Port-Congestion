@@ -1,0 +1,5 @@
+comparison,maximum_absolute_difference,categorical_identity,tolerance,status
+RC-MSA selected fixed-point diagnostics,0.0,True,1e-12,PASS
+"MPC candidate objectives, projection and selected action",0.0,True,1e-12,PASS
+88-path statistical precision evidence,9.094947017729282e-13,True,1e-12,PASS
+"5.2.2--5.2.4 accepted path, checkpoint, loss and clearance anchors",5.820766091346741e-11,True,1e-06,PASS

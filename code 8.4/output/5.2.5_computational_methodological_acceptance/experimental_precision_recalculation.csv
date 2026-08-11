@@ -1,0 +1,8 @@
+policy,physical_paths,learning_policy,learning_seeds_aggregated_within_path_first,pilot_paths,pilot_paired_standard_deviation,pilot_t_critical,raw_formula_required_paths,required_paths,maximum_path_cap,target_halfwidth,achieved_halfwidth,precision_target_met,status
+Reactive,88,False,True,4,6174.675087915692,3.1824463052837078,76,76,196,2255.637825,2237.542407942862,True,PASS
+Projected stochastic MPC,88,False,True,4,6625.989773799573,3.1824463052837078,88,88,196,2255.637825,2055.580923550564,True,PASS
+Behaviour cloning,88,True,True,4,6525.474082382399,3.1824463052837078,85,85,196,2255.637825,2198.645223942854,True,PASS
+PPO,88,True,True,4,5603.790999745267,3.1824463052837078,63,63,196,2255.637825,1682.384000582248,True,PASS
+Vanilla SAC,88,True,True,4,17.722504815181736,3.1824463052837078,1,6,196,2255.637825,2.942424101890246,True,PASS
+Constrained SAC,88,True,True,4,18.51213718161312,3.1824463052837078,1,6,196,2255.637825,3.1564222921901064,True,PASS
+Model-guided constrained SAC,88,True,True,4,6520.204289631337,3.1824463052837078,85,85,196,2255.637825,2195.527562901001,True,PASS

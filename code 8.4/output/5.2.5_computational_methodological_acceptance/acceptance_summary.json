@@ -1,0 +1,27 @@
+{
+  "ENGINEERING_ACCEPTANCE": "PASS",
+  "NUMERICAL_ACCEPTANCE": "PASS",
+  "METHODOLOGY_CONTRACT_ACCEPTANCE": "PASS",
+  "EXPERIMENTAL_EVIDENCE_ACCEPTANCE": "PASS",
+  "OVERALL_ACCEPTANCE": "PASS",
+  "critical_contract_rule": "noncompensatory; every critical method contract plus experimental precision must pass",
+  "critical_contracts_passed": 32,
+  "critical_contracts_total": 32,
+  "precision_required_paths": 88,
+  "precision_executed_paths": 88,
+  "precision_target_halfwidth": 2255.637825,
+  "precision_achieved_halfwidth": 2237.542407942862,
+  "precision_contrasts": 7,
+  "precision_targets_met": 7,
+  "failure_reasons": [],
+  "interpretation": "A FAIL does not invalidate recorded computations; it prevents the policy evidence from being labelled fully methodologically accepted.",
+  "generated_at_utc": "2026-08-10T18:42:09.800226+00:00",
+  "figure_files": [
+    "figure_5_2_5a_numerical_convergence.png",
+    "figure_5_2_5a_numerical_convergence.pdf",
+    "figure_5_2_5b_learning_selector.png",
+    "figure_5_2_5b_learning_selector.pdf",
+    "figure_5_2_5c_contract_runtime.png",
+    "figure_5_2_5c_contract_runtime.pdf"
+  ]
+}

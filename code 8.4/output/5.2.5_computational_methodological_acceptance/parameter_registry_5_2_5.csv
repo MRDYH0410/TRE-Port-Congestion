@@ -1,0 +1,43 @@
+parameter,value,basis,basis_category,status
+rcmsa_stopping_tolerance,1e-06,Chapter 4 and 5.1 registered equilibrium tolerance,chapter_method,REGISTERED
+rcmsa_maximum_iterations,500,Chapter 4 and 5.1 computational cap,chapter_method,REGISTERED
+rcmsa_step_size_rule,"min(1,kappa/(n+1)), kappa in {1,2,4}; choose least residual",Chapter 4 RC-MSA definition,chapter_method,REGISTERED
+conventional_msa_comparator,1/(n+1),classical MSA comparator on the identical fixed-point problem,algorithmic_comparator,REGISTERED
+projection_solver,SciPy SLSQP weighted Euclidean convex projection,Chapter 4 projection plus solver implementation,solver,REGISTERED
+projection_tolerance,1e-08,5.1 registered solver tolerance,chapter_method,REGISTERED
+projection_max_iterations,300,5.1 registered solver cap,chapter_method,REGISTERED
+mpc_horizon_weeks,8,5.1 readiness-aligned control horizon,chapter_method,REGISTERED
+mpc_scenario_count,3,5.2.2 frozen structural scenario bundle,designed_experiment,REGISTERED
+mpc_candidate_construction,zero + five block endpoints + balanced midpoint,registered endpoint-midpoint finite lattice,designed_experiment,REGISTERED
+mpc_terminal_loss,shared TerminalMassCorrection.compute,Chapter 3 terminal outstanding correction,chapter_method,REGISTERED
+selector_horizon_and_scenarios,H=8; scenarios=3,same formal MPC evaluator for BC and SAC,chapter_method,REGISTERED
+bc_architecture,complete-state linear sigmoid actor with 34 output actions,5.2.2 frozen state_and_actor contract and checkpoint shape,designed_experiment,REGISTERED
+bc_loss,projected-action mean squared error on formal MPC teacher plus ridge,5.2.2 training.py::train_bc,chapter_method,REGISTERED
+bc_batch_size,full frozen teacher set per epoch,train_bc uses all teacher rows after a deterministic permutation,algorithm_implementation,REGISTERED
+bc_ridge,0.001,5.2.2 frozen training configuration,designed_experiment,REGISTERED
+sac_architecture,linear sigmoid actor; twin ridge critics with projection dimension 32 and interaction head 4,5.2.2 training.py::train_sac,designed_experiment,REGISTERED
+sac_discount,0.98,5.2.2 frozen training configuration,designed_experiment,REGISTERED
+sac_initial_entropy_temperature,0.05,Initial condition only; adaptively updated by the Chapter 4/5.1 temperature loss,chapter_method,REGISTERED
+sac_entropy_temperature_learning_rate,0.02,5.1 registered adaptive entropy-temperature update,chapter_method,REGISTERED
+sac_target_entropy_rule,negative_action_dimension,5.1 target entropy equals negative full action dimension,chapter_method,REGISTERED
+sac_constraint_dual_step,0.1,5.2.2 frozen constrained-SAC setting,designed_experiment,REGISTERED
+sac_gradient_check_step,6.055454452393343e-06,cube root of IEEE-754 double machine epsilon,machine_precision,REGISTERED
+sac_gradient_check_relative_tolerance,0.0001,5.1 numerical gradient acceptance tolerance,chapter_method,REGISTERED
+sac_update_replay_scope,first complete 21-period production episode for Vanilla and Constrained SAC,deterministic replay of the accepted production training path and optimizer,acceptance_design,REGISTERED
+checkpoint_selection_rule,validation every 3 episodes; fractional improvement 0.001; patience 2,5.2.2 validation-only checkpoint rule,designed_experiment,REGISTERED
+training_seeds,3,5.2.2 frozen deterministic seed construction,designed_experiment,REGISTERED
+training_minimum_and_cap,minimum=9; maximum=12,5.2.2 preregistered stopping rule,designed_experiment,REGISTERED
+numerical_precision_target,all registered residual tolerances; no averaged acceptance score,noncompensatory contract rule,acceptance_design,REGISTERED
+paired_path_precision_target,5.2.2 selected_path_count.csv; 88 physical paths and target half-width 2255.637825,5.2.2 preregistered statistical precision,statistical_design,REGISTERED
+mass_conservation_tolerance,1e-06,5.1 production numerical tolerance,chapter_method,REGISTERED
+loss_reconciliation_tolerance,1e-06,5.1 production numerical tolerance,chapter_method,REGISTERED
+clearance_tolerance,1e-06,5.1 clearance rule,chapter_method,REGISTERED
+runtime_environment,Python 3.12.13; Windows-11-10.0.26200-SP0,captured at run time,runtime_observation,REGISTERED
+hardware_configuration,"AMD64 Family 25 Model 33 Stepping 0, AuthenticAMD",captured at run time,runtime_observation,REGISTERED
+runtime_timeout_rule,No new timeout introduced; frozen upstream caps apply,preserves production settings,chapter_method,REGISTERED
+5.2.5_controlled_rcmsa_cases,3,"boundary audit count, not an economic parameter",acceptance_design,REGISTERED
+rcmsa_master_choice_distance_audit,complete current-plus-previous master support; unavailable current routes have zero share,Chapter 4 deterministic Sel_t contract,acceptance_contract,REGISTERED
+disclosure_reference_action_audit,reference forecast receives a_t^{-I} at the StandardBehaviorProblemFactory boundary,Chapter 4 frozen disclosure baseline contract,acceptance_contract,REGISTERED
+waiting_vintage_no_reset_audit,every source vintage balance plus independent age-zero renewed-waiting identity,Chapter 4 final behavioral/physical acceptance contract,acceptance_contract,REGISTERED
+mpc_selector_module_certificate_audit,"raw/projected action, projection, RC-MSA, tagged transition, loss, terminal, failure and selection records",Chapter 4 integrated algorithm return contract,acceptance_contract,REGISTERED
+core_repair_equivalence_tolerance,1e-12,accepted pre-repair deterministic scientific-output comparison; runtime excluded,machine_precision,REGISTERED

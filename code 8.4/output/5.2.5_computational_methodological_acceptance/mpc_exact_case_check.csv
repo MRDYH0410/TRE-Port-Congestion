@@ -1,0 +1,2 @@
+case_id,enumerated_candidates,valid_candidates,production_selected,exhaustive_selected,optimality_gap_within_registered_lattice,scope,status
+finite_registered_candidate_lattice,7,7,zero,zero,0.0,"exact only over the preregistered finite lattice, not the continuous action space",PASS

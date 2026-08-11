@@ -1,0 +1,4 @@
+route,initial_berth_mass,ending_berth_mass,ending_yard_mass,delivered_mass,unavailable_route_service_violation,maximum_hold_residual,tolerance,status
+Fujairah,1.0,1.0,0.0,0.0,0.0,0.0,1e-06,PASS
+Khor_Fakkan,1.0,1.0,0.0,0.0,0.0,0.0,1e-06,PASS
+Sohar,1.0,1.0,0.0,0.0,0.0,0.0,1e-06,PASS

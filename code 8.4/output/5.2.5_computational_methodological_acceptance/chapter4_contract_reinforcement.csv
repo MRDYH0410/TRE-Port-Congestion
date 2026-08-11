@@ -1,0 +1,5 @@
+contract_id,audit_case,observed_value,expected_value,maximum_residual,tolerance,status,detail
+M27_RCMSA_MASTER_CHOICE_DISTANCE,unavailable_previous_route_is_zero_on_current_master_simplex,2.0,2.0,0.0,1e-12,PASS,Historical L1 distance includes both the lost unavailable-route share and the gained current-route share.
+M28_DISCLOSURE_REFERENCE_ACTION,factory_boundary_enforces_a_t_minus_I,0.0,0.0,0.0,0.0,PASS,The disclosure baseline callback receives no disclosure coordinate while every non-information action coordinate is preserved.
+M29_WAITING_VINTAGE_NO_RESET,production_transition_each_vintage_and_age_zero_identity,0.0,0.0,0.0,1e-06,PASS,Certified 105 vintage balances and 1 independent no-reset identities.
+M30_MPC_SELECTOR_MODULE_CERTIFICATES,production_nested_rollout_and_two_proposal_selection_log,1.7053025658242404e-13,0.0,1.7053025658242404e-13,1e-06,PASS,"Every valid candidate/scenario/period retains raw and projected actions, projection, RC-MSA, transition, loss, terminal, failure and mechanical selection evidence."

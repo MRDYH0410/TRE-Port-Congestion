@@ -1,0 +1,16 @@
+{
+  "supported": [
+    "production method connectivity",
+    "registered numerical tolerances",
+    "matched replay reproducibility",
+    "computational profile"
+  ],
+  "not_supported": [
+    "universal policy superiority",
+    "global optimality",
+    "causal real-port effect",
+    "real-time deployability"
+  ],
+  "evidence_status": "PASS",
+  "binding_limitation": "none"
+}

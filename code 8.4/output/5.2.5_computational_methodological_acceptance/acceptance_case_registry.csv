@@ -1,0 +1,32 @@
+trace_type,module,input_path,sha256,recorded_acceptance_signal,independently_recalculated_here,upstream_hash_locked,status,detail,artifact,relative_path,expected_sha256,actual_sha256,hash_matches,failure_reason,observed_residual,tolerance
+upstream_acceptance_artifact,5.2.1,output/5.2.1_data_event_information_validity/acceptance_5_2_1.json,eb0585b60b1ea4ed831b00ef76d0c115246e6faa229841123c54dd1e96a45809,True,False,True,PASS,The acceptance artifact is hash locked; downstream numerical claims are independently recalculated.,,,,,,,,
+upstream_acceptance_artifact,5.2.2,output/5.2.2_common_authority_benchmark/acceptance_5_2_2.json,4a0b2479a27400c868ba9ffee00c691761ddc460c59f1d8532e89630c8829c80,True,False,True,PASS,The acceptance artifact is hash locked; downstream numerical claims are independently recalculated.,,,,,,,,
+upstream_acceptance_artifact,5.2.3,output/5.2.3_action_and_congestion_mechanisms/acceptance_5_2_3.json,f0ba77228d399b8bf7759a4f33c55c64e6f8ed835b16d2b62bb807ffcf6abc0e,True,False,True,PASS,The acceptance artifact is hash locked; downstream numerical claims are independently recalculated.,,,,,,,,
+upstream_acceptance_artifact,5.2.4,output/5.2.4_released_risk_information_capacity_preparation/acceptance_5_2_4.json,8fa1e997fca3c3d32238f1e63c7580f5ce9176f0e173b235a6526e32566ec87a,True,False,True,PASS,The acceptance artifact is hash locked; downstream numerical claims are independently recalculated.,,,,,,,,
+upstream_hash_lock,5.2.1,,,,,,PASS,,historical_information_event_path.csv,output/5.2.1_data_event_information_validity/historical_information_event_path.csv,407B06106C86F7173D399D8A66283F48AC6746B146C869C14CF77BAD3BA3A976,407B06106C86F7173D399D8A66283F48AC6746B146C869C14CF77BAD3BA3A976,True,,,
+upstream_hash_lock,5.2.1,,,,,,PASS,,acceptance_5_2_1.json,output/5.2.1_data_event_information_validity/acceptance_5_2_1.json,EB0585B60B1EA4ED831B00EF76D0C115246E6FAA229841123C54DD1E96A45809,EB0585B60B1EA4ED831B00EF76D0C115246E6FAA229841123C54DD1E96A45809,True,,,
+upstream_hash_lock,5.2.1,,,,,,PASS,,run_manifest.json,output/5.2.1_data_event_information_validity/run_manifest.json,C1DD1E08A34A1A0BE72973C1C9EBF1899E2849EE7F1805C3033D62E3D0B271A5,C1DD1E08A34A1A0BE72973C1C9EBF1899E2849EE7F1805C3033D62E3D0B271A5,True,,,
+upstream_hash_lock,5.2.2,,,,,,PASS,,acceptance_5_2_2.json,output/5.2.2_common_authority_benchmark/acceptance_5_2_2.json,4A0B2479A27400C868BA9FFEE00C691761DDC460C59F1D8532E89630C8829C80,4A0B2479A27400C868BA9FFEE00C691761DDC460C59F1D8532E89630C8829C80,True,,,
+upstream_hash_lock,5.2.2,,,,,,PASS,,run_manifest.json,output/5.2.2_common_authority_benchmark/run_manifest.json,CE4F0BF874CFB902E0A2D11D499DD177B0496029D67A74D623C4D152417BD30B,CE4F0BF874CFB902E0A2D11D499DD177B0496029D67A74D623C4D152417BD30B,True,,,
+upstream_hash_lock,5.2.2,,,,,,PASS,,checkpoint_manifest.csv,output/5.2.2_common_authority_benchmark/checkpoint_manifest.csv,9033589EF4CF9ED49B7CFE3CB1815F1FD0BDFCB453EAA9E8D2F3C969AC66BAF8,9033589EF4CF9ED49B7CFE3CB1815F1FD0BDFCB453EAA9E8D2F3C969AC66BAF8,True,,,
+upstream_hash_lock,5.2.3,,,,,,PASS,,acceptance_5_2_3.json,output/5.2.3_action_and_congestion_mechanisms/acceptance_5_2_3.json,F0BA77228D399B8BF7759A4F33C55C64E6F8ED835B16D2B62BB807FFCF6ABC0E,F0BA77228D399B8BF7759A4F33C55C64E6F8ED835B16D2B62BB807FFCF6ABC0E,True,,,
+upstream_hash_lock,5.2.3,,,,,,PASS,,run_manifest.json,output/5.2.3_action_and_congestion_mechanisms/run_manifest.json,FFE2DB2A65D4C1BC9FC8A9AC8E48A3A14DA0C2473C3712F77D1271663B36A212,FFE2DB2A65D4C1BC9FC8A9AC8E48A3A14DA0C2473C3712F77D1271663B36A212,True,,,
+upstream_hash_lock,5.2.3,,,,,,PASS,,path_medoid_selection.csv,output/5.2.3_action_and_congestion_mechanisms/path_medoid_selection.csv,1442A006C6416B3CFC4077F47740911B2C9523DD3D2ABD36E8D84C1DF5A6DA56,1442A006C6416B3CFC4077F47740911B2C9523DD3D2ABD36E8D84C1DF5A6DA56,True,,,
+upstream_hash_lock,5.2.4,,,,,,PASS,,acceptance_5_2_4.json,output/5.2.4_released_risk_information_capacity_preparation/acceptance_5_2_4.json,8FA1E997FCA3C3D32238F1E63C7580F5CE9176F0E173B235A6526E32566EC87A,8FA1E997FCA3C3D32238F1E63C7580F5CE9176F0E173B235A6526E32566EC87A,True,,,
+upstream_hash_lock,5.2.4,,,,,,PASS,,run_manifest.json,output/5.2.4_released_risk_information_capacity_preparation/run_manifest.json,B844E6027FC8216A9FD716B10A0164A41FECA24932006904D753AEA7AFE2CF4C,B844E6027FC8216A9FD716B10A0164A41FECA24932006904D753AEA7AFE2CF4C,True,,,
+upstream_hash_lock,5.2.4,,,,,,PASS,,paired_effects.csv,output/5.2.4_released_risk_information_capacity_preparation/paired_effects.csv,EEB725ED582D7B6339D99246A7F189F6B18A795F5FCFAF3B6A4EAE2B3F09BFFB,EEB725ED582D7B6339D99246A7F189F6B18A795F5FCFAF3B6A4EAE2B3F09BFFB,True,,,
+upstream_hash_lock,5.2.4,,,,,,PASS,,controller_manifest.csv,output/5.2.4_released_risk_information_capacity_preparation/controller_manifest.csv,F32ACDCC2D70A49E3FE9BA11F57132E161EDAB322D82E27AF3F013B149B5EEFA,F32ACDCC2D70A49E3FE9BA11F57132E161EDAB322D82E27AF3F013B149B5EEFA,True,,,
+training_validation_test_disjoint,,,,,,,PASS,pairwise path_id overlap,,,,,,,0.0,0.0
+matched_exogenous_path_hash_by_policy,,,,,,,PASS,expected 8 policies per physical path,,,,,,,0.0,0.0
+matched_released_information_hash_by_policy,,,,,,,PASS,released information hash count minus one,,,,,,,0.0,0.0
+scenario_probabilities_normalised,,,,,,,PASS,Production ScenarioBundle validates and normalises active weights; independently recalculated in mpc_candidate_rollouts.csv.,,,,,,,0.0,1e-12
+controlled_projection,M3,,,,,,PASS,33266 controlled and production projection rows,,,,,,,,
+controlled_rcmsa,M4,,,,,,PASS,3 production lower-level problems,,,,,,,,
+rcmsa_start_and_final_trial,M4,,,,,,PASS,"true zero-loading start, actual start provenance and final generated trial certification",,,,,,,,
+controlled_mpc,M8,,,,,,PASS,exhaustive registered candidate lattice,,,,,,,,
+travel_impulse,M10,,,,,,PASS,one-unit pulse on every declared route,,,,,,,,
+capacity_impulse,M11,,,,,,PASS,one-unit readiness and direct order through production CapacityDynamics,,,,,,,,
+unavailable_route_hold,M25,,,,,,PASS,existing route-tagged mass remains in place with zero service,,,,,,,,
+clearance_terminal,M26,,,,,,PASS,"right censoring, two exit channels and exactly one terminal correction",,,,,,,,
+chapter4_contract_reinforcement,M27--M30,,,,,,PASS,"master-choice history distance, a_t^{-I}, per-vintage no-reset and complete MPC/selector certificates",,,,,,,,
+core_repair_numerical_equivalence,M31,,,,,,PASS,"pre/post repair fixed-point, action, nested objective, upstream-anchor and precision equivalence",,,,,,,,
