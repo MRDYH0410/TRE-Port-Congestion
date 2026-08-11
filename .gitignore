@@ -100,6 +100,25 @@ code 8.4/output/5.2.4_released_risk_information_capacity_preparation/direct_capa
 code 8.4/output/5.3.1_commitment_sensitivity.previous_20260811_041809/
 code 8.4/output/5.2.5_computational_methodological_acceptance.invalidated_old_20260810/
 
+# ============================================================
+# Temporary experiment probes
+# ============================================================
+
+code 8.4/.probe_5_2_4_anchor/
+code 8.4/.probe*/
+
+# ============================================================
+# Invalidated / obsolete experiment figures
+# ============================================================
+
+code 8.4/experiments/**/figures.invalidated_old_*/
+
+# ============================================================
+# QA PDF rendering temporary artifacts
+# ============================================================
+
+qa-overleaf-8.4/pdf-render-check/pdfs/
+
 
 # ============================================================
 # Compressed archives
