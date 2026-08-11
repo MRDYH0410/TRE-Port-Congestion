@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tre-port-congestion-84"
+version = "0.1.0"
+description = "Model-consistent code framework for Chapters 3 and 4 of TRE Port Congestion 8.4"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=2.0",
+  "scipy>=1.13",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0", "pandas>=2.2", "xlrd>=2.0", "matplotlib>=3.9", "Pillow>=10.0"]
+learning = ["torch>=2.4"]
+data = ["pandas>=2.2", "xlrd>=2.0"]
+experiment = ["pandas>=2.2", "xlrd>=2.0", "matplotlib>=3.9", "Pillow>=10.0"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
