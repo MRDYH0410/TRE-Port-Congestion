@@ -127,3 +127,8 @@ qa-overleaf-8.4/pdf-render-check/pdfs/
 *.zip
 *.rar
 *.7z
+# Large 5.3.1 trajectory output - local only
+code 8.4/output/5.3.1_commitment_sensitivity/weekly_commitment_trajectories.csv
+
+# Large 5.3.1 trajectory output - local only
+code 8.4/output/5.3.1_commitment_sensitivity/weekly_commitment_trajectories.csv
