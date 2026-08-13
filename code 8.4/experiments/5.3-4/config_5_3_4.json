@@ -1,0 +1,114 @@
+{
+  "experiment_id": "5.3.4_parameter_robustness",
+  "experiment_title": "Parameter Robustness",
+  "evidence_class": "designed conditional robustness and interaction stress",
+  "base_model_config": "experiments/5.2-2/config_5_2_2.json",
+  "output_directory": "output/5.3.4_parameter_robustness",
+  "report_directory": "../report - 8.4/5.3.4",
+  "commitment_contract": {
+    "reference_fraction": 0.5,
+    "reason_not_varied": "The complete commitment domain is already evaluated in the commitment-sensitivity experiment; repeating chi would duplicate a structural main effect.",
+    "commitment_main_effect_evaluated_here": false
+  },
+  "anchor_contract": {
+    "historical_anchor": "accepted common-authority reference event and parameter register",
+    "severe_reclosure": {"open_weeks": 1, "reclosure_intensity": 0.95, "reclosure_duration_weeks": 32, "recovery_weeks": 8},
+    "severe_reclosure_basis": "preregistered structural endpoint, not an empirical forecast",
+    "exploratory_switch_slice_rule": "May be added only as an explicitly exploratory mechanism slice if the reclosure experiment identifies a switch; no such slice is included in the preregistered run."
+  },
+  "level_rule": {
+    "multiplicative": [0.5, 1.0, 2.0],
+    "basis": "Reference-centred half/reference/double levels are dimensionless structural stresses symmetric on the log scale, not confidence intervals.",
+    "clearance_tolerance": [1e-08, 1e-06, 0.0001],
+    "clearance_basis": "Two orders below/reference/two orders above the registered numerical tolerance; post-trajectory classification only."
+  },
+  "one_factor_screen": [
+    {"factor": "route_sensitivity", "family": "behavioural", "levels": [0.5, 1.0, 2.0], "reference": 1.0, "operator": "multiply every theta_k by m_theta"},
+    {"factor": "waiting_hazard_power", "family": "behavioural", "levels": [0.5, 1.0, 2.0], "reference": 2.0, "operator": "set p in (j/Jbar)^p"},
+    {"factor": "exit_consequence", "family": "behavioural", "levels": [0.5, 1.0, 2.0], "reference": 1.0, "operator": "set c^E_k=m_E T_D and the matching terminal unit consequence"},
+    {"factor": "network_exposure", "family": "physical", "levels": [0.5, 1.0, 2.0], "reference": 1.0, "operator": "multiply path normal_model_units by m_Q while preserving released serviceability"},
+    {"factor": "maritime_lag", "family": "physical", "levels": [0.5, 1.0, 2.0], "reference": 1.0, "operator": "set tau^M_kr=max(1,round_half_up(m_tau tau^M_ref_kr))"},
+    {"factor": "port_service", "family": "physical", "levels": [0.5, 1.0, 2.0], "reference": 1.0, "operator": "multiply berth, yard and gate reference capacities by m_mu"},
+    {"factor": "corridor_capacity", "family": "physical", "levels": [0.5, 1.0, 2.0], "reference": 1.0, "operator": "multiply only shared-corridor reference capacity by m_kappa"},
+    {"factor": "physical_feedback", "family": "physical", "levels": [0.0, 1.0, 2.0], "reference": 1.0, "operator": "set eta in psi_eta(r)=[1+eta(r-1)_+]^-1"},
+    {"factor": "route_resource_cost", "family": "economic", "levels": [0.5, 1.0, 2.0], "reference": 1.0, "operator": "multiply every nonzero Delta c^res_kr by m_R"},
+    {"factor": "action_cost", "family": "economic_control", "levels": [0.5, 1.0, 2.0], "reference": 1.0, "operator": "multiply every nonzero action-cost coefficient by m_A"},
+    {"factor": "authority_budget", "family": "economic_control", "levels": [0.25, 0.5, 1.0], "reference": 0.5, "operator": "set both period and cumulative fractions b in b C^full"},
+    {"factor": "readiness_lead", "family": "economic_control", "levels": [4.0, 8.0, 16.0], "reference": 8.0, "operator": "set Lambda^R directly in integer weeks"},
+    {"factor": "waiting_error_scale", "family": "information", "levels": [0.5, 1.0, 2.0], "reference": 1.0, "operator": "multiply route-wise validation RMSE sigma^W_kr by m_sigma"},
+    {"factor": "clearance_tolerance", "family": "numerical", "levels": [1e-08, 1e-06, 0.0001], "reference": 1e-06, "operator": "post-trajectory clearance reclassification only"}
+  ],
+  "interactions": [
+    {"cell_id": "interaction__long_lag__severe_reclosure", "factors": {"maritime_lag": 2.0}, "path_stress": "severe_reclosure", "basis": "long maritime lag combined with the preregistered one-week opening, 0.95 closure intensity and 32-week reclosure"},
+    {"cell_id": "interaction__convex_hazard__low_exit", "factors": {"waiting_hazard_power": 2.0, "exit_consequence": 0.5}, "basis": "preregistered convex-hazard and low-exit combination; because p=2 is the historical reference, this cell must reproduce the low-exit main-effect cell and is audited as a combined anchor rather than an identified non-additive interaction"},
+    {"cell_id": "interaction__n09__low_corridor", "factors": {"corridor_capacity": 0.5}, "network_stress": "n09_end_to_end_precontracted", "basis": "nine-gateway end-to-end precontracted network combined with half-reference shared-corridor capacity"},
+    {"cell_id": "interaction__lead16__low_credibility", "factors": {"readiness_lead": 16.0, "information_credibility": 0.5}, "basis": "sixteen-week readiness lead combined with the preregistered midpoint of the formal gamma_I credibility domain"}
+  ],
+  "cell_contract": {
+    "simulated_factor_count": 13,
+    "one_factor_unique_cells": 27,
+    "diagnostic_only_factor_count": 1,
+    "interaction_cells": 4,
+    "total_unique_cells": 31,
+    "reference_counting_rule": "The common reference is counted once; each simulated factor contributes its two nonreference levels.",
+    "interactions_frozen_before_results": true
+  },
+  "policy_design": {
+    "screening_policies": ["Passive", "Reactive", "Behaviour cloning"],
+    "dimension_changed_policies": ["Passive", "Reactive", "Projected stochastic MPC"],
+    "full_policy_anchors": ["Passive", "Reactive", "Projected stochastic MPC", "Behaviour cloning", "Model-guided constrained SAC"],
+    "reference_checkpoint_rule": "Use accepted 5.2.2 checkpoints as the historical-anchor matched policies.",
+    "screening_rule": "Dimension-compatible one-factor cells use frozen deployment policies; maritime-lag and readiness-lead cells use Passive, Reactive and online MPC because their feature dimension changes.",
+    "matched_retraining_rule": "Only the long-lag severe-reclosure anchor receives new matched BC and full constrained-SAC training; the nine-gateway interaction uses the frozen size-specific 5.3.3 checkpoint and the lead-16 interaction excludes incompatible learned checkpoints.",
+    "network_checkpoint_rule": "The nine-gateway checkpoint is size-matched but frozen before the low-corridor perturbation.",
+    "not_evaluated_status": "NOT_RUN_DIMENSION_MISMATCH_OR_PREREGISTERED_SCOPE"
+  },
+  "matched_training": {
+    "cell_ids": ["interaction__long_lag__severe_reclosure"],
+    "training_paths": 4,
+    "validation_paths": 2,
+    "derivative_checks_required": true,
+    "test_paths_seen_before_checkpoint_selection": false
+  },
+  "path_design": {
+    "gate_paths": 1,
+    "minimum_formal_paths": 8,
+    "maximum_formal_paths": 20,
+    "confidence_level": 0.95,
+    "target_halfwidth": 2255.637825,
+    "runtime_budget_seconds": 28800,
+    "runtime_safety_fraction": 0.70,
+    "reporting_reserve_seconds": 1800,
+    "selection_rule": "Select the largest preregistered count supported by training plus validation-path gate timing and the remaining eight-hour budget; outcomes never select N.",
+    "inference_unit": "physical_path",
+    "learning_seed_rule": "Average the three learning seeds within each physical path before paired summaries."
+  },
+  "inference": {
+    "primary_reference_policy": "Reactive",
+    "multiplicity": "Holm-adjusted paired p-values and simultaneous t intervals within each declared family.",
+    "regret_rule": "Path-paired regret is defined only over the policy family actually evaluated in each cell.",
+    "stability_rule": "Policy identity is conditional on the declared physical-path ensemble and evaluated controller family; missing policies are never imputed."
+  },
+  "execution": {
+    "parallel_workers": 12,
+    "resume_cache": true,
+    "figure_dpi": 300,
+    "figure_formats": ["png"],
+    "formal_wall_clock_limit_seconds": 28800
+  },
+  "upstream_locks": [
+    {"path": "output/5.2.1_data_event_information_validity/historical_information_event_path.csv", "sha256": "407b06106c86f7173d399d8a66283f48ac6746b146c869c14cf77bad3ba3a976"},
+    {"path": "output/5.2.2_common_authority_benchmark/acceptance_5_2_2.json", "sha256": "4a0b2479a27400c868ba9ffee00c691761ddc460c59f1d8532e89630c8829c80"},
+    {"path": "output/5.2.2_common_authority_benchmark/run_manifest.json", "sha256": "ce4f0bf874cfb902e0a2d11d499dd177b0496029d67a74d623c4d152417bd30b"},
+    {"path": "output/5.2.2_common_authority_benchmark/checkpoint_manifest.csv", "sha256": "9033589ef4cf9ed49b7cfe3cb1815f1fd0bdfcb453eaa9e8d2f3c969ac66baf8"},
+    {"path": "output/5.2.2_common_authority_benchmark/test_path_manifest.csv", "sha256": "c72dda4f1f2a67d7147743f779cd059a18929314ff07502125947f58692d546d"},
+    {"path": "output/5.2.5_computational_methodological_acceptance/acceptance_5_2_5.json", "sha256": "2f827b2d037a25d4392fde03db4f0ede89d687fca0b3d52cf161e8599c40d188"},
+    {"path": "output/5.2.5_computational_methodological_acceptance/run_manifest.json", "sha256": "8cfa049766ca4841da4969775158c95ddd79da655b6f918705a48e927bb70d88"},
+    {"path": "output/5.3.2_reclosure_sensitivity/acceptance_5_3_2.json", "sha256": "39d2961445cedd8cba134fa3763abe77d34749a7be0a7c17c987fd6043920336"},
+    {"path": "output/5.3.2_reclosure_sensitivity/run_manifest.json", "sha256": "5b78d6ade1992391f7cec797dc4507b864e9226687ab9265de6aff9229bf8472"},
+    {"path": "output/5.3.3_gateway_network_sensitivity/acceptance_5_3_3.json", "sha256": "0cc1d4674ebde53498077b700924b0010143c394be1b2707ffface222b7534fd"},
+    {"path": "output/5.3.3_gateway_network_sensitivity/run_manifest.json", "sha256": "3e217c53808f9fba521a8b9a09c4c36ba49275f105d38cf883f69c665fe833c3"},
+    {"path": "output/5.3.3_gateway_network_sensitivity/checkpoint_manifest.csv", "sha256": "db81980318049a14629532c44b03db9d0030f48ef3b4b6ab03bc456dcb732560"},
+    {"path": "experiments/5.2-2/config_5_2_2.json", "sha256": "c3a1931a5275398484b3b713f77ed1e55506037dd00791a2e06d587123ba5b9b"}
+  ]
+}

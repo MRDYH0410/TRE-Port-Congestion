@@ -1,0 +1,11 @@
+{
+  "run_signature": "426f8aa3c92ac799ecbe909d5e28c8ef190797af50f514ab542aa4b3b6bc4593",
+  "gate_elapsed_seconds": 1542.8758000999987,
+  "matched_training_elapsed_seconds": 2947.1979581999985,
+  "gate_paths": 1,
+  "estimated_seconds_per_complete_parameter_path": 1542.8758000999987,
+  "runtime_supported_paths": 10,
+  "selected_formal_paths": 10,
+  "selection_uses_test_outcomes": false,
+  "gate_policy_path_seed_runs": 161
+}

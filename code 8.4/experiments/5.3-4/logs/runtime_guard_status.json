@@ -1,0 +1,7 @@
+﻿{
+    "status":  "FINISHED_BEFORE_LIMIT",
+    "message":  "The authorised runner exited before the eight-hour deadline.",
+    "updated_at":  "2026-08-12T05:57:01.9016388Z",
+    "deadline_utc":  "2026-08-12T11:15:12.7623569Z",
+    "child_pid":  23092
+}

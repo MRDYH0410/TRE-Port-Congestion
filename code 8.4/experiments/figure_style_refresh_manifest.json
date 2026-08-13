@@ -1,0 +1,438 @@
+{
+  "status": "complete",
+  "scope": "presentation only; completed tabular outputs were read without simulation, training, optimization, or re-estimation",
+  "started_utc": "2026-08-13T10:12:41.097498+00:00",
+  "completed_utc": "2026-08-13T10:13:33.570954+00:00",
+  "dpi": 350,
+  "experiments": [
+    "5.2.1",
+    "5.2.2",
+    "5.2.3",
+    "5.2.4",
+    "5.2.5",
+    "5.3.1",
+    "5.3.2",
+    "5.3.3",
+    "5.3.4"
+  ],
+  "scientific_non_image_outputs_byte_identical": true,
+  "manuscript_exclusions": [
+    "figure_5_2_2c_clearance_censoring.png"
+  ],
+  "figures": [
+    {
+      "experiment": "5.2.1",
+      "file": "figure_5_2_1a_counterfactual_predictive_validity.pdf",
+      "bytes": 37109,
+      "sha256": "a4649ca91be31f5f7279a8764cf6bee7cb539de181034da1b21c045ad682ff7f",
+      "manuscript_included": true
+    },
+    {
+      "experiment": "5.2.1",
+      "file": "figure_5_2_1a_counterfactual_predictive_validity.png",
+      "bytes": 258216,
+      "sha256": "46c6b3a1872a9c63ec915cdfa638179a63f7417bde31da702b230530ed8e96ae",
+      "manuscript_included": true,
+      "pixel_width": 2584,
+      "pixel_height": 1092,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.2.1",
+      "file": "figure_5_2_1b_released_hmm_validity.pdf",
+      "bytes": 32780,
+      "sha256": "f65d3512dc5128aefaff02bf27ea8340cc3a95fcdbed4d4caa31132dfbfd54ee",
+      "manuscript_included": true
+    },
+    {
+      "experiment": "5.2.1",
+      "file": "figure_5_2_1b_released_hmm_validity.png",
+      "bytes": 215205,
+      "sha256": "854784c6da1136cb65357da83c042156181467954c69f6132c469f5a81f0e0cd",
+      "manuscript_included": true,
+      "pixel_width": 2584,
+      "pixel_height": 1076,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.2.1",
+      "file": "figure_5_2_1c_event_input_release_clock.pdf",
+      "bytes": 30326,
+      "sha256": "36d85629abfc656157ce5bec2c6e5888f0dbe39d515af3c0c38f7a51e2a34278",
+      "manuscript_included": true
+    },
+    {
+      "experiment": "5.2.1",
+      "file": "figure_5_2_1c_event_input_release_clock.png",
+      "bytes": 213299,
+      "sha256": "d8611da77e6bc3133544869613492fb05e02d2b074b05eb9cd04716efb08b37f",
+      "manuscript_included": true,
+      "pixel_width": 2584,
+      "pixel_height": 1077,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.2.2",
+      "file": "figure_5_2_2a_policy_performance.png",
+      "bytes": 185145,
+      "sha256": "fb49f13487e90f3067b3742b0173e12142d689035d750b8ae1f39cd990980b93",
+      "manuscript_included": true,
+      "pixel_width": 2751,
+      "pixel_height": 1633,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.2.2",
+      "file": "figure_5_2_2b_loss_decomposition.png",
+      "bytes": 408972,
+      "sha256": "c379e3e503672a76a61d56c6596b4431ff34650d020a0dc4be1afce7f289dc54",
+      "manuscript_included": true,
+      "pixel_width": 2635,
+      "pixel_height": 1633,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.2.2",
+      "file": "figure_5_2_2c_clearance_censoring.png",
+      "bytes": 132034,
+      "sha256": "5aec4f5ebdffb1eee1ecaef79a6c209070b6f0f24d029b878bb45f6e86e3b1cd",
+      "manuscript_included": false,
+      "pixel_width": 2648,
+      "pixel_height": 1370,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.2.3",
+      "file": "figure_5_2_3a_action_congestion_trajectories.png",
+      "bytes": 483731,
+      "sha256": "a805b91b3c880cd14e3fe18aed9f790a08cb96d69dcf8bf9ae1653f75bc275e7",
+      "manuscript_included": true,
+      "pixel_width": 2648,
+      "pixel_height": 1839,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.2.3",
+      "file": "figure_5_2_3b_tagged_route_stage_heatmap.png",
+      "bytes": 451953,
+      "sha256": "009209b5392f541e3c8678862011a0a3f12223426f3de51448473968525ad6e8",
+      "manuscript_included": true,
+      "pixel_width": 2647,
+      "pixel_height": 2613,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.2.3",
+      "file": "figure_5_2_3c_restricted_action_forest.png",
+      "bytes": 340382,
+      "sha256": "4a378edbcc33c65eb1f7d8cd2e07e9f281ac809a53d18520e092c37c696cf5fd",
+      "manuscript_included": true,
+      "pixel_width": 2648,
+      "pixel_height": 3260,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.2.4",
+      "file": "figure_5_2_4a_released_information_value.pdf",
+      "bytes": 27792,
+      "sha256": "913fa2f5e2683ab66d4f2715c2bcfa70b70bbbc1bdd1181038fc9eef5a769481",
+      "manuscript_included": true
+    },
+    {
+      "experiment": "5.2.4",
+      "file": "figure_5_2_4a_released_information_value.png",
+      "bytes": 248420,
+      "sha256": "8b51bacb05405aa7da5ec6fd9d54df18af70ddcf6aae9e7a4df8b6b60b40d234",
+      "manuscript_included": true,
+      "pixel_width": 2969,
+      "pixel_height": 1633,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.2.4",
+      "file": "figure_5_2_4b_release_capacity_timing.pdf",
+      "bytes": 33991,
+      "sha256": "2dc6673f2f3850cff3ff560e8a10dfe7a8a89182e5b9ae2b0b837ab05b67ed64",
+      "manuscript_included": true
+    },
+    {
+      "experiment": "5.2.4",
+      "file": "figure_5_2_4b_release_capacity_timing.png",
+      "bytes": 326317,
+      "sha256": "569e5f9100cdaa5f7c19b215cd76b4ad14b690ca5670944252465ba5b4c05052",
+      "manuscript_included": true,
+      "pixel_width": 2648,
+      "pixel_height": 2928,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.2.4",
+      "file": "figure_5_2_4c_capacity_portfolio.pdf",
+      "bytes": 42305,
+      "sha256": "2f9378bdee4aa61cc51234a405cb82401c5f5b340be8b416bb77c61b42316661",
+      "manuscript_included": true
+    },
+    {
+      "experiment": "5.2.4",
+      "file": "figure_5_2_4c_capacity_portfolio.png",
+      "bytes": 477650,
+      "sha256": "d97febdd9a5cc490a8a3c3477b8534ad3ff5564f5caba71b5684098800d57f58",
+      "manuscript_included": true,
+      "pixel_width": 2648,
+      "pixel_height": 3274,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.2.5",
+      "file": "figure_5_2_5a_numerical_convergence.pdf",
+      "bytes": 34982,
+      "sha256": "5302b805ba05a66061b2fabcc14a7431b06feb98700ed26d7eff52a06ba4ee38",
+      "manuscript_included": true
+    },
+    {
+      "experiment": "5.2.5",
+      "file": "figure_5_2_5a_numerical_convergence.png",
+      "bytes": 233067,
+      "sha256": "c8c92edfcbac110e652739124d3a22ed4c7c8d873ea65d320dc7f2e7e1c92e88",
+      "manuscript_included": true,
+      "pixel_width": 2269,
+      "pixel_height": 1984,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "experiment": "5.2.5",
+      "file": "figure_5_2_5b_learning_selector.pdf",
+      "bytes": 125346,
+      "sha256": "6936d34df72e288cf469a3d66502cae316ea2610c633886bbc1a9d8fae893dd1",
+      "manuscript_included": true
+    },
+    {
+      "experiment": "5.2.5",
+      "file": "figure_5_2_5b_learning_selector.png",
+      "bytes": 488893,
+      "sha256": "cb9794c86654e869dcd0d8a8e2a4eda4d1adfacc0dadad295a7e2a514c63c0cd",
+      "manuscript_included": true,
+      "pixel_width": 2284,
+      "pixel_height": 2074,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "experiment": "5.2.5",
+      "file": "figure_5_2_5c_contract_runtime.pdf",
+      "bytes": 41390,
+      "sha256": "6e7d9031061e2fc5baf245d244a858044b5cac20cd669e1059765f1c7b7ad04f",
+      "manuscript_included": true
+    },
+    {
+      "experiment": "5.2.5",
+      "file": "figure_5_2_5c_contract_runtime.png",
+      "bytes": 410480,
+      "sha256": "b4de22492ae6c10cab88420c1ff76762b499e91bfa40787f04b6bdc6035483cb",
+      "manuscript_included": true,
+      "pixel_width": 2286,
+      "pixel_height": 2179,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "experiment": "5.3.1",
+      "file": "figure_5_3_1a_loss_regret_confidence_set.png",
+      "bytes": 285316,
+      "sha256": "43e72e8f6cab02ef5bdbb98ef1c398c0c80828fad0c81a45c9062d17003c50be",
+      "manuscript_included": true,
+      "pixel_width": 2648,
+      "pixel_height": 1277,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.3.1",
+      "file": "figure_5_3_1b_wait_exit_delivery_mechanisms.png",
+      "bytes": 437060,
+      "sha256": "ee6f341cb57503e788396f738335151f4b2e3a3ca78a0d05c41e2c247aebfa0e",
+      "manuscript_included": true,
+      "pixel_width": 2648,
+      "pixel_height": 1843,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.3.1",
+      "file": "figure_5_3_1c_clearance_terminal_mass.png",
+      "bytes": 230771,
+      "sha256": "fb93dc3512d45ef2db2e202a7b65f637b4a460508d073281a3965aa9224f276a",
+      "manuscript_included": true,
+      "pixel_width": 2648,
+      "pixel_height": 1312,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.3.2",
+      "file": "figure_5_3_2a_axial_policy_sensitivity.png",
+      "bytes": 416744,
+      "sha256": "6f658f4a7ba72fed3667cb3bc826065ed5c93ffa15c495b1d4fc54ab47e5d040",
+      "manuscript_included": true,
+      "pixel_width": 2648,
+      "pixel_height": 2819,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.3.2",
+      "file": "figure_5_3_2b_anchor_mechanism_recovery.png",
+      "bytes": 612087,
+      "sha256": "4433d2429ca41153a58290d3ba4e9c3129107367fb2bcaf22c5e9953296ccbaf",
+      "manuscript_included": true,
+      "pixel_width": 2646,
+      "pixel_height": 2735,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.3.2",
+      "file": "figure_5_3_2c_full_absorption_certificate.png",
+      "bytes": 381501,
+      "sha256": "2b19ece1a3b42d4aaf07150ab1df4d63097a3a742ca954494f64bce994e35383",
+      "manuscript_included": true,
+      "pixel_width": 2646,
+      "pixel_height": 2886,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.3.3",
+      "file": "figure_5_3_3a_loss_regret_network.png",
+      "bytes": 578298,
+      "sha256": "2fd904dd3a629b0ee03c26de523a14f4f753f2203fa5f867d323604df04310a3",
+      "manuscript_included": true,
+      "pixel_width": 2648,
+      "pixel_height": 2609,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.3.3",
+      "file": "figure_5_3_3b_network_overload.png",
+      "bytes": 356703,
+      "sha256": "577853a52d4fd0a6a40ff109f212f5b48e19465c526db418d7285f0764532c42",
+      "manuscript_included": true,
+      "pixel_width": 2648,
+      "pixel_height": 2416,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.3.3",
+      "file": "figure_5_3_3c_flow_clearance.png",
+      "bytes": 343443,
+      "sha256": "28b90509f2c87b19e31c8a9aad2c41b6df03d757187f46fbe5cbff9707dbdb51",
+      "manuscript_included": true,
+      "pixel_width": 2648,
+      "pixel_height": 1996,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.3.4",
+      "file": "figure_5_3_4a_parameter_effect_forest.png",
+      "bytes": 335938,
+      "sha256": "6435b99cc5a7b93a72992707a97e84dbd3a13c400c71634c48611a495fde07af",
+      "manuscript_included": true,
+      "pixel_width": 2648,
+      "pixel_height": 3190,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.3.4",
+      "file": "figure_5_3_4b_policy_stability.png",
+      "bytes": 467228,
+      "sha256": "5004cd12b4502d918fb747eb0cc5cb81b4d25af2ae648ad0ac2589c445a1cd4c",
+      "manuscript_included": true,
+      "pixel_width": 2923,
+      "pixel_height": 2255,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    },
+    {
+      "experiment": "5.3.4",
+      "file": "figure_5_3_4c_interaction_mechanisms.png",
+      "bytes": 462331,
+      "sha256": "9f6df3a703cd084b9419a7505d07d3e72db305f1012704787b5e0b9161de12cd",
+      "manuscript_included": true,
+      "pixel_width": 2647,
+      "pixel_height": 3116,
+      "dpi": [
+        350.012,
+        350.012
+      ]
+    }
+  ]
+}

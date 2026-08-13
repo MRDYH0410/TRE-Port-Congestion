@@ -1,0 +1,9 @@
+{
+  "status": "FINISHED_5_3_4_AFTER_ACCEPTANCE_INSTRUMENTATION_REPAIR",
+  "message": "Formal grid complete; six targeted underflow-certificate replays passed without scientific numeric changes.",
+  "updated_at": "2026-08-12T09:00:06.730104+00:00",
+  "formal_paths": 10,
+  "formal_cells": 31,
+  "full_grid_rerun": false,
+  "overall_evidence_acceptance": "PASS"
+}

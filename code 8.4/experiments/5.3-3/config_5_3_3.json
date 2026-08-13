@@ -1,0 +1,72 @@
+{
+  "experiment_id": "5.3.3_gateway_network_sensitivity",
+  "experiment_title": "Gateway Network Sensitivity",
+  "evidence_class": "designed semi-synthetic network structural sensitivity",
+  "base_model_config": "experiments/5.2-2/config_5_2_2.json",
+  "output_directory": "output/5.3.3_gateway_network_sensitivity",
+  "report_directory": "../report - 8.4/5.3.3",
+  "gateway_counts": [3, 4, 5, 7, 9],
+  "architectures": ["capacity_neutral", "port_only", "end_to_end"],
+  "eligibility_rules": ["emergency_only", "precontracted"],
+  "unique_cell_rule": "one observed three-gateway reference plus four expansion sizes times three architectures times two eligibility rules",
+  "expected_unique_cells": 25,
+  "semi_synthetic_prefix": "SemiSynthetic_Gateway_",
+  "semi_synthetic_template": "componentwise median of the three observed gateway activity scales, maritime lags, and waiting-error scales",
+  "capacity_rules": {
+    "capacity_neutral": "renormalise observed and median-template gateway weights to the fixed observed three-gateway stage total; retain the observed shared-corridor total",
+    "port_only": "retain observed gateway stages, add one median-template berth-yard-gate chain per new gateway, and retain the observed shared-corridor total",
+    "end_to_end": "retain observed gateway stages and add one median-template berth-yard-gate chain and one median-template corridor-capacity contribution per new gateway",
+    "end_to_end_reference_capacity": "minimum of berth, yard, gate, and the gateway's gate-capacity-proportional share of the common corridor",
+    "capacity_unit": "model cargo units per week"
+  },
+  "eligibility_contract": {
+    "emergency_only": "new semi-synthetic routes are adaptive-only; committed shares on observed routes remain the official anchors",
+    "precontracted": "new routes enter the commitment set using their end-to-end reference-capacity share; observed routes retain official-anchor relative proportions",
+    "reference_loading": "the same predetermined end-to-end-capacity shares are used for public-signal reference loading in both eligibility cases; realised SUE shares are never used"
+  },
+  "training_contract": {
+    "per_gateway_count_reference_cell": "capacity_neutral and emergency_only, with the three-gateway observed reference used at n=3",
+    "teacher": "regenerate formal MPC teacher data for every gateway count",
+    "learning": "train BC and full constrained SAC from scratch for every gateway count and each of three seeds",
+    "validation": "select checkpoints on frozen validation paths and validate the BC-SAC selector",
+    "transfer": "within a gateway count, freeze the size-specific actor weights across architectures and eligibility rules; the target-cell formal projector and physical model remain active",
+    "forbidden": "padding or truncating a 34-dimensional checkpoint"
+  },
+  "policy_design": {
+    "structural_cells": ["Passive", "Reactive", "Behaviour cloning"],
+    "full_policy_anchors": ["Passive", "Reactive", "Projected stochastic MPC", "Behaviour cloning", "Model-guided constrained SAC"],
+    "anchor_rule": "the observed three-gateway reference and all six nine-gateway architecture-by-eligibility endpoints",
+    "not_evaluated_rule": "MPC and model-guided SAC outside the seven anchors are NOT_EVALUATED_BY_DESIGN and are never imputed",
+    "interpretation": "architecture component values are primary under fixed Passive, Reactive, and size-specific BC mappings; five-policy regret is reported only at anchors"
+  },
+  "path_design": {
+    "gate_paths": 2,
+    "minimum_formal_paths": 16,
+    "maximum_formal_paths": 44,
+    "confidence_level": 0.95,
+    "target_halfwidth": 2255.637825,
+    "target_basis": "inherited five-percent benchmark reference-failure target",
+    "runtime_budget_seconds": 21600,
+    "runtime_safety_fraction": 0.75,
+    "reporting_reserve_seconds": 900,
+    "selection_rule": "select the largest preregistered count in [16,44] supported by the validation-path computational gate and the remaining runtime budget; observed test outcomes never select N"
+  },
+  "execution": {
+    "parallel_workers": 12,
+    "resume_cache": true,
+    "figure_dpi": 300,
+    "figure_formats": ["png"],
+    "formal_wall_clock_limit_seconds": 21600
+  },
+  "upstream_locks": [
+    {"path": "output/5.2.1_data_event_information_validity/historical_information_event_path.csv", "sha256": "407b06106c86f7173d399d8a66283f48ac6746b146c869c14cf77bad3ba3a976"},
+    {"path": "output/5.2.2_common_authority_benchmark/acceptance_5_2_2.json", "sha256": "4a0b2479a27400c868ba9ffee00c691761ddc460c59f1d8532e89630c8829c80"},
+    {"path": "output/5.2.2_common_authority_benchmark/run_manifest.json", "sha256": "ce4f0bf874cfb902e0a2d11d499dd177b0496029d67a74d623c4d152417bd30b"},
+    {"path": "output/5.2.2_common_authority_benchmark/test_path_manifest.csv", "sha256": "c72dda4f1f2a67d7147743f779cd059a18929314ff07502125947f58692d546d"},
+    {"path": "output/5.2.5_computational_methodological_acceptance/acceptance_5_2_5.json", "sha256": "2f827b2d037a25d4392fde03db4f0ede89d687fca0b3d52cf161e8599c40d188"},
+    {"path": "output/5.2.5_computational_methodological_acceptance/run_manifest.json", "sha256": "8cfa049766ca4841da4969775158c95ddd79da655b6f918705a48e927bb70d88"},
+    {"path": "output/5.3.2_reclosure_sensitivity/acceptance_5_3_2.json", "sha256": "39d2961445cedd8cba134fa3763abe77d34749a7be0a7c17c987fd6043920336"},
+    {"path": "output/5.3.2_reclosure_sensitivity/run_manifest.json", "sha256": "5b78d6ade1992391f7cec797dc4507b864e9226687ab9265de6aff9229bf8472"},
+    {"path": "experiments/5.2-2/config_5_2_2.json", "sha256": "c3a1931a5275398484b3b713f77ed1e55506037dd00791a2e06d587123ba5b9b"}
+  ]
+}
