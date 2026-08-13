@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable, Mapping
@@ -16,6 +17,18 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from PIL import Image
+
+
+EXPERIMENTS_ROOT = Path(__file__).resolve().parents[1]
+if str(EXPERIMENTS_ROOT) not in sys.path:
+    sys.path.insert(0, str(EXPERIMENTS_ROOT))
+
+from figure_style import (  # noqa: E402
+    TEXT_WIDTH,
+    apply_publication_style,
+    panel_title,
+    save_figure,
+)
 
 
 PALETTE = {
@@ -381,26 +394,8 @@ def parameter_registry(
 
 
 def _set_plot_style() -> None:
-    plt.rcParams.update(
-        {
-            "font.family": "DejaVu Sans",
-            "font.size": 9,
-            "axes.titlesize": 10,
-            "axes.labelsize": 9,
-            "axes.edgecolor": "#6B7280",
-            "axes.labelcolor": "#28323C",
-            "xtick.color": "#4B5563",
-            "ytick.color": "#4B5563",
-            "text.color": "#202A34",
-            "grid.color": "#D9DEE5",
-            "grid.linewidth": 0.6,
-            "axes.grid": True,
-            "axes.axisbelow": True,
-            "legend.frameon": False,
-            "figure.facecolor": "white",
-            "axes.facecolor": "white",
-        }
-    )
+    apply_publication_style()
+    plt.rcParams.update({"axes.grid": True})
 
 
 def _save_figure(fig: plt.Figure, path: Path, *, dpi: int) -> None:
@@ -413,7 +408,7 @@ def _save_figure(fig: plt.Figure, path: Path, *, dpi: int) -> None:
         }
     else:
         metadata = {"Software": "TRE 5.2.1"}
-    fig.savefig(path, dpi=dpi, bbox_inches="tight", metadata=metadata)
+    save_figure(fig, path, dpi=dpi, metadata=metadata)
 
 
 def plot_counterfactual_validity(
@@ -426,7 +421,7 @@ def plot_counterfactual_validity(
 ) -> None:
     _set_plot_style()
     selected = selection.loc[selection["selected"], "model"].iloc[0]
-    fig, axes = plt.subplots(1, 3, figsize=(13.2, 4.2))
+    fig, axes = plt.subplots(1, 3, figsize=(TEXT_WIDTH, 3.05))
     for model in sorted(summary["model"].unique()):
         subset = summary.loc[summary["model"].eq(model)].sort_values(
             "evaluation_horizon_weeks"
@@ -462,11 +457,11 @@ def plot_counterfactual_validity(
             linewidth=linewidth,
             label=label,
         )
-    axes[0].set_title("a. Cumulative path WAPE")
+    panel_title(axes[0], "A", "Cumulative forecast error")
     axes[0].set_xlabel("Forecast horizon (weeks)")
     axes[0].set_ylabel("WAPE (%)")
     axes[0].set_xticks(sorted(summary["evaluation_horizon_weeks"].unique()))
-    axes[1].set_title("b. Normalised prediction bias")
+    panel_title(axes[1], "B", "Normalised prediction bias")
     axes[1].set_xlabel("Forecast horizon (weeks)")
     axes[1].set_ylabel("Bias / mean observed activity (%)")
     axes[1].axhline(0, color="#4B5563", linewidth=0.9)
@@ -475,22 +470,13 @@ def plot_counterfactual_validity(
     axes[2].axhline(0, color="#4B5563", linewidth=0.9)
     axes[2].axhline(confidence, color="#6B7280", linestyle="--", linewidth=0.9)
     axes[2].axhline(-confidence, color="#6B7280", linestyle="--", linewidth=0.9)
-    axes[2].set_title("c. Unique one-step residual ACF")
+    panel_title(axes[2], "C", "Residual autocorrelation")
     axes[2].set_xlabel("Lag (weeks)")
     axes[2].set_ylabel("Autocorrelation")
     axes[2].set_xticks(sorted(acf["lag_weeks"].unique()))
     handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="upper center", ncol=3, bbox_to_anchor=(0.5, 0.93))
-    fig.suptitle("Figure 5.2.1a  Counterfactual predictive validity", y=0.995, fontsize=12)
-    fig.text(
-        0.5,
-        0.015,
-        "Event-free weekly rolling origins only; activity unit is the AIS-derived carrying-capacity proxy. Primary selection: 21-week cumulative WAPE.",
-        ha="center",
-        fontsize=8,
-        color="#4B5563",
-    )
-    fig.tight_layout(rect=(0.02, 0.07, 0.98, 0.87))
+    fig.legend(handles, labels, loc="upper center", ncol=3, bbox_to_anchor=(0.5, 1.02))
+    fig.tight_layout(rect=(0, 0, 1, 0.90), w_pad=1.1)
     _save_figure(fig, path, dpi=dpi)
     plt.close(fig)
 
@@ -503,7 +489,7 @@ def plot_hmm_validity(
     dpi: int,
 ) -> None:
     _set_plot_style()
-    fig, axes = plt.subplots(1, 2, figsize=(11.4, 4.3))
+    fig, axes = plt.subplots(1, 2, figsize=(TEXT_WIDTH, 3.15))
     for model in ("hmm_transition", "unconditional", "persistence"):
         subset = density_summary.loc[
             density_summary["forecast_model"].eq(model)
@@ -517,7 +503,7 @@ def plot_hmm_validity(
             linewidth=2 if model == "hmm_transition" else 1.5,
             label=MODEL_LABELS[model],
         )
-    axes[0].set_title("a. Held-out mean log predictive density")
+    panel_title(axes[0], "A", "Held out predictive density")
     axes[0].set_xlabel("Forecast horizon (months)")
     axes[0].set_ylabel("Mean log predictive density")
     axes[0].set_xticks([1, 2, 3])
@@ -543,22 +529,13 @@ def plot_hmm_validity(
     )
     axes[1].axvline(heldout_start, color="#4B5563", linestyle="--", linewidth=1)
     axes[1].set_ylim(0, 1)
-    axes[1].set_title("b. Filtered geopolitical high-risk state belief")
-    axes[1].set_xlabel("Observation month (2018–2026 view)")
-    axes[1].set_ylabel("State probability (not closure probability)")
+    panel_title(axes[1], "B", "Filtered high risk state belief")
+    axes[1].set_xlabel("Observation month")
+    axes[1].set_ylabel("Risk state probability")
     axes[1].xaxis.set_major_locator(mdates.YearLocator(2))
     axes[1].xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
     axes[1].legend(loc="upper left")
-    fig.suptitle("Figure 5.2.1b  Released HMM validity", y=0.99, fontsize=12)
-    fig.text(
-        0.5,
-        0.015,
-        "HMM parameters and training scaling freeze at 2024-12; 2025-01 to 2026-06 is sequential held-out evaluation. No closure label is used.",
-        ha="center",
-        fontsize=8,
-        color="#4B5563",
-    )
-    fig.tight_layout(rect=(0.02, 0.06, 0.98, 0.92))
+    fig.tight_layout(w_pad=1.2)
     _save_figure(fig, path, dpi=dpi)
     plt.close(fig)
 
@@ -569,7 +546,7 @@ def plot_event_and_release(
     _set_plot_style()
     frame = interface.sort_values("week").copy()
     weeks = pd.to_datetime(frame["week"])
-    fig, axes = plt.subplots(1, 2, figsize=(12.3, 4.3))
+    fig, axes = plt.subplots(1, 2, figsize=(TEXT_WIDTH, 3.15))
     axes[0].plot(
         weeks,
         frame["estimated_no_disruption_activity"] / 1e6,
@@ -595,9 +572,9 @@ def plot_event_and_release(
         linewidth=2,
         label="Estimated blocked activity proxy",
     )
-    axes[0].set_title("a. Formula-derived historical event input")
-    axes[0].set_xlabel("Monday decision week")
-    axes[0].set_ylabel("Million metric tonnes of AIS activity proxy")
+    panel_title(axes[0], "A", "Historical event input")
+    axes[0].set_xlabel("Decision week")
+    axes[0].set_ylabel("AIS activity proxy  million tonnes")
     axes[0].xaxis.set_major_locator(mdates.MonthLocator())
     axes[0].xaxis.set_major_formatter(mdates.DateFormatter("%b"))
     axes[0].legend(loc="best")
@@ -624,25 +601,22 @@ def plot_event_and_release(
     source_change = pd.to_datetime(frame["source_observation_month"]).ne(
         pd.to_datetime(frame["source_observation_month"]).shift()
     )
-    for week in weeks[source_change]:
-        axes[1].axvline(week, color="#CBD2DA", linewidth=0.7, zorder=0)
+    for index, week in enumerate(weeks[source_change]):
+        axes[1].axvline(
+            week,
+            color="#AEB8C2",
+            linewidth=0.7,
+            zorder=0,
+            label="New source month" if index == 0 else None,
+        )
     axes[1].set_ylim(0, 1)
-    axes[1].set_title("b. Released belief and lead-time forecast")
-    axes[1].set_xlabel("Monday decision week; vertical lines mark source-month changes")
-    axes[1].set_ylabel("Geopolitical risk-state probability")
+    panel_title(axes[1], "B", "Released belief and lead forecast")
+    axes[1].set_xlabel("Decision week")
+    axes[1].set_ylabel("Risk state probability")
     axes[1].xaxis.set_major_locator(mdates.MonthLocator())
     axes[1].xaxis.set_major_formatter(mdates.DateFormatter("%b"))
     axes[1].legend(loc="best")
-    fig.suptitle("Figure 5.2.1c  Event input and release clock", y=0.99, fontsize=12)
-    fig.text(
-        0.5,
-        0.015,
-        "21 complete weeks, 2026-02-23 to 2026-07-13. Blocked activity is an estimated positive shortfall, not observed diversion; risk is not closure probability.",
-        ha="center",
-        fontsize=8,
-        color="#4B5563",
-    )
-    fig.tight_layout(rect=(0.02, 0.06, 0.98, 0.92))
+    fig.tight_layout(w_pad=1.2)
     _save_figure(fig, path, dpi=dpi)
     plt.close(fig)
 

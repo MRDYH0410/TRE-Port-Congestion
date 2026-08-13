@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -12,25 +13,34 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+EXPERIMENTS_ROOT = Path(__file__).resolve().parents[1]
+if str(EXPERIMENTS_ROOT) not in sys.path:
+    sys.path.insert(0, str(EXPERIMENTS_ROOT))
+
+from figure_style import (  # noqa: E402
+    CONTRACT_LABELS,
+    POLICY_COLOURS,
+    TEXT_WIDTH,
+    apply_publication_style,
+    panel_title,
+    policy_label,
+    save_figure,
+)
+
 
 COLORS = {"Conventional MSA": "#8c6d31", "RC-MSA": "#2166ac"}
 
 
 def _style() -> None:
-    plt.rcParams.update({
-        "font.family": "DejaVu Sans", "font.size": 9, "axes.titlesize": 10,
-        "axes.labelsize": 9, "legend.fontsize": 8, "figure.dpi": 120,
-        "savefig.dpi": 300, "axes.spines.top": False, "axes.spines.right": False,
-        "grid.alpha": 0.22,
-    })
+    apply_publication_style()
 
 
 def _save(fig: plt.Figure, figures: Path, stem: str) -> list[str]:
     figures.mkdir(parents=True, exist_ok=True)
     png = figures / f"{stem}.png"
     pdf = figures / f"{stem}.pdf"
-    fig.savefig(png, dpi=300, bbox_inches="tight", facecolor="white")
-    fig.savefig(pdf, bbox_inches="tight", facecolor="white")
+    save_figure(fig, png, dpi=300)
+    save_figure(fig, pdf, dpi=300)
     plt.close(fig)
     return [png.name, pdf.name]
 
@@ -42,7 +52,14 @@ def figure_a(rc_trace: pd.DataFrame, rc_summary: pd.DataFrame, precision: pd.Dat
     tmp = rc_summary.copy(); tmp.insert(0, "panel", "B_terminal_and_iterations"); data.append(tmp)
     tmp = precision.copy(); tmp.insert(0, "panel", "C_mpc_scenario_prefix"); data.append(tmp)
     pd.concat(data, ignore_index=True, sort=False).to_csv(output / "figure_5_2_5a_data.csv", index=False)
-    fig, axes = plt.subplots(1, 3, figsize=(14.2, 4.3))
+    fig = plt.figure(figsize=(TEXT_WIDTH, 6.5), constrained_layout=True)
+    grid = fig.add_gridspec(2, 3, height_ratios=[1.05, 0.95])
+    axes = [
+        fig.add_subplot(grid[0, :]),
+        fig.add_subplot(grid[1, 0]),
+        fig.add_subplot(grid[1, 1]),
+        fig.add_subplot(grid[1, 2]),
+    ]
     for algorithm, group in rc_trace.groupby("algorithm"):
         for _, case in group.groupby("case_id"):
             axes[0].plot(case["iteration"], case["equilibrium_residual"], color=COLORS[algorithm], alpha=.22, lw=.8)
@@ -51,27 +68,25 @@ def figure_a(rc_trace: pd.DataFrame, rc_summary: pd.DataFrame, precision: pd.Dat
     tolerance = float(rc_trace["tolerance"].iloc[0])
     axes[0].axhline(tolerance, color="#b2182b", ls="--", lw=1.1, label=f"Tolerance {tolerance:.0e}")
     axes[0].set_yscale("log"); axes[0].set_xlabel("Iteration"); axes[0].set_ylabel("Equilibrium residual")
-    axes[0].set_title("A. Same-problem fixed-point convergence"); axes[0].grid(True, which="both"); axes[0].legend(frameon=False)
+    panel_title(axes[0], "A", "Fixed-point convergence"); axes[0].grid(True, which="both"); axes[0].legend()
     xmap = {name: i for i, name in enumerate(COLORS)}
-    ax2 = axes[1].twinx()
     for algorithm, group in rc_summary.groupby("algorithm"):
-        axes[1].scatter(np.full(len(group), xmap[algorithm])-.07, group["terminal_residual"], s=36, color=COLORS[algorithm], marker="o")
-        ax2.scatter(np.full(len(group), xmap[algorithm])+.08, group["iterations"], s=32, facecolors="none", edgecolors=COLORS[algorithm], marker="s")
+        axes[1].scatter(np.full(len(group), xmap[algorithm]), group["terminal_residual"], s=30, color=COLORS[algorithm], marker="o")
+        axes[2].scatter(np.full(len(group), xmap[algorithm]), group["iterations"], s=30, color=COLORS[algorithm], marker="s")
     axes[1].axhline(tolerance, color="#b2182b", ls="--", lw=1)
     axes[1].set_yscale("log"); axes[1].set_xticks(list(xmap.values()), list(xmap)); axes[1].tick_params(axis="x", rotation=15)
-    axes[1].set_ylabel("Terminal residual (filled circles)"); ax2.set_ylabel("Iterations (open squares)")
-    axes[1].set_title("B. Terminal residual and work")
+    axes[1].set_ylabel("Terminal residual")
+    panel_title(axes[1], "B", "Terminal residual")
+    axes[2].set_xticks(list(xmap.values()), list(xmap)); axes[2].tick_params(axis="x", rotation=15)
+    axes[2].set_ylabel("Iterations")
+    panel_title(axes[2], "C", "Solver work")
     x = precision["scenario_count"].to_numpy(float); y = precision["out_of_sample_objective"].to_numpy(float)
     half = precision["confidence_half_width"].to_numpy(float)
     finite = np.isfinite(half)
-    axes[2].plot(x, y, "o-", color="#4d9221", lw=2, label="Out-of-sample objective")
-    axes[2].errorbar(x[finite], y[finite], yerr=half[finite], fmt="none", color="#4d9221", capsize=3)
-    for row in precision.itertuples(index=False):
-        axes[2].annotate(str(row.selected_first_action_profile), (row.scenario_count, row.out_of_sample_objective), xytext=(3, 6), textcoords="offset points", fontsize=7, rotation=18)
-    axes[2].set_xlabel("Nested scenario-prefix count"); axes[2].set_ylabel("Full-bundle objective")
-    axes[2].set_title("C. MPC scenario-prefix stability"); axes[2].grid(True); axes[2].set_xticks(x)
-    fig.suptitle("Figure 5.2.5a  Numerical convergence and solver acceptance", fontweight="bold", y=1.02)
-    fig.tight_layout()
+    axes[3].plot(x, y, "o-", color="#4d9221", lw=2, label="Out-of-sample objective")
+    axes[3].errorbar(x[finite], y[finite], yerr=half[finite], fmt="none", color="#4d9221", capsize=3)
+    axes[3].set_xlabel("Nested scenario count"); axes[3].set_ylabel("System objective")
+    panel_title(axes[3], "D", "Scenario-set stability"); axes[3].grid(True); axes[3].set_xticks(x)
     return _save(fig, figures, "figure_5_2_5a_numerical_convergence")
 
 
@@ -85,33 +100,51 @@ def figure_b(
     for panel, frame in (("A_BC_training", bc), ("A_validation", validation), ("B_SAC_training", sac), ("C_gradient", gradient), ("D_selector", selector), ("E_regret", regret)):
         tmp = frame.copy(); tmp.insert(0, "panel", panel); data.append(tmp)
     pd.concat(data, ignore_index=True, sort=False).to_csv(output / "figure_5_2_5b_data.csv", index=False)
-    fig, axes = plt.subplots(2, 3, figsize=(15.2, 8.0))
+    fig, axes = plt.subplots(2, 3, figsize=(TEXT_WIDTH, 6.8), constrained_layout=True)
     ax = axes[0, 0]
-    for seed, group in bc.groupby("seed_index"):
-        ax.plot(group["episode"], group["training_loss"], lw=1.4, alpha=.75, label=f"seed {seed}")
-    ax.set_yscale("log"); ax.set_xlabel("Episode"); ax.set_ylabel("Imitation loss"); ax.set_title("A. BC training across all frozen seeds"); ax.grid(True); ax.legend(frameon=False, ncol=3)
+    bc_trace = bc.groupby("episode")["training_loss"].agg(
+        median="median", lower=lambda values: values.quantile(.25), upper=lambda values: values.quantile(.75)
+    ).reset_index()
+    ax.plot(bc_trace["episode"], bc_trace["median"], lw=1.8, color=POLICY_COLOURS["Behaviour cloning"])
+    ax.fill_between(bc_trace["episode"], bc_trace["lower"], bc_trace["upper"], color=POLICY_COLOURS["Behaviour cloning"], alpha=.16)
+    ax.set_yscale("log"); ax.set_xlabel("Episode"); ax.set_ylabel("Imitation loss"); panel_title(ax, "A", "Behaviour-cloning training"); ax.grid(True)
     ax = axes[0, 1]
     sac_val = validation[validation["policy"].isin(["Vanilla SAC", "Constrained SAC"])]
-    for (policy, seed), group in sac_val.groupby(["policy", "seed_index"]):
-        ax.plot(group["episode"], group["validation_operational_loss"], alpha=.65, lw=1.2, label=f"{policy}, s{seed}")
-    ax.set_xlabel("Checkpoint episode"); ax.set_ylabel("Validation system loss"); ax.set_title("B. Validation-only checkpoint evidence"); ax.grid(True); ax.legend(frameon=False, fontsize=6, ncol=2)
+    for policy, group in sac_val.groupby("policy"):
+        trace = group.groupby("episode")["validation_operational_loss"].agg(
+            median="median", lower=lambda values: values.quantile(.25), upper=lambda values: values.quantile(.75)
+        ).reset_index()
+        color = POLICY_COLOURS[policy]
+        ax.plot(trace["episode"], trace["median"], color=color, lw=1.6, label=policy_label(policy))
+        ax.fill_between(trace["episode"], trace["lower"], trace["upper"], color=color, alpha=.14)
+    ax.set_xlabel("Checkpoint episode"); ax.set_ylabel("Validation system loss"); panel_title(ax, "B", "Checkpoint evidence"); ax.grid(True); ax.legend(loc="upper left")
     ax = axes[0, 2]
     for policy, group in sac.groupby("policy"):
         trace = group.groupby("episode", as_index=False)[["critic_loss_q1", "critic_loss_q2", "constraint_critic_loss"]].median()
-        ax.plot(trace["episode"], trace["critic_loss_q1"], lw=1.5, label=f"{policy}: Q1")
-        ax.plot(trace["episode"], trace["critic_loss_q2"], lw=1.1, ls="--", label=f"{policy}: Q2")
+        color = POLICY_COLOURS[policy]
+        short_policy = "Constrained" if policy == "Constrained SAC" else "Standard"
+        ax.plot(trace["episode"], trace["critic_loss_q1"], color=color, lw=1.5, label=f"{short_policy}: first critic")
+        ax.plot(trace["episode"], trace["critic_loss_q2"], color=color, lw=1.1, ls="--", label=f"{short_policy}: second critic")
         if policy == "Constrained SAC":
-            ax.plot(trace["episode"], trace["constraint_critic_loss"], lw=1.2, ls=":", label="Constrained: Qg")
+            ax.plot(trace["episode"], trace["constraint_critic_loss"], color=color, lw=1.2, ls=":", label="Constraint critic")
     ax.set_yscale("log"); ax.set_xlabel("Episode"); ax.set_ylabel("Squared critic loss")
-    ax.set_title("C. Twin reward and constraint critics"); ax.grid(True); ax.legend(frameon=False, fontsize=6)
+    positive_critic = sac[["critic_loss_q1", "critic_loss_q2", "constraint_critic_loss"]].to_numpy(float)
+    positive_critic = positive_critic[np.isfinite(positive_critic) & (positive_critic > 0)]
+    ax.set_ylim(max(float(positive_critic.min()) * .5, 1e-3), float(positive_critic.max()) * 1e4)
+    panel_title(ax, "C", "Reward and constraint critics"); ax.grid(True); ax.legend(loc="upper center", ncol=2, fontsize=6.2)
     ax = axes[1, 0]
     for policy, group in sac.groupby("policy"):
         trace = group.groupby("episode", as_index=False)[["entropy_temperature", "mean_log_standard_deviation", "constraint_dual"]].median()
-        ax.plot(trace["episode"], trace["entropy_temperature"], lw=1.6, label=f"{policy}: temperature")
-        ax.plot(trace["episode"], trace["mean_log_standard_deviation"], lw=1.1, ls="--", label=f"{policy}: mean log std")
+        color = POLICY_COLOURS[policy]
+        short_policy = "Constrained" if policy == "Constrained SAC" else "Standard"
+        ax.plot(trace["episode"], trace["entropy_temperature"], color=color, lw=1.6, label=f"{short_policy}: temperature")
+        ax.plot(trace["episode"], trace["mean_log_standard_deviation"], color=color, lw=1.1, ls="--", label=f"{short_policy}: spread")
         if policy == "Constrained SAC":
-            ax.plot(trace["episode"], trace["constraint_dual"], lw=1.2, ls=":", label="Constrained: dual")
-    ax.set_xlabel("Episode"); ax.set_ylabel("Recorded adaptive value"); ax.set_title("D. Stochasticity and dual updates"); ax.grid(True); ax.legend(frameon=False, fontsize=6)
+            ax.plot(trace["episode"], trace["constraint_dual"], color=color, lw=1.2, ls=":", label="Constraint multiplier")
+    adaptive_values = sac[["entropy_temperature", "mean_log_standard_deviation", "constraint_dual"]].to_numpy(float)
+    adaptive_values = adaptive_values[np.isfinite(adaptive_values)]
+    ax.set_ylim(min(-10.0, float(adaptive_values.min()) * 1.2), max(10.0, float(adaptive_values.max()) * 1.55))
+    ax.set_xlabel("Episode"); ax.set_ylabel("Adaptive value"); panel_title(ax, "D", "Stochasticity and constraint updates"); ax.grid(True); ax.legend(loc="upper center", ncol=2, fontsize=6.2)
     ax = axes[1, 1]
     x = gradient["finite_difference_gradient_recalculated"].to_numpy(float)
     y = gradient["analytic_gradient_recalculated"].to_numpy(float)
@@ -119,14 +152,14 @@ def figure_b(
     low, high = float(min(x.min(), y.min())), float(max(x.max(), y.max()))
     ax.plot([low, high], [low, high], color="black", ls="--", lw=1)
     ax.set_xlabel("Central finite difference"); ax.set_ylabel("Analytic projected actor gradient")
-    ax.set_title("E. Independent gradient reconstruction"); ax.grid(True)
+    panel_title(ax, "E", "Gradient reconstruction"); ax.grid(True)
     ax = axes[1, 2]
     pairs = selector.pivot_table(index=["evaluation_split", "path_id", "training_seed", "period_offset"], columns="proposal_source", values="nested_objective").dropna()
     if {"BC", "SAC"}.issubset(pairs.columns):
         ax.scatter(pairs["BC"], pairs["SAC"], s=8, alpha=.35, color="#762a83")
         low = float(min(pairs["BC"].min(), pairs["SAC"].min())); high = float(max(pairs["BC"].max(), pairs["SAC"].max()))
         ax.plot([low, high], [low, high], ls="--", color="black", lw=1)
-    ax.set_xlabel("Formal nested objective: BC"); ax.set_ylabel("Formal nested objective: SAC"); ax.set_title("F. Mechanical BC-SAC nested selector"); ax.grid(True)
+    ax.set_xlabel("Behaviour-cloning objective"); ax.set_ylabel("SAC objective"); panel_title(ax, "F", "Nested proposal selector"); ax.grid(True)
     regret_values = regret["selector_ex_post_regret"].dropna().to_numpy(float)
     if len(regret_values):
         inset = ax.inset_axes([0.64, 0.08, 0.32, 0.36])
@@ -134,10 +167,8 @@ def figure_b(
                       boxprops={"facecolor": "#f4a582", "alpha": .7},
                       medianprops={"color": "#67001f"})
         inset.axhline(0, color="black", lw=.7, ls="--")
-        inset.set_xticks([1], ["regret"]); inset.tick_params(labelsize=6)
-        inset.set_ylabel("ex-post", fontsize=6)
-    fig.suptitle("Figure 5.2.5b  Learning and selector acceptance", fontweight="bold", y=.995)
-    fig.tight_layout(rect=[0, 0, 1, .98])
+        inset.set_xticks([1], ["Observed"]); inset.tick_params(labelsize=6)
+        inset.set_ylabel("Regret", fontsize=6)
     return _save(fig, figures, "figure_5_2_5b_learning_selector")
 
 
@@ -152,32 +183,35 @@ def figure_c(registry: pd.DataFrame, reproducibility: pd.DataFrame, runtime: pd.
     b = reproducibility.copy(); b.insert(0, "panel", "B_anchor_reproduction")
     c = runtime.copy(); c.insert(0, "panel", "C_runtime_profile")
     pd.concat([a, b, c], ignore_index=True, sort=False).to_csv(output / "figure_5_2_5c_data.csv", index=False)
-    fig, axes = plt.subplots(1, 3, figsize=(16.0, 6.3), gridspec_kw={"width_ratios": [1.2, .8, 1]})
+    fig = plt.figure(figsize=(TEXT_WIDTH, 7.15), constrained_layout=True)
+    grid = fig.add_gridspec(2, 2, width_ratios=[1.32, 1], height_ratios=[1, 1])
+    axes = [fig.add_subplot(grid[:, 0]), fig.add_subplot(grid[0, 1]), fig.add_subplot(grid[1, 1])]
     y = np.arange(len(critical))
     colors = critical["status"].map({"PASS": "#1b7837", "FAIL": "#b2182b", "BLOCKED": "#d6604d", "NOT_TESTED": "#969696"})
     axes[0].hlines(y, 1e-12, critical["plot_residual"], color=colors, lw=2)
     axes[0].scatter(critical["plot_residual"], y, color=colors, s=42, zorder=3)
     axes[0].axvline(1, color="black", ls="--", lw=1.2, label="Acceptance boundary z=1")
-    axes[0].set_xscale("log"); axes[0].set_yticks(y, critical["contract_id"]); axes[0].invert_yaxis(); axes[0].set_xlabel("Normalised maximum residual z")
-    axes[0].set_title("A. Critical end-to-end contracts"); axes[0].grid(True, axis="x", which="both"); axes[0].legend(frameon=False)
+    contract_labels = [CONTRACT_LABELS.get(value, str(value).replace("_", " ")) for value in critical["contract_id"]]
+    axes[0].set_xscale("log"); axes[0].set_yticks(y, contract_labels); axes[0].invert_yaxis(); axes[0].set_xlabel("Residual divided by tolerance")
+    panel_title(axes[0], "A", "Critical end-to-end contracts"); axes[0].grid(True, axis="x", which="both"); axes[0].legend()
     replay = reproducibility.groupby("experiment", as_index=False).agg(
         maximum_difference=("maximum_difference", "max"),
         failed=("status", lambda values: int((values != "PASS").sum())),
     )
-    axes[1].stem(replay["experiment"], replay["maximum_difference"], basefmt=" ", linefmt="#762a83", markerfmt="o")
+    replay_labels = [str(value).replace("_", " ") for value in replay["experiment"]]
+    axes[1].stem(replay_labels, replay["maximum_difference"], basefmt=" ", linefmt="#762a83", markerfmt="o")
     axes[1].axhline(float(reproducibility["tolerance"].max()), color="#b2182b", ls="--", lw=1, label="registered tolerance")
     axes[1].set_yscale("symlog", linthresh=1e-12); axes[1].set_ylabel("Maximum path-level replay difference")
-    axes[1].set_title("B. Accepted-anchor reproduction"); axes[1].grid(True, axis="y"); axes[1].legend(frameon=False)
+    panel_title(axes[1], "B", "Accepted-anchor reproduction"); axes[1].grid(True, axis="y"); axes[1].legend()
     measured = runtime[runtime["runtime_p50_seconds"].notna()].sort_values("runtime_p50_seconds")
     y2 = np.arange(len(measured))
     axes[2].hlines(y2, measured["runtime_p50_seconds"], measured["runtime_p95_seconds"], color="#0571b0", lw=3)
     axes[2].scatter(measured["runtime_p50_seconds"], y2, marker="o", color="#0571b0", label="p50")
     axes[2].scatter(measured["runtime_p90_seconds"], y2, marker="s", color="#ca0020", label="p90")
     axes[2].scatter(measured["runtime_p95_seconds"], y2, marker="|", s=90, color="#ca0020", label="p95")
-    axes[2].set_xscale("log"); axes[2].set_yticks(y2, measured["algorithm"]); axes[2].set_xlabel("Wall-clock seconds per recorded call")
-    axes[2].set_title("C. Computational profile (no real-time claim)"); axes[2].grid(True, axis="x", which="both"); axes[2].legend(frameon=False)
-    fig.suptitle("Figure 5.2.5c  End-to-end contract and computational profile", fontweight="bold", y=1.01)
-    fig.tight_layout()
+    runtime_labels = [policy_label(value).replace("_", " ") for value in measured["algorithm"]]
+    axes[2].set_xscale("log"); axes[2].set_yticks(y2, runtime_labels); axes[2].set_xlabel("Seconds per call")
+    panel_title(axes[2], "C", "Computational profile"); axes[2].grid(True, axis="x", which="both"); axes[2].legend()
     return _save(fig, figures, "figure_5_2_5c_contract_runtime")
 
 

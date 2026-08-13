@@ -15,6 +15,20 @@ import numpy as np
 import pandas as pd
 from PIL import Image
 
+EXPERIMENTS_ROOT = Path(__file__).resolve().parents[1]
+if str(EXPERIMENTS_ROOT) not in sys.path:
+    sys.path.insert(0, str(EXPERIMENTS_ROOT))
+
+from figure_style import (  # noqa: E402
+    POLICY_COLOURS,
+    POLICY_MARKERS,
+    TEXT_WIDTH,
+    apply_publication_style,
+    panel_title,
+    policy_label,
+    save_figure,
+)
+
 
 POLICY_ORDER = [
     "Passive",
@@ -24,29 +38,9 @@ POLICY_ORDER = [
     "Model-guided constrained SAC",
 ]
 
-POLICY_LABEL = {
-    "Passive": "Passive",
-    "Reactive": "Reactive",
-    "Projected stochastic MPC": "MPC",
-    "Behaviour cloning": "BC",
-    "Model-guided constrained SAC": "MG constrained SAC",
-}
-
-COLORS = {
-    "Passive": "#4D4D4D",
-    "Reactive": "#0072B2",
-    "Projected stochastic MPC": "#E69F00",
-    "Behaviour cloning": "#009E73",
-    "Model-guided constrained SAC": "#CC79A7",
-}
-
-MARKERS = {
-    "Passive": "o",
-    "Reactive": "s",
-    "Projected stochastic MPC": "^",
-    "Behaviour cloning": "D",
-    "Model-guided constrained SAC": "P",
-}
+POLICY_LABEL = {policy: policy_label(policy) for policy in POLICY_ORDER}
+COLORS = {policy: POLICY_COLOURS[policy] for policy in POLICY_ORDER}
+MARKERS = {policy: POLICY_MARKERS[policy] for policy in POLICY_ORDER}
 
 
 def sha256_file(path: Path) -> str:
@@ -143,17 +137,7 @@ def create_figures(
     dpi: int,
 ) -> dict[str, Path]:
     figures_directory.mkdir(parents=True, exist_ok=True)
-    plt.rcParams.update(
-        {
-            "font.family": "DejaVu Sans",
-            "font.size": 9,
-            "axes.spines.top": False,
-            "axes.spines.right": False,
-            "axes.grid": True,
-            "grid.alpha": 0.2,
-            "figure.facecolor": "white",
-        }
-    )
+    apply_publication_style()
 
     intervals = _path_intervals(path_level)
     confidence_data = confidence.copy()
@@ -163,16 +147,16 @@ def create_figures(
     figure_a_data = pd.concat([intervals, regret_data, confidence_data], ignore_index=True, sort=False)
     write_csv(figure_a_data, output_directory / "figure_5_3_1a_data.csv")
 
-    fig, axes = plt.subplots(1, 3, figsize=(15.5, 4.8), constrained_layout=True)
+    fig, axes = plt.subplots(1, 3, figsize=(TEXT_WIDTH, 3.55), constrained_layout=True)
     ax = axes[0]
     for policy in POLICY_ORDER:
         data = intervals.loc[intervals["policy"] == policy].sort_values("chi")
         ax.plot(data["chi"], data["mean"], color=COLORS[policy], marker=MARKERS[policy], label=POLICY_LABEL[policy], linewidth=1.8)
         ax.fill_between(data["chi"], data["lower"], data["upper"], color=COLORS[policy], alpha=0.10)
-    ax.set_title("A. Total operational loss")
-    ax.set_xlabel("Committed share of each new blocked cohort, χ")
+    panel_title(ax, "A", "Total operational loss")
+    ax.set_xlabel("Committed share")
     ax.set_ylabel("Loss index units")
-    ax.legend(frameon=False, fontsize=8)
+    legend_handles, legend_labels = ax.get_legend_handles_labels()
 
     ax = axes[1]
     for policy in POLICY_ORDER:
@@ -192,8 +176,8 @@ def create_figures(
             linewidth=1.2,
         )
     ax.axhline(0.0, color="black", linewidth=0.8)
-    ax.set_title("B. Matched-path policy regret")
-    ax.set_xlabel("χ")
+    panel_title(ax, "B", "Matched-path policy regret")
+    ax.set_xlabel("Committed share")
     ax.set_ylabel("Difference from pathwise policy minimum")
 
     ax = axes[2]
@@ -205,20 +189,29 @@ def create_figures(
     image = ax.imshow(matrix.to_numpy(), aspect="auto", cmap="YlGn", vmin=0, vmax=1)
     ax.set_yticks(range(len(POLICY_ORDER)), [POLICY_LABEL[p] for p in POLICY_ORDER])
     ax.set_xticks(range(len(matrix.columns)), [f"{value:g}" for value in matrix.columns], rotation=45)
-    ax.set_xlabel("χ")
-    ax.set_title("C. Simultaneous best-policy confidence set")
+    ax.set_xlabel("Committed share")
+    panel_title(ax, "C", "Best-policy confidence set")
     ax.grid(False)
-    for row in range(matrix.shape[0]):
-        for column in range(matrix.shape[1]):
-            ax.text(column, row, "IN" if matrix.iloc[row, column] else "OUT", ha="center", va="center", fontsize=7)
-    fig.colorbar(image, ax=ax, ticks=[0, 1], label="Confidence-set membership")
+    colorbar = fig.colorbar(image, ax=ax, ticks=[0, 1])
+    colorbar.ax.set_yticklabels(["Outside", "Inside"])
+    colorbar.set_label("Confidence set")
+    fig.legend(
+        legend_handles,
+        legend_labels,
+        loc="outside upper center",
+        ncol=len(POLICY_ORDER),
+        frameon=False,
+        fontsize=8.5,
+        handlelength=1.8,
+        columnspacing=1.0,
+    )
     figure_a = figures_directory / "figure_5_3_1a_loss_regret_confidence_set.png"
-    fig.savefig(figure_a, dpi=dpi, bbox_inches="tight")
+    save_figure(fig, figure_a, dpi=dpi)
     plt.close(fig)
 
     mechanism_columns = {
         "mean_waiting_exposure": "Waiting exposure",
-        "mean_direct_sue_exit": "SUE exit",
+        "mean_direct_sue_exit": "Route-choice exit",
         "mean_duration_attrition": "Attrition exit",
         "mean_committed_delivery": "Committed delivery",
         "mean_adaptive_delivery": "Adaptive delivery",
@@ -231,15 +224,15 @@ def create_figures(
     )
     figure_b_data["metric_label"] = figure_b_data["metric"].map(mechanism_columns)
     write_csv(figure_b_data, output_directory / "figure_5_3_1b_data.csv")
-    fig, axes = plt.subplots(2, 3, figsize=(14.5, 8.2), constrained_layout=True)
+    fig, axes = plt.subplots(2, 3, figsize=(TEXT_WIDTH, 5.15), constrained_layout=True)
     axes_flat = axes.ravel()
-    for axis, (column, label) in zip(axes_flat, mechanism_columns.items()):
+    for letter, axis, (column, label) in zip("ABCDE", axes_flat, mechanism_columns.items()):
         for policy in POLICY_ORDER:
             data = mechanism.loc[mechanism["policy"] == policy].sort_values("chi")
             axis.plot(data["chi"], data[column], color=COLORS[policy], marker=MARKERS[policy], linewidth=1.5)
-        axis.set_title(label)
-        axis.set_xlabel("χ")
-        axis.set_ylabel("Model units" if "loss" not in column else "Loss index units")
+        panel_title(axis, letter, label)
+        axis.set_xlabel("Committed share")
+        axis.set_ylabel("Cargo units")
     legend_axis = axes_flat[-1]
     legend_axis.axis("off")
     handles = [
@@ -247,14 +240,13 @@ def create_figures(
         for p in POLICY_ORDER
     ]
     legend_axis.legend(handles=handles, loc="center", frameon=False, title="Policy")
-    fig.suptitle("Commitment, waiting, exit, and provenance delivery mechanisms", fontsize=12)
     figure_b = figures_directory / "figure_5_3_1b_wait_exit_delivery_mechanisms.png"
-    fig.savefig(figure_b, dpi=dpi, bbox_inches="tight")
+    save_figure(fig, figure_b, dpi=dpi)
     plt.close(fig)
 
     figure_c_data = clearance.copy()
     write_csv(figure_c_data, output_directory / "figure_5_3_1c_data.csv")
-    fig = plt.figure(figsize=(14.5, 4.9), constrained_layout=True)
+    fig = plt.figure(figsize=(TEXT_WIDTH, 3.65), constrained_layout=True)
     grid = fig.add_gridspec(1, 3)
     ax0 = fig.add_subplot(grid[0, 0])
     ax1 = fig.add_subplot(grid[0, 1])
@@ -264,12 +256,12 @@ def create_figures(
         ax0.step(data["chi"], data["clearance_probability"], where="mid", color=COLORS[policy], linewidth=1.8, label=POLICY_LABEL[policy])
         ax1.plot(data["chi"], data["restricted_mean_clearance_time"], color=COLORS[policy], marker=MARKERS[policy], linewidth=1.5)
     ax0.set_ylim(-0.02, 1.02)
-    ax0.set_title("A. Clearance probability")
-    ax0.set_xlabel("χ")
+    panel_title(ax0, "A", "Clearance probability")
+    ax0.set_xlabel("Committed share")
     ax0.set_ylabel("Probability")
-    ax0.legend(frameon=False, fontsize=8)
-    ax1.set_title("B. Restricted mean clearance time")
-    ax1.set_xlabel("χ")
+    legend_handles, legend_labels = ax0.get_legend_handles_labels()
+    panel_title(ax1, "B", "Restricted clearance time")
+    ax1.set_xlabel("Committed share")
     ax1.set_ylabel("Weeks")
     matrix = (
         clearance.pivot(index="policy", columns="chi", values="mean_terminal_outstanding_mass")
@@ -278,12 +270,22 @@ def create_figures(
     image = ax2.imshow(matrix.to_numpy(), aspect="auto", cmap="magma_r")
     ax2.set_yticks(range(len(POLICY_ORDER)), [POLICY_LABEL[p] for p in POLICY_ORDER])
     ax2.set_xticks(range(len(matrix.columns)), [f"{value:g}" for value in matrix.columns], rotation=45)
-    ax2.set_xlabel("χ")
-    ax2.set_title("C. Terminal outstanding mass")
+    ax2.set_xlabel("Committed share")
+    panel_title(ax2, "C", "Terminal outstanding mass")
     ax2.grid(False)
     fig.colorbar(image, ax=ax2, label="Model units")
+    fig.legend(
+        legend_handles,
+        legend_labels,
+        loc="outside upper center",
+        ncol=len(POLICY_ORDER),
+        frameon=False,
+        fontsize=8.5,
+        handlelength=1.8,
+        columnspacing=1.0,
+    )
     figure_c = figures_directory / "figure_5_3_1c_clearance_terminal_mass.png"
-    fig.savefig(figure_c, dpi=dpi, bbox_inches="tight")
+    save_figure(fig, figure_c, dpi=dpi)
     plt.close(fig)
     return {"figure_a": figure_a, "figure_b": figure_b, "figure_c": figure_c}
 

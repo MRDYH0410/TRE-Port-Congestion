@@ -15,6 +15,20 @@ import numpy as np
 import pandas as pd
 from matplotlib.colors import PowerNorm
 
+EXPERIMENTS_ROOT = Path(__file__).resolve().parents[1]
+if str(EXPERIMENTS_ROOT) not in sys.path:
+    sys.path.insert(0, str(EXPERIMENTS_ROOT))
+
+from figure_style import (  # noqa: E402
+    POLICY_COLOURS,
+    POLICY_LINESTYLES,
+    TEXT_WIDTH,
+    apply_publication_style,
+    panel_title,
+    policy_label,
+    save_figure,
+)
+
 
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
@@ -25,18 +39,7 @@ def sha256_file(path: Path) -> str:
 
 
 def _style() -> None:
-    plt.rcParams.update(
-        {
-            "font.family": "DejaVu Sans",
-            "font.size": 9,
-            "axes.spines.top": False,
-            "axes.spines.right": False,
-            "axes.grid": True,
-            "grid.alpha": 0.22,
-            "figure.facecolor": "white",
-            "savefig.facecolor": "white",
-        }
-    )
+    apply_publication_style()
 
 
 def parameter_registry(
@@ -110,10 +113,7 @@ def chart_map() -> pd.DataFrame:
 
 
 def _policy_label(policy: str) -> str:
-    return {
-        "Model-guided constrained SAC": "MG constrained SAC",
-        "Projected stochastic MPC": "Projected MPC",
-    }.get(policy, policy)
+    return policy_label(policy)
 
 
 def create_figures(
@@ -128,12 +128,8 @@ def create_figures(
 ) -> list[Path]:
     _style()
     output_directory.mkdir(parents=True, exist_ok=True)
-    palette = {
-        "Passive": "#6B7280",
-        "Reactive": "#D9822B",
-        "Model-guided constrained SAC": "#355C7D",
-    }
-    line_styles = {"Passive": ":", "Reactive": "-", "Model-guided constrained SAC": "--"}
+    palette = POLICY_COLOURS
+    line_styles = POLICY_LINESTYLES
 
     decision = weekly.loc[(weekly["scope"] == "decision") & weekly["policy"].isin(figure_policies)]
     panels = [
@@ -143,8 +139,8 @@ def create_figures(
         ("action_release_reference_ratio", "Waiting release", "Implemented release fraction"),
         ("action_disclosure_reference_ratio", "Disclosure", "Mean implemented disclosure intensity"),
     ]
-    fig, axes = plt.subplots(2, 3, figsize=(14.5, 7.6), sharex=True, constrained_layout=True)
-    for ax, (metric, title, ylabel) in zip(axes.ravel()[:5], panels):
+    fig, axes = plt.subplots(2, 3, figsize=(TEXT_WIDTH, 5.15), sharex=True, constrained_layout=True)
+    for letter, ax, (metric, title, ylabel) in zip("ABCDE", axes.ravel()[:5], panels):
         for policy in figure_policies:
             group = decision.loc[decision["policy"] == policy].sort_values("period_offset")
             x = group["period_offset"].to_numpy(float) + 1
@@ -154,8 +150,8 @@ def create_figures(
             color = palette.get(policy, "#355C7D")
             ax.plot(x, mean, color=color, linestyle=line_styles.get(policy, "-"), linewidth=1.6, label=_policy_label(policy))
             ax.fill_between(x, q25, q75, color=color, alpha=0.10)
-        ax.set_title(title)
-        ax.set_ylabel(ylabel)
+        panel_title(ax, letter, title)
+        ax.set_ylabel(ylabel.replace("Mean implemented ", ""))
         ax.set_ylim(bottom=0)
     burden_ax = axes.ravel()[5]
     for policy in figure_policies:
@@ -185,17 +181,15 @@ def create_figures(
         color = palette.get(policy, "#355C7D")
         burden_ax.plot(x, means, color=color, linestyle=line_styles.get(policy, "-"), linewidth=1.6, label=_policy_label(policy))
         burden_ax.fill_between(x, lower, upper, color=color, alpha=0.10)
-    burden_ax.set_title("External waiting plus four-stage queues")
-    burden_ax.set_ylabel("Model cargo units")
+    panel_title(burden_ax, "F", "Waiting and queue burden")
+    burden_ax.set_ylabel("Cargo units")
     burden_ax.set_ylim(bottom=0)
     for ax in axes[-1, :]:
         ax.set_xlabel("Event week")
     handles, labels = axes[0, 0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc="center left", ncol=1, frameon=False, bbox_to_anchor=(1.005, 0.5))
-    fig.suptitle("Figure 5.2.3a. Formal action activation and congestion burden", fontsize=12, y=1.02)
-    fig.text(0.5, -0.02, "Lines are path means; ribbons are path interquartile bands. Learning seeds are averaged within path first.", ha="center", fontsize=8)
+    fig.legend(handles, labels, loc="outside upper center", ncol=len(labels), frameon=False)
     path_a = output_directory / "figure_5_2_3a_action_congestion_trajectories.png"
-    fig.savefig(path_a, dpi=dpi, bbox_inches="tight")
+    save_figure(fig, path_a, dpi=dpi)
     plt.close(fig)
 
     trace = physical.loc[
@@ -233,21 +227,40 @@ def create_figures(
             matrix_rows.append([float(group["preservice_workload"].get(column, 0.0)) for column in columns])
             row_labels.append(f"{_policy_label(policy)} | {provenance}")
     matrix = np.asarray(matrix_rows, dtype=float)
-    fig, ax = plt.subplots(figsize=(15.5, 5.5), constrained_layout=True)
     vmax = max(float(matrix.max()), 1.0)
-    heat = ax.imshow(matrix, aspect="auto", cmap="Blues", norm=PowerNorm(gamma=0.55, vmin=0.0, vmax=vmax))
-    for row in range(matrix.shape[0]):
-        for column in range(matrix.shape[1]):
-            value = matrix[row, column]
-            ax.text(column, row, f"{value:.1f}", ha="center", va="center", fontsize=6.5, color="white" if value > 0.55 * vmax else "#263238")
-    ax.set_xticks(np.arange(len(columns)), columns, rotation=45, ha="right")
-    ax.set_yticks(np.arange(len(row_labels)), row_labels)
-    ax.set_title("Figure 5.2.3b. Route-stage exposure by policy and dispatch provenance")
-    colorbar = fig.colorbar(heat, ax=ax, pad=0.02, shrink=0.85)
-    colorbar.set_label("Cumulative preservice exposure (model-unit weeks; square-root color scale)")
-    fig.text(0.5, -0.035, f"Physical-path medoid: {medoid_path_id}. Values use the 21-week decision window; MG seeds are averaged before display.", ha="center", fontsize=8)
+    fig, axes = plt.subplots(3, 1, figsize=(TEXT_WIDTH, 7.35), constrained_layout=True, sharey=True)
+    stage_labels = ["Maritime", "Berth", "Yard", "Gate", "Landbridge"]
+    route_labels = ["Khor Fakkan", "Fujairah", "Sohar"]
+    heat = None
+    for route_index, (letter, ax, route_label) in enumerate(zip("ABC", axes, route_labels)):
+        start = route_index * len(stage_order)
+        route_matrix = matrix[:, start : start + len(stage_order)]
+        heat = ax.imshow(
+            route_matrix,
+            aspect="auto",
+            cmap="Blues",
+            norm=PowerNorm(gamma=0.55, vmin=0.0, vmax=vmax),
+        )
+        for row in range(route_matrix.shape[0]):
+            for column in range(route_matrix.shape[1]):
+                value = route_matrix[row, column]
+                ax.text(
+                    column,
+                    row,
+                    f"{value:.1f}",
+                    ha="center",
+                    va="center",
+                    fontsize=7.5,
+                    color="white" if value > 0.55 * vmax else "#263238",
+                )
+        panel_title(ax, letter, route_label)
+        ax.set_xticks(np.arange(len(stage_labels)), stage_labels)
+        ax.set_yticks(np.arange(len(row_labels)), [label.replace(" | ", "  ") for label in row_labels])
+        ax.grid(False)
+    colorbar = fig.colorbar(heat, ax=axes, pad=0.02, shrink=0.88)
+    colorbar.set_label("Cumulative exposure (cargo-unit weeks)")
     path_b = output_directory / "figure_5_2_3b_tagged_route_stage_heatmap.png"
-    fig.savefig(path_b, dpi=dpi, bbox_inches="tight")
+    save_figure(fig, path_b, dpi=dpi)
     plt.close(fig)
 
     outcome_order = [
@@ -265,7 +278,7 @@ def create_figures(
     outcome_titles = {
         "total_loss": "Total loss",
         "waiting_exposure": "Waiting exposure",
-        "sue_exit": "SUE exit",
+        "sue_exit": "Route-choice exit",
         "attrition_exit": "Attrition exit",
         "overload": "Overload",
         "route_resource_loss": "Route resource loss",
@@ -281,9 +294,8 @@ def create_figures(
         "no_disclosure",
     ]
     restriction_labels = ["No readiness", "No direct", "Immediate release", "No disclosure"]
-    inference_paths = int(restricted_effects["physical_paths"].max())
-    fig, axes = plt.subplots(2, 5, figsize=(15.8, 7.0), constrained_layout=True)
-    for ax, outcome in zip(axes.ravel(), outcome_order):
+    fig, axes = plt.subplots(5, 2, figsize=(TEXT_WIDTH, 9.2), constrained_layout=True)
+    for letter, ax, outcome in zip("ABCDEFGHIJ", axes.ravel(), outcome_order):
         group = restricted_effects.loc[restricted_effects["outcome"] == outcome].set_index("restriction").loc[restriction_order]
         y = np.arange(len(group))
         mean = group["mean_paired_difference"].to_numpy(float)
@@ -294,12 +306,10 @@ def create_figures(
         ax.scatter(mean, y, s=30, color="#D9822B", edgecolor="#263238", linewidth=0.5, zorder=3)
         ax.set_yticks(y, restriction_labels if ax in axes[:, 0] else ["", "", "", ""])
         ax.invert_yaxis()
-        ax.set_title(outcome_titles[outcome], fontsize=9.5)
-        ax.set_xlabel("Difference vs full")
-    fig.suptitle("Figure 5.2.3c. Fixed-policy restricted-action paired diagnostics", fontsize=12)
-    fig.text(0.5, -0.015, f"Points are {inference_paths}-path paired means; lines are within-outcome simultaneous 95% intervals. These are not reoptimised or causal action values.", ha="center", fontsize=8)
+        panel_title(ax, letter, outcome_titles[outcome])
+    fig.supxlabel("Difference from full policy")
     path_c = output_directory / "figure_5_2_3c_restricted_action_forest.png"
-    fig.savefig(path_c, dpi=dpi, bbox_inches="tight")
+    save_figure(fig, path_c, dpi=dpi)
     plt.close(fig)
     return [path_a, path_b, path_c]
 

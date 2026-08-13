@@ -6,6 +6,7 @@ import hashlib
 import json
 import math
 import platform
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
@@ -17,19 +18,30 @@ from matplotlib.colors import Normalize, TwoSlopeNorm
 from matplotlib.patches import Patch, Rectangle
 from scipy.stats import t as student_t
 
+EXPERIMENTS_ROOT = Path(__file__).resolve().parents[1]
+if str(EXPERIMENTS_ROOT) not in sys.path:
+    sys.path.insert(0, str(EXPERIMENTS_ROOT))
+
+from figure_style import (  # noqa: E402
+    POLICY_COLOURS as COMMON_POLICY_COLOURS,
+    POLICY_MARKERS as COMMON_POLICY_MARKERS,
+    TEXT_WIDTH,
+    apply_publication_style,
+    panel_title,
+    policy_label,
+    save_figure,
+)
+
 
 POLICY_ORDER = [
     "Passive", "Reactive", "Projected stochastic MPC",
     "Behaviour cloning", "Model-guided constrained SAC",
 ]
 POLICY_COLOURS = {
-    "Passive": "#5C6670", "Reactive": "#2F6B9A",
-    "Projected stochastic MPC": "#B8860B", "Behaviour cloning": "#D06B32",
-    "Model-guided constrained SAC": "#865D8F",
+    policy: COMMON_POLICY_COLOURS[policy] for policy in POLICY_ORDER
 }
 POLICY_MARKERS = {
-    "Passive": "o", "Reactive": "s", "Projected stochastic MPC": "D",
-    "Behaviour cloning": "^", "Model-guided constrained SAC": "P",
+    policy: COMMON_POLICY_MARKERS[policy] for policy in POLICY_ORDER
 }
 
 
@@ -116,12 +128,12 @@ def _axis_frames(path_level: pd.DataFrame, config: Mapping[str, Any]) -> list[tu
 
 def create_figures(*, path_level: pd.DataFrame, confidence: pd.DataFrame, regret: pd.DataFrame, paired: pd.DataFrame, mechanism: pd.DataFrame, clearance: pd.DataFrame, absorption: pd.DataFrame, coverage: pd.DataFrame, figures_dir: Path, output_dir: Path, dpi: int, historical_marker: Mapping[str, Any], config: Mapping[str, Any]) -> dict[str, Path]:
     figures_dir.mkdir(parents=True, exist_ok=True)
-    plt.rcParams.update({"font.family": "DejaVu Sans", "axes.titlesize": 10, "axes.labelsize": 9})
+    apply_publication_style()
     axial_policies = list(config["layered_policy_coverage"]["axial_policies"])
 
     # Figure A: three distinct uncertainty views across each preregistered axis.
     figure_a_rows = []
-    fig, axes = plt.subplots(3, 3, figsize=(15.5, 11.5), constrained_layout=True)
+    fig, axes = plt.subplots(3, 3, figsize=(TEXT_WIDTH, 7.95), constrained_layout=True)
     for column_index, (title, x_column, subset) in enumerate(_axis_frames(path_level, config)):
         subset = subset.loc[subset["policy"].isin(axial_policies)]
         x_values = sorted(subset[x_column].unique())
@@ -171,21 +183,23 @@ def create_figures(*, path_level: pd.DataFrame, confidence: pd.DataFrame, regret
             axes[2, column_index].scatter(x, y, marker=POLICY_MARKERS[policy], facecolors=face, edgecolors=POLICY_COLOURS[policy], s=34, zorder=3)
             for row in group.itertuples(index=False):
                 figure_a_rows.append({"panel": "path_paired_regret", "axis": title, "x_variable": x_column, "x_value": getattr(row, x_column), "policy": policy, "cell_id": row.cell_id, "mean": row.mean_path_paired_regret, "lower": row.simultaneous_lower, "upper": row.simultaneous_upper, "physical_paths": row.physical_paths, "in_confidence_set": row.in_simultaneous_confidence_set})
-        axes[0, column_index].set_title(title)
-        axes[0, column_index].set_ylabel("Mean operational loss")
+        panel_title(axes[0, column_index], chr(ord("A") + column_index), title)
+        if column_index == 0:
+            axes[0, column_index].set_ylabel("Mean operational loss")
         axes[1, column_index].axhline(0, color="#333333", linewidth=.8)
-        axes[1, column_index].set_ylabel("Loss minus Reactive")
+        if column_index == 0:
+            axes[1, column_index].set_ylabel("Loss minus Reactive")
         axes[2, column_index].axhline(0, color="#333333", linewidth=.8)
-        axes[2, column_index].set_ylabel("Path-paired regret")
+        if column_index == 0:
+            axes[2, column_index].set_ylabel("Path-paired regret")
         axes[2, column_index].set_xlabel(f"{title} ({'weeks' if x_column != 'reclosure_intensity' else '1-serviceability'})")
         for row_index in range(3):
             axes[row_index, column_index].set_xticks(x_values)
             _style_axis(axes[row_index, column_index])
-    handles = [plt.Line2D([], [], color=POLICY_COLOURS[p], marker=POLICY_MARKERS[p], label=p) for p in axial_policies]
+    handles = [plt.Line2D([], [], color=POLICY_COLOURS[p], marker=POLICY_MARKERS[p], label=policy_label(p)) for p in axial_policies]
     fig.legend(handles=handles, loc="outside upper center", ncol=3, frameon=False)
-    fig.suptitle("Figure 5.3.2a  Axial policy sensitivity under frozen deployment", fontsize=13)
     path_a = figures_dir / "figure_5_3_2a_axial_policy_sensitivity.png"
-    fig.savefig(path_a, dpi=dpi, bbox_inches="tight", facecolor="white")
+    save_figure(fig, path_a, dpi=dpi)
     plt.close(fig)
     write_csv(pd.DataFrame(figure_a_rows), output_dir / "figure_5_3_2a_data.csv")
 
@@ -197,15 +211,19 @@ def create_figures(*, path_level: pd.DataFrame, confidence: pd.DataFrame, regret
         label = "Reference" if row["is_reference_cell"] else "Mild corner" if row["is_mild_corner"] else "Severe corner"
         anchor_labels[cell_id] = label
     mechanism_fields = [
-        ("waiting_model_unit_weeks", "Waiting", -1), ("direct_sue_exit", "SUE exit", -1),
+        ("waiting_model_unit_weeks", "Waiting", -1), ("direct_sue_exit", "Route-choice exit", -1),
         ("duration_attrition", "Attrition exit", -1), ("committed_delivery", "Committed delivered", 1),
         ("adaptive_delivery", "Adaptive delivered", 1), ("clearance_probability", "Clearance probability", 1),
         ("mean_terminal_outstanding_mass", "Terminal outstanding", -1),
     ]
     merged = mechanism.merge(clearance[["cell_id", "policy", "clearance_probability", "mean_terminal_outstanding_mass"]], on=["cell_id", "policy"], validate="one_to_one")
     figure_b_rows = []
-    fig, axes = plt.subplots(1, 3, figsize=(16, 6.3), constrained_layout=True)
-    for ax, cell_id in zip(axes, sorted(anchor_ids, key=lambda value: (0 if anchor_labels[value] == "Reference" else 1 if anchor_labels[value] == "Mild corner" else 2))):
+    ordered_anchor_ids = sorted(
+        anchor_ids,
+        key=lambda value: (0 if anchor_labels[value] == "Reference" else 1 if anchor_labels[value] == "Mild corner" else 2),
+    )
+    anchor_matrices = []
+    for cell_id in ordered_anchor_ids:
         cell = merged.loc[merged["cell_id"] == cell_id].set_index("policy").reindex(POLICY_ORDER)
         matrix = np.zeros((len(POLICY_ORDER), len(mechanism_fields)))
         annotations = np.empty_like(matrix, dtype=object)
@@ -220,20 +238,25 @@ def create_figures(*, path_level: pd.DataFrame, confidence: pd.DataFrame, regret
                 matrix[row_index, column_index] = improvement
                 annotations[row_index, column_index] = f"{value:.3g}"
                 figure_b_rows.append({"anchor": anchor_labels[cell_id], "cell_id": cell_id, "policy": policy, "metric": field, "metric_label": label, "mean_value": value, "passive_value": passive, "direction_normalised_improvement": improvement, "positive_colour_means": "improvement relative to Passive"})
-        vmax = max(float(np.nanmax(np.abs(matrix))), .05)
-        image = ax.imshow(matrix, cmap="PuOr", norm=TwoSlopeNorm(vmin=-vmax, vcenter=0, vmax=vmax), aspect="auto")
+        anchor_matrices.append((cell_id, matrix, annotations))
+    vmax = max(max(float(np.nanmax(np.abs(item[1]))), .05) for item in anchor_matrices)
+    norm = TwoSlopeNorm(vmin=-vmax, vcenter=0, vmax=vmax)
+    fig, axes = plt.subplots(3, 1, figsize=(TEXT_WIDTH, 7.7), constrained_layout=True)
+    image = None
+    for letter, ax, (cell_id, matrix, annotations) in zip("ABC", axes, anchor_matrices):
+        image = ax.imshow(matrix, cmap="PuOr", norm=norm, aspect="auto")
         for i in range(matrix.shape[0]):
             for j in range(matrix.shape[1]):
-                ax.text(j, i, annotations[i, j], ha="center", va="center", fontsize=7, color="#151515")
-        ax.set_xticks(range(len(mechanism_fields)), [item[1] for item in mechanism_fields], rotation=38, ha="right")
-        ax.set_yticks(range(len(POLICY_ORDER)), POLICY_ORDER if ax is axes[0] else [])
-        ax.set_title(anchor_labels[cell_id])
+                ax.text(j, i, annotations[i, j], ha="center", va="center", fontsize=7.4, color="#151515")
+        ax.set_xticks(range(len(mechanism_fields)), [item[1] for item in mechanism_fields], rotation=18, ha="right")
+        ax.set_yticks(range(len(POLICY_ORDER)), [policy_label(policy) for policy in POLICY_ORDER])
+        panel_title(ax, letter, anchor_labels[cell_id])
         for spine in ax.spines.values():
             spine.set_visible(False)
-        fig.colorbar(image, ax=ax, fraction=.035, pad=.02, label="Direction-normalised change vs Passive")
-    fig.suptitle("Figure 5.3.2b  Mechanism and recovery profile at the three full-policy anchors", fontsize=13)
+        ax.grid(False)
+    fig.colorbar(image, ax=axes, fraction=.025, pad=.02, label="Improvement relative to Passive")
     path_b = figures_dir / "figure_5_3_2b_anchor_mechanism_recovery.png"
-    fig.savefig(path_b, dpi=dpi, bbox_inches="tight", facecolor="white")
+    save_figure(fig, path_b, dpi=dpi)
     plt.close(fig)
     write_csv(pd.DataFrame(figure_b_rows), output_dir / "figure_5_3_2b_data.csv")
 
@@ -243,8 +266,17 @@ def create_figures(*, path_level: pd.DataFrame, confidence: pd.DataFrame, regret
     intensities = sorted(absorption["reclosure_intensity"].unique())
     policy_cell_ids = set(coverage.loc[coverage["comparison_family"] != "physical_certificate_only", "cell_id"])
     anchor_cell_ids = set(coverage.loc[coverage["comparison_family"] == "five_policy_anchor", "cell_id"])
-    fig, axes = plt.subplots(1, len(durations), figsize=(18, 4.8), constrained_layout=True)
-    for ax, duration in zip(axes, durations):
+    fig, axes = plt.subplots(
+        len(durations),
+        1,
+        figsize=(TEXT_WIDTH, 8.15),
+        sharex=True,
+        sharey=True,
+        constrained_layout=True,
+    )
+    axes = np.atleast_1d(axes).ravel()
+    image = None
+    for panel_index, (ax, duration) in enumerate(zip(axes, durations)):
         facet = absorption.loc[absorption["reclosure_duration_weeks"] == duration].set_index(["reclosure_intensity", "open_interval_weeks"])
         matrix = np.asarray([[facet.loc[(intensity, open_weeks), "path_certificate_violation_share"] for open_weeks in opens] for intensity in intensities])
         image = ax.imshow(matrix, origin="lower", aspect="auto", cmap="Blues", norm=Normalize(0, 1))
@@ -260,22 +292,39 @@ def create_figures(*, path_level: pd.DataFrame, confidence: pd.DataFrame, regret
                     ax.scatter(xi, yi, marker="*", facecolors="#D06B32", edgecolors="#111111", s=95, linewidths=.6)
         ax.scatter(np.interp(historical_marker["open_interval_weeks"], opens, range(len(opens))), np.interp(historical_marker["reclosure_intensity"], intensities, range(len(intensities))), marker="X", color="#111111", s=60)
         ax.set_xticks(range(len(opens)), opens)
-        ax.set_yticks(range(len(intensities)), [f"{value:.2f}" for value in intensities] if ax is axes[0] else [])
-        ax.set_xlabel("Open interval (weeks)")
-        if ax is axes[0]:
-            ax.set_ylabel("Reclosure intensity")
-        ax.set_title(f"Duration {duration} weeks")
-    fig.colorbar(image, ax=axes, location="bottom", shrink=.38, pad=.16, label="Matched-path certificate violation share")
+        ax.set_yticks(range(len(intensities)), [f"{value:.2f}" for value in intensities])
+        ax.tick_params(axis="both", labelsize=9.2)
+        if panel_index == len(durations) - 1:
+            ax.set_xlabel("Open interval (weeks)", fontsize=10)
+        if panel_index == len(durations) // 2:
+            ax.set_ylabel("Reclosure intensity", fontsize=10)
+        panel_title(ax, chr(ord("A") + panel_index), f"Duration {duration} weeks")
+        ax.title.set_fontsize(10.2)
+        ax.grid(False)
+    fig.colorbar(
+        image,
+        ax=list(axes),
+        location="right",
+        shrink=.72,
+        pad=.025,
+        label="Matched-path violation share",
+    )
     legend = [
         Patch(facecolor="white", edgecolor="#202020", hatch="////", label="All matched paths violate certificate"),
-        plt.Line2D([], [], marker="s", markerfacecolor="none", markeredgecolor="#111111", linestyle="", label="16 policy cells"),
-        plt.Line2D([], [], marker="*", color="#D06B32", markeredgecolor="#111111", linestyle="", markersize=10, label="3 full-policy anchors"),
-        plt.Line2D([], [], marker="X", color="#111111", linestyle="", label="Historical open/intensity marker; duration censored"),
+        plt.Line2D([], [], marker="s", markerfacecolor="none", markeredgecolor="#111111", linestyle="", label="Policy-evaluation cells"),
+        plt.Line2D([], [], marker="*", color="#D06B32", markeredgecolor="#111111", linestyle="", markersize=10, label="Full-policy anchors"),
+        plt.Line2D([], [], marker="X", color="#111111", linestyle="", label="Historical marker (duration censored)"),
     ]
-    fig.legend(handles=legend, loc="outside upper center", ncol=4, frameon=False, fontsize=8)
-    fig.suptitle("Figure 5.3.2c  Full-grid optimistic absorption certificate", fontsize=13)
+    fig.legend(
+        handles=legend,
+        loc="outside upper center",
+        ncol=2,
+        fontsize=8.8,
+        handlelength=2.0,
+        columnspacing=1.4,
+    )
     path_c = figures_dir / "figure_5_3_2c_full_absorption_certificate.png"
-    fig.savefig(path_c, dpi=dpi, bbox_inches="tight", facecolor="white")
+    save_figure(fig, path_c, dpi=dpi)
     plt.close(fig)
     certificate_figure_data = absorption.merge(
         coverage.groupby("cell_id", as_index=False).agg(policy_cell=("comparison_family", lambda values: any(value != "physical_certificate_only" for value in values)), full_policy_anchor=("comparison_family", lambda values: any(value == "five_policy_anchor" for value in values))),

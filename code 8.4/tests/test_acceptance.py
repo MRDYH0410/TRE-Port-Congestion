@@ -1,8 +1,14 @@
 from __future__ import annotations
 
+from types import SimpleNamespace
+
 import numpy as np
 
-from tre84.acceptance import evaluate_acceptance, evaluate_trajectory_acceptance
+from tre84.acceptance import (
+    evaluate_acceptance,
+    evaluate_trajectory_acceptance,
+    source_masses_for_acceptance,
+)
 from tre84.actions import (
     Action,
     ActionDomain,
@@ -16,6 +22,24 @@ from tre84.keys import Network, Route, SourceKey
 from tre84.loss import LossBreakdown, TerminalCostParameters, TerminalMassCorrection
 from tre84.state import CapacityState, ModelState, RiskInformation
 from tre84.transition import TransitionAudit
+
+
+def test_acceptance_source_masses_use_release_ledger_not_underflowed_flow_sum() -> None:
+    tiny = float(np.nextafter(0.0, 1.0))
+    result = SimpleNamespace(
+        transition=SimpleNamespace(
+            demand_split=SimpleNamespace(decision_eligible={"c": 0.0})
+        ),
+        equilibrium=SimpleNamespace(
+            releases={"c": np.asarray([0.0, tiny])},
+            # Summing alternative-level subnormal flows can underflow to zero;
+            # this must not erase the strictly positive formal source.
+            flows={SourceKey("c", 1): {"r1": 0.0, "r2": 0.0}},
+        ),
+    )
+    masses = source_masses_for_acceptance(result)
+    assert masses[SourceKey("c", None)] == 0.0
+    assert masses[SourceKey("c", 1)] == tiny
 
 
 def _state(waiting_mass: float = 0.0) -> ModelState:

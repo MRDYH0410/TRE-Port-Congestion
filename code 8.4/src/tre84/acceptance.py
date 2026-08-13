@@ -277,7 +277,14 @@ def evaluate_acceptance(
     )
 
 
-def _source_masses(result: KernelResult) -> dict[SourceKey, float]:
+def source_masses_for_acceptance(result: KernelResult) -> dict[SourceKey, float]:
+    """Recover formal decision masses without summing possibly underflowed flows.
+
+    The demand split and oldest-first release ledger are the authoritative
+    source-mass records.  Reconstructing masses from route-flow sums can erase
+    an IEEE-754 subnormal but strictly positive released vintage while its
+    normalized SUE simplex remains well defined.
+    """
     masses = {
         SourceKey(cargo_class, None): float(mass)
         for cargo_class, mass in result.transition.demand_split.decision_eligible.items()
@@ -287,6 +294,10 @@ def _source_masses(result: KernelResult) -> dict[SourceKey, float]:
             if mass > 0.0:
                 masses[SourceKey(cargo_class, vintage)] = float(mass)
     return masses
+
+
+# Backward-compatible private alias for frozen downstream audit scripts.
+_source_masses = source_masses_for_acceptance
 
 
 def evaluate_trajectory_acceptance(
@@ -333,7 +344,7 @@ def evaluate_trajectory_acceptance(
             action=result.action,
             action_domain=action_domain,
             equilibrium=result.equilibrium,
-            source_masses=_source_masses(result),
+            source_masses=source_masses_for_acceptance(result),
             transition_audit=result.transition.audit,
             loss=result.transition.loss,
             tolerance=tolerance,
@@ -355,7 +366,7 @@ def evaluate_trajectory_acceptance(
             action=result.action,
             action_domain=action_domain,
             equilibrium=result.equilibrium,
-            source_masses=_source_masses(result),
+            source_masses=source_masses_for_acceptance(result),
             transition_audit=result.transition.audit,
             loss=result.transition.loss,
             tolerance=tolerance,

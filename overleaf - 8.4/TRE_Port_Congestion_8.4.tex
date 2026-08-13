@@ -1834,43 +1834,41 @@ structural components rather than competing congestion policies.
 \definecolor{ctrlpurple}{RGB}{142,68,173}
 \definecolor{transgray}{RGB}{90,100,110}
 \begin{tikzpicture}[
- scale=0.82,transform shape,>=Latex,font=\small,
- node distance=10mm and 11mm,
- mod/.style={draw,rounded corners=2pt,align=center,minimum height=11mm,
- text width=29mm,fill=white},
+ >=Latex,font=\footnotesize,
+ mod/.style={draw,rounded corners=2pt,align=center,minimum height=17mm,
+ text width=34mm,inner sep=2.5mm,fill=white},
  state/.style={draw=transgray,dashed,rounded corners=2pt,align=center,
- minimum height=11mm,text width=29mm,fill=transgray!7},
+ minimum height=12mm,text width=28mm,inner sep=2.5mm,fill=transgray!7},
  flow/.style={-Latex,thick},
  call/.style={-Latex,thick,dashed},
- audit/.style={-Latex,thick,dotted}
+ audit/.style={-Latex,thick,dotted},
+ edge/.style={font=\scriptsize,fill=white,inner sep=1.5pt,text=transgray}
 ]
 \node[mod,draw=filterblue,fill=filterblue!8] (risk)
- {Module 1\\released risk inference};
-\node[mod,draw=projorange,fill=projorange!9,right=of risk] (scenario)
- {Module 2\\common scenario family\\dual conditional weights};
-\node[mod,draw=ctrlpurple,fill=ctrlpurple!8,right=of scenario] (control)
- {Module 3\\feasible upper level control\\MPC, BC, and SAC};
-\node[mod,draw=suegreen,fill=suegreen!8,below=of control] (behavior)
- {Module 4\\oldest first release\\vintage SUE and selector};
-\node[mod,draw=transgray,fill=transgray!8,left=of behavior] (transition)
- {Module 5\\tagged transition\\loss and audits};
-\node[state,left=of transition] (next)
- {Complete next state $s_{t+1}$\\and clearance state};
-\node[state,above=of control] (offline)
- {Offline teacher and learning\\using the same nested calls};
+ {Module 1\\Released risk\\inference};
+\node[mod,draw=projorange,fill=projorange!9,right=11mm of risk] (scenario)
+ {Module 2\\Matched scenario\\construction};
+\node[mod,draw=ctrlpurple,fill=ctrlpurple!8,right=11mm of scenario] (control)
+ {Module 3\\Feasible upper-level control\\MPC, BC, and SAC};
+\node[mod,draw=suegreen,fill=suegreen!8,below=15mm of control] (behavior)
+ {Module 4\\Oldest-first release\\and vintage SUE};
+\node[mod,draw=transgray,fill=transgray!8,left=11mm of behavior] (transition)
+ {Module 5\\Tagged transition, loss,\\and audits};
 
-\draw[flow] (risk) -- node[above,font=\scriptsize]{belief and lead time forecast} (scenario);
-\draw[flow] (scenario) -- node[above,font=\scriptsize]{scenario support and weights} (control);
-\draw[flow] (control) -- node[right,font=\scriptsize]{$a_t\in\mathcal A^{\mathrm{feas}}(s_t)$} (behavior);
-\draw[flow] (behavior) -- node[above,font=\scriptsize]{$z_t^\star$ and certificate} (transition);
-\draw[flow] (transition) -- node[above,font=\scriptsize]{$s_{t+1},\ell_t^{\mathrm{op}}$} (next);
-\draw[call] (next.north west) to[bend left=34]
- node[above,font=\scriptsize]{released information and histories} (risk.west);
-\draw[call] (next.north) to[bend left=17]
- node[below,font=\scriptsize]{closed Markov state} (control.west);
+\node[state,above=14mm of control] (offline)
+ {Offline teacher and learning\\use the same nested calls};
+\node[state,left=14mm of transition] (next)
+ {Complete next state $s_{t+1}$\\and clearance state};
+
+\draw[flow] (risk) -- (scenario);
+\draw[flow] (scenario) -- (control);
+\draw[flow] (control) -- (behavior);
+\draw[flow] (behavior) -- (transition);
+\draw[flow] (transition) -- (next);
 \draw[call] (offline) -- (control);
-\draw[audit] (scenario.south) to[bend right=12]
- node[below,font=\scriptsize]{outer rollout paths} (transition.north);
+\draw[audit] (scenario) -- node[right,edge]{outer rollouts} (transition);
+\draw[call] (next.west) -- ++(-5mm,0) |- (risk.west)
+ node[pos=.40,left,edge]{state feedback};
 \end{tikzpicture}
 \caption{Five module algorithm architecture and its period by period data flow}
 \label{fig:solution-architecture}
@@ -3236,16 +3234,16 @@ Commitment sensitivity
 & Structural regimes rather than an estimated historical commitment share \\
 Renewed closure sensitivity
 & When do reopening time, renewed severity, and renewed duration change policy identity or physical feasibility
-& Common random paths over the declared three dimensional grid and the independent optimistic absorption program
-& A violated certificate is sufficient. A nonviolated cell is not a feasibility guarantee \\
+& Matched physical paths over 16 preregistered policy cells, five policy comparisons at three anchors, and an independent optimistic certificate over all 150 cells
+& Three policy axial evidence and five policy anchor evidence remain distinct. A violated certificate is sufficient. A nonviolated cell is not a feasibility guarantee \\
 Gateway portfolio sensitivity
 & Does an additional alternative create diversification value or only redistribute fixed bottlenecks
 & Three, four, five, seven, and nine gateways under capacity neutral, port only, and end to end architectures with alternative commitment eligibility
 & Added gateways are semi synthetic. Every new action dimension is retrained or represented invariantly \\
 Parameter robustness
 & Do the main policy conclusions survive uncertain behaviour, service, cost, information, and clearance inputs
-& Prespecified one factor screening followed by selected interactions at the historical and policy switch anchors
-& Conditional robustness. No high dimensional grid is described as empirical calibration \\
+& One common reference, two nonreference levels for thirteen one factor screens, and four declared combined stresses under layered policy support and an outcome blind eight hour timing gate
+& Conditional deployment robustness. Structural levels are not empirical intervals, missing policies are not imputed, and clearance tolerance only reclassifies unchanged terminal states \\
 \bottomrule
 \end{longtable}
 \endgroup
@@ -3277,6 +3275,123 @@ contract. Writing its unconstrained coordinate as $\zeta_t$ gives
 \end{equation}
 Thus the registered value 0.05 is an initial condition rather than a fixed
 behavioural coefficient.
+
+The renewed closure experiment separates policy deployment from the complete
+physical boundary. Let the opening, renewed closure severity, and renewed
+closure duration sets be
+\begin{equation}
+ \begin{gathered}
+ \mathcal D^O=\{1,2,4,6,8,12\},\qquad
+ \mathcal S^R=\{0.40,0.55,0.70,0.85,0.95\},\qquad
+ \mathcal D^R=\{2,4,8,16,32\},\\
+ \mathcal G^R=\mathcal D^O\times\mathcal S^R\times\mathcal D^R,\\
+ \mathcal G^\pi=
+ \big(\mathcal D^O\times\{0.85\}\times\{8\}\big)
+ \cup\big(\{4\}\times\mathcal S^R\times\{8\}\big)
+ \cup\big(\{4\}\times\{0.85\}\times\mathcal D^R\big)\\
+ \hspace{18mm}\cup\{(12,0.40,2),(1,0.95,32)\},\\
+ \mathcal G^A=\{(4,0.85,8),(12,0.40,2),(1,0.95,32)\},\\
+ |\mathcal G^R|=150,\qquad |\mathcal G^\pi|=16,\qquad
+ |\mathcal G^A|=3.
+ \end{gathered}
+ \label{eq:reclosure-coverage-51}
+\end{equation}
+The reduced and complete anchor policy families are
+\begin{equation}
+ \begin{aligned}
+ \Pi_3={}&\{\text{Passive},\text{Reactive},\text{BC}\},\\
+ \Pi_5={}&\Pi_3\cup\{\text{projected stochastic MPC},\\
+          &\hspace{28mm}\text{model guided constrained SAC}\}.
+ \end{aligned}
+\end{equation}
+Thus $\Pi_g=\Pi_5$ for $g\in\mathcal G^A$ and $\Pi_g=\Pi_3$ for
+$g\in\mathcal G^\pi\setminus\mathcal G^A$. No policy value is assigned when
+$g\notin\mathcal G^\pi$.
+
+The gateway network experiment separates route choice, port side capacity,
+shared corridor capacity, and commitment eligibility. Its declared structural
+sets and action dimension are
+\begin{equation}
+ \begin{gathered}
+ \mathcal N^G=\{3,4,5,7,9\},\qquad
+ \mathcal A^G=\{\text{capacity neutral},\text{port only},
+ \text{end to end}\},\\
+ \mathcal E^G=\{\text{emergency only},\text{precontracted}\},\\
+ \mathcal G^N=\{g_3^{\mathrm{obs}}\}\cup
+ \big(\{4,5,7,9\}\times\mathcal A^G\times\mathcal E^G\big),
+ \qquad |\mathcal G^N|=25,\\
+ d_a(n)=3(3n+1)+1+n=10n+4.
+ \end{gathered}
+ \label{eq:gateway-network-design-51}
+\end{equation}
+Here a gateway is the complete route tagged chain from maritime dispatch
+through berth, yard, gate, and the shared landbridge corridor. It is therefore
+broader than an isolated port facility.
+
+The parameter robustness experiment applies registered transformations to the
+same formal objects used by the benchmark. The behavioural, physical,
+economic, control, and information transformations are
+\begin{subequations}\label{eq:robustness-transformations-51}
+\begin{align}
+ \theta_k(m_\theta)&=m_\theta\theta_k^{\mathrm{ref}},
+ &\vartheta_k(j;p)&=\left(j/\bar J\right)^p,
+ &c^E_k(m_E)&=m_ET_D,\\
+ \varrho^Q(m_Q)&=m_Q\varrho^{Q,\mathrm{ref}},
+ &\tau^M_{kr}(m_\tau)&=
+ \max\!\left\{1,\left\lfloor
+ m_\tau\tau^{M,\mathrm{ref}}_{kr}+\tfrac12
+ \right\rfloor\right\},\\
+ \bar\mu_i^q(m_\mu)&=m_\mu\bar\mu_i^{q,\mathrm{ref}},
+ \quad q\in\{B,Y,G\},
+ &\bar\kappa_e(m_\kappa)&=m_\kappa\bar\kappa_e^{\mathrm{ref}},\\
+ \psi_{\eta^{\mathrm{fb}}}(r)&=
+ \left[1+\eta^{\mathrm{fb}}\pos{r-1}\right]^{-1},
+ &\Delta c^{\mathrm{res}}_{kr}(m_R)&=
+ m_R\Delta c^{\mathrm{res,ref}}_{kr},\\
+ \boldsymbol c^A(m_A)&=m_A\boldsymbol c^{A,\mathrm{ref}},
+ &\sigma^W_{krt}(m_\sigma)&=
+ m_\sigma\sigma^{W,\mathrm{RMSE}}_{kr},\\
+ \mathfrak b_0(b)&=b\sum_{t=0}^{T_D-1}C_t^{A,\mathrm{full}},
+ &\bar c_t(b)&=bC_t^{A,\mathrm{full}}.
+\end{align}
+\end{subequations}
+Here $\boldsymbol c^A$ collects the nonzero coefficients of the four action
+cost functions in \cref{eq:action-cost}. The quantity
+$C_t^{A,\mathrm{full}}$ is the period cost of exercising all registered actions
+at their formal upper bounds. Zero cost coefficients remain zero. The complete
+registered levels are
+\begin{equation}
+ \begin{gathered}
+ m_\theta,m_E,m_Q,m_\tau,m_\mu,m_\kappa,m_R,m_A,m_\sigma
+ \in\{0.5,1,2\},\\
+ p\in\{0.5,1,2\},\qquad
+ \eta^{\mathrm{fb}}\in\{0,1,2\},\qquad
+ b\in\{0.25,0.5,1\},\qquad
+ \Lambda^R\in\{4,8,16\},\\
+ \epsilon_{\mathrm{clear}}\in\{10^{-8},10^{-6},10^{-4}\},
+ \qquad |\mathcal G^{P}|=1+2(13)+4=31.
+ \end{gathered}
+ \label{eq:robustness-design-51}
+\end{equation}
+The three policy families used under compatible support are
+\begin{equation}
+ \begin{aligned}
+ \Pi^P_3&=\{\text{Passive},\text{Reactive},\text{BC}\},\\
+ \Pi^P_{\mathrm{dim}}&=
+ \{\text{Passive},\text{Reactive},\text{projected stochastic MPC}\},\\
+ \Pi^P_5&=\Pi^P_3\cup
+ \{\text{projected stochastic MPC},
+ \text{model guided constrained SAC}\}.
+ \end{aligned}
+ \label{eq:robustness-policy-support-51}
+\end{equation}
+Each one factor family retains its reference value and two nonreference
+endpoints. The 31 simulated cells comprise one common reference, 26 one factor
+endpoints, and four combined structural stresses. Clearance tolerance is a
+separate classification diagnostic and is not one of these cells. The
+multipliers are dimensionless reference centred stresses that are symmetric on
+the log scale. They are neither estimated confidence intervals nor newly
+observed event attributes.
 
 \begingroup
 \small
@@ -3332,7 +3447,7 @@ Residual library
 & Matched downstream residual sampling \\
 Network exposure
 & $\varrho^{Q,\mathrm{ref}}$
-& Activity scale ratio in \cref{eq:network-exposure-reference}. Robustness uses one half, one, and twice the reference
+& Activity scale ratio in \cref{eq:network-exposure-reference}. Robustness uses $\varrho^Q(m_Q)=m_Q\varrho^{Q,\mathrm{ref}}$ with $m_Q\in\{0.5,1,2\}$ while preserving released serviceability
 & Data anchored transformation
 & Flow scale sensitivity without calling exposure observed \\
 Cargo resolution
@@ -3360,44 +3475,69 @@ Gateway portfolio
 & Three observed gateway nodes and four service stages. Portfolio sizes are three, four, five, seven, and nine
 & Observed nodes with semi synthetic extensions
 & Capacity neutral, port only, and end to end network designs \\
+Gateway construction
+& $\mathcal G^N$, $\bar c_i^{\mathrm{E2E}}$
+& The 25 cells follow \cref{eq:gateway-network-design-51}. Every added gateway uses the componentwise median of the three observed gateway stage capacities, maritime lags, and waiting error scales. Its end to end reference capacity is the minimum of berth, yard, gate, and its gate capacity proportional share of the shared corridor
+& Semi synthetic median template using observed gateway inputs
+& Choice expansion, port capacity, shared corridor capacity, and commitment eligibility \\
+Gateway architecture
+& Capacity neutral, port only, end to end
+& Capacity neutral expansion renormalises gateway stage weights to the observed three gateway total and retains the observed shared corridor. Port only expansion adds the median gateway stages while retaining that corridor. End to end expansion also adds the corresponding corridor contribution
+& Prespecified structural decomposition
+& Separating route diversity from bottleneck transfer and complete capacity expansion \\
+Gateway eligibility
+& Emergency only, precontracted
+& Emergency only additions remain available to adaptive cargo. Precontracted additions enter the committed itinerary set in proportion to end to end reference capacity while the observed itinerary anchors retain their relative proportions
+& Designed contractual access condition
+& Testing whether nominal alternatives are usable by committed cohorts \\
+Gateway controller scaling
+& $d_a(n)$, $\Pi^G_3$, $\Pi^G_5$
+& Action dimensions are 34, 44, 54, 74, and 94. A new MPC teacher, BC controller, and constrained SAC controller are generated for every gateway count. Size specific checkpoints are frozen across architectures and eligibility conditions. Passive, Reactive, and BC are evaluated in all cells. Projected stochastic MPC and model guided constrained SAC are added at the observed reference and six nine gateway endpoints
+& Prespecified size conditional training and layered policy coverage
+& No padding of the three gateway actor and no imputation of unevaluated policy cells \\
+Gateway inference
+& $N^G_{\mathrm{path}}$, $N_{\mathrm{seed}}$, $\Delta^{G}_{c,\pi}$
+& Each cell uses 23 matched physical paths. Three learning seeds are averaged within path. Eighteen matched component contrasts separate choice, port capacity, end to end capacity, and precontracting. The computational gate is fixed at six hours
+& Conditional path level structural comparison
+& Loss, policy regret, overload location, waiting, delivery, clearance, and terminal mass \\
 Waiting stock
 & $\bar J$, $\rho_t$
 & $\bar J=104$ covers the declared clearance window. Release satisfies $0\le\rho_t\le1$ and uses the oldest first operator
 & Model identity and action bound
 & Vintage retention, release timing, and no age reset audit \\
 Waiting attrition
-& $\vartheta_k(j)$
-& The benchmark uses $\vartheta_k(j)=(j/\bar J)^2$ with $\vartheta_k(\bar J)=1$. Concave, linear, and convex profiles are compared in robustness analysis
+& $\vartheta_k(j;p)$, $p$
+& The benchmark uses $p=2$ in $\vartheta_k(j;p)=(j/\bar J)^p$ with $\vartheta_k(\bar J;p)=1$. Robustness uses $p\in\{0.5,1,2\}$
 & Designed behavioural family
 & Duration exit and waiting boundary \\
 Route choice
-& $\theta_k$
-& The benchmark uses $\theta_k=1$ in reciprocal generalised cost units after one common cost normalisation. Low and high regimes are frozen before robustness analysis
+& $\theta_k$, $m_\theta$
+& The benchmark uses $\theta_k^{\mathrm{ref}}=1$ in reciprocal generalised cost units after one common cost normalisation. Robustness uses $\theta_k(m_\theta)=m_\theta\theta_k^{\mathrm{ref}}$ with $m_\theta\in\{0.5,1,2\}$
 & Partially identified behaviour
 & Route concentration, waiting, and direct exit response \\
 Disclosure
-& $\lambda_{krt}$, $\gamma_I$, $\sigma^W_{krt}$
-& $0\le\lambda_{krt}\le1$ and the benchmark registers $\gamma_I=1$. Route wise one step Passive waiting RMSE is 0.312009 weeks for Khor Fakkan, 1.290553 for Fujairah, and 0.047840 for Sohar using 40 errors on each of two held out paths. The signal follows \cref{eq:522-public-wait-signal}
+& $\lambda_{krt}$, $\gamma_I$, $\sigma^W_{krt}$, $m_\sigma$
+& $0\le\lambda_{krt}\le1$ and the benchmark registers $\gamma_I=1$. Route wise one step Passive waiting RMSE is 0.312009 weeks for Khor Fakkan, 1.290553 for Fujairah, and 0.047840 for Sohar using 40 errors on each of two held out paths. Robustness uses $\sigma^W_{krt}(m_\sigma)=m_\sigma\sigma^{W,\mathrm{RMSE}}_{kr}$ with $m_\sigma\in\{0.5,1,2\}$. The midpoint $\gamma_I=0.5$ is used only in the declared long readiness and low credibility combined stress. The signal follows \cref{eq:522-public-wait-signal}
 & Formal action and held out forecast calibration
 & Credibility, disclosure cost, and information value \\
 Maritime pipeline
-& $\ell^M_{kr,\tau\mid t}$, $\tau^M_{kr}$
-& Each dispatch cohort kernel sums to one. Reference maritime lags are two weeks for Khor Fakkan, three for Fujairah, and four for Sohar. Alternative designs preserve route and provenance tags
+& $\ell^M_{kr,\tau\mid t}$, $\tau^M_{kr}$, $m_\tau$
+& Each dispatch cohort kernel sums to one. Reference maritime lags are two weeks for Khor Fakkan, three for Fujairah, and four for Sohar. Robustness uses the positive half up integer rule in \cref{eq:robustness-transformations-51} with $m_\tau\in\{0.5,1,2\}$ and reconstructs the registered excess lag route resource increment consistently. Alternative designs preserve route and provenance tags
 & Designed timing anchored to declared route ordering
 & Lag sensitivity and recurrent closure mechanism \\
 Reference service
-& $\bar\mu_i^B$, $\bar\mu_i^Y$, $\bar\mu_i^G$, $\bar\kappa_e$
-& Gateway activity scale $s_i$ supplies the balanced reference. Bottleneck architectures perturb one declared stage or shared corridor
+& $\bar\mu_i^B$, $\bar\mu_i^Y$, $\bar\mu_i^G$, $\bar\kappa_e$, $m_\mu$, $m_\kappa$
+& Gateway activity scale $s_i$ supplies the balanced reference. Robustness multiplies all three port stage capacities by $m_\mu\in\{0.5,1,2\}$ and only shared corridor capacity by $m_\kappa\in\{0.5,1,2\}$. The corresponding one service week congestion thresholds scale with the same multiplier
 & Data anchored scale with designed stage structure
 & Stage bottleneck and gateway expansion experiments \\
 Thresholds
 & $\bar B_i$, $\bar Y_i$, $\bar G_i$, $\bar M_e$
-& Reported as weeks of reference service through $\bar Q_i^q/\bar\mu_i^q$. The neutral threshold equals one service week
+& Reported as weeks of reference service through $\bar Q_i^q/\bar\mu_i^q$. The neutral threshold equals one service week and remains one service week when a robustness multiplier changes its corresponding service scale
 & Declared operational normalisation
 & Pressure, overload, and threshold robustness \\
 Physical feedback
-& $\psi_i^Y$, $\psi_i^M$, $\omega_{ie,t}$
-& The reference response is $\psi(r)=[1+\pos{r-1}]^{-1}$ with unit strength and threshold. Corridor shares use two lagged weeks with unit fallback weight. Absence and stronger feedback regimes are compared
+& $\psi_i^Y$, $\psi_i^M$, $\psi_{\eta^{\mathrm{fb}}}$, $\eta^{\mathrm{fb}}$, $\omega_{ie,t}$
+& The response is $\psi_{\eta^{\mathrm{fb}}}(r)=[1+\eta^{\mathrm{fb}}\pos{r-1}]^{-1}$ with $\eta^{\mathrm{fb}}\in\{0,1,2\}$ and reference $\eta^{\mathrm{fb}}=1$. Corridor shares use two lagged weeks with unit fallback weight
 & Designed structural family
 & Yard to berth and corridor to gate propagation \\
 Behavioural costs
@@ -3406,8 +3546,8 @@ Behavioural costs
 & Neutral economic normalisation with the unidentified term removed
 & SUE response and waiting or exit tradeoff \\
 Resource loss
-& $c_B$, $c_Y$, $c_G$, $c_M$, $c^W_{kj}$, $c^E_k$, $\Delta c^{\mathrm{res}}_{kr}$
-& The benchmark uses unit queue and overflow cost, $c^W_{kj}=j+1$, $c^E_k=21$, terminal unit cost $c^E_k$, and route resource increments zero, one, and two for Khor Fakkan, Fujairah, and Sohar. Handling, trucking, and border increments are zero under the identical benchmark topology
+& $c_B$, $c_Y$, $c_G$, $c_M$, $c^W_{kj}$, $c^E_k$, $m_E$, $\Delta c^{\mathrm{res}}_{kr}$, $m_R$
+& The benchmark uses unit queue and overflow cost, $c^W_{kj}=j+1$, $c^E_k=T_D=21$, terminal unit cost $c^E_k$, and route resource increments zero, one, and two for Khor Fakkan, Fujairah, and Sohar. Robustness uses $c^E_k(m_E)=m_ET_D$ for direct exit, duration exit, and terminal correction, and scales every nonzero route resource increment by $m_R$, with $m_E,m_R\in\{0.5,1,2\}$. Handling, trucking, and border increments that are zero remain zero
 & Declared operational and real resource normalisation
 & Exact objective in \cref{eq:stage-loss,eq:loss-components} \\
 Capacity actions
@@ -3417,12 +3557,12 @@ Capacity actions
 & Readiness versus direct procurement and capacity architecture \\
 Resource timing
 & $\Lambda^R$, $\Lambda^V(\varphi_t)$, $\delta^R$, $\delta^V$
-& Benchmark readiness lead is eight weeks and direct procurement lead is zero. Expiry follows the persistence rules registered for the two resources
+& Benchmark readiness lead is eight weeks and direct procurement lead is zero. Robustness uses $\Lambda^R\in\{4,8,16\}$ weeks. Expiry follows the persistence rules registered for the two resources
 & Designed operational inputs
 & Lead time value, expiry loss, and false warning cost \\
 Action cost and budget
-& $c^R$, $c^V$, $c^{\mathrm{ex}}$, $c^I$, $\mathfrak b_t$, $\bar c_t$
-& Readiness order and exercise cost 0.125 each, direct cost one, release cost zero, and publication cost one. Period and cumulative budgets equal one half of the corresponding full action cost. No penalty replaces hard feasibility
+& $c^R$, $c^V$, $c^{\mathrm{ex}}$, $c^I$, $m_A$, $\mathfrak b_t$, $\bar c_t$, $b$
+& Readiness order and exercise cost 0.125 each, direct cost one, release cost zero, and publication cost one. Robustness multiplies every nonzero action cost coefficient by $m_A\in\{0.5,1,2\}$. Period and cumulative budget fractions use $b\in\{0.25,0.5,1\}$ with reference $b=0.5$. Their full action cost envelopes scale with $m_A$, preserving the relative feasible share. No penalty replaces hard feasibility
 & Designed resource and governance normalisation
 & Common authority benchmark and budget sensitivity \\
 Risk information
@@ -3490,11 +3630,46 @@ Reclosure design
 & Opening values are 1, 2, 4, 6, 8, and 12 weeks. Severity values are 0.40, 0.55, 0.70, 0.85, and 0.95. Duration values are 2, 4, 8, 16, and 32 weeks
 & Designed structural boundary with a right censored event marker
 & Policy switch and unavoidable absorption maps \\
+Reclosure recovery
+& $H^{\mathrm{rec}}$, $a^{\mathrm{rec}}(j)$
+& $H^{\mathrm{rec}}=8$ weeks and $a^{\mathrm{rec}}(j)=a^{\mathrm{reclose}}+(1-a^{\mathrm{reclose}})j/H^{\mathrm{rec}}$ for $j=1,\ldots,H^{\mathrm{rec}}$. The horizon equals the accepted planning and readiness horizon
+& Prespecified common recovery rule
+& Identical post closure recovery across every cell and policy \\
+Reclosure coverage
+& $\mathcal G^R$, $\mathcal G^\pi$, $\mathcal G^A$, $\Pi_3$, $\Pi_5$
+& The sets follow \cref{eq:reclosure-coverage-51}. Passive, Reactive, and BC are evaluated in 16 policy cells. Projected stochastic MPC and model guided constrained SAC are added only at the three anchors. Omitted policy and cell pairs remain unevaluated
+& Preregistered layered deployment design
+& Axial sensitivity, joint corners, and full policy anchor comparison \\
+Reclosure inference
+& $N^{R}_{\mathrm{path}}$, $N_{\mathrm{seed}}$, $h^\star$, $\mathcal C^{\mathrm{best}}_g$
+& The minimum is 88 matched physical paths and the cap is 196. The cap binds and all 196 paths are retained. Three learning seeds are averaged within path. Twenty four anchor contrasts use $h^\star=2{,}255.64$ and the precision rule in \cref{eq:benchmark-path-precision}
+& Prespecified path level paired protocol
+& Simultaneous policy confidence sets, paired effects, and retained target attainment audit \\
+Absorption boundary
+& $\mathcal C^{\mathrm{abs}}_{it}(H)$, $\mathcal Q^C_{it}(H)$
+& The policy independent program in \cref{prop:absorption} is evaluated for 196 matched paths in every cell of $\mathcal G^R$ under the optimistic component capacity envelope
+& Sufficient physical impossibility certificate
+& A violation proves unavoidable threshold crossing. Nonviolation proves neither feasibility nor timely clearance \\
 Decision and clearance
 & $H_C$, $T_D$, $T_{\mathrm{clear}}$, $\epsilon_{\mathrm{clear}}$
-& The benchmark uses $H_C=8$, $T_D=21$, $T_{\mathrm{clear}}=104$, and $\epsilon_{\mathrm{clear}}=10^{-6}$. Clearance runs with zero new demand, full route availability, and zero further action
+& The benchmark uses $H_C=8$, $T_D=21$, $T_{\mathrm{clear}}=104$, and $\epsilon_{\mathrm{clear}}=10^{-6}$. Clearance runs with zero new demand, full route availability, and zero further action. The diagnostic set $\{10^{-8},10^{-6},10^{-4}\}$ only reclassifies unchanged terminal states and never changes an action, transition, loss, or terminal stock
 & Design horizon and declared numerical tolerance
 & Matched optimisation, clearance, and censoring sensitivity \\
+Parameter robustness design
+& $\mathcal G^P$, $m_\theta$, $p$, $m_E$, $m_Q$, $m_\tau$, $m_\mu$, $m_\kappa$, $\eta^{\mathrm{fb}}$, $m_R$, $m_A$, $b$, $\Lambda^R$, $m_\sigma$
+& The transformations in \cref{eq:robustness-transformations-51,eq:robustness-design-51} generate one common reference, 26 one factor endpoints, and four combined stresses. The severe closure anchor is $(D^{\mathrm{open}},1-a^{\mathrm{reclose}},D^{\mathrm{reclose}})=(1,0.95,32)$ with the common eight week recovery
+& Prespecified structural stresses rather than empirical parameter intervals
+& Behavioural, physical, economic, control, and information deployment robustness \\
+Robustness controller support
+& $\Pi^{P}_3$, $\Pi^{P}_{\mathrm{dim}}$, $\Pi^{P}_5$
+& Dimension compatible one factor cells use frozen deployment policies. Maritime lag and readiness lead cells use Passive, Reactive, and online MPC. The long lag and severe closure anchor receives matched BC and constrained SAC training. The nine gateway anchor uses its size matched frozen checkpoint. Dimension incompatible learned policies are neither padded nor imputed
+& Layered comparison over controllers supported by each declared state and action dimension
+& Policy identity without unsupported checkpoint transfer \\
+Robustness inference
+& $N^P_{\mathrm{path}}$, $N_{\mathrm{seed}}$, $\Delta^P_{c,\pi,\omega}$, $\mathcal C^{\mathrm{best}}_c$
+& An outcome blind eight hour timing gate selects ten matched physical paths. Three learning seeds are averaged within path before cell minus reference effects, within cell regret, and simultaneous confidence sets are calculated. Clearance, terminal outstanding, overload, numerical failure, and checkpoint support are reported jointly
+& Conditional path level inference under the registered computational rule
+& Effect magnitude, policy stability, censoring, and failure boundaries \\
 Numerical acceptance
 & $\epsilon_R$, $N_0$, $M$
 & SUE residual tolerance is $10^{-6}$ with at most 500 iterations and route deduplication tolerance $10^{-7}$. RC MSA uses $\min\{1,\kappa/(n+1)\}$ for $\kappa\in\{1,2,4\}$ and retains the least residual trial. Conventional MSA uses $1/(n+1)$ on the identical problem. Action projection is the weighted Euclidean projection solved by SLSQP with tolerance $10^{-8}$ and at most 300 iterations. Mass and loss identities use tolerance $10^{-6}$
@@ -3995,7 +4170,7 @@ exit quantity.
     \label{fig:522-loss-components}
 \end{figure}
 
-Figure~\ref{fig:522-clearance} rules out nonclearance as the explanation for the
+The clearance diagnostics rule out nonclearance as the explanation for the
 loss ranking. Every trajectory clears within the 104 week continuation window,
 so $\widehat P^{\mathrm{clear}}_{\pi}=1$ and no observation is right censored.
 The restricted mean in \cref{eq:benchmark-clearance-metrics} is 78 weeks for
@@ -4005,13 +4180,6 @@ outstanding mass is below $10^{-6}$ and terminal loss is zero. Lower cumulative
 loss therefore does not mean faster complete clearance in this experiment.
 Reactive and MPC reduce the burden carried during recovery while taking one
 additional week on average to cross the strict empty tolerance.
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=\textwidth]{figures/figure_5_2_2c_clearance_censoring.png}
-    \caption{Clearance and censoring profiles}
-    \label{fig:522-clearance}
-\end{figure}
 
 For a regional authority, the benchmark favours an auditable current state rule
 when the objective is cumulative congestion burden under the registered
@@ -4905,6 +5073,540 @@ therefore identify how a designed itinerary lock changes controllability under
 the declared three gateway network. They do not estimate the historical Hormuz
 commitment share, a field causal effect, or the value of changing commercial
 contracts.
+
+\subsubsection{Renewed Closure Sensitivity}
+\label{subsubsec:reclosure-sensitivity}
+
+The renewed closure experiment asks when the length of a temporary opening,
+the intensity of a subsequent closure, and its duration change policy
+performance or cross a physical recovery boundary. These quantities are
+designed structural conditions rather than three observed event attributes.
+The public advisories identify a 3.29 week opening and an intensity of 0.837,
+but the renewed closure duration remains right censored. Table~\ref{tab:532-reclosure-inputs}
+records the data and experimental roles without treating the historical marker
+as a complete grid cell.
+
+\begingroup
+\setlength{\tabcolsep}{4pt}
+\begin{center}
+\centering
+\captionof{table}{Renewed closure sensitivity inputs}
+\label{tab:532-reclosure-inputs}
+\begin{tabular}{>{\RaggedRight\arraybackslash}p{0.20\textwidth}
+                >{\RaggedRight\arraybackslash}p{0.22\textwidth}
+                >{\RaggedRight\arraybackslash}p{0.27\textwidth}
+                >{\RaggedRight\arraybackslash}p{0.23\textwidth}}
+\toprule
+Source & Retained unit & Experimental role & Evidence boundary \\
+\midrule
+Accepted historical interface
+& Twenty one weekly event records with the released information clock and matched residual construction
+& Common event prefix, blocked flow, serviceability, and nonanticipative information
+& Frozen public data supported input rather than 150 observed disruptions \\
+Public event advisories
+& Opening of 3.29 weeks and renewed closure intensity of 0.837
+& Historical marker for opening and severity in every duration panel
+& Duration remains right censored and does not select a duration cell \\
+Matched physical paths
+& 196 held out paths with common residual blocks and path specific continuations
+& Path paired policy inference and policy independent physical certification
+& Public data calibrated simulation rather than independent realised events \\
+Registered deployment design
+& Sixteen policy cells, three complete policy anchors, and 150 certificate cells
+& Axial policy sensitivity, joint corner comparison, and complete absorption boundary
+& Unevaluated policy and cell pairs receive no imputed result or ranking \\
+\bottomrule
+\end{tabular}
+\end{center}
+\endgroup
+
+The complete grid $\mathcal G^R$, policy subset $\mathcal G^\pi$, and anchor
+set $\mathcal G^A$ follow \cref{eq:reclosure-coverage-51}. At a grid point
+$g=(D^{\mathrm{open}},1-a^{\mathrm{reclose}},D^{\mathrm{reclose}})$,
+serviceability equals one during the opening and
+$a^{\mathrm{reclose}}$ during the renewed closure. It then follows the common
+recovery rule
+\begin{equation}
+ a^{\mathrm{rec}}_g(j)=a^{\mathrm{reclose}}_g+
+ \left(1-a^{\mathrm{reclose}}_g\right)
+ \frac{j}{H^{\mathrm{rec}}},
+ \qquad j=1,\ldots,H^{\mathrm{rec}},
+ \qquad H^{\mathrm{rec}}=8.
+ \label{eq:reclosure-recovery-532}
+\end{equation}
+The eight week horizon equals the accepted planning and readiness horizon.
+Normal activity repeats the accepted path specific residual block, and the
+last legally released risk information is carried forward after the historical
+prefix. The commitment share remains 0.5. Initial states, action rights,
+budgets, costs, recovery, and random paths remain common. The accepted
+checkpoints are deployed without grid cell retraining, which isolates the
+effect of the renewed closure environment.
+
+Policy inference is limited to the family actually evaluated at each policy
+cell. For $g\in\mathcal G^\pi$, let
+\begin{equation}
+ \widehat\pi_g=
+ \argmin_{\pi\in\Pi_g}
+ \frac{1}{N^{R}_{\mathrm{path}}}
+ \sum_{\omega=1}^{N^{R}_{\mathrm{path}}}
+ \bar J^{\mathrm{op}}_{\pi\omega}(g),
+ \qquad
+ \mathcal C^{\mathrm{best}}_g=
+ \left\{\pi\in\Pi_g\,\middle|\,
+ L^{\mathrm{sim}}_{\pi,\widehat\pi_g}(g)\leq0\right\}.
+ \label{eq:reclosure-confidence-set-532}
+\end{equation}
+The three learning seeds are averaged within each physical path before this
+calculation. Simultaneous intervals use the three pair family for $\Pi_3$ and
+the ten pair family for $\Pi_5$. The 24 precision contrasts at the three
+anchors use the loss based target in \cref{eq:benchmark-path-precision}. The
+required count exceeds the registered cap for the most adverse comparisons,
+so all 196 matched physical paths are retained.
+
+Renewed closure duration produces the strongest increase in operational loss,
+while closure intensity also increases loss throughout the reference centred
+axes, as shown in Figure~\ref{fig:532-axial-policy}. Reactive remains the sample
+leader and the only retained confidence set member at every reference centred
+axis cell. At nonanchor cells this statement concerns only Passive, Reactive,
+and frozen BC. The widening separation from Passive reflects the accumulation
+of external waiting and delayed physical absorption as closure severity and
+duration increase. For a regional coordinator, the result supports early
+reactive measures when a renewed closure becomes deeper or more persistent,
+but it does not establish a complete five policy ranking away from the three
+anchors.
+
+\FloatBarrier
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth,trim=0 0 0 20bp,clip]{figures/figure_5_3_2a_axial_policy_sensitivity.png}
+    \caption{Axial policy sensitivity under renewed closure. Grey circles show Passive, blue squares show Reactive, and orange triangles show BC. Filled regret markers identify membership in the simultaneous confidence set}
+    \label{fig:532-axial-policy}
+\end{figure}
+\FloatBarrier
+
+The complete anchor comparisons reveal a conditional policy switch, as shown
+in Figure~\ref{fig:532-anchor-mechanism}. At the reference anchor
+$(4,0.85,8)$, Reactive has the lowest sample mean loss at 54,854.50 and is the
+only member of the five policy confidence set. Under the mild corner
+$(12,0.40,2)$, projected stochastic MPC becomes the sample leader at 27,797.82
+and is the only retained member, compared with 34,615.53 for Reactive. All
+policies clear every path at these two anchors. A long opening and brief mild
+renewed closure therefore leave sufficient recovery time for anticipatory
+capacity and release planning to improve the loss result without creating a
+clearance tradeoff.
+
+Under the severe corner $(1,0.95,32)$, Reactive again has the lowest sample
+mean loss at 100,440.41 and is the sole confidence set member. Its clearance
+probability is 0.959, whereas the four alternatives range from 0.010 to 0.155.
+The experiment is conducted over the preregistered ensemble of 196 matched
+physical paths. Between path variation in policy effects increases materially
+at this corner. Nineteen of the 24 registered anchor contrasts attain the
+target half width of 2,255.64. The remaining five contrasts are all located at
+the severe corner, where the largest attained half width is 3,089.23. The
+observed ordering and confidence set are retained, but estimated effect sizes
+are not extrapolated beyond this evaluated ensemble. Managers should therefore
+treat early reactive coordination as the most consistently supported response
+within the declared severe scenarios rather than as a universally optimal
+controller.
+
+\FloatBarrier
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/figure_5_3_2b_anchor_mechanism_recovery.png}
+    \caption{Anchor mechanisms and recovery under renewed closure}
+    \label{fig:532-anchor-mechanism}
+\end{figure}
+\FloatBarrier
+
+The recovery results also prevent a loss ranking from being mistaken for a
+clearing time ranking. Across the evaluated policy cells, 808 path policy
+summaries remain right censored. These observations enter clearance probability
+and restricted mean clearance time, and none is assigned the 104 week cap as an
+observed clearing time. This distinction is operationally material because a
+controller can reduce cumulative queue and waiting loss while leaving positive
+terminal mass under an adverse physical path. Authorities should therefore
+monitor loss, clearance probability, restricted mean clearance time, and final
+outstanding mass jointly.
+
+The policy independent certificate identifies a broad physical boundary, as
+reported in Figure~\ref{fig:532-absorption}. All 196 matched paths violate the
+optimistic absorption condition in 118 of the 150 structural cells, and at
+least one path violates it in 137 cells. A violation proves that threshold
+crossing cannot be avoided even after removing future arrivals, relaxing
+budget coupling, applying the optimistic component capacity envelope, and
+assigning shared corridor capacity favourably. In these regimes managers need
+to prioritise demand containment, emergency capacity, and corridor recovery
+because fine differences in controller loss cannot restore physical
+absorbability.
+
+\FloatBarrier
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/figure_5_3_2c_full_absorption_certificate.png}
+    \caption{Optimistic absorption boundary under renewed closure. Squares identify the 16 policy cells, stars identify the three complete policy anchors, and hatching identifies cells where all matched paths violate the certificate. The historical opening and intensity marker appears in every duration panel because duration remains right censored}
+    \label{fig:532-absorption}
+\end{figure}
+\FloatBarrier
+
+Certificate nonviolation has no converse interpretation. An unhatched cell may
+still fail under the dynamic equilibrium, action budget, shared corridor, or
+finite clearance horizon. The historical opening and intensity marker appears
+in every duration panel because duration is unobserved rather than because the
+event belongs to every duration cell. The experiment therefore supports axial
+deployment sensitivity, two joint corners, and a complete physical
+impossibility boundary. It does not support a five policy ordering across all
+150 cells, a complete three factor policy interaction surface, guaranteed
+feasibility in certificate nonviolating cells, or a field causal effect.
+
+\subsubsection{Gateway Network Sensitivity}
+\label{subsubsec:gateway-network-sensitivity}
+
+The gateway network experiment asks whether a larger portfolio creates usable
+diversification or merely redistributes congestion across a fixed regional
+chain. A gateway denotes a complete route tagged itinerary through maritime
+transport, berth, yard, gate, and the shared landbridge corridor. The
+experiment therefore concerns regional gateway architecture rather than port
+count alone. The observed three gateway network is compared with semi
+synthetic portfolios of four, five, seven, and nine gateways. Every added node
+inherits the median stage capacity, maritime lag, and waiting error scale of
+the three observed gateways. No added node is interpreted as a forecast for a
+named port.
+
+The 25 declared cells follow \cref{eq:gateway-network-design-51}. Capacity
+neutral designs increase the number of route alternatives while retaining the
+observed aggregate gateway capacity and shared corridor. Port only designs add
+gateway stage capacity while leaving the shared corridor fixed. End to end
+designs add both gateway stages and their corridor contribution. Emergency
+only additions serve adaptive cargo, whereas precontracted additions also
+enter the committed itinerary set. Each cell uses the same 23 matched physical
+paths. Learning seeds are first averaged within path. A new teacher, BC
+controller, and constrained SAC controller are produced for every network
+size because the formal action dimension increases from 34 to 94. Size
+specific controllers are then held fixed across architecture and eligibility
+conditions. Passive, Reactive, and BC are evaluated in all cells. Projected
+stochastic MPC and model guided constrained SAC are additionally evaluated at
+the observed reference and the six nine gateway endpoints. Unevaluated policy
+and cell pairs receive no imputed loss or ranking.
+
+Figure~\ref{fig:533-loss-regret} shows that gateway expansion changes both
+system loss and the relative value of policy computation. In the observed
+three gateway reference, mean operational loss is 99,362.09 for Reactive,
+108,668.67 for projected stochastic MPC, 115,949.64 for BC, 116,409.19 for
+model guided constrained SAC, and 288,769.30 for Passive. Reactive is the
+sample leader in 14 of the 25 evaluated cells. BC leads the three policy family
+in five intermediate network cells. When all five policies are compared at
+the six nine gateway endpoints, projected stochastic MPC is the sample leader
+in every case. The change does not establish one universally best controller.
+It shows that a larger route and action space increases the value of solving
+the network specific coordination problem rather than transferring the
+reference policy ordering without revaluation.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/figure_5_3_3a_loss_regret_network.png}
+    \caption{Gateway network loss and policy regret}
+    \label{fig:533-loss-regret}
+\end{figure}
+
+The matched architecture contrasts show why gateway count alone is
+insufficient. Under Reactive and emergency only access, moving from three
+observed gateways to nine capacity neutral gateways lowers mean loss by
+20,868.06 units. With precontracted access the corresponding reduction is
+35,962.08. This is diversification value because total declared capacity is
+held fixed. Adding port side capacity to the nine gateway emergency network
+reduces Reactive loss by a further 9,160.81. The same port only change under
+precontracting instead increases loss by 2,720.19, which reveals a loading and
+bottleneck interaction rather than an unconditional capacity benefit. Adding
+the corridor contribution after port expansion lowers Reactive loss by 441.38
+under emergency access and 775.94 under precontracting. Precontracting itself
+lowers Reactive loss by 15,094.02 in the capacity neutral architecture,
+3,213.02 in the port only architecture, and 3,547.58 in the end to end
+architecture. Thus contractual eligibility can create more usable value than
+an isolated increase in physical capacity.
+
+Figure~\ref{fig:533-overload} holds the Reactive policy fixed and identifies
+where the burden moves. The fraction of gateways experiencing overload falls
+as the portfolio expands, but total resource week overload need not fall. In
+the nine gateway capacity neutral emergency design, overloaded gateway
+incidence falls from 0.667 to 0.222 while resource week overload rises from
+194.35 to 363.04. The additional alternatives spread exposure across more
+locations without increasing the aggregate service envelope. Port only
+expansion reduces gateway overload but creates positive shared corridor
+overload. End to end expansion removes this corridor exposure. Under the nine
+gateway precontracted design, end to end expansion yields resource week
+overload of 52.74 and overloaded gateway incidence of 0.111. A coordinator
+should therefore monitor both overload incidence and total overload duration.
+A lower affected share is not evidence that the regional burden has fallen.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/figure_5_3_3b_network_overload.png}
+    \caption{Gateway and corridor overload under network expansion}
+    \label{fig:533-overload}
+\end{figure}
+
+The flow outcomes in Figure~\ref{fig:533-flow-clearance} reinforce this
+distinction. Under Reactive, every nine gateway architecture lowers waiting
+exposure and increases delivered cargo relative to the observed reference.
+However, the capacity neutral emergency design does not clear within the
+declared horizon on any matched path and retains mean terminal mass of 27.81.
+Precontracting restores clearance in the matched ensemble and raises delivered
+cargo from 1,593.02 to 1,608.77. Both port only and end to end nine gateway
+designs clear under the evaluated access conditions, although their overload
+locations differ. A low cumulative loss or low gateway incidence must
+therefore be read jointly with clearance and terminal mass.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/figure_5_3_3c_flow_clearance.png}
+    \caption{Waiting delivery and clearance under gateway expansion}
+    \label{fig:533-flow-clearance}
+\end{figure}
+
+The managerial conclusion is that an alternative gateway has value only when
+four conditions align. It must provide an additional route choice, possess
+usable port side service, connect to sufficient shared corridor capacity, and
+be contractually available to the relevant cargo cohort. Capacity neutral
+expansion identifies diversification value. Port only expansion can transfer
+the bottleneck inland. End to end expansion closes the physical chain, while
+precontracting closes the eligibility gap. These are conditional structural
+findings for the declared event, costs, policies, and semi synthetic network
+templates. They do not estimate the effect of constructing a particular port
+or guarantee that a larger gateway portfolio will improve every policy and
+physical path.
+
+\FloatBarrier
+
+\subsubsection{Parameter Robustness}
+\label{subsubsec:parameter-robustness}
+
+The parameter robustness experiment asks whether the benchmark policy ordering
+and its congestion mechanisms persist when publicly unidentified behavioural,
+physical, economic, control, and information inputs move away from their
+reference values. It uses one factor screening and four declared combined
+stresses rather than a high dimensional factorial design. The levels in
+\cref{eq:robustness-transformations-51,eq:robustness-design-51} are designed
+structural conditions and not estimated confidence intervals. Commitment
+remains fixed at $\chi=0.5$ because its complete admissible domain is evaluated
+in the commitment experiment.
+
+Table~\ref{tab:534-robustness-inputs} records the evidence used in this
+experiment. No new historical observation is introduced. The accepted event
+interface, reference parameter register, matched path constructor, severe
+renewed closure endpoint, and semi synthetic gateway constructor retain their
+previous evidence status.
+
+\begingroup
+\setlength{\tabcolsep}{4pt}
+\begin{table}[t]
+\centering
+\caption{Parameter robustness inputs}
+\label{tab:534-robustness-inputs}
+\begin{tabular}{>{\RaggedRight\arraybackslash}p{0.20\textwidth}
+                >{\RaggedRight\arraybackslash}p{0.22\textwidth}
+                >{\RaggedRight\arraybackslash}p{0.27\textwidth}
+                >{\RaggedRight\arraybackslash}p{0.23\textwidth}}
+\toprule
+Source & Retained unit & Experimental role & Evidence boundary \\
+\midrule
+Accepted historical interface
+& Twenty one weekly event records with released risk states and event inputs
+& Common event clock, serviceability, blocked flow, and nonanticipative information
+& Frozen public data supported input rather than a new disruption sample \\
+Reference parameter register
+& Thirteen behavioural, physical, economic, control, and information factors
+& Common reference and two declared nonreference endpoints for each factor
+& Reference centred structural levels rather than estimated parameter intervals \\
+Matched physical paths
+& Ten held out paths selected by the outcome blind eight hour timing rule
+& Path paired effects, policy regret, confidence sets, clearance, and mechanism outcomes
+& Conditional simulation ensemble rather than independent realised events \\
+Policy and structural registers
+& Accepted reference checkpoints, matched severe closure training, a size matched nine gateway checkpoint, and four combined stresses
+& Controller support, checkpoint selection, structural constructors, and replay acceptance
+& Unevaluated policies are retained as not run and receive no imputed result \\
+\bottomrule
+\end{tabular}
+\end{table}
+\endgroup
+
+The 31 simulated cells contain the common reference, two nonreference levels
+for each of 13 one factor screens, and four combined structural stresses. The
+combined stresses pair a doubled maritime lag with the one week opening, 0.95
+renewed closure intensity, and 32 week renewed closure endpoint, the reference
+convex waiting hazard with half exit consequence, the nine gateway end to end
+precontracted network with half shared corridor capacity, and a sixteen week
+readiness lead with the design midpoint $\gamma_I=0.5$. The first combination
+uses the common eight week recovery. The second is algebraically identical to
+the half exit consequence main effect because $p=2$ is the reference waiting
+hazard. It is therefore an identity audited combined anchor rather than an
+identified nonadditive interaction.
+
+Policy coverage follows the state and action dimensions supported in each
+cell. Passive, Reactive, and BC are evaluated in 22 dimension compatible one
+factor cells. The two maritime lag cells, two readiness lead cells, and the
+long readiness and low credibility combination compare Passive, Reactive, and
+online MPC because their model input dimension changes. The common reference
+and the other three combined anchors compare all five declared policies. BC
+and full constrained SAC are retrained only for the long lag and severe closure
+anchor. The nine gateway anchor uses the size matched checkpoint that was
+frozen before the corridor stress. No lower dimensional checkpoint is padded,
+and no missing policy is interpolated.
+
+For a cell $c$, policy $\pi$ evaluated at both $c$ and the common reference,
+and physical path $\omega$, define the paired deployment effect and within cell
+regret as
+\begin{equation}
+ \Delta^P_{c,\pi,\omega}
+ =\bar J^{\mathrm{op}}_{c,\pi,\omega}
+ -\bar J^{\mathrm{op}}_{\mathrm{ref},\pi,\omega},
+ \qquad
+ R^P_{c,\pi,\omega}
+ =\bar J^{\mathrm{op}}_{c,\pi,\omega}
+ -\min_{\pi'\in\Pi_c}
+ \bar J^{\mathrm{op}}_{c,\pi',\omega}.
+ \label{eq:parameter-robustness-effects}
+\end{equation}
+The three learning seeds are averaged within each path before either quantity
+is calculated. Simultaneous intervals and Holm adjusted tests are formed within
+each declared family. The best policy confidence set is
+\begin{equation}
+ \widehat\pi_c=
+ \argmin_{\pi\in\Pi_c}\frac{1}{N^P_{\mathrm{path}}}
+ \sum_{\omega}\bar J^{\mathrm{op}}_{c,\pi,\omega},
+ \qquad
+ \mathcal C^{\mathrm{best}}_c=
+ \left\{\pi\in\Pi_c\,\middle|\,
+ L^{\mathrm{sim}}_{c,\pi,\widehat\pi_c}\leq0\right\},
+ \qquad N^P_{\mathrm{path}}=10.
+ \label{eq:parameter-robustness-confidence-set}
+\end{equation}
+The timing rule fixes the ten paths before test outcomes are read. All
+inference is therefore conditional on this matched physical path ensemble and
+the policy family $\Pi_c$ actually evaluated in each cell.
+
+Figure~\ref{fig:534-parameter-effects} shows the Reactive cell minus reference
+effects. Doubling network exposure produces the largest loss increase at
+188,662.22, with a simultaneous interval from 179,804.93 to 197,519.52. The
+long lag and severe renewed closure combination increases loss by 122,609.08,
+with an interval from 86,132.86 to 159,085.29. Doubling maritime lag and halving
+port service increase loss by 78,500.95 and 37,516.43. These effects locate the
+largest deployment risks in demand scale, travel time, and physical service.
+The maritime lag stress also retains its registered lag based real resource
+increment, while port service and corridor stresses preserve the corresponding
+one service week congestion thresholds. They are therefore coherent system
+stresses rather than isolated coefficient changes.
+
+The largest Reactive loss reduction occurs under the concave waiting hazard
+$p=0.5$ at 76,472.20 units. This change arises because earlier waiting vintages
+receive a larger attrition hazard and is not a recommendation to accelerate
+cargo exit. The authority budget endpoints produce zero loss change for the
+frozen Reactive rule, which means that the registered budget is nonbinding on
+these ten paths. A four week readiness lead produces a change of $-154.94$
+with an interval from $-379.67$ to 69.79. Neither result establishes that
+budget or preparation time is generally immaterial.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/figure_5_3_4a_parameter_effect_forest.png}
+    \caption{Reactive parameter and combined stress effects}
+    \label{fig:534-parameter-effects}
+\end{figure}
+
+Policy identity is stable across most declared comparisons but has two
+material structural exceptions. Figure~\ref{fig:534-policy-stability} shows
+that 30 of the 31 cells have one member in the simultaneous confidence set
+within their evaluated policy family. On the ten path common reference,
+Reactive loss is 98,871.13 and it is the sole confidence set member. The
+corresponding losses are 108,011.97 for MPC, 114,230.87 for BC, 114,762.68 for
+model guided constrained SAC, and 286,265.04 for Passive. These are conditional
+deployment anchors for the robustness ensemble and do not replace the complete
+benchmark estimates. Reactive is the sample leader in 28 cells and belongs to
+the confidence set in 29 cells. At half maritime lag, MPC
+has a sample advantage of only 21.12 over Reactive and its interval from
+$-880.80$ to 923.04 retains both policies. At doubled maritime lag, MPC leads
+Reactive by 9,415.47, with an interval from 4,231.90 to 14,599.03. In the nine
+gateway and low corridor combined stress, MPC leads Reactive by 33,668.74,
+with an interval from 32,982.72 to 34,354.76. A coordinator should therefore
+reconsider an online planning policy when maritime timing or network dimension
+departs substantially from the reference, but these cells do not establish a
+general MPC advantage under every stronger stress.
+
+BC enters none of the confidence sets in its 26 evaluated cells. Model guided
+constrained SAC enters none of the four complete policy anchor sets. At the
+matched long lag and severe closure anchor, BC and model guided constrained SAC
+remain 41,828.98 and 43,580.88 above Reactive after matched training. This
+negative result shows that matched support does not close their performance
+gap at that endpoint. Model guided constrained SAC is not evaluated in the
+behavioural and economic one factor screens, so those cells do not establish
+its parameter robustness. White entries in
+Figure~\ref{fig:534-policy-stability} denote policies not evaluated by design
+and not policy failures.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/figure_5_3_4b_policy_stability.png}
+    \caption{Policy confidence set stability}
+    \label{fig:534-policy-stability}
+\end{figure}
+
+The mechanism outcomes in Figure~\ref{fig:534-interaction-mechanisms} explain
+why the combined stresses cannot be reduced to a common severity scale. Under
+long lag and severe renewed closure, Reactive loss is 221,480.21, clearance
+probability is 0.70, and mean terminal outstanding mass is 4.962. BC, MPC, and
+model guided constrained SAC each clear 0.30 of their paths. Reactive remains
+the sole confidence set member, but the pressure is expressed mainly through
+port stage overload, waiting, and terminal mass rather than shared corridor
+overload alone. A small corridor measure is therefore not evidence that the
+network has no bottleneck.
+
+The convex hazard and low exit anchor reduces Reactive loss by 2,337.51 while
+direct SUE exit rises from approximately zero to 11.837 model units. Because
+this anchor reproduces the half exit consequence main effect, it verifies the
+registered identity but does not identify an independent interaction. In the
+nine gateway and half corridor combination, all evaluated policies clear and
+MPC loss is 32,093.06 compared with 65,761.80 for Reactive. This cell changes
+both the network and corridor condition. Its lower loss relative to the three
+gateway reference cannot be attributed to reducing corridor capacity. The
+network architecture comparisons remain the evidence for that separate
+component effect.
+
+The sixteen week readiness and low credibility combination increases Reactive
+loss by 204.82, with an interval from 39.35 to 370.29, and leaves Reactive as
+the sole confidence set member. It measures the total policy response to this
+combined condition. It does not recompute $V_{R\mid D}$, $V_{D\mid R}$, or
+$S_{RD}$ and therefore does not reidentify whether readiness and direct
+procurement are complements or substitutes. The conditional capacity right
+estimands in Figure~\ref{fig:524-capacity-portfolio} remain the evidence for
+that relationship.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/figure_5_3_4c_interaction_mechanisms.png}
+    \caption{Mechanisms under combined structural stresses}
+    \label{fig:534-interaction-mechanisms}
+\end{figure}
+
+Clearance and failure diagnostics provide an additional boundary. When network
+exposure is doubled, Passive, Reactive, and BC clear none of the matched paths.
+When port service is halved, Reactive clears 0.10 and the other two policies
+clear none. Across the 1,010 evaluated path policy summaries, 91 are right
+censored and no numerical failure occurs. At the common reference, terminal
+mass lies between $5.52\times10^{-7}$ and $7.12\times10^{-7}$. Reclassifying
+these same terminal states at $10^{-8}$ marks every policy as uncleared, while
+$10^{-6}$ and $10^{-4}$ mark every policy as cleared. The diagnostic changes no
+action, transition, loss, or terminal state and is not a reoptimised clearance
+experiment.
+
+The 1,610 policy path seed runs satisfy the registered trajectory and numerical
+contracts. The maximum transition residual is $9.99985\times10^{-7}$ and the
+maximum loss closure error is $4.66\times10^{-10}$. These checks establish
+internal acceptance rather than field effectiveness. The substantive evidence
+is conditional on the ten paths chosen by the prespecified computational rule,
+the policy family supported in each cell, the declared reference centred
+levels, and the four combined anchors. It does not provide a high dimensional
+uncertainty distribution, an empirical parameter confidence region, a causal
+field effect, or a universal controller ranking.
 
 \FloatBarrier
 \section{Discussion and Conclusions}

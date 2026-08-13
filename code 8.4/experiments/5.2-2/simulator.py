@@ -10,7 +10,7 @@ from typing import Any, Mapping, Protocol
 import numpy as np
 import pandas as pd
 
-from tre84.acceptance import evaluate_acceptance
+from tre84.acceptance import evaluate_acceptance, source_masses_for_acceptance
 from tre84.actions import Action, ProjectionResult
 from tre84.clearance import ClearanceRunner
 from tre84.engine import KernelResult
@@ -224,10 +224,7 @@ def run_replication(
             realization=realization,
             projection=projection,
         )
-        source_masses = {
-            source: float(sum(flow.values()))
-            for source, flow in result.equilibrium.flows.items()
-        }
+        source_masses = source_masses_for_acceptance(result)
         acceptance = evaluate_acceptance(
             decision_time=row["week"],
             information_timestamps=prepared.scenarios.information_timestamps,

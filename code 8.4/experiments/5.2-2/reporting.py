@@ -23,6 +23,21 @@ from paths import Frozen521Inputs, sha256_file
 
 
 CODE_ROOT = Path(__file__).resolve().parents[2]
+EXPERIMENTS_ROOT = Path(__file__).resolve().parents[1]
+if str(EXPERIMENTS_ROOT) not in sys.path:
+    sys.path.insert(0, str(EXPERIMENTS_ROOT))
+
+from figure_style import (  # noqa: E402
+    BLUE,
+    BLUE_LIGHT,
+    INK,
+    ORANGE,
+    TEXT_WIDTH,
+    apply_publication_style,
+    panel_title,
+    policy_label,
+    save_figure,
+)
 
 LOSS_COMPONENTS = [
     ("queue", "Queue"),
@@ -163,19 +178,7 @@ def policy_authority_register(config: Mapping[str, Any]) -> pd.DataFrame:
 
 
 def _style() -> None:
-    plt.rcParams.update(
-        {
-            "font.family": "DejaVu Sans",
-            "font.size": 9,
-            "axes.spines.top": False,
-            "axes.spines.right": False,
-            "axes.grid": True,
-            "axes.grid.axis": "y",
-            "grid.alpha": 0.25,
-            "figure.facecolor": "white",
-            "savefig.facecolor": "white",
-        }
-    )
+    apply_publication_style()
 
 
 def create_figures(
@@ -193,15 +196,7 @@ def create_figures(
     _style()
     output_directory.mkdir(parents=True, exist_ok=True)
     policy_order = list(policies)
-    short = {
-        "Projected stochastic MPC": "Projected\nMPC",
-        "Behaviour cloning": "BC",
-        "Vanilla SAC": "Vanilla\nSAC",
-        "Constrained SAC": "Constrained\nSAC",
-        "Model-guided constrained SAC": "MG constrained\nSAC",
-    }
-    labels = [short.get(policy, policy) for policy in policy_order]
-    blue, blue_light, orange, ink = "#355C7D", "#DCE8F2", "#D9822B", "#263238"
+    labels = [policy_label(policy) for policy in policy_order]
 
     confidence = confidence_set.set_index("policy").loc[policy_order]
     means = confidence["mean_total_operational_loss"].to_numpy(float)
@@ -212,7 +207,13 @@ def create_figures(
         path_level.loc[path_level["policy"] == policy, "total_operational_objective"].to_numpy(float)
         for policy in policy_order
     ]
-    fig, axes = plt.subplots(1, 2, figsize=(14.2, 6.4), constrained_layout=True)
+    fig, axes = plt.subplots(
+        1,
+        2,
+        figsize=(TEXT_WIDTH, 4.55),
+        constrained_layout=True,
+        gridspec_kw={"width_ratios": [1.15, 0.85]},
+    )
     boxes = axes[0].boxplot(
         distributions,
         positions=positions,
@@ -220,43 +221,32 @@ def create_figures(
         widths=0.48,
         patch_artist=True,
         showfliers=False,
-        medianprops={"color": ink, "linewidth": 1.2},
-        whiskerprops={"color": blue, "linewidth": 1.0},
-        capprops={"color": blue, "linewidth": 1.0},
-        boxprops={"edgecolor": blue, "linewidth": 1.0},
+        medianprops={"color": INK, "linewidth": 1.2},
+        whiskerprops={"color": BLUE, "linewidth": 1.0},
+        capprops={"color": BLUE, "linewidth": 1.0},
+        boxprops={"edgecolor": BLUE, "linewidth": 1.0},
     )
     for box in boxes["boxes"]:
-        box.set_facecolor(blue_light)
-    offsets = np.linspace(-0.13, 0.13, max(len(values) for values in distributions))
-    for index, values in enumerate(distributions):
-        axes[0].scatter(
-            values,
-            index + offsets[: len(values)],
-            s=20,
-            facecolor="white",
-            edgecolor=blue,
-            linewidth=0.7,
-            zorder=3,
-        )
+        box.set_facecolor(BLUE_LIGHT)
     axes[0].errorbar(
         means,
         positions,
         xerr=np.vstack([means - lower, upper - means]),
         fmt="D",
-        color=orange,
-        ecolor=orange,
+        color=ORANGE,
+        ecolor=ORANGE,
         markersize=4.5,
         capsize=3,
         linewidth=1.1,
-        label="Mean and path-based 95% interval",
+        label="Mean and 95 percent interval",
         zorder=4,
     )
     axes[0].set_yticks(positions, labels)
     axes[0].invert_yaxis()
     axes[0].set_xlabel("Total operational and real-resource loss (index units)")
-    axes[0].set_title("a. Matched-path loss distributions")
-    axes[0].legend(frameon=False, loc="lower right", fontsize=8)
-    axes[0].text(0.01, -0.14, "Open circles are physical paths; diamonds are means. Learning seeds are averaged within path.", transform=axes[0].transAxes, fontsize=8)
+    panel_title(axes[0], "A", "Matched path loss distributions")
+    axes[0].legend(loc="lower right")
+    axes[0].grid(axis="x")
 
     effect = paired_effects.set_index("policy").loc[[p for p in policy_order if p != "Passive"]]
     y = np.arange(len(effect))
@@ -264,16 +254,15 @@ def create_figures(
     e_low = effect["simultaneous_95_lower"].to_numpy(float)
     e_high = effect["simultaneous_95_upper"].to_numpy(float)
     axes[1].axvline(0.0, color="black", linewidth=1.0, linestyle="--")
-    axes[1].hlines(y, e_low, e_high, color=blue, linewidth=1.6)
-    axes[1].scatter(e_mean, y, s=42, facecolor=orange, edgecolor=ink, linewidth=0.6, zorder=3)
-    axes[1].set_yticks(y, [short.get(p, p) for p in effect.index])
+    axes[1].hlines(y, e_low, e_high, color=BLUE, linewidth=1.6)
+    axes[1].scatter(e_mean, y, s=38, facecolor=ORANGE, edgecolor=INK, linewidth=0.6, zorder=3)
+    axes[1].set_yticks(y, [policy_label(p) for p in effect.index])
     axes[1].invert_yaxis()
     axes[1].set_xlabel("Paired loss difference versus Passive (lower is better)")
-    axes[1].set_title("b. Multiplicity-adjusted paired intervals")
-    axes[1].text(0.01, -0.14, "Intervals use the physical path as the inference unit.", transform=axes[1].transAxes, fontsize=8)
-    fig.suptitle("Figure 5.2.2a. Common-authority policy performance and paired uncertainty", fontsize=12)
+    panel_title(axes[1], "B", "Adjusted paired intervals")
+    axes[1].grid(axis="x")
     path_a = output_directory / "figure_5_2_2a_policy_performance.png"
-    fig.savefig(path_a, dpi=dpi, bbox_inches="tight")
+    save_figure(fig, path_a, dpi=dpi)
     plt.close(fig)
 
     components = loss_summary.set_index("policy").loc[policy_order]
@@ -282,19 +271,19 @@ def create_figures(
     absolute = components[component_columns].to_numpy(float)
     totals = components["mean_total_operational_loss"].to_numpy(float)
     shares = np.divide(absolute, totals[:, None], out=np.zeros_like(absolute), where=totals[:, None] > 0) * 100.0
-    fig, ax = plt.subplots(figsize=(14.2, 6.7), constrained_layout=True)
+    fig, ax = plt.subplots(figsize=(TEXT_WIDTH, 4.55), constrained_layout=True)
     heat = ax.imshow(shares, aspect="auto", cmap="Blues", vmin=0.0, vmax=max(50.0, float(shares.max())))
     for row in range(shares.shape[0]):
         for column in range(shares.shape[1]):
             value = shares[row, column]
-            text_color = "white" if value > 0.55 * max(50.0, float(shares.max())) else ink
+            text_color = "white" if value > 0.55 * max(50.0, float(shares.max())) else INK
             ax.text(
                 column,
                 row,
                 f"{absolute[row, column] / 1000:.1f}k\n{value:.1f}%",
                 ha="center",
                 va="center",
-                fontsize=7.5,
+                fontsize=7.1,
                 color=text_color,
             )
         ax.text(
@@ -303,71 +292,42 @@ def create_figures(
             f"Total {totals[row] / 1000:.1f}k",
             ha="left",
             va="center",
-            fontsize=8,
+            fontsize=7.5,
             fontweight="bold",
-            color=ink,
+            color=INK,
             clip_on=False,
         )
     ax.set_xlim(-0.5, len(component_columns) + 1.25)
     ax.set_xticks(np.arange(len(component_labels)), component_labels, rotation=25, ha="right")
     ax.set_yticks(np.arange(len(policy_order)), labels)
-    ax.set_title("Figure 5.2.2b. Formal loss-component matrix")
     colorbar = fig.colorbar(heat, ax=ax, shrink=0.82, pad=0.08)
     colorbar.set_label("Share of policy total loss (%)")
-    ax.text(0.0, -0.20, "Cells show absolute loss in thousands and within-policy share. Every row reconstructs its reported total.", transform=ax.transAxes, fontsize=8)
+    ax.grid(False)
     path_b = output_directory / "figure_5_2_2b_loss_decomposition.png"
-    fig.savefig(path_b, dpi=dpi, bbox_inches="tight")
+    save_figure(fig, path_b, dpi=dpi)
     plt.close(fig)
 
     clear = clearance.set_index("policy").loc[policy_order]
-    cap = int(clear["restriction_weeks"].max())
-    weeks = np.arange(0, cap + 1)
-    fig, axes = plt.subplots(2, 4, figsize=(14.8, 7.2), sharex=True, sharey=True, constrained_layout=True)
-    for ax, policy, label in zip(axes.ravel(), policy_order, labels):
-        group = replications.loc[replications["policy"] == policy].copy()
-        observed = pd.to_numeric(group["clearance_weeks_observed"], errors="coerce").to_numpy(float)
-        censored = group["right_censored"].astype(bool).to_numpy()
-        not_cleared = np.asarray(
-            [np.mean(censored | np.isnan(observed) | (observed > week)) for week in weeks]
-        )
-        ax.step(weeks, not_cleared, where="post", color=blue, linewidth=1.7)
-        ax.fill_between(weeks, 0.0, not_cleared, step="post", color=blue_light, alpha=0.8)
-        ax.axvline(cap, color=ink, linewidth=0.8, linestyle=":")
-        summary = clear.loc[policy]
-        ax.set_title(label.replace("\n", " "), fontsize=9.5)
-        ax.text(
-            0.04,
-            0.94,
-            f"clear={summary['clearance_probability']:.2f}\ncensored={int(group['right_censored'].sum())}/{len(group)}\nfinal={summary['mean_final_outstanding_mass']:.3g}",
-            transform=ax.transAxes,
-            va="top",
-            fontsize=7.5,
-            color=ink,
-        )
-        ax.set_xlim(0, cap)
-        ax.set_ylim(0, 1.03)
-    fig.supxlabel("Clearance follow-up week")
-    fig.supylabel("Share of trajectories not yet cleared")
-    fig.suptitle("Figure 5.2.2c. Empirical clearance curves and right censoring", fontsize=12)
-    physical_path_count = int(path_level["path_id"].nunique())
-    learning_seed_count = int(
-        path_level.loc[
-            path_level["policy"].isin(
-                ["Behaviour cloning", "PPO", "Vanilla SAC", "Constrained SAC", "Model-guided constrained SAC"]
-            ),
-            "training_seed_count",
-        ].max()
-    )
-    fig.text(
-        0.5,
-        -0.015,
-        f"Learning panels contain {physical_path_count} physical paths x {learning_seed_count} training seeds; "
-        f"nonlearning panels contain {physical_path_count} paths. Censored trajectories remain above zero at week {cap}.",
-        ha="center",
-        fontsize=8,
-    )
+    fig, axes = plt.subplots(1, 3, figsize=(TEXT_WIDTH, 3.8), sharey=True, constrained_layout=True)
+    y = np.arange(len(policy_order))
+    diagnostics = [
+        ("clearance_probability", "A", "Clearance probability", "Probability", False),
+        ("restricted_mean_clearance_time", "B", "Restricted clearance time", "Weeks", False),
+        ("mean_final_outstanding_mass", "C", "Terminal outstanding", "Model units", True),
+    ]
+    for axis, (column, letter, title, xlabel, logarithmic) in zip(axes, diagnostics):
+        values = clear[column].to_numpy(float)
+        if logarithmic:
+            values = np.maximum(values, 1e-12)
+            axis.set_xscale("log")
+        axis.scatter(values, y, s=34, color=BLUE, edgecolor=INK, linewidth=0.5)
+        axis.set_yticks(y, labels)
+        axis.invert_yaxis()
+        axis.set_xlabel(xlabel)
+        panel_title(axis, letter, title)
+        axis.grid(axis="x")
     path_c = output_directory / "figure_5_2_2c_clearance_censoring.png"
-    fig.savefig(path_c, dpi=dpi, bbox_inches="tight")
+    save_figure(fig, path_c, dpi=dpi)
     plt.close(fig)
     return [path_a, path_b, path_c]
 

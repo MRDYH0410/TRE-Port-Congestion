@@ -18,6 +18,21 @@ import pandas as pd
 from information_design import FrozenHMMInputs
 from paths import sha256_file
 
+EXPERIMENTS_ROOT = Path(__file__).resolve().parents[1]
+if str(EXPERIMENTS_ROOT) not in sys.path:
+    sys.path.insert(0, str(EXPERIMENTS_ROOT))
+
+from figure_style import (  # noqa: E402
+    CAPACITY_EFFECT_LABELS,
+    CAPACITY_RIGHT_LABELS,
+    INFORMATION_COMPARISON_LABELS,
+    TEXT_WIDTH,
+    WARNING_LABELS,
+    apply_publication_style,
+    panel_title,
+    save_figure,
+)
+
 
 PALETTE = {
     "I0": "#7A7A7A",
@@ -113,8 +128,8 @@ def _save_figure(fig: Any, output_directory: Path, name: str, dpi: int) -> list[
     output_directory.mkdir(parents=True, exist_ok=True)
     png = output_directory / f"{name}.png"
     pdf = output_directory / f"{name}.pdf"
-    fig.savefig(png, dpi=dpi, bbox_inches="tight", facecolor="white")
-    fig.savefig(pdf, bbox_inches="tight", facecolor="white")
+    save_figure(fig, png, dpi=dpi)
+    save_figure(fig, pdf, dpi=dpi)
     plt.close(fig)
     return [png, pdf]
 
@@ -126,13 +141,14 @@ def create_figure_a(
     output_directory: Path,
     dpi: int,
 ) -> tuple[list[Path], pd.DataFrame]:
+    apply_publication_style()
     primary = information_effects.loc[
         information_effects["comparison"].isin(["IF vs I0", "IL vs I0", "ORACLE vs I0"])
     ].copy()
     fixed = fixed_effects.copy()
     data = pd.concat([primary, fixed], ignore_index=True)
     scenarios = ["GH", "GT", "GL", "GFW"]
-    fig, axes = plt.subplots(1, 2, figsize=(14.5, 6.8), sharey=False)
+    fig, axes = plt.subplots(1, 2, figsize=(TEXT_WIDTH, 4.55), sharey=False, constrained_layout=True)
     for axis, frame, title in (
         (axes[0], primary, "A. Reoptimized information value"),
         (axes[1], fixed, "B. Fixed IL checkpoint responsiveness"),
@@ -153,20 +169,21 @@ def create_figure_a(
                     capsize=3,
                     markersize=6,
                 )
-                labels.append(f"{scenario}: {row.comparison}" + (" (unattainable oracle input)" if regime == "ORACLE" else ""))
+                labels.append(
+                    f"{WARNING_LABELS[scenario]}: "
+                    f"{INFORMATION_COMPARISON_LABELS.get(str(row.comparison), str(row.comparison))}"
+                )
                 positions.append(cursor)
                 cursor += 1
             cursor += 0.6
         axis.axvline(0.0, color="#333333", linewidth=1, linestyle=":")
-        axis.set_yticks(positions, labels, fontsize=8.5)
+        axis.set_yticks(positions, labels)
         axis.invert_yaxis()
         axis.grid(axis="x", alpha=0.25)
-        axis.set_xlabel("Paired loss reduction versus I0 (positive is lower loss)")
-        axis.set_title(title, loc="left", fontweight="bold")
+        axis.set_xlabel("Loss reduction from no information")
+        letter, short_title = title.split(". ", 1)
+        panel_title(axis, letter, short_title)
     axes[1].set_facecolor("#F7F3EA")
-    fig.suptitle("Figure 5.2.4a. Released information value and fixed-policy response", fontsize=15)
-    fig.text(0.5, 0.015, "Points are 88-physical-path paired means after within-path seed averaging; lines are within-family simultaneous 95% intervals. ORACLE information is unattainable; its trained controller is not assumed to attain the theoretical bound. Panel B is not information value.", ha="center", fontsize=8.7)
-    fig.tight_layout(rect=(0, 0.04, 1, 0.95))
     return _save_figure(fig, output_directory, "figure_5_2_4a_released_information_value", dpi), data
 
 
@@ -177,6 +194,7 @@ def create_figure_b(
     output_directory: Path,
     dpi: int,
 ) -> tuple[list[Path], pd.DataFrame]:
+    apply_publication_style()
     frame = capacity_trace.loc[
         capacity_trace["evidence_layer"].eq("reoptimized_information_value")
         & capacity_trace["controller_id"].eq("IL_RD")
@@ -224,40 +242,37 @@ def create_figure_b(
     grouped["decision_week"] = pd.to_datetime(grouped["decision_week"])
     event = pd.Timestamp(grouped["event_onset"].iloc[0])
     releases = sorted(pd.to_datetime(grouped["scenario_release_date"]).drop_duplicates())
-    fig, axes = plt.subplots(4, 1, figsize=(13.5, 12), sharex=True)
+    fig, axes = plt.subplots(4, 1, figsize=(TEXT_WIDTH, 8.25), sharex=True, constrained_layout=True)
     axes[0].step(grouped["decision_week"], grouped["current_risk"], where="post", label="Released current filtered risk", color=PALETTE["IF"], linewidth=2)
     axes[0].step(grouped["decision_week"], grouped["lead_risk"], where="post", label="Readiness lead-aligned risk", color=PALETTE["IL"], linewidth=2)
     axes[0].set_ylabel("Risk-state probability")
     axes[0].legend(loc="upper right", ncol=2)
-    axes[0].set_title("Released information", loc="left", fontweight="bold")
+    panel_title(axes[0], "A", "Released information")
     axes[1].plot(grouped["decision_week"], grouped["readiness_order"], label="Order", color="#4C78A8")
     axes[1].plot(grouped["decision_week"], grouped["readiness_stock"], label="Mature stock", color="#2A9D8F")
     axes[1].plot(grouped["decision_week"], grouped["readiness_exercise"], label="Exercise", color="#E07B24")
     axes[1].plot(grouped["decision_week"], grouped["readiness_expiry"], label="Expiry/decay", color="#8E5EA2", linestyle="--")
     axes[1].set_ylabel("Model units")
     axes[1].legend(loc="upper right", ncol=4)
-    axes[1].set_title("Readiness order, maturity, exercise, and expiry", loc="left", fontweight="bold")
+    panel_title(axes[1], "B", "Readiness preparation")
     axes[2].plot(grouped["decision_week"], grouped["direct_order"], label="Direct order", color="#D55E00")
     axes[2].plot(grouped["decision_week"], grouped["direct_pipeline"], label="Pipeline", color="#0072B2")
     axes[2].plot(grouped["decision_week"], grouped["direct_arrival"], label="Arrival", color="#009E73", linestyle="--")
     axes[2].set_ylabel("Model units")
     axes[2].legend(loc="upper right", ncol=3)
-    axes[2].set_title("Direct procurement order, pipeline, and arrival", loc="left", fontweight="bold")
+    panel_title(axes[2], "C", "Direct capacity preparation")
     axes[3].fill_between(grouped["decision_week"], grouped["blocked"], alpha=0.25, color="#D55E00", label="Blocked cargo proxy")
     axes[3].plot(grouped["decision_week"], grouped["temporary_capacity"], color="#009E73", linewidth=2, label="Usable temporary capacity")
-    axes[3].plot(grouped["decision_week"], grouped["queues"], color="#333333", linewidth=2, label="External waiting excluded; four-stage queues")
-    axes[3].set_ylabel("Model cargo units")
+    axes[3].plot(grouped["decision_week"], grouped["queues"], color="#333333", linewidth=2, label="Four-stage queues")
+    axes[3].set_ylabel("Cargo units")
     axes[3].legend(loc="upper right", ncol=3)
-    axes[3].set_title("Physical burden and temporary capacity", loc="left", fontweight="bold")
+    panel_title(axes[3], "D", "Burden and temporary capacity")
     for axis in axes:
         axis.axvline(event, color="#B22222", linewidth=1.5, linestyle="--")
         for release in releases:
             axis.axvline(release, color="#777777", linewidth=0.55, alpha=0.28)
         axis.grid(alpha=0.22)
-    axes[-1].set_xlabel("Monday decision week")
-    fig.suptitle(f"Figure 5.2.4b. Information release and capacity preparation timing\nPhysical-path medoid: {medoid_path_id}", fontsize=15)
-    fig.text(0.5, 0.012, "Gray lines are public release dates; the red line is event onset. No dual axes are used.", ha="center", fontsize=9)
-    fig.tight_layout(rect=(0, 0.03, 1, 0.95))
+    axes[-1].set_xlabel("Decision week")
     return _save_figure(fig, output_directory, "figure_5_2_4b_release_capacity_timing", dpi), grouped
 
 
@@ -269,20 +284,30 @@ def create_figure_c(
     output_directory: Path,
     dpi: int,
 ) -> tuple[list[Path], pd.DataFrame]:
+    apply_publication_style()
     scenarios = ["GH", "GT", "GL", "GFW"]
     rights = ["RD", "R", "D", "NONE"]
     mean_loss = capacity_path_level.groupby(["warning_scenario", "capacity_rights"])["total_operational_objective"].mean().unstack()
     mean_loss = mean_loss.reindex(index=scenarios, columns=rights)
-    fig = plt.figure(figsize=(16, 10.5))
-    grid = fig.add_gridspec(2, 2, height_ratios=[1, 1.15])
+    fig = plt.figure(figsize=(TEXT_WIDTH, 9.25), constrained_layout=True)
+    grid = fig.add_gridspec(3, 2, height_ratios=[0.9, 1.15, 0.72])
     ax_a = fig.add_subplot(grid[0, 0])
     image = ax_a.imshow(mean_loss.to_numpy(), aspect="auto", cmap="YlOrRd")
-    ax_a.set_xticks(range(len(rights)), rights)
-    ax_a.set_yticks(range(len(scenarios)), scenarios)
+    ax_a.set_xticks(range(len(rights)), [CAPACITY_RIGHT_LABELS[item] for item in rights], rotation=18, ha="right")
+    ax_a.set_yticks(range(len(scenarios)), [WARNING_LABELS[item] for item in scenarios])
     for y in range(len(scenarios)):
         for x in range(len(rights)):
-            ax_a.text(x, y, f"{mean_loss.iloc[y, x]:,.0f}", ha="center", va="center", fontsize=8)
-    ax_a.set_title("A. Mean total loss by reoptimized capacity rights", loc="left", fontweight="bold")
+            value = float(mean_loss.iloc[y, x])
+            ax_a.text(
+                x,
+                y,
+                f"{value:,.0f}",
+                ha="center",
+                va="center",
+                fontsize=8,
+                color="white" if value > 0.55 * float(mean_loss.to_numpy().max()) else "#263238",
+            )
+    panel_title(ax_a, "A", "Mean loss by capacity rights")
     fig.colorbar(image, ax=ax_a, fraction=0.045, label="Operational loss")
     ax_b = fig.add_subplot(grid[0, 1])
     markers = {"V_R_given_D": "o", "V_D_given_R": "s", "S_RD": "D"}
@@ -296,15 +321,16 @@ def create_figure_c(
             yerr=[subset["mean_paired_effect"] - subset["simultaneous_95_lower"], subset["simultaneous_95_upper"] - subset["mean_paired_effect"]],
             fmt=markers[comparison],
             capsize=3,
-            label=comparison,
+            label=CAPACITY_EFFECT_LABELS[comparison],
         )
     ax_b.axhline(0.0, color="#333333", linestyle=":")
-    ax_b.set_xticks(range(len(scenarios)), scenarios)
-    ax_b.set_ylabel("Paired value / combination effect")
-    ax_b.set_title("B. Readiness, direct procurement, and combination", loc="left", fontweight="bold")
-    ax_b.legend(ncol=3, fontsize=8)
+    ax_b.set_xticks(range(len(scenarios)), [WARNING_LABELS[item] for item in scenarios], rotation=18, ha="right")
+    ax_b.set_ylabel("Paired loss effect")
+    panel_title(ax_b, "B", "Capacity value and joint effect")
+    ax_b.legend(ncol=1)
     ax_b.grid(axis="y", alpha=0.25)
     ax_c = fig.add_subplot(grid[1, :])
+    ax_d = fig.add_subplot(grid[2, :])
     selected = loss_components.loc[
         loss_components["evidence_layer"].eq("reoptimized_capacity_rights")
     ].copy()
@@ -313,37 +339,47 @@ def create_figure_c(
         pd.MultiIndex.from_product([scenarios, rights], names=["warning_scenario", "capacity_rights"])
     ).reset_index()
     components = ["queue", "waiting", "sue_exit", "attrition_exit", "overload", "route_resource", "action", "terminal"]
+    component_labels = {
+        "queue": "queue",
+        "waiting": "waiting",
+        "sue_exit": "route-choice exit",
+        "attrition_exit": "attrition exit",
+        "overload": "overload",
+        "route_resource": "route resource",
+        "action": "action",
+        "terminal": "terminal",
+    }
     colors = ["#4C78A8", "#72B7B2", "#F58518", "#E45756", "#B279A2", "#FF9DA6", "#9D755D", "#BAB0AC"]
-    bottom = np.zeros(len(selected))
-    x = np.arange(len(selected))
+    disrupted = selected.loc[~selected["warning_scenario"].eq("GFW")].reset_index(drop=True)
+    bottom = np.zeros(len(disrupted))
+    x = np.arange(len(disrupted))
+    bar_handles = []
     for component, color in zip(components, colors):
-        values = selected[component].to_numpy(dtype=float)
-        ax_c.bar(x, values, bottom=bottom, label=component.replace("_", " "), color=color, width=0.8)
+        values = disrupted[component].to_numpy(dtype=float)
+        bars = ax_c.bar(x, values, bottom=bottom, label=component_labels[component], color=color, width=0.78)
+        bar_handles.append(bars[0])
         bottom += values
-    ax_c.set_xticks(x, [f"{s}\n{r}" for s, r in zip(selected["warning_scenario"], selected["capacity_rights"])], fontsize=8)
+    ax_c.set_xticks(
+        x,
+        [f"{WARNING_LABELS[s].replace(' release', '')}\n{CAPACITY_RIGHT_LABELS[r]}" for s, r in zip(disrupted["warning_scenario"], disrupted["capacity_rights"])],
+        rotation=48,
+        ha="right",
+    )
     ax_c.set_ylabel("Mean loss component")
-    ax_c.set_title("C. Complete loss decomposition, including false-warning preparation cost", loc="left", fontweight="bold")
-    ax_c.legend(ncol=8, fontsize=7.5, loc="upper center", bbox_to_anchor=(0.5, -0.13))
+    panel_title(ax_c, "C", "Disruption loss decomposition")
     ax_c.grid(axis="y", alpha=0.2)
-    # The common absolute scale is needed for the disrupted cases, but it makes
-    # the preregistered false-warning costs visually disappear.  Retain all
-    # sixteen bars on the common scale and add an explicitly separate-scale
-    # inset for GFW; this is a zoomed decomposition, not a second y axis.
     gfw = selected.loc[selected["warning_scenario"].eq("GFW")].reset_index(drop=True)
-    inset = ax_c.inset_axes([0.775, 0.51, 0.215, 0.41])
     inset_bottom = np.zeros(len(gfw))
     inset_x = np.arange(len(gfw))
     for component, color in zip(components, colors):
         values = gfw[component].to_numpy(dtype=float)
-        inset.bar(inset_x, values, bottom=inset_bottom, color=color, width=0.72)
+        ax_d.bar(inset_x, values, bottom=inset_bottom, color=color, width=0.72)
         inset_bottom += values
-    inset.set_xticks(inset_x, gfw["capacity_rights"], fontsize=7)
-    inset.set_ylabel("Mean loss", fontsize=7)
-    inset.tick_params(axis="y", labelsize=7)
-    inset.set_title("GFW decomposition (separate zoom scale)", fontsize=8, loc="left")
-    inset.grid(axis="y", alpha=0.2)
-    fig.suptitle("Figure 5.2.4c. Readiness and direct-procurement portfolio", fontsize=15)
-    fig.tight_layout(rect=(0, 0.055, 1, 0.96))
+    ax_d.set_xticks(inset_x, [CAPACITY_RIGHT_LABELS[item] for item in gfw["capacity_rights"]])
+    ax_d.set_ylabel("Mean loss component")
+    panel_title(ax_d, "D", "False-warning preparation cost")
+    ax_d.grid(axis="y", alpha=0.2)
+    fig.legend(bar_handles, [component_labels[item] for item in components], loc="outside upper center", ncol=4)
     data = pd.concat(
         [
             mean_loss.stack().rename("mean_total_loss").reset_index().assign(panel="A"),

@@ -83,6 +83,7 @@ class BenchmarkModel:
     base_capacity: Mapping[ResourceKey, float]
     gateway_scales: Mapping[str, float]
     committed_shares: Mapping[Tag, float]
+    reference_loading_shares: Mapping[str, float]
     route_costs: Mapping[Tag, float]
     route_cost_register: pd.DataFrame
     layout: ActionLayout
@@ -197,9 +198,7 @@ class CommonDisclosureBehaviorFactory:
         reference = {
             key: _current_route_wait(state, model, key[1]) for key in route_keys
         }
-        reference_shares = {
-            tag.route: float(share) for tag, share in model.committed_shares.items()
-        }
+        reference_shares = model.reference_loading_shares
         adaptive_decision_mass = float(sum(decision.masses.values()))
         raw_signal = {
             key: _public_route_wait(
@@ -350,9 +349,15 @@ def route_resource_cost_register(config: Mapping[str, Any]) -> pd.DataFrame:
     routes = list(config["routes"])
     minimum_lag = min(int(route["maritime_lag_weeks"]) for route in routes)
     baseline = str(config["route_resource_cost"]["common_baseline"])
+    robustness_multiplier = float(
+        config["route_resource_cost"].get("robustness_multiplier", 1.0)
+    )
+    if robustness_multiplier <= 0.0:
+        raise ValueError("Route-resource robustness multiplier must be positive")
     rows = []
     for route in routes:
-        ocean = float(int(route["maritime_lag_weeks"]) - minimum_lag)
+        reference_ocean = float(int(route["maritime_lag_weeks"]) - minimum_lag)
+        ocean = robustness_multiplier * reference_ocean
         rows.append(
             {
                 "route": route["route_id"],
@@ -365,8 +370,9 @@ def route_resource_cost_register(config: Mapping[str, Any]) -> pd.DataFrame:
                 "total_incremental_resource_cost": ocean,
                 "unit": "designed resource-index units per model cargo unit",
                 "construction_formula": (
-                    "excess maritime lag weeks relative to the minimum-lag route; "
-                    "other components are zero only where topology is identical or evidence absent"
+                    "registered robustness multiplier times excess maritime lag weeks "
+                    "relative to the minimum-lag route; other components are zero only "
+                    "where topology is identical or evidence absent"
                 ),
                 "source": "declared 5.2.2 reference-network lag and stage topology",
                 "evidence_status": config["route_resource_cost"]["evidence_status"],
@@ -398,20 +404,46 @@ def build_model(config: Mapping[str, Any]) -> BenchmarkModel:
         zip(calibration["route"], calibration["sigma_W_rmse_weeks"])
     )
     registered_scales = config["information"]["waiting_error_scale_weeks_by_route"]
-    if set(calibrated_scales) != set(registered_scales) or any(
-        not np.isclose(float(calibrated_scales[route]), float(registered_scales[route]))
-        for route in calibrated_scales
+    scale_robustness_multiplier = float(
+        config["information"].get(
+            "waiting_error_scale_robustness_multiplier", 1.0
+        )
+    )
+    if scale_robustness_multiplier <= 0.0:
+        raise ValueError("Waiting-error-scale robustness multiplier must be positive")
+    network_design = dict(config.get("network_design", {}))
+    observed_routes = set(
+        network_design.get("observed_route_ids", calibrated_scales.keys())
+    )
+    if not observed_routes.issubset(set(calibrated_scales)) or any(
+        route not in registered_scales
+        or not np.isclose(
+            scale_robustness_multiplier * float(calibrated_scales[route]),
+            float(registered_scales[route]),
+        )
+        for route in observed_routes
     ):
-        raise ValueError("Registered sigma^W values differ from frozen validation calibration")
+        raise ValueError(
+            "Registered observed-route sigma^W values differ from the frozen "
+            "validation calibration times the declared robustness multiplier"
+        )
+    if set(registered_scales) != {str(item["route_id"]) for item in config["routes"]}:
+        raise ValueError("Every declared route requires exactly one registered sigma^W value")
     if any(float(value) <= 0.0 for value in registered_scales.values()):
         raise ValueError("Frozen waiting forecast error scales must be positive")
     scale_path = CODE_ROOT / "experiments" / "data" / "processed" / "anchors" / "gateway_reference_scales.csv"
     share_path = CODE_ROOT / "experiments" / "data" / "processed" / "anchors" / "committed_itinerary_reference.csv"
     scale_frame = pd.read_csv(scale_path)
     share_frame = pd.read_csv(share_path)
-    gateway_scales = {
+    anchor_gateway_scales = {
         str(row.gateway): float(row.activity_scale_model_units)
         for row in scale_frame.itertuples(index=False)
+    }
+    gateway_scales = {
+        str(key): float(value)
+        for key, value in network_design.get(
+            "gateway_scales_model_units", anchor_gateway_scales
+        ).items()
     }
     route_register = route_resource_cost_register(config)
     route_cost_by_id = dict(
@@ -436,12 +468,32 @@ def build_model(config: Mapping[str, Any]) -> BenchmarkModel:
         str(row.gateway): float(row.committed_itinerary_share)
         for row in share_frame.itertuples(index=False)
     }
-    committed_shares = {
-        Tag(cargo, route_id): committed_lookup[route.gateway]
-        for route_id, route in network.routes.items()
-    }
+    configured_committed = network_design.get("committed_shares_by_route")
+    if configured_committed is None:
+        committed_shares = {
+            Tag(cargo, route_id): committed_lookup[route.gateway]
+            for route_id, route in network.routes.items()
+        }
+    else:
+        committed_shares = {
+            Tag(cargo, route_id): float(configured_committed[route_id])
+            for route_id in network.routes
+        }
     if not np.isclose(sum(committed_shares.values()), 1.0):
         raise ValueError("Committed reference shares must sum to one")
+    configured_reference = network_design.get("reference_loading_shares_by_route")
+    reference_loading_shares = {
+        route_id: float(
+            configured_reference[route_id]
+            if configured_reference is not None
+            else committed_shares[Tag(cargo, route_id)]
+        )
+        for route_id in network.routes
+    }
+    if any(value < 0.0 for value in reference_loading_shares.values()) or not np.isclose(
+        sum(reference_loading_shares.values()), 1.0
+    ):
+        raise ValueError("Predetermined reference-loading shares must be nonnegative and sum to one")
     route_costs = {
         Tag(cargo, route_id): float(route_cost_by_id[route_id]) for route_id in network.routes
     }
@@ -450,7 +502,11 @@ def build_model(config: Mapping[str, Any]) -> BenchmarkModel:
     for gateway in network.gateways():
         for stage in (Stage.BERTH, Stage.YARD, Stage.GATE):
             base_capacity[ResourceKey(stage, gateway)] = gateway_scales[gateway]
-    shared_capacity = float(sum(gateway_scales.values()))
+    shared_capacity = float(
+        network_design.get("shared_corridor_capacity_model_units", sum(gateway_scales.values()))
+    )
+    if shared_capacity <= 0.0:
+        raise ValueError("Shared corridor capacity must be positive")
     base_capacity[ResourceKey(Stage.CORRIDOR, "landbridge_shared")] = shared_capacity
     threshold_weeks = float(config["loss"]["threshold_service_weeks"])
     thresholds = {
@@ -621,6 +677,7 @@ def build_model(config: Mapping[str, Any]) -> BenchmarkModel:
         base_capacity=base_capacity,
         gateway_scales=gateway_scales,
         committed_shares=committed_shares,
+        reference_loading_shares=reference_loading_shares,
         route_costs=route_costs,
         route_cost_register=route_register,
         layout=layout,
